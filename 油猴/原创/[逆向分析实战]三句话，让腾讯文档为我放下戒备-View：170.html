@@ -1,0 +1,2144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[逆向分析实战]三句话，让腾讯文档为我放下戒备-油猴中文网</title>
+<link href="https://bbs.tampermonkey.net.cn/thread-1080-1-1.html" rel="canonical" />
+<meta name="keywords" content="[逆向分析实战]三句话，让腾讯文档为我放下戒备" />
+<meta name="description" content="FBI WARNING由于油猴的一些古怪特性造成预料之外的问题，请临时新建以下脚本来复现文章中的操作：其实大部分腾讯文档是没有限制的，只有作者设置了复制权限才会无法复 ...油猴中文网 " />
+<meta name="generator" content="Discuz! X3.4" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2021 Tencent Cloud." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="https://bbs.tampermonkey.net.cn/" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_common.css?wcn" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_forum_viewthread.css?wcn" /><script type="text/javascript">var STYLEID = '10', STATICURL = 'static/', IMGDIR = 'template/comiis_mi/img', VERHASH = 'wcn', charset = 'utf-8', discuz_uid = '0', cookiepre = 'B6hk_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|好评|,2|油猫币|,3|贡献|', defaultstyle = '', REPORTURL = 'aHR0cHM6Ly9iYnMudGFtcGVybW9ua2V5Lm5ldC5jbi90aHJlYWQtMTA4MC0xLTEuaHRtbA==', SITEURL = 'https://bbs.tampermonkey.net.cn/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?wcn" type="text/javascript"></script>
+<meta name="application-name" content="油猴中文网" />
+<meta name="msapplication-tooltip" content="油猴中文网" />
+<meta name="msapplication-task" content="name=论坛;action-uri=https://bbs.tampermonkey.net.cn/forum.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=https://bbs.tampermonkey.net.cn/group.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/group.ico" /><meta name="msapplication-task" content="name=动态;action-uri=https://bbs.tampermonkey.net.cn/home.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/home.ico" /><link rel="archives" title="油猴中文网" href="https://bbs.tampermonkey.net.cn/archiver/" />
+<script src="data/cache/forum.js?wcn" type="text/javascript"></script>
+</head>
+<body id="nv_forum" class="pg_viewthread comiis_wide wewl" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="hd">
+<div class="comiis_nvdiv mb10">
+<div id="comiis_nv">
+<div class="wp comiis_nvbox cl">
+<div class="y comiis_nvlogin"><div class="comiis_um cl">
+<div class="z qqdlico">
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D1080%26extra%3Dpage%253D1%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-1080-1-1.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+<div class="comiis_dlq"><a onclick="showWindow('login', this.href);return false;" href="member.php?mod=logging&amp;action=login">登录</a> | <a href="member.php?mod=register">立即注册</a></div>
+</div></div>
+<ul><li class="comiis_logo"><a href="./" title="油猴中文网"><img src="template/comiis_mi/img/comiis_mini_logo.png" height="50"></a></li><li class="a" id="mn_forum" ><a href="https://bbs.tampermonkey.net.cn/forum.php" hidefocus="true" title="BBS"  >论坛<span>BBS</span></a></li><li id="mn_F2" ><a href="https://bbs.tampermonkey.net.cn/forum-2-1.html" hidefocus="true"  >油猴脚本资源</a></li><li id="mn_F68" ><a href="https://bbs.tampermonkey.net.cn/forum-68-1.html" hidefocus="true"  >后台脚本</a></li><li id="mn_N2bea" ><a href="https://bbs.tampermonkey.net.cn/thread-9-1-1.html" hidefocus="true"  >总版规</a></li></ul>
+</div>
+</div>
+</div>
+<style>
+#comiis_sousuo_menu, #comiis_key_menu {
+    position: fixed !important;
+    top: 50px !important;
+}
+</style>
+<script>
+    window.addEventListener('load', e => {
+  const sousuo = document.querySelector('#comiis_sousuo');
+        const sousuoMenu = document.querySelector('#comiis_sousuo_menu');
+        if (sousuo && sousuoMenu) {
+            sousuo.setAttribute('onmouseover', "showMenu({'ctrlid':this.id,'pos':'34!','ctrlclass':'on','duration':2});");
+            sousuo.removeAttribute('initialized');
+            sousuoMenu.removeAttribute('initialized');
+        }
+    });
+</script>
+<div id="comiis_sousuo_menu" style="display:none;">
+<div class="comiis_dss cl">
+<form id="scform" method="post" autocomplete="off" action="https://bbs.tampermonkey.net.cn/search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="formhash" value="c21af3ae" />
+<input type="hidden" name="mod" value="forum" />
+<input type="text" name="srchtxt" id="srchtxt" class="z" autocomplete="off" onblur="if (value ==''){value='请输入搜索内容'}" onfocus="if (value =='请输入搜索内容'){value =''}" value="请输入搜索内容" />
+<button id="search_submit" name="searchsubmit" type="submit" value="true">搜索</button>
+</form>
+</div>
+<div id="scbar_hot" class="cl">
+</div>
+</div>
+<div class="wp comiis_nv_pop">
+<div id="mu" class="cl">
+</div><div class="a_mu"><a href="https://sourl.cn/ptULfB" target="_blank" style="font-size: 40px"><font color="#0000FF"><b><span style="color: rgb(200, 0, 0); font-family: &quot;lucida Grande&quot;, Verdana, &quot;Microsoft YaHei&quot;; font-size: 24px; white-space: normal;">外卖红包天天领，拼手气开惊喜红包</span></b></font></a></div></div>
+</div>
+<script src="template/comiis_mi/img/comiis_nv.js" type="text/javascript" type="text/javascript"></script>
+<div id="wp" class="wp">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=1080" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=1080" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+<script type="text/javascript">var fid = parseInt('44'), tid = parseInt('1080');</script>
+
+
+<script src="data/cache/forum_viewthread.js?wcn" type="text/javascript"></script>
+
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+
+
+<div id="pt" class="bm cl">
+
+<div class="z">
+
+<a href="./" class="nvhm" title="首页">油猴中文网</a><em>&raquo;</em><a href="https://bbs.tampermonkey.net.cn/forum.php">论坛</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum.php?gid=39">资源共享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum-44-1.html">原创资源</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/thread-1080-1-1.html">[逆向分析实战]三句话，让腾讯文档为我放下戒备 ...</a>
+
+</div>
+
+</div>
+
+
+
+<div class="wp">
+
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="wp a_t"><table cellpadding="0" cellspacing="1"><tr><td width="33%"><a href="https://docs.scriptcat.org/" target="_blank" ><font color="#0099FF"><b>ScriptCat，新一代的脚本管理器</b></font></a></td><td width="33%"><a href="https://scriptcat.org/search" target="_blank" ><font color="#3399FF"><b><span style="white-space: pre;">脚本站，与全世界分享你的用户脚本</span></b></font></a></td><td width="33%"><a href="https://sourl.cn/KJMya6" target="_blank" ><font color="#CC00CC"><b>油猴脚本开发指南教程目录</b></font></a></td></tr>
+</table></div><div id="pgt" class="pgs mbm cl">
+
+<div class="pgt"><div class="pg"><strong>1</strong><a href="https://bbs.tampermonkey.net.cn/thread-1080-2-1.html">2</a><a href="https://bbs.tampermonkey.net.cn/thread-1080-3-1.html">3</a><a href="https://bbs.tampermonkey.net.cn/thread-1080-4-1.html">4</a><label><input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&tid=1080&amp;extra=page%3D1&amp;page='+this.value;; doane(event);}" /><span title="共 4 页"> / 4 页</span></label><a href="https://bbs.tampermonkey.net.cn/thread-1080-2-1.html" class="nxt">下一页</a></div></div>
+
+<span class="y pgb"><a href="https://bbs.tampermonkey.net.cn/forum-44-1.html">返回列表</a></span>
+
+<a id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=44')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+</div>
+
+
+<div class="wp">
+
+<!--[diy=diy1s]--><div id="diy1s" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="boardnav">
+
+
+<div id="ct" class="wp cl comiis_rollzbox">
+
+
+
+<div id="postlist" class="pl bm esgky comiis_x0">
+
+
+<div class="bm_h comiis_snvbt">
+
+
+<span class="z">
+
+				
+
+</span>
+
+<h2 class="z">
+
+
+<span id="thread_subject">[逆向分析实战]三句话，让腾讯文档为我放下戒备</span>
+
+</h2>
+
+<span class="z kmfz">
+
+
+<a href="https://bbs.tampermonkey.net.cn/thread-1080-1-1.html" onclick="return copyThreadUrl(this, '油猴中文网')"  class="kmcopy">[复制链接]</a>
+
+
+</span>
+
+
+<span class="y comiis_hfs"><strong>31</strong><br>回复</span>
+
+<span class="y comiis_cks"><strong>225</strong><br>查看</span>
+
+<span class="y comiis_sxy">
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;action=printable&amp;tid=1080" title="打印" target="_blank"><img src="template/comiis_mi/img/print.png" alt="打印" class="vm" /></a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=1080" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=1080" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="post_7170"  class="comiis_vrx"><table id="pid7170" class="plhin" summary="pid7170" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7170" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7170" style="display:none;">
+<div class="m z">
+<div id="userinfo7170_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7170')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7170" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7170_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7170" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7170_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7170_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7170_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7170_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7170_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7170_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7170_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7170_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7170_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7170&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/thread-1080-1-1.html"   id="postnum7170" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km1">
+楼主</a>
+</strong>
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&ptid=1080&authorid=0&postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层" />
+<a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="template/comiis_mi/img/fj_btn.png" alt="跳转到指定楼层" class="vm" /></a>
+</div>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7170">
+发表于
+					
+2021-10-7 10:49:42</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+<span class="pipe">|</span>&nbsp;<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;from=album" target="_blank">只看大图</a>
+<span class="none"><img src="template/comiis_mi/img/arw_r.gif" class="vm" alt="回帖奖励" /></span>
+<span class="pipe show">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;extra=page%3D1&amp;ordertype=1"  class="show">倒序浏览</a>
+<span class="pipe show">|</span>&nbsp;<a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 7170);" class="show">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7170">
+<i class="pstatus"> 本帖最后由 cxxjackie 于 2021-10-7 16:12 编辑 </i><br />
+<br />
+<font size="4"><strong>FBI WARNING</strong></font><br />
+由于油猴的一些古怪特性造成预料之外的问题，请临时新建以下脚本来复现文章中的操作：<br /><div class="blockcode"><div id="code_KWb"><ol><li>// ==UserScript==<br /><li>// @name&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;教程专用测试脚本<br /><li>// @namespace&nbsp; &nbsp; ...<br /><li>// @author&nbsp; &nbsp;&nbsp; &nbsp; ...<br /><li>// @version&nbsp; &nbsp;&nbsp; &nbsp;1.0<br /><li>// @include&nbsp; &nbsp;&nbsp; &nbsp;https://docs.qq.com/doc/DQ1BMTk1BWlVWcndF<br /><li>// @grant&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;unsafeWindow<br /><li>// @run-at&nbsp; &nbsp;&nbsp; &nbsp; document-start<br /><li>// ==/UserScript==<br /><li>document;</ol></div><em onclick="copycode($('code_KWb'));">复制代码</em></div><br />
+<br />
+<br />
+其实大部分腾讯文档是没有限制的，只有作者设置了复制权限才会无法复制，本文将以<a href="https://docs.qq.com/doc/DQ1BMTk1BWlVWcndF" target="_blank">这篇文档</a>为例进行实战。腾讯文档的防复制手段与道客巴巴很相似，都是将文字绘制在canvas里（详情请看<a href="https://bbs.tampermonkey.net.cn/thread-1073-1-1.html" target="_blank">上文</a>）。首先从事件监听入手，发现页面中存在copy事件，这可方便了不少（也可以从click事件或按键事件入手，但是事件很多分析起来要麻烦亿点）。copy事件逐个点进去看一眼，发现这样一段比较有趣的代码：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1391" aid="1391" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5MXxhZmUyYzdjN3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5MXxhZmUyYzdjN3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1391" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1391_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>1.png</strong> <em class="xg1">(29.26 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5MXxhZmUyYzdjN3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1391" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1391&amp;handlekey=savephoto_1391">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+翻译一下就是判断然后执行a.onCopyByEvent(t)，而a.onCopyByEvent就在这个函数的下面，继续往下看，可以大致看出这是复制函数的相关逻辑，开头用if判断了一下，我们在if这里打个断点，然后选一段文字ctrl c，成功断了下来。由于if条件内包含函数，这里要按F10继续（step over，调试图标第二个，逐行运行代码，但不进入子函数），结果if内的代码被跳过，说明条件不成立。观察if的条件，发现a.context.isCopyable()很可疑，可以把鼠标放上去跟进去看，也可以在控制台中输入a.context.isCopyable查看，函数内容很简单，就一句话：<br /><div class="blockcode"><div id="code_wp5"><ol><li>return this._docEnv.copyable;</ol></div><em onclick="copycode($('code_wp5'));">复制代码</em></div>由于isCopyable是a.context的属性，所以这里的this指的是a.context，即a.context.isCopyable函数读取的是a.context._docEnv.copyable的值。控制台查看一下这个值，发现是false，把他改成true看看，取消断点，再次ctrl c复制，结果成功了。现在的问题是怎么得到这个copyable的路径，我们当然不可能在代码中直接写a.context._docEnv.copyable，因为这个a是打了断点以后获得的局部引用，在全局环境中是没有a这个东西的。这就要祭出我做的<a href="https://bbs.tampermonkey.net.cn/thread-916-1-1.html" target="_blank">这个脚本</a>了（自卖自夸），注入函数，然后在全局环境中搜索copyable这个属性：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1392" aid="1392" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5MnxmMjM2OGY0YXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5MnxmMjM2OGY0YXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1392" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1392_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>2.png</strong> <em class="xg1">(12.53 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5MnxmMjM2OGY0YXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1392" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1392&amp;handlekey=savephoto_1392">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+只找到一条路径，要验证路径是否正确，可以再执行一次断点，然后控制台判断一下：<br /><div class="blockcode"><div id="code_TUl"><ol><li>a.context._docEnv === window['App']['CollabRoom']['collabRoomOptions']['notificationCenter']['_docEnv']</ol></div><em onclick="copycode($('code_TUl'));">复制代码</em></div>结果为true，说明路径是正确的。这个判断的原理是copyable是前面那个对象的属性，我们只要证明两个引用属于同一个对象，那么改动其中一个必然会影响另一个。其实不是每个属性都能找到全局路径，这里算是比较取巧的做法，找不到的话就只能慢慢去跟代码逻辑了。接下来可以刷新页面，验证一下路径有没有变，控制台输入：<br /><div class="blockcode"><div id="code_ml8"><ol><li>window['App']['CollabRoom']['collabRoomOptions']['notificationCenter']['_docEnv']['copyable'] = true;</ol></div><em onclick="copycode($('code_ml8'));">复制代码</em></div>ctrl c复制一下看看，发现成功了。至此我们已经可以写出一个脚本，用这一行代码来解决问题。接下来进行一些优化操作，当我们按ctrl c时，虽然能复制成功，但还是会弹出权限被限制的提示，点击调试工具右上角的3个点，选择search，在所有js中搜索提示文字：文档作者限制了（后面可以省略），找到一堆乱七八糟的东西，逐个点开看看，可以发现大部分都只是一堆字符串，只有public-doc-pc开头的这个文件比较可疑：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1393" aid="1393" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5M3w3MzAzNGE3OHwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5M3w3MzAzNGE3OHwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="526" id="aimg_1393" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1393_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>3.png</strong> <em class="xg1">(9.46 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5M3w3MzAzNGE3OHwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1393" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1393&amp;handlekey=savephoto_1393">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+显然p.qO.getInstance().canCopy决定了是否出现提示，这里打个断点，ctrl c后断下来，控制台输入p.qO.getInstance().canCopy = true，继续运行，结果发现并没有效果。这种情况往往是因为该属性通过Object.defineProperty修改了getter造成的，即我们访问这个属性时，实际上访问的是别的东西。要验证这一点，可以断点后在控制台输入p.qO.getInstance()，展开这个对象看看，发现canCopy这个属性是灰色的，这就是通过getter访问的属性。怎么查看他的getter呢？有一种简单的方法：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1394" aid="1394" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5NHw4M2Q5ZGQ2YnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5NHw4M2Q5ZGQ2YnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="392" id="aimg_1394" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1394_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>4.png</strong> <em class="xg1">(4.61 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5NHw4M2Q5ZGQ2YnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1394" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1394&amp;handlekey=savephoto_1394">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+与前面相似，可以得出读取的是p.qO.getInstance().privilege.canCopy的值（isPublish是undefined），这次我们输入p.qO.getInstance().privilege.canCopy = true看看，结果成功屏蔽了提示。接下来的流程就跟前面一样，$searchKey('canCopy')，找到2个路径，验证一下可以得出window['pad']['permissionCtrl']['privilege']['canCopy']是正确的，然后在脚本中加入这行代码就行了：<br /><div class="blockcode"><div id="code_x2x"><ol><li>window['pad']['permissionCtrl']['privilege']['canCopy'] = true;</ol></div><em onclick="copycode($('code_x2x'));">复制代码</em></div>最后是解锁右键的复制，可以看到右键菜单中的复制是灰色的，一个简单的思路是监听节点插入（即监听右键菜单出现），获取元素后修改css，把复制这一项改成黑色，然后给他加一个click事件，模拟ctrl c按键即可。但是我们前面既然都能通过修改全局属性来达到目的，这里能不能也这么做呢？答案是可以的。<br />
+我们先定位到这个复制元素，查看他的click事件，可以看到一大堆，其实这些事件大部分是重复的，只是绑定在不同节点上，逐个点进去看一眼，可以找到这段代码：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1395" aid="1395" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5NXxiNzhkMzE2ZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5NXxiNzhkMzE2ZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1395" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1395_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>5.png</strong> <em class="xg1">(17.71 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5NXxiNzhkMzE2ZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1395" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1395&amp;handlekey=savephoto_1395">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+从代码上可以推测出，t.props.disabled判断元素是否禁用，从而决定后续代码是否执行。虽然可以通过修改disabled的值来验证我们的想法，但由于这个事件绑定的节点非常多，每次t都不一样，调试起来比较困难。我们可以试着$searchKey('disabled')看看，找到6个结果，除了两个jquery的明显不对，其他4个是非常明显的React路径（实际上不止4个，因为我脚本设置了最大搜索深度，而React路径通常非常长），一堆return、child、stateNode，以及最关键的__reactInternalInstance这个字段。为了验证我们的想法，可以打个断点，鼠标放到t上看看，可以看到context、props、state、updater等属性，这就是典型的React对象，说明这些元素是用React库构建的。这里要用到一个chrome插件：React Developer Tools（链接就不提供了，请自行搜索下载），可以调试React，安装后会在调试工具处出现一个React标签。定位到右键菜单的元素后切换至React标签，可以看到这些东西：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1396" aid="1396" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5NnxkNzQ3NWMwYnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5NnxkNzQ3NWMwYnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1396" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1396_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>6.png</strong> <em class="xg1">(63.17 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5NnxkNzQ3NWMwYnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1396" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1396&amp;handlekey=savephoto_1396">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+注意这里我选中了copy组件，在右边的Props中出现了disabled: true这一项，前面还有个勾，去掉勾试试，disabled变成了false，右键菜单中的复制变成了黑色！点击一下，成功复制到了文字（如果你刷新过页面，别忘了前面的2行代码）。这个disabled要在脚本中修改是比较复杂的，首先copy不是页面中实际存在的节点，但他的上一级组件是（可以看到ul标签，className属性），在ul组件上右键选择&quot;Find the DOM node&quot;会跳到页面中的节点，此时切换到控制台，输入$0.__reactInternalInstance，后面还有一串像乱码一样的东西会自动补齐。在控制台中$0是我们当前选中的节点（这也是一个调试小技巧），__reactInternalInstance是React注入的，后面那一串东西是标识符，每次刷新页面都会变。展开这个对象，由于我们要找的copy是他的子组件，要从child里找，展开child后可以看到key是cut，这是第一个组件，我们要找的copy是第二个，路径就是child.sibling（sibling代表下一个），展开sibling后看到key是copy，他的props位于stateNode中，所以完整路径就是$0.__reactInternalInstance$标识符.child.sibling.stateNode.props.disabled（我知道这有点绕，但React就这尿性）。我们姑且用一个sn来存储stateNode，将disabled修改为false：<br /><div class="blockcode"><div id="code_l8p"><ol><li>const sn = $0.__reactInternalInstance$标识符.child.sibling.stateNode;<br /><li>sn.props.disabled = false;</ol></div><em onclick="copycode($('code_l8p'));">复制代码</em></div>此时点击复制已经有效果了，但复制还是灰色的，这是因为组件没有更新，再加一行代码即可：<br /><div class="blockcode"><div id="code_YxB"><ol><li>sn.updater.enqueueForceUpdate(sn);</ol></div><em onclick="copycode($('code_YxB'));">复制代码</em></div>由于每次右键菜单都会重新生成，调试起来比较麻烦。要在脚本中实现，具体步骤就是监听节点插入，获取右键菜单（即$0），然后遍历这个元素的属性，找到__reactInternalInstance开头的属性（用正则或者startsWith），之后的代码就跟上面一样了。嗯，听上去不比自己绑一个click事件简单多少（这其实是在讲怎么处理React），好吧，让我们回归初心。我们已经知道这个组件的key是&quot;copy&quot;，那么在设置disabled的地方修改判断逻辑不就行了吗？<br />
+在所有文件中搜索copy，找到一大堆，这是当然的，页面中的copy事件也在搜索范围内，还有其他一些奇奇怪怪的copy，分析起来很麻烦。换个思路，切换到React观察一下，可以看到右键菜单中还有一个“插入链接”，他的key是&quot;insert_link&quot;，这个应该不常见，搜索一下看看，只有2个结果（注意带:formatted的是我们点击了格式化后产生的副本），点开第一个按ctrl f，点一下右边的.*，搜索copy.*disabled（这是用正则搜索的意思，搜索所有文件也可以正则，但是会很慢），没有结果，搜索第二个，找到了这样一个有趣的东西：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1397" aid="1397" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5N3xlNWI4MGVkZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5N3xlNWI4MGVkZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1397" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1397_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>7.png</strong> <em class="xg1">(29.09 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5N3xlNWI4MGVkZXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1397" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1397&amp;handlekey=savephoto_1397">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+这里显然是设置disabled的地方，不过代码经过混淆，读起来比较费劲，我可以稍微整理一下，让他看起来可读性好一点：<br /><div class="blockcode"><div id="code_r0z"><ol><li>la([<br /><li>&nbsp; &nbsp; (0, ci.v)(&quot;cut&quot;, &quot;shouldDisabled&quot;),<br /><li>&nbsp; &nbsp; (0, sa.x)(&quot;cut&quot;, &quot;shouldDisabled&quot;),<br /><li>&nbsp; &nbsp; da(0, (0, ji.M)()),<br /><li>&nbsp; &nbsp; pa(&quot;design:type&quot;, Function),<br /><li>&nbsp; &nbsp; pa(&quot;design:paramtypes&quot;, [&quot;function&quot; == typeof (t = void 0 !== Fe.z &amp;&amp; Fe.z) ? t : Object]),<br /><li>&nbsp; &nbsp; pa(&quot;design:returntype&quot;, void 0)<br /><li>], e.prototype, &quot;cannotCut&quot;, null),<br /><li>la([<br /><li>&nbsp; &nbsp; (0, ci.v)(&quot;copy&quot;, &quot;shouldDisabled&quot;),<br /><li>&nbsp; &nbsp; (0, sa.x)(&quot;copy&quot;, &quot;shouldDisabled&quot;),<br /><li>&nbsp; &nbsp; da(0, (0, ji.M)()),<br /><li>&nbsp; &nbsp; pa(&quot;design:type&quot;, Function),<br /><li>&nbsp; &nbsp; pa(&quot;design:paramtypes&quot;, [&quot;function&quot; == typeof (n = void 0 !== Fe.z &amp;&amp; Fe.z) ? n : Object]),<br /><li>&nbsp; &nbsp; pa(&quot;design:returntype&quot;, void 0)<br /><li>], e.prototype, &quot;cannotCopy&quot;, null),</ol></div><em onclick="copycode($('code_r0z'));">复制代码</em></div><br />
+对于这种混淆过的代码，不必去纠结每一步的含义，可以从前后文推敲。比较上下两段代码的差异，区别在于最后的&quot;cannotCut&quot;和&quot;cannotCopy&quot;，猜测这就是设置disabled的关键。这次我们搜索cannotCopy，只找到一个文件（就是这段代码所在的文件），点开找到cannotCopy的定义处，看到有一个notCopyable函数，这里我们可以打个断点，右键一下试试能不能断下来，成功断下来后跟进这个notCopyable函数看看：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1398" aid="1398" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5OHxmZGUyYmQ3NXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5OHxmZGUyYmQ3NXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="556" id="aimg_1398" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1398_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>8.png</strong> <em class="xg1">(6.69 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5OHxmZGUyYmQ3NXwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1398" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1398&amp;handlekey=savephoto_1398">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+可以看出e.permission.isCopyable是关键属性，在return前打个断点，运行到这后鼠标放上去，看到是false，控制台改成true试试，结果复制还是灰的，点击也没效果。这并不是说我们的方向错了，还记得前面说过的getter吗？鼠标放到e.permission上看看，发现isCopyable属性是灰的，控制台输入：<br /><div class="blockcode"><div id="code_Jd1"><ol><li>e.permission.__lookupGetter__('isCopyable')</ol></div><em onclick="copycode($('code_Jd1'));">复制代码</em></div>这次的函数不太直观，可以点一下跟进去看看：<br />
+
+<ignore_js_op>
+
+<img id="aimg_1399" aid="1399" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTM5OXxkZWQwMTlkNnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTM5OXxkZWQwMTlkNnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1399" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1399_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>9.png</strong> <em class="xg1">(12.85 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTM5OXxkZWQwMTlkNnwxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1399" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1399&amp;handlekey=savephoto_1399">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 09:19 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+这里的代码就是判断是否为编辑状态（isEditable）或复制是否被禁用（view_forbid_copy_print），isEditable其实跟isCopyable一样是个判断函数，我们去跟这个有点绕，直接从后面入手。还是在return前打个断点断下来，看一下e.view_forbid_copy_print是1，所以等于1是true，加上前面的!，返回的结果就是false。我们在控制台把e.view_forbid_copy_print改成0试试（这次记得看一眼e确定view_forbid_copy_print属性不是灰的），复制变成了黑色！接下来取消断点，多划几个地方试试，每次右键菜单的复制都是黑色的，而且点击也都能生效，说明改对了地方。接下来就是传统艺能了，搜索view_forbid_copy_print的全局路径，最终确定为window['App']['CollabRoom']['collabRoomOptions']['clientVars']['advPolicy']['view_forbid_copy_print']。至此，给我们的脚本加上第3行，就算完美收工了：<br /><div class="blockcode"><div id="code_Hzz"><ol><li>window['App']['CollabRoom']['collabRoomOptions']['clientVars']['advPolicy']['view_forbid_copy_print'] = 0;</ol></div><em onclick="copycode($('code_Hzz'));">复制代码</em></div><br />
+<strong><font size="4">结语</font></strong><br />
+<font size="2">虽然本文的废话洋洋洒洒写了一大篇，但最后的代码只有3行，用简单的代码解决复杂的需求，这正是编程的艺术啊~</font><br />
+<br />
+<br />
+</textarea></td></tr></table>
+<div class="modact"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewthreadmod&amp;tid=1080" title="帖子模式" onclick="showWindow('viewthreadmod', this.href)">本主题由 陈公子的话 于 2021-10-7 11:23 解除置顶</a></div>		
+</div>
+<div id="comment_7170" class="cm">
+</div>
+<dl id="ratelog_7170" class="rate">
+<dd style="margin:0">
+<div id="post_rate_7170"></div>
+<table class="ratl">
+<tr>
+<th class="xw1" width="180"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=1080&amp;pid=7170" onclick="showWindow('viewratings', this.href)" title="查看全部评分">已有1人评分</a></th><th class="xw1" width="80">油猫币</th>
+<th class="xw1">
+<i class="txt_h">理由</i>
+</th>
+</tr>
+<tbody class="ratl_l"><tr id="rate_7170_722">
+<td>
+<a href="https://bbs.tampermonkey.net.cn/space-uid-722.html" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=722&size=small" /></a> <a href="https://bbs.tampermonkey.net.cn/space-uid-722.html" target="_blank" class="xg1">陈公子的话</a>
+</td><td class="xg1"> + 4</td>
+<td class="xg1">ggnb!</td>
+</tr>
+</tbody>
+</table>
+<p class="ratc xg1">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=1080&amp;pid=7170" onclick="showWindow('viewratings', this.href)" title="查看全部评分" class="xi1 y">查看全部评分</a>
+总评分：油猫币 <span class="xi1">+4</span>&nbsp;
+</p>
+</dd>
+</dl>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div id="p_btn" class="mtw mbm hm cl">
+<div class="tshare cl">
+<b>分享到:&nbsp;</b>
+
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=4&thread_id=1080" id="k_share_to_qq" title="QQ好友和群" target="_blank"><i><img src="template/comiis_mi/img/qq_share.png" alt="QQ好友和群" />QQ好友和群</i></a>
+</div>
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=1080&amp;formhash=c21af3ae" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖"><i><img src="template/comiis_mi/img/fav.gif" alt="收藏" />收藏<span id="favoritenumber" style="display:none">0</span></i></a>
+<a class="followp" href="home.php?mod=spacecp&amp;ac=follow&amp;op=relay&amp;tid=1080&amp;from=forum" onclick="showWindow('relaythread', this.href, 'get', 0);" title="转播求扩散"><i><img src="template/comiis_mi/img/rt.png" alt="转播" />转播</i></a>
+<a class="sharep" href="home.php?mod=spacecp&amp;ac=share&amp;type=thread&amp;id=1080" onclick="showWindow('sharethread', this.href, 'get', 0);" title="分享推精华"><i><img src="template/comiis_mi/img/oshr.png" alt="分享" />分享</i></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=collection&amp;action=edit&amp;op=addthread&amp;tid=1080" id="k_collect" onclick="showWindow(this.id, this.href);return false;" onmouseover="this.title = $('collectionnumber').innerHTML + ' 人淘帖'" title="淘好帖进专辑"><i><img src="template/comiis_mi/img/collection.png" alt="分享" />淘帖<span id="collectionnumber" style="display:none">0</span></i></a>
+</div>
+</td>
+</tr>
+<tr id="_postposition7170"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;reppost=7170&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7170" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7170', 'misc.php?mod=report&rtype=post&rid=7170&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7170_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=stick&amp;idtype=tid&amp;id=1080" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/stick.small.gif" />置顶卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=close&amp;idtype=tid&amp;id=1080" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/close.small.gif" />沉默卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7170:1080" id="a_namepost_7170" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7170')</script>
+</div>
+</div>
+</td>
+</tr>
+</table><div class="a_p"><div style="width: 1200px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><script type="text/javascript" reload="1">
+aimgcount[7170] = ['1391','1392','1393','1394','1395','1396','1397','1398','1399'];
+attachimggroup(7170);
+var aimgfid = 0;
+</script>
+</div>
+
+
+<div id="post_7177"  class="comiis_vrx"><table id="pid7177" class="plhin" summary="pid7177" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7177" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7177" style="display:none;">
+<div class="m z">
+<div id="userinfo7177_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7177')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7177" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7177_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7177" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7177_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7177_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7177_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7177_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7177_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7177_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7177_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7177_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7177_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7177&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7177"   id="postnum7177" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km2">
+沙发</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7177">
+发表于
+					
+2021-10-7 12:53:51</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7177">
+在shouldDisabled这段代码的分析中，由于截图和整理代码是我在不同时间进行的，文件混淆发生了变化（可能你读到这篇文章的时候又变了），所以出现上下不一致的情况，不过不影响理解，我就不改了。</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7177" class="cm">
+</div>
+<div id="post_rate_div_7177"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition7177"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7177&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7177" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7177', 'misc.php?mod=report&rtype=post&rid=7177&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7177_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7177:1080" id="a_namepost_7177" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7177')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7178"  class="comiis_vrx"><table id="pid7178" class="plhin" summary="pid7178" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7178" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7178" style="display:none;">
+<div class="m z">
+<div id="userinfo7178_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7178')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=7178&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7178"   id="postnum7178" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km3">
+板凳</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7178">
+发表于
+					
+2021-10-7 12:57:08</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7178">
+大佬copy事件是在哪里找的<br />
+我试了一下没看到...</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7178" class="cm">
+</div>
+<div id="post_rate_div_7178"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition7178"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7178&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7178" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7178', 'misc.php?mod=report&rtype=post&rid=7178&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7178_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7178:1080" id="a_namepost_7178" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7178')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7179"  class="comiis_vrx"><table id="pid7179" class="plhin" summary="pid7179" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7179" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7179" style="display:none;">
+<div class="m z">
+<div id="userinfo7179_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7179')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7179" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7179_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7179" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7179_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7179_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7179_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7179_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7179_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7179_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7179_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7179_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7179_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7179&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7179"   id="postnum7179" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km4">
+地板</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7179">
+发表于
+					
+2021-10-7 13:29:18</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7179">
+<i class="pstatus"> 本帖最后由 cxxjackie 于 2021-10-7 13:32 编辑 </i><br />
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7178&amp;ptid=1080" target="_blank"><font color="#999999">李恒道 发表于 2021-10-7 12:57</font></a></font><br />
+大佬copy事件是在哪里找的<br />
+我试了一下没看到...</blockquote></div>在最顶层的html上就有啊，应该随便哪个元素都能找到的。<br />
+
+<ignore_js_op>
+
+<img id="aimg_1400" aid="1400" src="static/image/common/none.gif" zoomfile="forum.php?mod=attachment&aid=MTQwMHwyZmQwY2FlY3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes&nothumb=yes" file="forum.php?mod=attachment&aid=MTQwMHwyZmQwY2FlY3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&noupdate=yes" class="zoom" onclick="zoom(this, this.src, 0, 0, 0)" width="600" id="aimg_1400" inpost="1" onmouseover="showMenu({'ctrlid':this.id,'pos':'12'})" />
+
+<div class="tip tip_4 aimg_tip" id="aimg_1400_menu" style="position: absolute; display: none" disautofocus="true">
+<div class="xs0">
+<p><strong>无标题.png</strong> <em class="xg1">(42.52 KB, 下载次数: 1)</em></p>
+<p>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=attachment&amp;aid=MTQwMHwyZmQwY2FlY3wxNjM0NTY2ODMzfDB8MTA4MA%3D%3D&amp;nothumb=yes" target="_blank">下载附件</a>
+
+&nbsp;<a href="javascript:;" onclick="showWindow(this.id, this.getAttribute('url'), 'get', 0);" id="savephoto_1400" url="home.php?mod=spacecp&amp;ac=album&amp;op=saveforumphoto&amp;aid=1400&amp;handlekey=savephoto_1400">保存到相册</a>
+
+</p>
+
+<p class="xg1 y">2021-10-7 13:29 上传</p>
+
+</div>
+<div class="tip_horn"></div>
+</div>
+
+</ignore_js_op>
+<br />
+<br />
+<br />
+是不是装了什么插件把copy干掉了，可能有些通用的解除复制限制的插件或脚本会这么做。<br />
+</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7179" class="cm">
+</div>
+<div id="post_rate_div_7179"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition7179"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7179&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7179" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7179', 'misc.php?mod=report&rtype=post&rid=7179&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7179_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7179:1080" id="a_namepost_7179" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7179')</script>
+</div>
+</div>
+</td>
+</tr>
+</table><script type="text/javascript" reload="1">
+aimgcount[7179] = ['1400'];
+attachimggroup(7179);
+var aimgfid = 0;
+</script>
+</div>
+
+
+<div id="post_7180"  class="comiis_vrx"><table id="pid7180" class="plhin" summary="pid7180" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7180" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7180" style="display:none;">
+<div class="m z">
+<div id="userinfo7180_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7180')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=7180&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7180"   id="postnum7180" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>5</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7180">
+发表于
+					
+2021-10-7 13:48:23</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7180">
+<textarea style="display:none;" class="markdownContent vditor-reset" cols="30" rows="10">[quote][size=2][color=#999999]cxxjackie 发表于 2021-10-7 13:29[/color][/size]
+在最顶层的html上就有啊，应该随便哪个元素都能找到的。
+
+
+[/quote]
+
+好像开什么插件了
+
+换个找到了，但是还是跟大佬的不太一样
+
+![图片.png](data/attachment/forum/202110/07/134804kzux51vgyvh0izd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+这种情况正常么
+
+
+
+![图片.png](data/attachment/forum/202110/07/134817gcyu5vvpa5ih2huv.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+</textarea></textarea></td></tr></table>
+<div class="pattl">
+</div>
+		
+</div>
+<div id="comment_7180" class="cm">
+</div>
+<div id="post_rate_div_7180"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition7180"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7180&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7180" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7180', 'misc.php?mod=report&rtype=post&rid=7180&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7180_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7180:1080" id="a_namepost_7180" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7180')</script>
+</div>
+</div>
+</td>
+</tr>
+</table><script type="text/javascript" reload="1">
+aimgcount[7180] = ['1402','1401'];
+attachimggroup(7180);
+var aimgfid = 0;
+</script>
+</div>
+
+
+<div id="post_7182"  class="comiis_vrx"><table id="pid7182" class="plhin" summary="pid7182" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7182" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7182" style="display:none;">
+<div class="m z">
+<div id="userinfo7182_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7182')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7182" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7182_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7182" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7182_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7182_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7182_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7182_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7182_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7182_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7182_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7182_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7182_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7182&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7182"   id="postnum7182" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>6</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7182">
+发表于
+					
+2021-10-7 14:02:02</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7182">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7180&amp;ptid=1080" target="_blank"><font color="#999999">李恒道 发表于 2021-10-7 13:48</font></a></font><br />
+[md]好像开什么插件了<br />
+<br />
+换个找到了，但是还是跟大佬的不太一样</blockquote></div><br />
+不太正常，函数应该在feature-pc开头的文件里，你把插件都关了试试？</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7182" class="cm">
+</div>
+<div id="post_rate_div_7182"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition7182"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7182&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7182" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7182', 'misc.php?mod=report&rtype=post&rid=7182&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7182_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7182:1080" id="a_namepost_7182" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7182')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7183"  class="comiis_vrx"><table id="pid7183" class="plhin" summary="pid7183" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7183" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7183" style="display:none;">
+<div class="m z">
+<div id="userinfo7183_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7183')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=7183&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7183"   id="postnum7183" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>7</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7183">
+发表于
+					
+2021-10-7 14:12:55</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7183">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7182&amp;ptid=1080" target="_blank"><font color="#999999">cxxjackie 发表于 2021-10-7 14:02</font></a></font><br />
+不太正常，函数应该在feature-pc开头的文件里，你把插件都关了试试？</blockquote></div><br />
+全关了...始终搞不出来<br />
+等我晚上换个电脑试一下<br />
+邪了</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7183" class="cm">
+</div>
+<div id="post_rate_div_7183"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition7183"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7183&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7183" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7183', 'misc.php?mod=report&rtype=post&rid=7183&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7183_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7183:1080" id="a_namepost_7183" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7183')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7184"  class="comiis_vrx"><table id="pid7184" class="plhin" summary="pid7184" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7184" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7184" style="display:none;">
+<div class="m z">
+<div id="userinfo7184_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7184')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7184" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7184_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7184" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7184_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7184_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7184_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7184_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7184_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7184_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7184_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7184_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7184_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7184&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7184"   id="postnum7184" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>8</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7184">
+发表于
+					
+2021-10-7 14:41:03</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7184">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7183&amp;ptid=1080" target="_blank"><font color="#999999">李恒道 发表于 2021-10-7 14:12</font></a></font><br />
+全关了...始终搞不出来<br />
+等我晚上换个电脑试一下<br />
+邪了</blockquote></div><br />
+研究了一下，是我的一个脚本引起的，原因似乎是在document-start阶段读取了一下document，结果就出现了这个非常奇怪的现象，这难道是油猴的某些“特性”？有点难以理解，我再折腾一下，你可以先用这种方法试试。</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7184" class="cm">
+</div>
+<div id="post_rate_div_7184"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition7184"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7184&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7184" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7184', 'misc.php?mod=report&rtype=post&rid=7184&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7184_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7184:1080" id="a_namepost_7184" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7184')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7185"  class="comiis_vrx"><table id="pid7185" class="plhin" summary="pid7185" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7185" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7185" style="display:none;">
+<div class="m z">
+<div id="userinfo7185_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7185')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=7185&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7185"   id="postnum7185" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>9</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7185">
+发表于
+					
+2021-10-7 14:58:49</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7185">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7184&amp;ptid=1080" target="_blank"><font color="#999999">cxxjackie 发表于 2021-10-7 14:41</font></a></font><br />
+研究了一下，是我的一个脚本引起的，原因似乎是在document-start阶段读取了一下document，结果就出现了这 ...</blockquote></div><br />
+具体是document-start的时候操作了什么<br />
+大佬你的那个监听器是因为脚本误触搞出来了的<br />
+感觉好奇怪啊...</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7185" class="cm">
+</div>
+<div id="post_rate_div_7185"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition7185"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7185&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7185" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7185', 'misc.php?mod=report&rtype=post&rid=7185&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7185_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7185:1080" id="a_namepost_7185" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7185')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_7186"  class="comiis_vrx"><table id="pid7186" class="plhin" summary="pid7186" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar7186" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo7186" style="display:none;">
+<div class="m z">
+<div id="userinfo7186_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" class="xi2">cxxjackie</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=14082&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo7186')"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=14082&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-14082.html" target="_blank" >cxxjackie</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=thread&type=reply&view=me&from=space" class="xi2">124</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" class="xi2">162</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=11" target="_blank">注册会员</a></em></p>
+
+
+<p><span id="g_up7186" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 2" /></span></p>
+<div id="g_up7186_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_7186" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up7186_menu'});"><span class="pbr2" style="width:74%;"></span></span></p>
+<div id="g_up7186_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">注册会员, 积分 162, 距离下一级还需 38 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=14082&do=profile" target="_blank" class="xi2">162</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_7186_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_7186_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_7186_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_7186_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_7186_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_7186_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_7186_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=c21af3ae&amp;fuid=14082" id="followmod_14082" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_14082&amp;touid=14082&amp;pmid=0&amp;daterange=2&amp;pid=7186&amp;tid=1080" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=1080&pid=7186"   id="postnum7186" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+<em>10</em><sup>#</sup></a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton7186">
+发表于
+					
+2021-10-7 15:16:33</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=1080&amp;page=1&amp;authorid=14082" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_7186">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=7185&amp;ptid=1080" target="_blank"><font color="#999999">李恒道 发表于 2021-10-7 14:58</font></a></font><br />
+具体是document-start的时候操作了什么<br />
+大佬你的那个监听器是因为脚本误触搞出来了的<br />
+感觉好奇怪啊... ...</blockquote></div><br />
+console.log(document)就可以触发，我debugger跟了一下油猴的代码，他在读取document的时候会执行一些自己的逻辑，劫持addEventListener等等，可能是document-start阶段使这些逻辑被过早的执行，从而导致了这个有点奇怪的问题出现。</textarea></td></tr></table>
+		
+</div>
+<div id="comment_7186" class="cm">
+</div>
+<div id="post_rate_div_7186"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition7186"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;repquote=7186&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_7186" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport7186', 'misc.php?mod=report&rtype=post&rid=7186&tid=1080&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_7186_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=7186:1080" id="a_namepost_7186" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_7186')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="postlistreply" class="pl comiis_postlistreply"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+
+<input type="hidden" name="formhash" value="c21af3ae" />
+
+<input type="hidden" name="optgroup" />
+
+<input type="hidden" name="operation" />
+
+<input type="hidden" name="listextra" value="page%3D1" />
+
+<input type="hidden" name="page" value="1" />
+
+</form>
+
+
+<div class="pgbtn"><a href="https://bbs.tampermonkey.net.cn/thread-1080-2-1.html" hidefocus="true" class="bm_h">下一页 &raquo;</a></div>
+
+
+<div class="pgs mtm mbm cl">
+
+<div class="pg"><strong>1</strong><a href="https://bbs.tampermonkey.net.cn/thread-1080-2-1.html">2</a><a href="https://bbs.tampermonkey.net.cn/thread-1080-3-1.html">3</a><a href="https://bbs.tampermonkey.net.cn/thread-1080-4-1.html">4</a><label><input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&tid=1080&amp;extra=page%3D1&amp;page='+this.value;; doane(event);}" /><span title="共 4 页"> / 4 页</span></label><a href="https://bbs.tampermonkey.net.cn/thread-1080-2-1.html" class="nxt">下一页</a></div>
+<span class="pgb y"><a href="https://bbs.tampermonkey.net.cn/forum-44-1.html">返回列表</a></span>
+
+
+<a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=44')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+
+</div>
+
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<div class="bm_h kmtx">
+
+<h2>发表回复</h2>
+
+</div>
+
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('5000000');
+var disablepostctrl = parseInt('0');
+</script>
+<div id="f_pst" class="pl bm bmw" style="margin-top:0;">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;extra=page%3D1&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls">
+<div class="avatar avtm nologin"><img src="template/comiis_mi/img/comiis_nologin.jpg"></div>
+</td>
+<td class="plc">
+<span id="fastpostreturn"></span>
+<div class="cl">
+<div id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?wcn" type="text/javascript"></script>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" href="javascript:;" title="图片" class="fmg">Image</a>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=register" class="xi2">立即注册</a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D1080%26extra%3Dpage%253D1%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-1080-1-1.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+<input type="hidden" name="formhash" value="c21af3ae" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=44" class="y" target="_blank">本版积分规则</a>
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label class="lb"><input type="checkbox" name="adddynamic" class="pc" value="1" />回帖并转播</label>
+<label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc" />回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script src="source/plugin/zhanmishu_markdown/template/editor/method.min.js?20210702" type="text/javascript"></script>
+<script>
+function dgetByClass(name) {
+    if (document.getElementsByClassName) {
+        return document.getElementsByClassName(name);
+    }
+    var allItems = document.getElementsByTagName("#postlist textarea");
+    var newArr = [];
+    for (var i = 0; i < allItems.length; i++) {
+        var classNames = allItems[i].className;
+        var arrClass = classNames.split(" ");
+        for (var j = 0; j < arrClass.length; j++) {
+            if (arrClass[j] == name) {
+                newArr.push(allItems[i]);
+            }
+        }
+    }
+    return newArr;
+}
+
+var markdownContent = dgetByClass('markdownContent');
+var zmsTempDiv
+for (let i = 0; i < markdownContent.length; i++) {
+    console.log(markdownContent[i], markdownContent[i].textContent, 'arkdownContent[i]')
+
+    // markdownContent[i].style.display = 'block';
+    zmsTempDiv = document.createElement('div');
+    zmsTempDiv.id = 'vditor-id-' + i;
+    zmsTempDiv.className = 'vditor-reset';
+    markdownContent[i].parentNode.appendChild(zmsTempDiv);
+
+    Vditor.preview(document.getElementById(zmsTempDiv.id), markdownContent[i].textContent, {
+      speech: {
+        enable: true,
+      },
+      math: {
+        inlineDigit: true,
+        macros:{
+              actuarialangle: ['{\mkern1mu\overline\{#1\,\}\kern-3mu\lower-1mu\small|}',1],
+              angl: ['{\actuarialangle\{#1\mkern1mu\}}',1],
+              angln: '{\angl n}',
+              anglk: '{\angl k}',
+              anglr: '{\angl r}',
+              term: ['{\overset\{1\}\{#1\}:\angl\{#2\}}',2],
+              termxn: '{\term\{x\}\{n\}}',
+              pureendow: ['{#1:\overset\{1\}\{\angl\{#2\}\}}',2],
+              pureendowxn: '{\pureendow\{x\}\{n\}}',
+              endow: ['{#1:\angl\{#2\}}',2],
+              endowxn: '{\endow\{x\}\{n\}}',
+              joint: ['{\overline\{#1\}}',1],
+              actsymb: ['{\sideset\{_\{#1\mkern3mu\}^\{#2\mkern3mu\}\}\{^\{#4\}_\{#5\}}\{#3\}}',5],
+              Ax: ['{\actsymb\{#1\}\{#2\}\{A\}\{#3\}\{#4\}}',4],
+              Axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{A\}\}\{#3\}\{#4\}}',4],
+              Axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{A\}\}\{#3\}\{#4\}}',4],
+              ax: ['{\actsymb\{#1\}\{#2\}\{a\}\{#3\}\{#4\}}',4],
+              axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{a\}\}\{#3\}\{#4\}}',4],
+              axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{a\}\}\{#3\}\{#4\}}',4],
+              Ex: ['{\actsymb\{#1\}\{\}\{E\}\{\}\{#2\}}',2],
+              px: ['{\actsymb\{#1\}\{\}\{p\}\{\}\{#2\}}',2],
+              qx: ['{\actsymb\{#1\}\{\}\{q\}\{\}\{#2\}}',2],
+              sx: ['{\actsymb\{\}\{\}\{s\}\{\}\{#1\}}',1],
+              sxz: ['{\actsymb\{\}\{\}\{\bar\{s\}\}\{\}\{#1\}}',1],
+              sxzz: ['{\actsymb\{\}\{\}\{\ddot\{s\}\}\{\}\{#1\}}',1],
+              Vx: ['{\actsymb\{#1\}\{\}\{V\}\{\}\{#2\}}',2],
+            },
+          engine: 'MathJax'
+        },
+      anchor: 0,
+        show: true,
+        hljs:{
+          style:'rrt'
+        },
+    })
+
+    // document.getElementById(zmsTempDiv.id).innerHTML = markdownContent[i].value;
+}
+</script>
+
+<div id="md_2_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>活跃会员</h4>
+
+<p>经常参与各类话题的讨论，发帖内容较有主见</p>
+
+</div>
+
+</div>
+
+<div id="md_3_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>热心会员</h4>
+
+<p>经常帮助其他会员答疑</p>
+
+</div>
+
+</div>
+
+<div id="md_7_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>突出贡献</h4>
+
+<p>长期对论坛的繁荣而不断努力，或多次提出建设性意见</p>
+
+</div>
+
+</div>
+
+<div id="md_11_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>三好学生</h4>
+
+<p>在论坛经常提问题，或者经常通过教程学习完成相关作业</p>
+
+</div>
+
+</div>
+
+<div id="md_12_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>猫咪币纪念章</h4>
+
+<p>纪念过去的猫咪币</p>
+
+</div>
+
+</div>
+
+<div id="md_13_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>中秋纪念章</h4>
+
+<p>中秋佳节纪念勋章</p>
+
+</div>
+
+</div>
+
+<div id="md_14_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>国庆纪念章</h4>
+
+<p>纪念勋章</p>
+
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+new lazyload();
+
+</script>
+
+
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 1, 'forum.php?mod=viewthread&tid=1080', 1);}</script>
+
+
+</div></div>
+
+
+<div class="wp mtn">
+
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+
+</div>
+
+
+<script type="text/javascript">
+
+
+function succeedhandle_followmod(url, msg, values) {
+
+var fObj = $('followmod_'+values['fuid']);
+
+if(values['type'] == 'add') {
+
+fObj.innerHTML = '不收听';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+
+} else if(values['type'] == 'del') {
+
+fObj.innerHTML = '收听TA';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=c21af3ae&fuid='+values['fuid'];
+
+}
+
+}
+
+
+fixed_avatar([7170,7177,7178,7179,7180,7182,7183,7184,7185,7186], 1);
+
+
+</script>
+
+<script src="template/comiis_mi/img/jquery.min.js" type="text/javascript" type="text/javascript"></script>
+
+</div>
+<div class="wp a_f"><div style="width: 1200px;height:100px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+<div style="clear:both;"></div>
+
+<div class="comiis_footer cl">
+
+<div id="ft" class="wp comiis_bottom cl zwihnm">
+
+<div class="comiis_demail">
+
+<p><em>意见反馈</em></p><a href="mailto:root@tampermonkey.net.cn?subject=意见反馈" rel="nofollow">root@tampermonkey.net.cn</a>
+
+</div>
+
+<div id="frt">
+<p><a href="https://bbs.tampermonkey.net.cn/archiver/" >Archiver</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="plugin.php?id=dnr_sitemap" >网站地图</a><span class="pipe">|</span>			
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNEBZVVX8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZNEBZVVX8R');
+</script>
+  
+</p>
+
+<p>Copyright &copy; 2008-2020 <a href="https://bbs.tampermonkey.net.cn/" rel="nofollow" target="_blank">油猴中文网</a>  版权所有 All Rights Reserved.</p>
+
+</div>
+
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
+
+<script src="home.php?mod=misc&ac=sendmail&rand=1634566833" type="text/javascript"></script>
+<div id="scrolltop">
+<span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=1080&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" href="javascript:;"><b>返回顶部</b></a></span>
+<span>
+<a href="https://bbs.tampermonkey.net.cn/forum-44-1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { new_showTopLink(); });checkBlind();</script>
+<script type="text/javascript">
+_attachEvent(document,'click',function(){hidecomiismenu('comiis_sousuo_menu');});
+function hidecomiismenu(id) {
+var menuObj = $(id);
+var menu = $(menuObj.getAttribute('ctrlid'));
+if(ctrlclass = menuObj.getAttribute('ctrlclass')) {
+var reg = new RegExp(' ' + ctrlclass);
+menu.className = menu.className.replace(reg, '');
+}
+menuObj.style.display = 'none';
+}
+function new_showTopLink() {
+var ft = $('ft');
+if(ft){
+var scrolltop = $('scrolltop');
+var viewPortHeight = parseInt(document.documentElement.clientHeight);
+var scrollHeight = parseInt(document.body.getBoundingClientRect().top);
+var basew = parseInt(ft.clientWidth);
+var sw = scrolltop.clientWidth;
+if (basew < 1500) {
+var left = parseInt(fetchOffset(ft)['left']);
+left = left < sw ? left * 2 - sw : left;
+scrolltop.style.left = ( basew + left ) + 'px';
+} else {
+scrolltop.style.left = 'auto';
+scrolltop.style.right = 0;
+}
+if (BROWSER.ie && BROWSER.ie < 7) {
+scrolltop.style.top = viewPortHeight - scrollHeight - 150 + 'px';
+}
+if (scrollHeight < -100) {
+scrolltop.style.visibility = 'visible';
+} else {
+scrolltop.style.visibility = 'hidden';
+}
+}
+}
+if($("myrepeats")){
+$("comiis_key").appendChild($("myrepeats"));
+}
+if($("qmenu_loop")){
+var qmenu_timer, qmenu_scroll_l;
+var qmenu_in = 0;
+var qmenu_width = 246;
+var qmenu_loop = $('qmenu_loop');
+var qmenu_all_width = 41 * $('qmenu_loopul').getElementsByTagName("li").length - qmenu_width;
+if(qmenu_all_width < 20){
+$('qmenu_an').style.display = 'none';
+}
+}
+function qmenu_move(qmenu_lr){
+if(qmenu_in == 0 && ((qmenu_lr == 1 && qmenu_loop.scrollLeft < qmenu_all_width) || (qmenu_lr == 0 && qmenu_loop.scrollLeft > 0))){
+qmenu_in = 1;
+qmenu_scroll_l = qmenu_loop.scrollLeft;
+qmenu_timer = setInterval(function(){
+qmenu_scroll(qmenu_lr);
+}, 10);
+}
+}
+function qmenu_scroll(qmenu_lr){
+if((qmenu_lr == 1 && qmenu_loop.scrollLeft >= qmenu_width + qmenu_scroll_l) || (qmenu_lr == 0 && ((qmenu_loop.scrollLeft <= qmenu_scroll_l - qmenu_width) || qmenu_loop.scrollLeft == 0))){
+clearInterval(qmenu_timer);
+qmenu_in = 0;
+}else{
+if(qmenu_lr == 1){
+qmenu_loop.scrollLeft += Math.round((qmenu_width + qmenu_scroll_l - qmenu_loop.scrollLeft) / 15) + 1;
+}else{
+qmenu_loop.scrollLeft -= Math.round((qmenu_width - (qmenu_scroll_l - qmenu_loop.scrollLeft)) / 15) + 1;
+}
+}
+}
+</script></body>
+</html>

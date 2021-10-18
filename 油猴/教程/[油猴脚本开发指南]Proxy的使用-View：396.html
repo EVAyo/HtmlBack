@@ -1,0 +1,2223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[油猴脚本开发指南]Proxy的使用-油猴中文网</title>
+<link href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html" rel="canonical" />
+<meta name="keywords" content="[油猴脚本开发指南]Proxy的使用" />
+<meta name="description" content="[md]# **本文参考****本文参考的是MDN文档**[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy](https://developer.mozilla.or ...油猴中文网 " />
+<meta name="generator" content="Discuz! X3.4" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2021 Tencent Cloud." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="https://bbs.tampermonkey.net.cn/" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_common.css?wcn" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_forum_viewthread.css?wcn" /><script type="text/javascript">var STYLEID = '10', STATICURL = 'static/', IMGDIR = 'template/comiis_mi/img', VERHASH = 'wcn', charset = 'utf-8', discuz_uid = '0', cookiepre = 'B6hk_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|好评|,2|油猫币|,3|贡献|', defaultstyle = '', REPORTURL = 'aHR0cHM6Ly9iYnMudGFtcGVybW9ua2V5Lm5ldC5jbi9mb3J1bS5waHA/bW9kPXZpZXd0aHJlYWQmdGlkPTc2NQ==', SITEURL = 'https://bbs.tampermonkey.net.cn/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?wcn" type="text/javascript"></script>
+<meta name="application-name" content="油猴中文网" />
+<meta name="msapplication-tooltip" content="油猴中文网" />
+<meta name="msapplication-task" content="name=论坛;action-uri=https://bbs.tampermonkey.net.cn/forum.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=https://bbs.tampermonkey.net.cn/group.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/group.ico" /><meta name="msapplication-task" content="name=动态;action-uri=https://bbs.tampermonkey.net.cn/home.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/home.ico" /><link rel="archives" title="油猴中文网" href="https://bbs.tampermonkey.net.cn/archiver/" />
+<script src="data/cache/forum.js?wcn" type="text/javascript"></script>
+</head>
+<body id="nv_forum" class="pg_viewthread comiis_wide wewl" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="hd">
+<div class="comiis_nvdiv mb10">
+<div id="comiis_nv">
+<div class="wp comiis_nvbox cl">
+<div class="y comiis_nvlogin"><div class="comiis_um cl">
+<div class="z qqdlico">
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D765&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fforum.php%253Fmod%253Dviewthread%2526tid%253D765&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+<div class="comiis_dlq"><a onclick="showWindow('login', this.href);return false;" href="member.php?mod=logging&amp;action=login">登录</a> | <a href="member.php?mod=register">立即注册</a></div>
+</div></div>
+<ul><li class="comiis_logo"><a href="./" title="油猴中文网"><img src="template/comiis_mi/img/comiis_mini_logo.png" height="50"></a></li><li class="a" id="mn_forum" ><a href="https://bbs.tampermonkey.net.cn/forum.php" hidefocus="true" title="BBS"  >论坛<span>BBS</span></a></li><li id="mn_F2" ><a href="https://bbs.tampermonkey.net.cn/forum-2-1.html" hidefocus="true"  >油猴脚本资源</a></li><li id="mn_F68" ><a href="https://bbs.tampermonkey.net.cn/forum-68-1.html" hidefocus="true"  >后台脚本</a></li><li id="mn_N2bea" ><a href="https://bbs.tampermonkey.net.cn/thread-9-1-1.html" hidefocus="true"  >总版规</a></li></ul>
+</div>
+</div>
+</div>
+<style>
+#comiis_sousuo_menu, #comiis_key_menu {
+    position: fixed !important;
+    top: 50px !important;
+}
+</style>
+<script>
+    window.addEventListener('load', e => {
+  const sousuo = document.querySelector('#comiis_sousuo');
+        const sousuoMenu = document.querySelector('#comiis_sousuo_menu');
+        if (sousuo && sousuoMenu) {
+            sousuo.setAttribute('onmouseover', "showMenu({'ctrlid':this.id,'pos':'34!','ctrlclass':'on','duration':2});");
+            sousuo.removeAttribute('initialized');
+            sousuoMenu.removeAttribute('initialized');
+        }
+    });
+</script>
+<div id="comiis_sousuo_menu" style="display:none;">
+<div class="comiis_dss cl">
+<form id="scform" method="post" autocomplete="off" action="https://bbs.tampermonkey.net.cn/search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="formhash" value="062b1f21" />
+<input type="hidden" name="mod" value="forum" />
+<input type="text" name="srchtxt" id="srchtxt" class="z" autocomplete="off" onblur="if (value ==''){value='请输入搜索内容'}" onfocus="if (value =='请输入搜索内容'){value =''}" value="请输入搜索内容" />
+<button id="search_submit" name="searchsubmit" type="submit" value="true">搜索</button>
+</form>
+</div>
+<div id="scbar_hot" class="cl">
+</div>
+</div>
+<div class="wp comiis_nv_pop">
+<div id="mu" class="cl">
+</div><div class="a_mu"><a href="https://sourl.cn/ptULfB" target="_blank" style="font-size: 40px"><font color="#0000FF"><b><span style="color: rgb(200, 0, 0); font-family: &quot;lucida Grande&quot;, Verdana, &quot;Microsoft YaHei&quot;; font-size: 24px; white-space: normal;">外卖红包天天领，拼手气开惊喜红包</span></b></font></a></div></div>
+</div>
+<script src="template/comiis_mi/img/comiis_nv.js" type="text/javascript" type="text/javascript"></script>
+<div id="wp" class="wp">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=765" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=765" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+<script type="text/javascript">var fid = parseInt('46'), tid = parseInt('765');</script>
+
+
+<script src="data/cache/forum_viewthread.js?wcn" type="text/javascript"></script>
+
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+
+
+<div id="pt" class="bm cl">
+
+<div class="z">
+
+<a href="./" class="nvhm" title="首页">油猴中文网</a><em>&raquo;</em><a href="https://bbs.tampermonkey.net.cn/forum.php">论坛</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum.php?gid=39">资源共享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum-46-1.html">教程分享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html">[油猴脚本开发指南]Proxy的使用</a>
+
+</div>
+
+</div>
+
+
+
+<div class="wp">
+
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="wp a_t"><table cellpadding="0" cellspacing="1"><tr><td width="33%"><a href="https://docs.scriptcat.org/" target="_blank" ><font color="#0099FF"><b>ScriptCat，新一代的脚本管理器</b></font></a></td><td width="33%"><a href="https://scriptcat.org/search" target="_blank" ><font color="#3399FF"><b><span style="white-space: pre;">脚本站，与全世界分享你的用户脚本</span></b></font></a></td><td width="33%"><a href="https://sourl.cn/KJMya6" target="_blank" ><font color="#CC00CC"><b>油猴脚本开发指南教程目录</b></font></a></td></tr>
+</table></div><div id="pgt" class="pgs mbm cl">
+
+<div class="pgt"></div>
+
+<span class="y pgb"><a href="https://bbs.tampermonkey.net.cn/forum-46-1.html">返回列表</a></span>
+
+<a id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=46')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+</div>
+
+
+<div class="wp">
+
+<!--[diy=diy1s]--><div id="diy1s" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="boardnav">
+
+
+<div id="ct" class="wp cl comiis_rollzbox">
+
+
+
+<div id="postlist" class="pl bm esgky comiis_x0">
+
+
+<div class="bm_h comiis_snvbt">
+
+
+<span class="z">
+
+				
+
+</span>
+
+<h2 class="z">
+
+
+<span id="thread_subject">[油猴脚本开发指南]Proxy的使用</span>
+
+</h2>
+
+<span class="z kmfz">
+
+
+<a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html" onclick="return copyThreadUrl(this, '油猴中文网')"  class="kmcopy">[复制链接]</a>
+
+
+</span>
+
+
+<span class="y comiis_hfs"><strong>0</strong><br>回复</span>
+
+<span class="y comiis_cks"><strong>408</strong><br>查看</span>
+
+<span class="y comiis_sxy">
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;action=printable&amp;tid=765" title="打印" target="_blank"><img src="template/comiis_mi/img/print.png" alt="打印" class="vm" /></a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=765" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=765" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="post_4157"  class="comiis_vrx"><table id="pid4157" class="plhin" summary="pid4157" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar4157" class="pls favatar">
+ <a name="lastpost"></a><div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo4157" style="display:none;">
+<div class="m z">
+<div id="userinfo4157_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo4157')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1110</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=062b1f21&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=4157&amp;tid=765" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html"   id="postnum4157" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km1">
+楼主</a>
+</strong>
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&ptid=765&authorid=0&postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层" />
+<a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="template/comiis_mi/img/fj_btn.png" alt="跳转到指定楼层" class="vm" /></a>
+</div>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton4157">
+发表于
+					
+2021-7-24 17:15:01</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=765&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+<span class="none"><img src="template/comiis_mi/img/arw_r.gif" class="vm" alt="回帖奖励" /></span>
+<span class="pipe show">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=765&amp;extra=&amp;ordertype=1"  class="show">倒序浏览</a>
+<span class="pipe show">|</span>&nbsp;<a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 4157);" class="show">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_4157">
+<textarea style="display:none;" class="markdownContent vditor-reset" cols="30" rows="10"># **本文参考**
+
+**本文参考的是MDN文档**[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+**对其进行了一定的整理以及编排，以便符合讲解的顺序。**
+
+# **Proxy是什么？**
+
+****Proxy**** 对象用于创建一个对象的代理，从而实现基本爱作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+
+**如果说数据劫持是对对象中某个属性进行了劫持，那Proxy可以理解为对一个对象进行劫持。**
+
+# **语法以及参数**
+
+```
+const p = new Proxy(target, handler)
+```
+
+`target`**要使用 **`Proxy`** 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。``**
+
+`handler`**一个通常以函数作为属性的对象，各属性中的函数分别定义了在执行各种爱作时代理 p 的行为。**
+
+# **handler的方法**
+
+handler.getPrototypeOf()  
+
+**是Object.getPrototypeOf方法的捕捉器。**
+
+**当读取代理对象的原型时，使用该函数进行劫持。**
+
+```
+const handler = {
+  getPrototypeOf(target) {
+    return {name:'8888'};
+  }
+};
+
+const proxy1 = new Proxy(obj, handler);
+```
+
+handler.setPrototypeOf()
+
+**是Object.setPrototypeOf 方法的捕捉器。**
+
+**当设置代理对象的原型时，使用该函数进行劫持，如果不想设置一个新的原型，可以返回false**
+
+```
+var handlerReturnsFalse = {
+    setPrototypeOf(target, newProto) {
+        return false;
+    }
+};
+
+var newProto = {}, target = {};
+
+var p1 = new Proxy(target, handlerReturnsFalse);
+Object.setPrototypeOf(p1, newProto); // throws a TypeError
+Reflect.setPrototypeOf(p1, newProto); // returns false
+```
+
+**handler.preventExtensions()**
+
+**Object.preventExtensions 方法的捕捉器。**
+
+**Object.preventExtensions 是让对象变得不可拓展的函数，当设置不可拓展时，会触发handler.preventExtensions**
+
+**注意，如果对象是可拓展的，那么只能返回false**
+
+```
+var p = new Proxy({}, {
+  preventExtensions: function(target) {
+    console.log('called');
+    Object.preventExtensions(target);
+    return true;
+  }
+});
+
+console.log(Object.preventExtensions(p)); // "called"
+                                          // false
+```
+
+**handler.isExtensible()**
+
+**Object.isExtensible 方法的捕捉器。**
+
+**该方法用于拦截Object.isExtensible()。，而Object.isExtensible用于判断对象是否是一个可拓展的对象**
+
+**注意，该函数返回必须为true**
+
+```
+var p = new Proxy({}, {
+  isExtensible: function(target) {
+    console.log('called');
+    return true;//也可以return 1;等表示为true的值
+  }
+});
+
+console.log(Object.isExtensible(p)); // "called"
+                                     // true
+```
+
+**handler.getOwnPropertyDescriptor()**
+
+**handler.getOwnPropertyDescriptor()方法是 Object.getOwnPropertyDescriptor()的钩子。**
+
+**该方法用于拦截Object.getOwnPropertyDescriptor(),Object.getOwnPropertyDescriptor获取对象自有属性的描述符，自有属性指直接赋予对象的属性，而且原型链中的属性**
+
+```
+getOwnPropertyDescriptor 必须返回一个 object 或 undefined。
+如果属性作为目标对象的不可配置的属性存在，则该属性无法报告为不存在。
+如果属性作为目标对象的属性存在，并且目标对象不可扩展，则该属性无法报告为不存在。
+如果属性不存在作为目标对象的属性，并且目标对象不可扩展，则不能将其报告为存在。
+属性不能被报告为不可配置，如果它不作为目标对象的自身属性存在，或者作为目标对象的可配置的属性存在。
+Object.getOwnPropertyDescriptor（target）的结果可以使用 Object.defineProperty 应用于目标对象，也不会抛出异常。
+```
+
+```
+var p = new Proxy({ a: 20}, {
+  getOwnPropertyDescriptor: function(target, prop) {
+    console.log('called: ' + prop);
+    return { configurable: true, enumerable: true, value: 10 };
+  }
+});
+
+console.log(Object.getOwnPropertyDescriptor(p, 'a').value); // "called: a"
+                                                            // 10
+```
+
+**configurable**
+
+**当且仅当该属性的 **`configurable`** 键值为 **`true`** 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。****
+******默认为****** ****`false`****。**
+
+**enumerable**
+
+**当且仅当该属性的 **`enumerable`** 键值为 **`true`** 时，该属性才会出现在对象的枚举属性中。****
+******默认为 **`false`****。**
+
+**以下代码则违反了规则。**
+
+```
+var obj = { a: 10 };
+Object.preventExtensions(obj);
+var p = new Proxy(obj, {
+  getOwnPropertyDescriptor: function(target, prop) {
+    return undefined;
+  }
+});
+
+Object.getOwnPropertyDescriptor(p, 'a'); // TypeError is thrown
+```
+
+**handler.defineProperty(**
+
+**Object.defineProperty 方法的捕捉器。**
+
+**Object.defineProperty是啥我就不多说了**
+
+```
+var p = new Proxy({}, {
+  defineProperty: function(target, prop, descriptor) {
+    console.log('called: ' + prop);
+    return true;
+  }
+});
+
+var desc = { configurable: true, enumerable: true, value: 10 };
+Object.defineProperty(p, 'a', desc); // "called: a"
+```
+
+**handler.has()**
+
+**in爱作符的捕捉器。**
+
+**如果指定的属性在指定的对象或其原型链中，则****`in`** 运算符******返回**`true`**。**
+
+```
+const handler1 = {
+  has(target, key) {
+    if (key[0] === '_') {
+      return false;
+    }
+    return key in target;
+  }
+};
+
+const monster1 = {
+  _secret: 'easily scared',
+  eyeCount: 4
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+console.log('eyeCount' in proxy1);
+// expected output: true
+
+console.log('_secret' in proxy1);
+// expected output: false
+
+console.log('_secret' in monster1);
+// expected output: true
+
+```
+
+**handler.get()**
+
+**属性读取爱作的捕捉器。get的意思与Object.defineProperty 中的get一致**
+
+**需要注意的是**
+
+```
+如果要访问的目标属性是不可写以及不可配置的，则返回的值必须与该目标属性的值相同。
+如果要访问的目标属性没有配置访问方法，即get方法是undefined的，则返回值必须为undefined。
+```
+
+```
+var p = new Proxy({}, {
+  get: function(target, prop, receiver) {
+    console.log("called: " + prop);
+    return 10;
+  }
+});
+
+console.log(p.a); // "called: a"
+                  // 10
+```
+
+**handler.set()**
+
+**属性设置爱作的捕捉器。set的意思与Object.defineProperty 中的set一致**
+
+```
+const monster1 = { eyeCount: 4 };
+
+const handler1 = {
+  set(obj, prop, value) {
+    if ((prop === 'eyeCount') && ((value % 2) !== 0)) {
+      console.log('Monsters must have an even number of eyes');
+    } else {
+      return Reflect.set(...arguments);
+    }
+  }
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+
+proxy1.eyeCount = 1;
+// expected output: "Monsters must have an even number of eyes"
+
+console.log(proxy1.eyeCount);
+// expected output: 4
+
+proxy1.eyeCount = 2;
+console.log(proxy1.eyeCount);
+// expected output: 2
+
+```
+
+**handler.deleteProperty()**
+
+**delete爱作符的捕捉器。**
+
+** ****`delete`** 爱作符******用于删除对象的某个属性；如果没有指向这个属性的引用，那它最终会被释放。**
+
+**如果目标对象的属性是不可配置的，那么该属性不能被删除。**
+
+```
+var p = new Proxy({}, {
+  deleteProperty: function(target, prop) {
+    console.log('called: ' + prop);
+    return true;
+  }
+});
+
+delete p.a; // "called: a"
+```
+
+**handler.ownKeys()**
+
+**Object.getOwnPropertyNames方法和 Object.getOwnPropertySymbols方法的捕捉器。**
+
+**`Object.getOwnPropertyNames()`****方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括Symbol值作为名称的属性）组成的数组。**
+
+```
+var arr = ["a", "b", "c"];
+console.log(Object.getOwnPropertyNames(arr).sort()); // ["0", "1", "2", "length"]
+
+// 类数组对象
+var obj = { 0: "a", 1: "b", 2: "c"};
+console.log(Object.getOwnPropertyNames(obj).sort()); // ["0", "1", "2"]
+```
+
+`Object.getOwnPropertySymbols()`** 方法返回一个给定对象自身的所有 Symbol 属性的数组。(常规开发涉及较少，这里就不做讲解了)**
+
+**约束**
+
+```
+ownKeys 的结果必须是一个数组.
+数组的元素类型要么是一个 String ，要么是一个 Symbol.
+结果列表必须包含目标对象的所有不可配置（non-configurable ）、自有（own）属性的key.
+如果目标对象不可扩展，那么结果列表必须包含目标对象的所有自有（own）属性的key，不能有其它值.
+```
+
+```
+var p = new Proxy({}, {
+  ownKeys: function(target) {
+    console.log('called');
+    return ['a', 'b', 'c'];
+  }
+});
+
+console.log(Object.getOwnPropertyNames(p)); // "called"
+                                            // [ 'a', 'b', 'c' ]
+```
+
+```
+var obj = {};
+Object.defineProperty(obj, 'a', {
+  configurable: false,
+  enumerable: true,
+  value: 10 }
+);
+
+var p = new Proxy(obj, {
+  ownKeys: function(target) {
+    return [123, 12.5, true, false, undefined, null, {}, []];
+  }
+});
+
+console.log(Object.getOwnPropertyNames(p));
+
+// TypeError: proxy [[OwnPropertyKeys]] 必须返回一个数组
+// 数组元素类型只能是String或Symbol
+```
+
+**handler.apply()**
+
+**函数调用爱作的捕捉器。**
+
+**`handler.apply`**** 方法用于拦截函数的调用。**
+
+```
+var p = new Proxy(function() {}, {
+  apply: function(target, thisArg, argumentsList) {
+    console.log('called: ' + argumentsList.join(', '));
+    return argumentsList[0] + argumentsList[1] + argumentsList[2];
+  }
+});
+
+console.log(p(1, 2, 3)); // "called: 1, 2, 3"
+                         // 6
+```
+
+**handler.construct()**
+
+**new爱作符的捕捉器。**
+
+`handler.construct()`** 方法用于拦截new 爱作符. 为了使new爱作符在生成的Proxy对象上生效，用于初始化代理的目标对象自身必须具有[[Construct]]内部方法（即 **`new target`** 必须是有效的）。**
+
+**注意，必须返回一个对象**
+
+```
+var p = new Proxy(function() {}, {
+  construct: function(target, argumentsList, newTarget) {
+    console.log('called: ' + argumentsList.join(', '));
+    return { value: argumentsList[0] * 10 };
+  }
+});
+
+console.log(new p(1).value); // "called: 1"
+                             // 10
+```
+
+**下面的代码违反了约定.**
+
+```
+var p = new Proxy(function() {}, {
+  construct: function(target, argumentsList, newTarget) {
+    return 1;
+  }
+});
+
+new p(); // TypeError is thrown
+```
+
+**下面的代码未能正确的初始化Proxy。Proxy初始化时，传给它的**`target`** 必须具有一个有效的constructor供**`new`**爱作符调用。**
+
+```
+var p = new Proxy({}, {
+  construct: function(target, argumentsList, newTarget) {
+    return {};
+  }
+});
+
+new p(); // TypeError is thrown, "p" is not a constructor
+```
+
+# **结语**
+
+**那么到这里你已经了解Proxy的handle函数以及爱作方法，如果有不明白的可以先放一放，了解如何使用就可以了，以后在使用的过程中可以慢慢查阅。**
+
+**祝大家有一个愉快的油猴编程之旅**
+</textarea></textarea></td></tr></table>
+<div class="modact"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewthreadmod&amp;tid=765" title="帖子模式" onclick="showWindow('viewthreadmod', this.href)">本主题由 王一之 于 2021-7-25 09:48 移动</a></div>		
+</div>
+<div id="comment_4157" class="cm">
+</div>
+<div id="post_rate_div_4157"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div id="p_btn" class="mtw mbm hm cl">
+<div class="tshare cl">
+<b>分享到:&nbsp;</b>
+
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=4&thread_id=765" id="k_share_to_qq" title="QQ好友和群" target="_blank"><i><img src="template/comiis_mi/img/qq_share.png" alt="QQ好友和群" />QQ好友和群</i></a>
+</div>
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=765&amp;formhash=062b1f21" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖"><i><img src="template/comiis_mi/img/fav.gif" alt="收藏" />收藏<span id="favoritenumber" style="display:none">0</span></i></a>
+<a class="followp" href="home.php?mod=spacecp&amp;ac=follow&amp;op=relay&amp;tid=765&amp;from=forum" onclick="showWindow('relaythread', this.href, 'get', 0);" title="转播求扩散"><i><img src="template/comiis_mi/img/rt.png" alt="转播" />转播</i></a>
+<a class="sharep" href="home.php?mod=spacecp&amp;ac=share&amp;type=thread&amp;id=765" onclick="showWindow('sharethread', this.href, 'get', 0);" title="分享推精华"><i><img src="template/comiis_mi/img/oshr.png" alt="分享" />分享</i></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=collection&amp;action=edit&amp;op=addthread&amp;tid=765" id="k_collect" onclick="showWindow(this.id, this.href);return false;" onmouseover="this.title = $('collectionnumber').innerHTML + ' 人淘帖'" title="淘好帖进专辑"><i><img src="template/comiis_mi/img/collection.png" alt="分享" />淘帖<span id="collectionnumber" style="display:none">0</span></i></a>
+</div>
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition4157"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;reppost=4157&amp;extra=&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_4157" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport4157', 'misc.php?mod=report&rtype=post&rid=4157&tid=765&fid=46', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_4157_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=stick&amp;idtype=tid&amp;id=765" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/stick.small.gif" />置顶卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=close&amp;idtype=tid&amp;id=765" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/close.small.gif" />沉默卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=4157:765" id="a_namepost_4157" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_4157')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="postlistreply" class="pl comiis_postlistreply"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+
+<input type="hidden" name="formhash" value="062b1f21" />
+
+<input type="hidden" name="optgroup" />
+
+<input type="hidden" name="operation" />
+
+<input type="hidden" name="listextra" value="" />
+
+<input type="hidden" name="page" value="1" />
+
+</form>
+
+
+<div class="pgbtn"><a href="https://bbs.tampermonkey.net.cn/thread-765-2-1.html" hidefocus="true" class="bm_h">下一页 &raquo;</a></div>
+
+
+<div class="pgs mtm mbm cl">
+
+
+<span class="pgb y"><a href="https://bbs.tampermonkey.net.cn/forum-46-1.html">返回列表</a></span>
+
+
+<a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=46')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+
+</div>
+
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<div class="bm_h kmtx">
+
+<h2>发表回复</h2>
+
+</div>
+
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('5000000');
+var disablepostctrl = parseInt('0');
+</script>
+<div id="f_pst" class="pl bm bmw" style="margin-top:0;">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;extra=&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls">
+<div class="avatar avtm nologin"><img src="template/comiis_mi/img/comiis_nologin.jpg"></div>
+</td>
+<td class="plc">
+<span id="fastpostreturn"></span>
+<div class="cl">
+<div id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?wcn" type="text/javascript"></script>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" href="javascript:;" title="图片" class="fmg">Image</a>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=register" class="xi2">立即注册</a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D765&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fforum.php%253Fmod%253Dviewthread%2526tid%253D765&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+<input type="hidden" name="formhash" value="062b1f21" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=46" class="y" target="_blank">本版积分规则</a>
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label class="lb"><input type="checkbox" name="adddynamic" class="pc" value="1" />回帖并转播</label>
+<label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc" />回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script src="source/plugin/zhanmishu_markdown/template/editor/method.min.js?20210702" type="text/javascript"></script>
+<script>
+function dgetByClass(name) {
+    if (document.getElementsByClassName) {
+        return document.getElementsByClassName(name);
+    }
+    var allItems = document.getElementsByTagName("#postlist textarea");
+    var newArr = [];
+    for (var i = 0; i < allItems.length; i++) {
+        var classNames = allItems[i].className;
+        var arrClass = classNames.split(" ");
+        for (var j = 0; j < arrClass.length; j++) {
+            if (arrClass[j] == name) {
+                newArr.push(allItems[i]);
+            }
+        }
+    }
+    return newArr;
+}
+
+var markdownContent = dgetByClass('markdownContent');
+var zmsTempDiv
+for (let i = 0; i < markdownContent.length; i++) {
+    console.log(markdownContent[i], markdownContent[i].textContent, 'arkdownContent[i]')
+
+    // markdownContent[i].style.display = 'block';
+    zmsTempDiv = document.createElement('div');
+    zmsTempDiv.id = 'vditor-id-' + i;
+    zmsTempDiv.className = 'vditor-reset';
+    markdownContent[i].parentNode.appendChild(zmsTempDiv);
+
+    Vditor.preview(document.getElementById(zmsTempDiv.id), markdownContent[i].textContent, {
+      speech: {
+        enable: true,
+      },
+      math: {
+        inlineDigit: true,
+        macros:{
+              actuarialangle: ['{\mkern1mu\overline\{#1\,\}\kern-3mu\lower-1mu\small|}',1],
+              angl: ['{\actuarialangle\{#1\mkern1mu\}}',1],
+              angln: '{\angl n}',
+              anglk: '{\angl k}',
+              anglr: '{\angl r}',
+              term: ['{\overset\{1\}\{#1\}:\angl\{#2\}}',2],
+              termxn: '{\term\{x\}\{n\}}',
+              pureendow: ['{#1:\overset\{1\}\{\angl\{#2\}\}}',2],
+              pureendowxn: '{\pureendow\{x\}\{n\}}',
+              endow: ['{#1:\angl\{#2\}}',2],
+              endowxn: '{\endow\{x\}\{n\}}',
+              joint: ['{\overline\{#1\}}',1],
+              actsymb: ['{\sideset\{_\{#1\mkern3mu\}^\{#2\mkern3mu\}\}\{^\{#4\}_\{#5\}}\{#3\}}',5],
+              Ax: ['{\actsymb\{#1\}\{#2\}\{A\}\{#3\}\{#4\}}',4],
+              Axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{A\}\}\{#3\}\{#4\}}',4],
+              Axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{A\}\}\{#3\}\{#4\}}',4],
+              ax: ['{\actsymb\{#1\}\{#2\}\{a\}\{#3\}\{#4\}}',4],
+              axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{a\}\}\{#3\}\{#4\}}',4],
+              axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{a\}\}\{#3\}\{#4\}}',4],
+              Ex: ['{\actsymb\{#1\}\{\}\{E\}\{\}\{#2\}}',2],
+              px: ['{\actsymb\{#1\}\{\}\{p\}\{\}\{#2\}}',2],
+              qx: ['{\actsymb\{#1\}\{\}\{q\}\{\}\{#2\}}',2],
+              sx: ['{\actsymb\{\}\{\}\{s\}\{\}\{#1\}}',1],
+              sxz: ['{\actsymb\{\}\{\}\{\bar\{s\}\}\{\}\{#1\}}',1],
+              sxzz: ['{\actsymb\{\}\{\}\{\ddot\{s\}\}\{\}\{#1\}}',1],
+              Vx: ['{\actsymb\{#1\}\{\}\{V\}\{\}\{#2\}}',2],
+            },
+          engine: 'MathJax'
+        },
+      anchor: 0,
+        show: true,
+        hljs:{
+          style:'rrt'
+        },
+    })
+
+    // document.getElementById(zmsTempDiv.id).innerHTML = markdownContent[i].value;
+}
+</script>
+
+
+<script type="text/javascript">
+
+new lazyload();
+
+</script>
+
+
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 0, 'forum.php?mod=viewthread&tid=765', 1);}</script>
+
+
+</div></div>
+
+
+<div class="wp mtn">
+
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+
+</div>
+
+
+<script type="text/javascript">
+
+
+function succeedhandle_followmod(url, msg, values) {
+
+var fObj = $('followmod_'+values['fuid']);
+
+if(values['type'] == 'add') {
+
+fObj.innerHTML = '不收听';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+
+} else if(values['type'] == 'del') {
+
+fObj.innerHTML = '收听TA';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=062b1f21&fuid='+values['fuid'];
+
+}
+
+}
+
+
+fixed_avatar([4157], 1);
+
+
+</script>
+
+<script src="template/comiis_mi/img/jquery.min.js" type="text/javascript" type="text/javascript"></script>
+
+</div>
+<div class="wp a_f"><div style="width: 1200px;height:100px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+<div style="clear:both;"></div>
+
+<div class="comiis_footer cl">
+
+<div id="ft" class="wp comiis_bottom cl zwihnm">
+
+<div class="comiis_demail">
+
+<p><em>意见反馈</em></p><a href="mailto:root@tampermonkey.net.cn?subject=意见反馈" rel="nofollow">root@tampermonkey.net.cn</a>
+
+</div>
+
+<div id="frt">
+<p><a href="https://bbs.tampermonkey.net.cn/archiver/" >Archiver</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="plugin.php?id=dnr_sitemap" >网站地图</a><span class="pipe">|</span>			
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNEBZVVX8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZNEBZVVX8R');
+</script>
+  
+</p>
+
+<p>Copyright &copy; 2008-2020 <a href="https://bbs.tampermonkey.net.cn/" rel="nofollow" target="_blank">油猴中文网</a>  版权所有 All Rights Reserved.</p>
+
+</div>
+
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
+
+<script src="home.php?mod=misc&ac=sendmail&rand=1634565980" type="text/javascript"></script>
+<div id="scrolltop">
+<span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;extra=&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" href="javascript:;"><b>返回顶部</b></a></span>
+<span>
+<a href="https://bbs.tampermonkey.net.cn/forum-46-1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { new_showTopLink(); });checkBlind();</script>
+<script type="text/javascript">
+_attachEvent(document,'click',function(){hidecomiismenu('comiis_sousuo_menu');});
+function hidecomiismenu(id) {
+var menuObj = $(id);
+var menu = $(menuObj.getAttribute('ctrlid'));
+if(ctrlclass = menuObj.getAttribute('ctrlclass')) {
+var reg = new RegExp(' ' + ctrlclass);
+menu.className = menu.className.replace(reg, '');
+}
+menuObj.style.display = 'none';
+}
+function new_showTopLink() {
+var ft = $('ft');
+if(ft){
+var scrolltop = $('scrolltop');
+var viewPortHeight = parseInt(document.documentElement.clientHeight);
+var scrollHeight = parseInt(document.body.getBoundingClientRect().top);
+var basew = parseInt(ft.clientWidth);
+var sw = scrolltop.clientWidth;
+if (basew < 1500) {
+var left = parseInt(fetchOffset(ft)['left']);
+left = left < sw ? left * 2 - sw : left;
+scrolltop.style.left = ( basew + left ) + 'px';
+} else {
+scrolltop.style.left = 'auto';
+scrolltop.style.right = 0;
+}
+if (BROWSER.ie && BROWSER.ie < 7) {
+scrolltop.style.top = viewPortHeight - scrollHeight - 150 + 'px';
+}
+if (scrollHeight < -100) {
+scrolltop.style.visibility = 'visible';
+} else {
+scrolltop.style.visibility = 'hidden';
+}
+}
+}
+if($("myrepeats")){
+$("comiis_key").appendChild($("myrepeats"));
+}
+if($("qmenu_loop")){
+var qmenu_timer, qmenu_scroll_l;
+var qmenu_in = 0;
+var qmenu_width = 246;
+var qmenu_loop = $('qmenu_loop');
+var qmenu_all_width = 41 * $('qmenu_loopul').getElementsByTagName("li").length - qmenu_width;
+if(qmenu_all_width < 20){
+$('qmenu_an').style.display = 'none';
+}
+}
+function qmenu_move(qmenu_lr){
+if(qmenu_in == 0 && ((qmenu_lr == 1 && qmenu_loop.scrollLeft < qmenu_all_width) || (qmenu_lr == 0 && qmenu_loop.scrollLeft > 0))){
+qmenu_in = 1;
+qmenu_scroll_l = qmenu_loop.scrollLeft;
+qmenu_timer = setInterval(function(){
+qmenu_scroll(qmenu_lr);
+}, 10);
+}
+}
+function qmenu_scroll(qmenu_lr){
+if((qmenu_lr == 1 && qmenu_loop.scrollLeft >= qmenu_width + qmenu_scroll_l) || (qmenu_lr == 0 && ((qmenu_loop.scrollLeft <= qmenu_scroll_l - qmenu_width) || qmenu_loop.scrollLeft == 0))){
+clearInterval(qmenu_timer);
+qmenu_in = 0;
+}else{
+if(qmenu_lr == 1){
+qmenu_loop.scrollLeft += Math.round((qmenu_width + qmenu_scroll_l - qmenu_loop.scrollLeft) / 15) + 1;
+}else{
+qmenu_loop.scrollLeft -= Math.round((qmenu_width - (qmenu_scroll_l - qmenu_loop.scrollLeft)) / 15) + 1;
+}
+}
+}
+</script></body>
+</html><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[油猴脚本开发指南]Proxy的使用-油猴中文网</title>
+<link href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html" rel="canonical" />
+<meta name="keywords" content="[油猴脚本开发指南]Proxy的使用" />
+<meta name="description" content="[md]# **本文参考****本文参考的是MDN文档**[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy](https://developer.mozilla.or ...油猴中文网 " />
+<meta name="generator" content="Discuz! X3.4" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2021 Tencent Cloud." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="https://bbs.tampermonkey.net.cn/" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_common.css?wcn" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_forum_viewthread.css?wcn" /><script type="text/javascript">var STYLEID = '10', STATICURL = 'static/', IMGDIR = 'template/comiis_mi/img', VERHASH = 'wcn', charset = 'utf-8', discuz_uid = '0', cookiepre = 'B6hk_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|好评|,2|油猫币|,3|贡献|', defaultstyle = '', REPORTURL = 'aHR0cHM6Ly9iYnMudGFtcGVybW9ua2V5Lm5ldC5jbi90aHJlYWQtNzY1LTEtMy5odG1s', SITEURL = 'https://bbs.tampermonkey.net.cn/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?wcn" type="text/javascript"></script>
+<meta name="application-name" content="油猴中文网" />
+<meta name="msapplication-tooltip" content="油猴中文网" />
+<meta name="msapplication-task" content="name=论坛;action-uri=https://bbs.tampermonkey.net.cn/forum.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=https://bbs.tampermonkey.net.cn/group.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/group.ico" /><meta name="msapplication-task" content="name=动态;action-uri=https://bbs.tampermonkey.net.cn/home.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/home.ico" /><link rel="archives" title="油猴中文网" href="https://bbs.tampermonkey.net.cn/archiver/" />
+<script src="data/cache/forum.js?wcn" type="text/javascript"></script>
+</head>
+<body id="nv_forum" class="pg_viewthread comiis_wide wewl" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="hd">
+<div class="comiis_nvdiv mb10">
+<div id="comiis_nv">
+<div class="wp comiis_nvbox cl">
+<div class="y comiis_nvlogin"><div class="comiis_um cl">
+<div class="z qqdlico">
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D765%26extra%3Dpage%253D3%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-765-1-3.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+<div class="comiis_dlq"><a onclick="showWindow('login', this.href);return false;" href="member.php?mod=logging&amp;action=login">登录</a> | <a href="member.php?mod=register">立即注册</a></div>
+</div></div>
+<ul><li class="comiis_logo"><a href="./" title="油猴中文网"><img src="template/comiis_mi/img/comiis_mini_logo.png" height="50"></a></li><li class="a" id="mn_forum" ><a href="https://bbs.tampermonkey.net.cn/forum.php" hidefocus="true" title="BBS"  >论坛<span>BBS</span></a></li><li id="mn_F2" ><a href="https://bbs.tampermonkey.net.cn/forum-2-1.html" hidefocus="true"  >油猴脚本资源</a></li><li id="mn_F68" ><a href="https://bbs.tampermonkey.net.cn/forum-68-1.html" hidefocus="true"  >后台脚本</a></li><li id="mn_N2bea" ><a href="https://bbs.tampermonkey.net.cn/thread-9-1-1.html" hidefocus="true"  >总版规</a></li></ul>
+</div>
+</div>
+</div>
+<style>
+#comiis_sousuo_menu, #comiis_key_menu {
+    position: fixed !important;
+    top: 50px !important;
+}
+</style>
+<script>
+    window.addEventListener('load', e => {
+  const sousuo = document.querySelector('#comiis_sousuo');
+        const sousuoMenu = document.querySelector('#comiis_sousuo_menu');
+        if (sousuo && sousuoMenu) {
+            sousuo.setAttribute('onmouseover', "showMenu({'ctrlid':this.id,'pos':'34!','ctrlclass':'on','duration':2});");
+            sousuo.removeAttribute('initialized');
+            sousuoMenu.removeAttribute('initialized');
+        }
+    });
+</script>
+<div id="comiis_sousuo_menu" style="display:none;">
+<div class="comiis_dss cl">
+<form id="scform" method="post" autocomplete="off" action="https://bbs.tampermonkey.net.cn/search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="formhash" value="aacbf701" />
+<input type="hidden" name="mod" value="forum" />
+<input type="text" name="srchtxt" id="srchtxt" class="z" autocomplete="off" onblur="if (value ==''){value='请输入搜索内容'}" onfocus="if (value =='请输入搜索内容'){value =''}" value="请输入搜索内容" />
+<button id="search_submit" name="searchsubmit" type="submit" value="true">搜索</button>
+</form>
+</div>
+<div id="scbar_hot" class="cl">
+</div>
+</div>
+<div class="wp comiis_nv_pop">
+<div id="mu" class="cl">
+</div><div class="a_mu"><a href="https://sourl.cn/ptULfB" target="_blank" style="font-size: 40px"><font color="#0000FF"><b><span style="color: rgb(200, 0, 0); font-family: &quot;lucida Grande&quot;, Verdana, &quot;Microsoft YaHei&quot;; font-size: 24px; white-space: normal;">外卖红包天天领，拼手气开惊喜红包</span></b></font></a></div></div>
+</div>
+<script src="template/comiis_mi/img/comiis_nv.js" type="text/javascript" type="text/javascript"></script>
+<div id="wp" class="wp">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=765" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=765" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+<script type="text/javascript">var fid = parseInt('46'), tid = parseInt('765');</script>
+
+
+<script src="data/cache/forum_viewthread.js?wcn" type="text/javascript"></script>
+
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+
+
+<div id="pt" class="bm cl">
+
+<div class="z">
+
+<a href="./" class="nvhm" title="首页">油猴中文网</a><em>&raquo;</em><a href="https://bbs.tampermonkey.net.cn/forum.php">论坛</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum.php?gid=39">资源共享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum-46-3.html">教程分享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html">[油猴脚本开发指南]Proxy的使用</a>
+
+</div>
+
+</div>
+
+
+
+<div class="wp">
+
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="wp a_t"><table cellpadding="0" cellspacing="1"><tr><td width="33%"><a href="https://docs.scriptcat.org/" target="_blank" ><font color="#0099FF"><b>ScriptCat，新一代的脚本管理器</b></font></a></td><td width="33%"><a href="https://scriptcat.org/search" target="_blank" ><font color="#3399FF"><b><span style="white-space: pre;">脚本站，与全世界分享你的用户脚本</span></b></font></a></td><td width="33%"><a href="https://sourl.cn/KJMya6" target="_blank" ><font color="#CC00CC"><b>油猴脚本开发指南教程目录</b></font></a></td></tr>
+</table></div><div id="pgt" class="pgs mbm cl">
+
+<div class="pgt"></div>
+
+<span class="y pgb"><a href="https://bbs.tampermonkey.net.cn/forum-46-3.html">返回列表</a></span>
+
+<a id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=46')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+</div>
+
+
+<div class="wp">
+
+<!--[diy=diy1s]--><div id="diy1s" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="boardnav">
+
+
+<div id="ct" class="wp cl comiis_rollzbox">
+
+
+
+<div id="postlist" class="pl bm esgky comiis_x0">
+
+
+<div class="bm_h comiis_snvbt">
+
+
+<span class="z">
+
+				
+
+</span>
+
+<h2 class="z">
+
+
+<span id="thread_subject">[油猴脚本开发指南]Proxy的使用</span>
+
+</h2>
+
+<span class="z kmfz">
+
+
+<a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html" onclick="return copyThreadUrl(this, '油猴中文网')"  class="kmcopy">[复制链接]</a>
+
+
+</span>
+
+
+<span class="y comiis_hfs"><strong>0</strong><br>回复</span>
+
+<span class="y comiis_cks"><strong>408</strong><br>查看</span>
+
+<span class="y comiis_sxy">
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;action=printable&amp;tid=765" title="打印" target="_blank"><img src="template/comiis_mi/img/print.png" alt="打印" class="vm" /></a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=765" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=765" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="post_4157"  class="comiis_vrx"><table id="pid4157" class="plhin" summary="pid4157" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar4157" class="pls favatar">
+ <a name="lastpost"></a><div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo4157" style="display:none;">
+<div class="m z">
+<div id="userinfo4157_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo4157')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=aacbf701&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=4157&amp;tid=765" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/thread-765-1-1.html"   id="postnum4157" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km1">
+楼主</a>
+</strong>
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&ptid=765&authorid=0&postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层" />
+<a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="template/comiis_mi/img/fj_btn.png" alt="跳转到指定楼层" class="vm" /></a>
+</div>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton4157">
+发表于
+					
+2021-7-24 17:15:01</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=765&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+<span class="none"><img src="template/comiis_mi/img/arw_r.gif" class="vm" alt="回帖奖励" /></span>
+<span class="pipe show">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=765&amp;extra=page%3D3&amp;ordertype=1"  class="show">倒序浏览</a>
+<span class="pipe show">|</span>&nbsp;<a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 4157);" class="show">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_4157">
+<textarea style="display:none;" class="markdownContent vditor-reset" cols="30" rows="10"># **本文参考**
+
+**本文参考的是MDN文档**[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+**对其进行了一定的整理以及编排，以便符合讲解的顺序。**
+
+# **Proxy是什么？**
+
+****Proxy**** 对象用于创建一个对象的代理，从而实现基本爱作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+
+**如果说数据劫持是对对象中某个属性进行了劫持，那Proxy可以理解为对一个对象进行劫持。**
+
+# **语法以及参数**
+
+```
+const p = new Proxy(target, handler)
+```
+
+`target`**要使用 **`Proxy`** 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。``**
+
+`handler`**一个通常以函数作为属性的对象，各属性中的函数分别定义了在执行各种爱作时代理 p 的行为。**
+
+# **handler的方法**
+
+handler.getPrototypeOf()  
+
+**是Object.getPrototypeOf方法的捕捉器。**
+
+**当读取代理对象的原型时，使用该函数进行劫持。**
+
+```
+const handler = {
+  getPrototypeOf(target) {
+    return {name:'8888'};
+  }
+};
+
+const proxy1 = new Proxy(obj, handler);
+```
+
+handler.setPrototypeOf()
+
+**是Object.setPrototypeOf 方法的捕捉器。**
+
+**当设置代理对象的原型时，使用该函数进行劫持，如果不想设置一个新的原型，可以返回false**
+
+```
+var handlerReturnsFalse = {
+    setPrototypeOf(target, newProto) {
+        return false;
+    }
+};
+
+var newProto = {}, target = {};
+
+var p1 = new Proxy(target, handlerReturnsFalse);
+Object.setPrototypeOf(p1, newProto); // throws a TypeError
+Reflect.setPrototypeOf(p1, newProto); // returns false
+```
+
+**handler.preventExtensions()**
+
+**Object.preventExtensions 方法的捕捉器。**
+
+**Object.preventExtensions 是让对象变得不可拓展的函数，当设置不可拓展时，会触发handler.preventExtensions**
+
+**注意，如果对象是可拓展的，那么只能返回false**
+
+```
+var p = new Proxy({}, {
+  preventExtensions: function(target) {
+    console.log('called');
+    Object.preventExtensions(target);
+    return true;
+  }
+});
+
+console.log(Object.preventExtensions(p)); // "called"
+                                          // false
+```
+
+**handler.isExtensible()**
+
+**Object.isExtensible 方法的捕捉器。**
+
+**该方法用于拦截Object.isExtensible()。，而Object.isExtensible用于判断对象是否是一个可拓展的对象**
+
+**注意，该函数返回必须为true**
+
+```
+var p = new Proxy({}, {
+  isExtensible: function(target) {
+    console.log('called');
+    return true;//也可以return 1;等表示为true的值
+  }
+});
+
+console.log(Object.isExtensible(p)); // "called"
+                                     // true
+```
+
+**handler.getOwnPropertyDescriptor()**
+
+**handler.getOwnPropertyDescriptor()方法是 Object.getOwnPropertyDescriptor()的钩子。**
+
+**该方法用于拦截Object.getOwnPropertyDescriptor(),Object.getOwnPropertyDescriptor获取对象自有属性的描述符，自有属性指直接赋予对象的属性，而且原型链中的属性**
+
+```
+getOwnPropertyDescriptor 必须返回一个 object 或 undefined。
+如果属性作为目标对象的不可配置的属性存在，则该属性无法报告为不存在。
+如果属性作为目标对象的属性存在，并且目标对象不可扩展，则该属性无法报告为不存在。
+如果属性不存在作为目标对象的属性，并且目标对象不可扩展，则不能将其报告为存在。
+属性不能被报告为不可配置，如果它不作为目标对象的自身属性存在，或者作为目标对象的可配置的属性存在。
+Object.getOwnPropertyDescriptor（target）的结果可以使用 Object.defineProperty 应用于目标对象，也不会抛出异常。
+```
+
+```
+var p = new Proxy({ a: 20}, {
+  getOwnPropertyDescriptor: function(target, prop) {
+    console.log('called: ' + prop);
+    return { configurable: true, enumerable: true, value: 10 };
+  }
+});
+
+console.log(Object.getOwnPropertyDescriptor(p, 'a').value); // "called: a"
+                                                            // 10
+```
+
+**configurable**
+
+**当且仅当该属性的 **`configurable`** 键值为 **`true`** 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。****
+******默认为****** ****`false`****。**
+
+**enumerable**
+
+**当且仅当该属性的 **`enumerable`** 键值为 **`true`** 时，该属性才会出现在对象的枚举属性中。****
+******默认为 **`false`****。**
+
+**以下代码则违反了规则。**
+
+```
+var obj = { a: 10 };
+Object.preventExtensions(obj);
+var p = new Proxy(obj, {
+  getOwnPropertyDescriptor: function(target, prop) {
+    return undefined;
+  }
+});
+
+Object.getOwnPropertyDescriptor(p, 'a'); // TypeError is thrown
+```
+
+**handler.defineProperty(**
+
+**Object.defineProperty 方法的捕捉器。**
+
+**Object.defineProperty是啥我就不多说了**
+
+```
+var p = new Proxy({}, {
+  defineProperty: function(target, prop, descriptor) {
+    console.log('called: ' + prop);
+    return true;
+  }
+});
+
+var desc = { configurable: true, enumerable: true, value: 10 };
+Object.defineProperty(p, 'a', desc); // "called: a"
+```
+
+**handler.has()**
+
+**in爱作符的捕捉器。**
+
+**如果指定的属性在指定的对象或其原型链中，则****`in`** 运算符******返回**`true`**。**
+
+```
+const handler1 = {
+  has(target, key) {
+    if (key[0] === '_') {
+      return false;
+    }
+    return key in target;
+  }
+};
+
+const monster1 = {
+  _secret: 'easily scared',
+  eyeCount: 4
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+console.log('eyeCount' in proxy1);
+// expected output: true
+
+console.log('_secret' in proxy1);
+// expected output: false
+
+console.log('_secret' in monster1);
+// expected output: true
+
+```
+
+**handler.get()**
+
+**属性读取爱作的捕捉器。get的意思与Object.defineProperty 中的get一致**
+
+**需要注意的是**
+
+```
+如果要访问的目标属性是不可写以及不可配置的，则返回的值必须与该目标属性的值相同。
+如果要访问的目标属性没有配置访问方法，即get方法是undefined的，则返回值必须为undefined。
+```
+
+```
+var p = new Proxy({}, {
+  get: function(target, prop, receiver) {
+    console.log("called: " + prop);
+    return 10;
+  }
+});
+
+console.log(p.a); // "called: a"
+                  // 10
+```
+
+**handler.set()**
+
+**属性设置爱作的捕捉器。set的意思与Object.defineProperty 中的set一致**
+
+```
+const monster1 = { eyeCount: 4 };
+
+const handler1 = {
+  set(obj, prop, value) {
+    if ((prop === 'eyeCount') && ((value % 2) !== 0)) {
+      console.log('Monsters must have an even number of eyes');
+    } else {
+      return Reflect.set(...arguments);
+    }
+  }
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+
+proxy1.eyeCount = 1;
+// expected output: "Monsters must have an even number of eyes"
+
+console.log(proxy1.eyeCount);
+// expected output: 4
+
+proxy1.eyeCount = 2;
+console.log(proxy1.eyeCount);
+// expected output: 2
+
+```
+
+**handler.deleteProperty()**
+
+**delete爱作符的捕捉器。**
+
+** ****`delete`** 爱作符******用于删除对象的某个属性；如果没有指向这个属性的引用，那它最终会被释放。**
+
+**如果目标对象的属性是不可配置的，那么该属性不能被删除。**
+
+```
+var p = new Proxy({}, {
+  deleteProperty: function(target, prop) {
+    console.log('called: ' + prop);
+    return true;
+  }
+});
+
+delete p.a; // "called: a"
+```
+
+**handler.ownKeys()**
+
+**Object.getOwnPropertyNames方法和 Object.getOwnPropertySymbols方法的捕捉器。**
+
+**`Object.getOwnPropertyNames()`****方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括Symbol值作为名称的属性）组成的数组。**
+
+```
+var arr = ["a", "b", "c"];
+console.log(Object.getOwnPropertyNames(arr).sort()); // ["0", "1", "2", "length"]
+
+// 类数组对象
+var obj = { 0: "a", 1: "b", 2: "c"};
+console.log(Object.getOwnPropertyNames(obj).sort()); // ["0", "1", "2"]
+```
+
+`Object.getOwnPropertySymbols()`** 方法返回一个给定对象自身的所有 Symbol 属性的数组。(常规开发涉及较少，这里就不做讲解了)**
+
+**约束**
+
+```
+ownKeys 的结果必须是一个数组.
+数组的元素类型要么是一个 String ，要么是一个 Symbol.
+结果列表必须包含目标对象的所有不可配置（non-configurable ）、自有（own）属性的key.
+如果目标对象不可扩展，那么结果列表必须包含目标对象的所有自有（own）属性的key，不能有其它值.
+```
+
+```
+var p = new Proxy({}, {
+  ownKeys: function(target) {
+    console.log('called');
+    return ['a', 'b', 'c'];
+  }
+});
+
+console.log(Object.getOwnPropertyNames(p)); // "called"
+                                            // [ 'a', 'b', 'c' ]
+```
+
+```
+var obj = {};
+Object.defineProperty(obj, 'a', {
+  configurable: false,
+  enumerable: true,
+  value: 10 }
+);
+
+var p = new Proxy(obj, {
+  ownKeys: function(target) {
+    return [123, 12.5, true, false, undefined, null, {}, []];
+  }
+});
+
+console.log(Object.getOwnPropertyNames(p));
+
+// TypeError: proxy [[OwnPropertyKeys]] 必须返回一个数组
+// 数组元素类型只能是String或Symbol
+```
+
+**handler.apply()**
+
+**函数调用爱作的捕捉器。**
+
+**`handler.apply`**** 方法用于拦截函数的调用。**
+
+```
+var p = new Proxy(function() {}, {
+  apply: function(target, thisArg, argumentsList) {
+    console.log('called: ' + argumentsList.join(', '));
+    return argumentsList[0] + argumentsList[1] + argumentsList[2];
+  }
+});
+
+console.log(p(1, 2, 3)); // "called: 1, 2, 3"
+                         // 6
+```
+
+**handler.construct()**
+
+**new爱作符的捕捉器。**
+
+`handler.construct()`** 方法用于拦截new 爱作符. 为了使new爱作符在生成的Proxy对象上生效，用于初始化代理的目标对象自身必须具有[[Construct]]内部方法（即 **`new target`** 必须是有效的）。**
+
+**注意，必须返回一个对象**
+
+```
+var p = new Proxy(function() {}, {
+  construct: function(target, argumentsList, newTarget) {
+    console.log('called: ' + argumentsList.join(', '));
+    return { value: argumentsList[0] * 10 };
+  }
+});
+
+console.log(new p(1).value); // "called: 1"
+                             // 10
+```
+
+**下面的代码违反了约定.**
+
+```
+var p = new Proxy(function() {}, {
+  construct: function(target, argumentsList, newTarget) {
+    return 1;
+  }
+});
+
+new p(); // TypeError is thrown
+```
+
+**下面的代码未能正确的初始化Proxy。Proxy初始化时，传给它的**`target`** 必须具有一个有效的constructor供**`new`**爱作符调用。**
+
+```
+var p = new Proxy({}, {
+  construct: function(target, argumentsList, newTarget) {
+    return {};
+  }
+});
+
+new p(); // TypeError is thrown, "p" is not a constructor
+```
+
+# **结语**
+
+**那么到这里你已经了解Proxy的handle函数以及爱作方法，如果有不明白的可以先放一放，了解如何使用就可以了，以后在使用的过程中可以慢慢查阅。**
+
+**祝大家有一个愉快的油猴编程之旅**
+</textarea></textarea></td></tr></table>
+<div class="modact"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewthreadmod&amp;tid=765" title="帖子模式" onclick="showWindow('viewthreadmod', this.href)">本主题由 王一之 于 2021-7-25 09:48 移动</a></div>		
+</div>
+<div id="comment_4157" class="cm">
+</div>
+<div id="post_rate_div_4157"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div id="p_btn" class="mtw mbm hm cl">
+<div class="tshare cl">
+<b>分享到:&nbsp;</b>
+
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=4&thread_id=765" id="k_share_to_qq" title="QQ好友和群" target="_blank"><i><img src="template/comiis_mi/img/qq_share.png" alt="QQ好友和群" />QQ好友和群</i></a>
+</div>
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=765&amp;formhash=aacbf701" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖"><i><img src="template/comiis_mi/img/fav.gif" alt="收藏" />收藏<span id="favoritenumber" style="display:none">0</span></i></a>
+<a class="followp" href="home.php?mod=spacecp&amp;ac=follow&amp;op=relay&amp;tid=765&amp;from=forum" onclick="showWindow('relaythread', this.href, 'get', 0);" title="转播求扩散"><i><img src="template/comiis_mi/img/rt.png" alt="转播" />转播</i></a>
+<a class="sharep" href="home.php?mod=spacecp&amp;ac=share&amp;type=thread&amp;id=765" onclick="showWindow('sharethread', this.href, 'get', 0);" title="分享推精华"><i><img src="template/comiis_mi/img/oshr.png" alt="分享" />分享</i></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=collection&amp;action=edit&amp;op=addthread&amp;tid=765" id="k_collect" onclick="showWindow(this.id, this.href);return false;" onmouseover="this.title = $('collectionnumber').innerHTML + ' 人淘帖'" title="淘好帖进专辑"><i><img src="template/comiis_mi/img/collection.png" alt="分享" />淘帖<span id="collectionnumber" style="display:none">0</span></i></a>
+</div>
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition4157"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;reppost=4157&amp;extra=page%3D3&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_4157" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport4157', 'misc.php?mod=report&rtype=post&rid=4157&tid=765&fid=46', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_4157_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=stick&amp;idtype=tid&amp;id=765" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/stick.small.gif" />置顶卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=close&amp;idtype=tid&amp;id=765" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/close.small.gif" />沉默卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=4157:765" id="a_namepost_4157" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_4157')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="postlistreply" class="pl comiis_postlistreply"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+
+<input type="hidden" name="formhash" value="aacbf701" />
+
+<input type="hidden" name="optgroup" />
+
+<input type="hidden" name="operation" />
+
+<input type="hidden" name="listextra" value="page%3D3" />
+
+<input type="hidden" name="page" value="1" />
+
+</form>
+
+
+<div class="pgbtn"><a href="https://bbs.tampermonkey.net.cn/thread-765-2-1.html" hidefocus="true" class="bm_h">下一页 &raquo;</a></div>
+
+
+<div class="pgs mtm mbm cl">
+
+
+<span class="pgb y"><a href="https://bbs.tampermonkey.net.cn/forum-46-3.html">返回列表</a></span>
+
+
+<a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=46')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+
+</div>
+
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<div class="bm_h kmtx">
+
+<h2>发表回复</h2>
+
+</div>
+
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('5000000');
+var disablepostctrl = parseInt('0');
+</script>
+<div id="f_pst" class="pl bm bmw" style="margin-top:0;">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;extra=page%3D3&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls">
+<div class="avatar avtm nologin"><img src="template/comiis_mi/img/comiis_nologin.jpg"></div>
+</td>
+<td class="plc">
+<span id="fastpostreturn"></span>
+<div class="cl">
+<div id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?wcn" type="text/javascript"></script>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" href="javascript:;" title="图片" class="fmg">Image</a>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=register" class="xi2">立即注册</a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D765%26extra%3Dpage%253D3%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-765-1-3.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+<input type="hidden" name="formhash" value="aacbf701" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=46" class="y" target="_blank">本版积分规则</a>
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label class="lb"><input type="checkbox" name="adddynamic" class="pc" value="1" />回帖并转播</label>
+<label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc" />回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script src="source/plugin/zhanmishu_markdown/template/editor/method.min.js?20210702" type="text/javascript"></script>
+<script>
+function dgetByClass(name) {
+    if (document.getElementsByClassName) {
+        return document.getElementsByClassName(name);
+    }
+    var allItems = document.getElementsByTagName("#postlist textarea");
+    var newArr = [];
+    for (var i = 0; i < allItems.length; i++) {
+        var classNames = allItems[i].className;
+        var arrClass = classNames.split(" ");
+        for (var j = 0; j < arrClass.length; j++) {
+            if (arrClass[j] == name) {
+                newArr.push(allItems[i]);
+            }
+        }
+    }
+    return newArr;
+}
+
+var markdownContent = dgetByClass('markdownContent');
+var zmsTempDiv
+for (let i = 0; i < markdownContent.length; i++) {
+    console.log(markdownContent[i], markdownContent[i].textContent, 'arkdownContent[i]')
+
+    // markdownContent[i].style.display = 'block';
+    zmsTempDiv = document.createElement('div');
+    zmsTempDiv.id = 'vditor-id-' + i;
+    zmsTempDiv.className = 'vditor-reset';
+    markdownContent[i].parentNode.appendChild(zmsTempDiv);
+
+    Vditor.preview(document.getElementById(zmsTempDiv.id), markdownContent[i].textContent, {
+      speech: {
+        enable: true,
+      },
+      math: {
+        inlineDigit: true,
+        macros:{
+              actuarialangle: ['{\mkern1mu\overline\{#1\,\}\kern-3mu\lower-1mu\small|}',1],
+              angl: ['{\actuarialangle\{#1\mkern1mu\}}',1],
+              angln: '{\angl n}',
+              anglk: '{\angl k}',
+              anglr: '{\angl r}',
+              term: ['{\overset\{1\}\{#1\}:\angl\{#2\}}',2],
+              termxn: '{\term\{x\}\{n\}}',
+              pureendow: ['{#1:\overset\{1\}\{\angl\{#2\}\}}',2],
+              pureendowxn: '{\pureendow\{x\}\{n\}}',
+              endow: ['{#1:\angl\{#2\}}',2],
+              endowxn: '{\endow\{x\}\{n\}}',
+              joint: ['{\overline\{#1\}}',1],
+              actsymb: ['{\sideset\{_\{#1\mkern3mu\}^\{#2\mkern3mu\}\}\{^\{#4\}_\{#5\}}\{#3\}}',5],
+              Ax: ['{\actsymb\{#1\}\{#2\}\{A\}\{#3\}\{#4\}}',4],
+              Axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{A\}\}\{#3\}\{#4\}}',4],
+              Axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{A\}\}\{#3\}\{#4\}}',4],
+              ax: ['{\actsymb\{#1\}\{#2\}\{a\}\{#3\}\{#4\}}',4],
+              axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{a\}\}\{#3\}\{#4\}}',4],
+              axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{a\}\}\{#3\}\{#4\}}',4],
+              Ex: ['{\actsymb\{#1\}\{\}\{E\}\{\}\{#2\}}',2],
+              px: ['{\actsymb\{#1\}\{\}\{p\}\{\}\{#2\}}',2],
+              qx: ['{\actsymb\{#1\}\{\}\{q\}\{\}\{#2\}}',2],
+              sx: ['{\actsymb\{\}\{\}\{s\}\{\}\{#1\}}',1],
+              sxz: ['{\actsymb\{\}\{\}\{\bar\{s\}\}\{\}\{#1\}}',1],
+              sxzz: ['{\actsymb\{\}\{\}\{\ddot\{s\}\}\{\}\{#1\}}',1],
+              Vx: ['{\actsymb\{#1\}\{\}\{V\}\{\}\{#2\}}',2],
+            },
+          engine: 'MathJax'
+        },
+      anchor: 0,
+        show: true,
+        hljs:{
+          style:'rrt'
+        },
+    })
+
+    // document.getElementById(zmsTempDiv.id).innerHTML = markdownContent[i].value;
+}
+</script>
+
+
+<script type="text/javascript">
+
+new lazyload();
+
+</script>
+
+
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 0, 'forum.php?mod=viewthread&tid=765', 1);}</script>
+
+
+</div></div>
+
+
+<div class="wp mtn">
+
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+
+</div>
+
+
+<script type="text/javascript">
+
+
+function succeedhandle_followmod(url, msg, values) {
+
+var fObj = $('followmod_'+values['fuid']);
+
+if(values['type'] == 'add') {
+
+fObj.innerHTML = '不收听';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+
+} else if(values['type'] == 'del') {
+
+fObj.innerHTML = '收听TA';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=aacbf701&fuid='+values['fuid'];
+
+}
+
+}
+
+
+fixed_avatar([4157], 1);
+
+
+</script>
+
+<script src="template/comiis_mi/img/jquery.min.js" type="text/javascript" type="text/javascript"></script>
+
+</div>
+<div class="wp a_f"><div style="width: 1200px;height:100px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+<div style="clear:both;"></div>
+
+<div class="comiis_footer cl">
+
+<div id="ft" class="wp comiis_bottom cl zwihnm">
+
+<div class="comiis_demail">
+
+<p><em>意见反馈</em></p><a href="mailto:root@tampermonkey.net.cn?subject=意见反馈" rel="nofollow">root@tampermonkey.net.cn</a>
+
+</div>
+
+<div id="frt">
+<p><a href="https://bbs.tampermonkey.net.cn/archiver/" >Archiver</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="plugin.php?id=dnr_sitemap" >网站地图</a><span class="pipe">|</span>			
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNEBZVVX8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZNEBZVVX8R');
+</script>
+  
+</p>
+
+<p>Copyright &copy; 2008-2020 <a href="https://bbs.tampermonkey.net.cn/" rel="nofollow" target="_blank">油猴中文网</a>  版权所有 All Rights Reserved.</p>
+
+</div>
+
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
+
+<script src="home.php?mod=misc&ac=sendmail&rand=1634566245" type="text/javascript"></script>
+<div id="scrolltop">
+<span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=46&amp;tid=765&amp;extra=page%3D3&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" href="javascript:;"><b>返回顶部</b></a></span>
+<span>
+<a href="https://bbs.tampermonkey.net.cn/forum-46-1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { new_showTopLink(); });checkBlind();</script>
+<script type="text/javascript">
+_attachEvent(document,'click',function(){hidecomiismenu('comiis_sousuo_menu');});
+function hidecomiismenu(id) {
+var menuObj = $(id);
+var menu = $(menuObj.getAttribute('ctrlid'));
+if(ctrlclass = menuObj.getAttribute('ctrlclass')) {
+var reg = new RegExp(' ' + ctrlclass);
+menu.className = menu.className.replace(reg, '');
+}
+menuObj.style.display = 'none';
+}
+function new_showTopLink() {
+var ft = $('ft');
+if(ft){
+var scrolltop = $('scrolltop');
+var viewPortHeight = parseInt(document.documentElement.clientHeight);
+var scrollHeight = parseInt(document.body.getBoundingClientRect().top);
+var basew = parseInt(ft.clientWidth);
+var sw = scrolltop.clientWidth;
+if (basew < 1500) {
+var left = parseInt(fetchOffset(ft)['left']);
+left = left < sw ? left * 2 - sw : left;
+scrolltop.style.left = ( basew + left ) + 'px';
+} else {
+scrolltop.style.left = 'auto';
+scrolltop.style.right = 0;
+}
+if (BROWSER.ie && BROWSER.ie < 7) {
+scrolltop.style.top = viewPortHeight - scrollHeight - 150 + 'px';
+}
+if (scrollHeight < -100) {
+scrolltop.style.visibility = 'visible';
+} else {
+scrolltop.style.visibility = 'hidden';
+}
+}
+}
+if($("myrepeats")){
+$("comiis_key").appendChild($("myrepeats"));
+}
+if($("qmenu_loop")){
+var qmenu_timer, qmenu_scroll_l;
+var qmenu_in = 0;
+var qmenu_width = 246;
+var qmenu_loop = $('qmenu_loop');
+var qmenu_all_width = 41 * $('qmenu_loopul').getElementsByTagName("li").length - qmenu_width;
+if(qmenu_all_width < 20){
+$('qmenu_an').style.display = 'none';
+}
+}
+function qmenu_move(qmenu_lr){
+if(qmenu_in == 0 && ((qmenu_lr == 1 && qmenu_loop.scrollLeft < qmenu_all_width) || (qmenu_lr == 0 && qmenu_loop.scrollLeft > 0))){
+qmenu_in = 1;
+qmenu_scroll_l = qmenu_loop.scrollLeft;
+qmenu_timer = setInterval(function(){
+qmenu_scroll(qmenu_lr);
+}, 10);
+}
+}
+function qmenu_scroll(qmenu_lr){
+if((qmenu_lr == 1 && qmenu_loop.scrollLeft >= qmenu_width + qmenu_scroll_l) || (qmenu_lr == 0 && ((qmenu_loop.scrollLeft <= qmenu_scroll_l - qmenu_width) || qmenu_loop.scrollLeft == 0))){
+clearInterval(qmenu_timer);
+qmenu_in = 0;
+}else{
+if(qmenu_lr == 1){
+qmenu_loop.scrollLeft += Math.round((qmenu_width + qmenu_scroll_l - qmenu_loop.scrollLeft) / 15) + 1;
+}else{
+qmenu_loop.scrollLeft -= Math.round((qmenu_width - (qmenu_scroll_l - qmenu_loop.scrollLeft)) / 15) + 1;
+}
+}
+}
+</script></body>
+</html>

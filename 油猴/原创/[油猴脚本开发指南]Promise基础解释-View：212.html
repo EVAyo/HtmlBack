@@ -1,0 +1,1323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[油猴脚本开发指南]Promise基础解释-油猴中文网</title>
+<link href="https://bbs.tampermonkey.net.cn/thread-878-1-1.html" rel="canonical" />
+<meta name="keywords" content="[油猴脚本开发指南]Promise基础解释" />
+<meta name="description" content="[md]# PromisePromise代表了未来发生的事件，相当于我与你签订了一个协议，我们现在协议没有办法完成，而在未来的某个时间点，这个协议会由执行中变为履行或者未履行`` ...油猴中文网 " />
+<meta name="generator" content="Discuz! X3.4" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2021 Tencent Cloud." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="https://bbs.tampermonkey.net.cn/" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_common.css?wcn" /><link rel="stylesheet" type="text/css" href="data/cache/style_10_forum_viewthread.css?wcn" /><script type="text/javascript">var STYLEID = '10', STATICURL = 'static/', IMGDIR = 'template/comiis_mi/img', VERHASH = 'wcn', charset = 'utf-8', discuz_uid = '0', cookiepre = 'B6hk_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|好评|,2|油猫币|,3|贡献|', defaultstyle = '', REPORTURL = 'aHR0cHM6Ly9iYnMudGFtcGVybW9ua2V5Lm5ldC5jbi90aHJlYWQtODc4LTEtMi5odG1s', SITEURL = 'https://bbs.tampermonkey.net.cn/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?wcn" type="text/javascript"></script>
+<meta name="application-name" content="油猴中文网" />
+<meta name="msapplication-tooltip" content="油猴中文网" />
+<meta name="msapplication-task" content="name=论坛;action-uri=https://bbs.tampermonkey.net.cn/forum.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=https://bbs.tampermonkey.net.cn/group.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/group.ico" /><meta name="msapplication-task" content="name=动态;action-uri=https://bbs.tampermonkey.net.cn/home.php;icon-uri=https://bbs.tampermonkey.net.cn/template/comiis_mi/img/home.ico" /><link rel="archives" title="油猴中文网" href="https://bbs.tampermonkey.net.cn/archiver/" />
+<script src="data/cache/forum.js?wcn" type="text/javascript"></script>
+</head>
+<body id="nv_forum" class="pg_viewthread comiis_wide wewl" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="hd">
+<div class="comiis_nvdiv mb10">
+<div id="comiis_nv">
+<div class="wp comiis_nvbox cl">
+<div class="y comiis_nvlogin"><div class="comiis_um cl">
+<div class="z qqdlico">
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D878%26extra%3Dpage%253D2%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-878-1-2.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+<div class="comiis_dlq"><a onclick="showWindow('login', this.href);return false;" href="member.php?mod=logging&amp;action=login">登录</a> | <a href="member.php?mod=register">立即注册</a></div>
+</div></div>
+<ul><li class="comiis_logo"><a href="./" title="油猴中文网"><img src="template/comiis_mi/img/comiis_mini_logo.png" height="50"></a></li><li class="a" id="mn_forum" ><a href="https://bbs.tampermonkey.net.cn/forum.php" hidefocus="true" title="BBS"  >论坛<span>BBS</span></a></li><li id="mn_F2" ><a href="https://bbs.tampermonkey.net.cn/forum-2-1.html" hidefocus="true"  >油猴脚本资源</a></li><li id="mn_F68" ><a href="https://bbs.tampermonkey.net.cn/forum-68-1.html" hidefocus="true"  >后台脚本</a></li><li id="mn_N2bea" ><a href="https://bbs.tampermonkey.net.cn/thread-9-1-1.html" hidefocus="true"  >总版规</a></li></ul>
+</div>
+</div>
+</div>
+<style>
+#comiis_sousuo_menu, #comiis_key_menu {
+    position: fixed !important;
+    top: 50px !important;
+}
+</style>
+<script>
+    window.addEventListener('load', e => {
+  const sousuo = document.querySelector('#comiis_sousuo');
+        const sousuoMenu = document.querySelector('#comiis_sousuo_menu');
+        if (sousuo && sousuoMenu) {
+            sousuo.setAttribute('onmouseover', "showMenu({'ctrlid':this.id,'pos':'34!','ctrlclass':'on','duration':2});");
+            sousuo.removeAttribute('initialized');
+            sousuoMenu.removeAttribute('initialized');
+        }
+    });
+</script>
+<div id="comiis_sousuo_menu" style="display:none;">
+<div class="comiis_dss cl">
+<form id="scform" method="post" autocomplete="off" action="https://bbs.tampermonkey.net.cn/search.php?searchsubmit=yes" target="_blank">
+<input type="hidden" name="formhash" value="52d17950" />
+<input type="hidden" name="mod" value="forum" />
+<input type="text" name="srchtxt" id="srchtxt" class="z" autocomplete="off" onblur="if (value ==''){value='请输入搜索内容'}" onfocus="if (value =='请输入搜索内容'){value =''}" value="请输入搜索内容" />
+<button id="search_submit" name="searchsubmit" type="submit" value="true">搜索</button>
+</form>
+</div>
+<div id="scbar_hot" class="cl">
+</div>
+</div>
+<div class="wp comiis_nv_pop">
+<div id="mu" class="cl">
+</div><div class="a_mu"><a href="https://sourl.cn/ptULfB" target="_blank" style="font-size: 40px"><font color="#0000FF"><b><span style="color: rgb(200, 0, 0); font-family: &quot;lucida Grande&quot;, Verdana, &quot;Microsoft YaHei&quot;; font-size: 24px; white-space: normal;">外卖红包天天领，拼手气开惊喜红包</span></b></font></a></div></div>
+</div>
+<script src="template/comiis_mi/img/comiis_nv.js" type="text/javascript" type="text/javascript"></script>
+<div id="wp" class="wp">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=878" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=878" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+<script type="text/javascript">var fid = parseInt('44'), tid = parseInt('878');</script>
+
+
+<script src="data/cache/forum_viewthread.js?wcn" type="text/javascript"></script>
+
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+
+<style id="diy_style" type="text/css"></style>
+
+<!--[diy=diynavtop]--><div id="diynavtop" class="area"></div><!--[/diy]-->
+
+
+<div id="pt" class="bm cl">
+
+<div class="z">
+
+<a href="./" class="nvhm" title="首页">油猴中文网</a><em>&raquo;</em><a href="https://bbs.tampermonkey.net.cn/forum.php">论坛</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum.php?gid=39">资源共享</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/forum-44-2.html">原创资源</a> <em>&rsaquo;</em> <a href="https://bbs.tampermonkey.net.cn/thread-878-1-1.html">[油猴脚本开发指南]Promise基础解释</a>
+
+</div>
+
+</div>
+
+
+
+<div class="wp">
+
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="wp a_t"><table cellpadding="0" cellspacing="1"><tr><td width="33%"><a href="https://docs.scriptcat.org/" target="_blank" ><font color="#0099FF"><b>ScriptCat，新一代的脚本管理器</b></font></a></td><td width="33%"><a href="https://scriptcat.org/search" target="_blank" ><font color="#3399FF"><b><span style="white-space: pre;">脚本站，与全世界分享你的用户脚本</span></b></font></a></td><td width="33%"><a href="https://sourl.cn/KJMya6" target="_blank" ><font color="#CC00CC"><b>油猴脚本开发指南教程目录</b></font></a></td></tr>
+</table></div><div id="pgt" class="pgs mbm cl">
+
+<div class="pgt"></div>
+
+<span class="y pgb"><a href="https://bbs.tampermonkey.net.cn/forum-44-2.html">返回列表</a></span>
+
+<a id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=44')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+</div>
+
+
+<div class="wp">
+
+<!--[diy=diy1s]--><div id="diy1s" class="area"></div><!--[/diy]-->
+
+</div>
+
+<div class="boardnav">
+
+
+<div id="ct" class="wp cl comiis_rollzbox">
+
+
+
+<div id="postlist" class="pl bm esgky comiis_x0">
+
+
+<div class="bm_h comiis_snvbt">
+
+
+<span class="z">
+
+				
+
+</span>
+
+<h2 class="z">
+
+
+<span id="thread_subject">[油猴脚本开发指南]Promise基础解释</span>
+
+</h2>
+
+<span class="z kmfz">
+
+
+<a href="https://bbs.tampermonkey.net.cn/thread-878-1-1.html" onclick="return copyThreadUrl(this, '油猴中文网')"  class="kmcopy">[复制链接]</a>
+
+
+</span>
+
+
+<span class="y comiis_hfs"><strong>3</strong><br>回复</span>
+
+<span class="y comiis_cks"><strong>223</strong><br>查看</span>
+
+<span class="y comiis_sxy">
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;action=printable&amp;tid=878" title="打印" target="_blank"><img src="template/comiis_mi/img/print.png" alt="打印" class="vm" /></a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextoldset&amp;tid=878" title="上一主题"><img src="template/comiis_mi/img/thread-prev.png" alt="上一主题" class="vm" /></a>
+
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=nextnewset&amp;tid=878" title="下一主题"><img src="template/comiis_mi/img/thread-next.png" alt="下一主题" class="vm" /></a>
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="post_5113"  class="comiis_vrx"><table id="pid5113" class="plhin" summary="pid5113" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar5113" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo5113" style="display:none;">
+<div class="m z">
+<div id="userinfo5113_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo5113')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=52d17950&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=5113&amp;tid=878" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/thread-878-1-1.html"   id="postnum5113" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km1">
+楼主</a>
+</strong>
+<div id="fj" class="y">
+<label class="z">电梯直达</label>
+<input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&ptid=878&authorid=0&postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层" />
+<a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="template/comiis_mi/img/fj_btn.png" alt="跳转到指定楼层" class="vm" /></a>
+</div>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton5113">
+发表于
+					
+2021-8-22 00:20:21</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+<span class="pipe">|</span>&nbsp;<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;from=album" target="_blank">只看大图</a>
+<span class="none"><img src="template/comiis_mi/img/arw_r.gif" class="vm" alt="回帖奖励" /></span>
+<span class="pipe show">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;extra=page%3D2&amp;ordertype=1"  class="show">倒序浏览</a>
+<span class="pipe show">|</span>&nbsp;<a href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 5113);" class="show">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_5113">
+<textarea style="display:none;" class="markdownContent vditor-reset" cols="30" rows="10"># Promise
+
+Promise代表了未来发生的事件，相当于我与你签订了一个协议，我们现在协议没有办法完成，而在未来的某个时间点，这个协议会由执行中变为履行或者未履行
+
+```js
+var myPromise = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        resolve("成功!"); //代码正常执行！
+    }, 5000);
+});
+```
+
+![图片.png](data/attachment/forum/202108/21/235037p6tn4m44h4rmvvj6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+我们创建promise的时候是在New Promise的过程中传入一个函数，promise会调用这个函数，并且传给我们两个参数
+
+resolve以及reject，如果你这个函数最后执行成功了，调用resolve并且传入数据，promise将会变得履行，如果调用reject，则是表示失败了
+
+在代码中可以看到，当履行的过程中会显示pending，而当履行完毕后会显示fulfilled(履行完毕)
+
+但是在这时候我们是拿不到promise的值的，我们该怎么样才能拿到呢？即对promise后添加一个then函数，当promise变为完毕的状态后即会自动调用我们的then函数并且传入数据。
+
+![图片.png](data/attachment/forum/202108/21/235542bhhlv1hvm3vxfhw1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+当上部分函数调用了resolve后，将会调用挂载到promise上的then函数，并传入参数
+
+这里我通过console.log(data)输出了我们获取到的内容，那大家可能会疑惑，为什么我又return了一个data+'11111'
+
+因为new Promise产生的是一个promise对象，而我们对这个对象挂了then后，then也会返回一个promise对象，这样方便我们对数据进行一层一层的处理或者包装。
+
+![图片.png](data/attachment/forum/202108/22/000019k15lh3553ex11x5h.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+我们挂载了两层then
+
+第一层then获取到了promise的数据，然后对其进行输出并处理，返回了data+‘11111’交给了第二个then，第二个then是我们最终处理的数据的函数
+
+我们直接输出内容+我处理完数据了，这个promise就宣布完成啦！
+
+需要注意的是第二个then也会返回一个promise，由于我们没有给他返回值，所以是履行状态，返回的值value是一个undefined
+
+为什么then返回的promise是fulfilled，难道他也有执行状态(pending)？？？？
+
+猜对了！在then函数中我们也可以返回一个promise
+
+如果返回普通内容，普通内容将会变成then返回的这个promise的value值
+
+如果返回一个promise，那then返回的promise将直接变成我们返回的promise
+
+```js
+new Promise(function(resolve, reject){
+    setTimeout(function(){
+        resolve("周杰伦"); //代码正常执行！
+    }, 5000);
+}).then(
+function(data){
+    console.log('我是then，我获取了数据，进行处理'+data)
+    return new Promise(function(resolve, reject){
+    setTimeout(function(){
+        resolve("东泥打目"); //代码正常执行！
+    }, 000);
+})
+}
+).then(function (data2){
+   console.log('then获取了数据，并进行处理，然后获取了新的数据丢给我'+data2)
+})
+```
+
+![图片.png](data/attachment/forum/202108/22/001039s8r4w47q4z3l76bm.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+我们可以看到，在第一个then中我们创建了一个promise并且返回，当这个promise结束后，会调用第二个then，并传入数据。
+
+那这里promise的大概概念大家已经理解了
+
+那还有最后一个问题，如果我们的promise没有完成怎么办？
+
+我们就需要调用reject表示未履行
+
+```js
+var p=new Promise(function(resolve, reject){
+    setTimeout(function(){
+        resolve("周杰伦"); //代码正常执行！
+    }, 5000);
+})
+var then1=p.then(
+function(data){
+    console.log('我是then，我获取了数据，进行处理'+data)
+    return new Promise(function(resolve, reject){
+    setTimeout(function(){
+        reject("东泥打目被抓了"); //代码正常执行！
+    }, 000);
+})
+}
+)
+var then2=then1.then(function (data2){
+   console.log('then获取了数据，并进行处理，然后获取了新的数据丢给我'+data2)
+})
+var then2cath=then2.catch((err) => console.log('捕获到了异常', err));
+console.log(p,then1,then2,then2cath)
+```
+
+如果我们对promise挂载一个catch，当出现未履行的情况就会直接调用catch
+
+![图片.png](data/attachment/forum/202108/22/001659zf6dkg9kcfaekmf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300 "图片.png")
+
+这里我们可以看到，当我们在then1里没找到东泥打木，我们调用了reject，reject会传给then2，而then2因为then1的reject也无法履行，继续往下传递，这时候发现了then2身上挂载这一个catch，当发生reject的时候就会调用catch，所以会调用到then2的catch函数，也就是说catch捕获了异常，在reject的过程中会使then的状态传递的，直至遇见catch或完成，最后输出的一个promise是fufilled，因为他是捕获异常，我们再这里并没有搞出来新的异常，所以catch这个promise是完成任务的！
+
+附注
+
+我们还可以添加一个finally，finally的函数不管成功还是失败最后一定会调用finally内的函数
+
+# 结语
+
+由于promise的概念对于初学者来说相对复杂，如果有问题可以在论坛提问，我也是第一次讲这么复杂的概念，但是一旦你理解之后promise就会变得非常简单，由于本基础教程是电子文档，所以可以随着大家的意见不断改正~
+</textarea></textarea></td></tr></table>
+<div class="pattl">
+</div>
+		
+</div>
+<div id="comment_5113" class="cm">
+</div>
+<dl id="ratelog_5113" class="rate">
+<dd style="margin:0">
+<div id="post_rate_5113"></div>
+<table class="ratl">
+<tr>
+<th class="xw1" width="180"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=878&amp;pid=5113" onclick="showWindow('viewratings', this.href)" title="查看全部评分">已有1人评分</a></th><th class="xw1" width="80">好评</th>
+<th class="xw1" width="80">油猫币</th>
+<th class="xw1" width="80">贡献</th>
+<th class="xw1">
+<i class="txt_h">理由</i>
+</th>
+</tr>
+<tbody class="ratl_l"><tr id="rate_5113_722">
+<td>
+<a href="https://bbs.tampermonkey.net.cn/space-uid-722.html" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=722&size=small" /></a> <a href="https://bbs.tampermonkey.net.cn/space-uid-722.html" target="_blank" class="xg1">陈公子的话</a>
+</td><td class="xg1"> + 1</td>
+<td class="xg1"> + 1</td>
+<td class="xg1"> + 1</td>
+<td class="xg1">ggnb!</td>
+</tr>
+</tbody>
+</table>
+<p class="ratc xg1">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=878&amp;pid=5113" onclick="showWindow('viewratings', this.href)" title="查看全部评分" class="xi1 y">查看全部评分</a>
+总评分：好评 <span class="xi1">+1</span>&nbsp;
+油猫币 <span class="xi1">+1</span>&nbsp;
+贡献 <span class="xi1">+1</span>&nbsp;
+</p>
+</dd>
+</dl>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div id="p_btn" class="mtw mbm hm cl">
+<div class="tshare cl">
+<b>分享到:&nbsp;</b>
+
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=4&thread_id=878" id="k_share_to_qq" title="QQ好友和群" target="_blank"><i><img src="template/comiis_mi/img/qq_share.png" alt="QQ好友和群" />QQ好友和群</i></a>
+</div>
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=878&amp;formhash=52d17950" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖"><i><img src="template/comiis_mi/img/fav.gif" alt="收藏" />收藏<span id="favoritenumber" style="display:none">0</span></i></a>
+<a class="followp" href="home.php?mod=spacecp&amp;ac=follow&amp;op=relay&amp;tid=878&amp;from=forum" onclick="showWindow('relaythread', this.href, 'get', 0);" title="转播求扩散"><i><img src="template/comiis_mi/img/rt.png" alt="转播" />转播</i></a>
+<a class="sharep" href="home.php?mod=spacecp&amp;ac=share&amp;type=thread&amp;id=878" onclick="showWindow('sharethread', this.href, 'get', 0);" title="分享推精华"><i><img src="template/comiis_mi/img/oshr.png" alt="分享" />分享</i></a>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=collection&amp;action=edit&amp;op=addthread&amp;tid=878" id="k_collect" onclick="showWindow(this.id, this.href);return false;" onmouseover="this.title = $('collectionnumber').innerHTML + ' 人淘帖'" title="淘好帖进专辑"><i><img src="template/comiis_mi/img/collection.png" alt="分享" />淘帖<span id="collectionnumber" style="display:none">0</span></i></a>
+</div>
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition5113"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;reppost=5113&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_5113" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport5113', 'misc.php?mod=report&rtype=post&rid=5113&tid=878&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_5113_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=stick&amp;idtype=tid&amp;id=878" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/stick.small.gif" />置顶卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=close&amp;idtype=tid&amp;id=878" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/close.small.gif" />沉默卡</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=5113:878" id="a_namepost_5113" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_5113')</script>
+</div>
+</div>
+</td>
+</tr>
+</table><div class="a_p"><div style="width: 1200px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><script type="text/javascript" reload="1">
+aimgcount[5113] = ['1070','1069','1068','1067','1066'];
+attachimggroup(5113);
+var aimgfid = 0;
+</script>
+</div>
+
+
+<div id="post_5115"  class="comiis_vrx"><table id="pid5115" class="plhin" summary="pid5115" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar5115" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo5115" style="display:none;">
+<div class="m z">
+<div id="userinfo5115_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-817.html" target="_blank" class="xi2">陈孤岛</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=817&do=profile" target="_blank" class="xi2">103</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=817&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo5115')"><a href="https://bbs.tampermonkey.net.cn/space-uid-817.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=817&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-817.html" target="_blank" >陈孤岛</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=817&do=thread&type=thread&view=me&from=space" class="xi2">30</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=817&do=thread&type=reply&view=me&from=space" class="xi2">142</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=817&do=profile" class="xi2">103</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=3" target="_blank">版主</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 7" /><img src="template/comiis_mi/img/star_level2.gif" alt="Rank: 7" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 7" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=817&do=profile" target="_blank" class="xi2">103</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_5115_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_5115_7" src="static/image/common/medal7.gif" alt="突出贡献" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_7_menu', 'pos':'12!'})" /><img id="md_5115_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_5115_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=52d17950&amp;fuid=817" id="followmod_817" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_817&amp;touid=817&amp;pmid=0&amp;daterange=2&amp;pid=5115&amp;tid=878" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=878&pid=5115"   id="postnum5115" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km2">
+沙发</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton5115">
+发表于
+					
+2021-8-22 00:27:56</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;page=1&amp;authorid=817" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_5115">
+<a href="https://www.runoob.com/js/js-promise.html" target="_blank">https://www.runoob.com/js/js-promise.html</a>可以与菜鸟教程配和食用！</textarea></td></tr></table>
+		
+</div>
+<div id="comment_5115" class="cm">
+</div>
+<dl id="ratelog_5115" class="rate">
+<dd style="margin:0">
+<div id="post_rate_5115"></div>
+<table class="ratl">
+<tr>
+<th class="xw1" width="180"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=878&amp;pid=5115" onclick="showWindow('viewratings', this.href)" title="查看全部评分">已有1人评分</a></th><th class="xw1" width="80">好评</th>
+<th class="xw1">
+<i class="txt_h">理由</i>
+</th>
+</tr>
+<tbody class="ratl_l"><tr id="rate_5115_2">
+<td>
+<a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=small" /></a> <a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xg1">李恒道</a>
+</td><td class="xg1"> + 1</td>
+<td class="xg1">ggnb!</td>
+</tr>
+</tbody>
+</table>
+<p class="ratc xg1">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=878&amp;pid=5115" onclick="showWindow('viewratings', this.href)" title="查看全部评分" class="xi1 y">查看全部评分</a>
+总评分：好评 <span class="xi1">+1</span>&nbsp;
+</p>
+</dd>
+</dl>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">一叶叶，一声声，空阶滴到明。</div>
+</td>
+</tr>
+<tr id="_postposition5115"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;repquote=5115&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_5115" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport5115', 'misc.php?mod=report&rtype=post&rid=5115&tid=878&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_5115_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=5115:878" id="a_namepost_5115" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_5115')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_5133"  class="comiis_vrx"><table id="pid5133" class="plhin" summary="pid5133" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar5133" class="pls favatar">
+ <div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo5133" style="display:none;">
+<div class="m z">
+<div id="userinfo5133_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-227.html" target="_blank" class="xi2">Ne-21</a></strong>
+<em>当前在线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=227&do=profile" target="_blank" class="xi2">666</a></dd>
+</dl>
+test<div class="imicn">
+<a href="https://gocos.cn" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=227&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo5133')"><a href="https://bbs.tampermonkey.net.cn/space-uid-227.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=227&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-227.html" target="_blank" >Ne-21</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=227&do=thread&type=thread&view=me&from=space" class="xi2">8</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=227&do=thread&type=reply&view=me&from=space" class="xi2">168</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=227&do=profile" class="xi2">666</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=13" target="_blank">高级会员</a></em></p>
+
+
+<p><span id="g_up5133" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});"><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 4" /></span></p>
+<div id="g_up5133_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">高级会员, 积分 666, 距离下一级还需 334 积分</div></div>
+
+
+<p><span class="pbg2"  id="upgradeprogress_5133" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!', 'menuid':'g_up5133_menu'});"><span class="pbr2" style="width:33%;"></span></span></p>
+<div id="g_up5133_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c">高级会员, 积分 666, 距离下一级还需 334 积分</div></div>
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=227&do=profile" target="_blank" class="xi2">666</a></dd>
+</dl>
+<p class="md_ctrl"><a href="https://bbs.tampermonkey.net.cn/home.php?mod=medal"><img id="md_5133_12" src="static/image/common/mmbjn.png" alt="猫咪币纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_12_menu', 'pos':'12!'})" /><img id="md_5133_2" src="static/image/common/medal48.gif" alt="活跃会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_2_menu', 'pos':'12!'})" /><img id="md_5133_11" src="static/image/common/sxd.gif" alt="三好学生" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_11_menu', 'pos':'12!'})" /><img id="md_5133_3" src="static/image/common/xrqxz.gif" alt="热心会员" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_3_menu', 'pos':'12!'})" /><img id="md_5133_13" src="static/image/common/zq.gif" alt="中秋纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_13_menu', 'pos':'12!'})" /><img id="md_5133_14" src="static/image/common/gq.gif" alt="国庆纪念章" title="" onmouseover="showMenu({'ctrlid':this.id, 'menuid':'md_14_menu', 'pos':'12!'})" /></a></p>
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=52d17950&amp;fuid=227" id="followmod_227" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_227&amp;touid=227&amp;pmid=0&amp;daterange=2&amp;pid=5133&amp;tid=878" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=878&pid=5133"   id="postnum5133" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km3">
+板凳</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton5133">
+发表于
+					
+2021-8-22 09:06:58</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;page=1&amp;authorid=227" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_5133">
+学会了，哥哥讲的太好了</textarea></td></tr></table>
+		
+</div>
+<div id="comment_5133" class="cm">
+</div>
+<div id="post_rate_div_5133"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;"><font color="Red">歪</font><font color="SandyBrown">比</font><font color="YellowGreen">巴</font><font color="DeepSkyBlue">布[</div>
+</td>
+</tr>
+<tr id="_postposition5133"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;repquote=5133&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_5133" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport5133', 'misc.php?mod=report&rtype=post&rid=5133&tid=878&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_5133_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=5133:878" id="a_namepost_5133" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_5133')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="post_5153"  class="comiis_vrx"><table id="pid5153" class="plhin" summary="pid5153" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar5153" class="pls favatar">
+ <a name="lastpost"></a><div class="p_pop blk bui comiis_vuimg card_gender_0" id="userinfo5153" style="display:none;">
+<div class="m z">
+<div id="userinfo5153_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" class="xi2">李恒道</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+test<div class="imicn">
+<a href="http://wpa.qq.com/msgrd?V=3&amp;uin=4548212&amp;Site=油猴中文网&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="template/comiis_mi/img/qq.gif" alt="QQ" /></a><a href="http://" target="_blank" title="查看个人网站"><img src="template/comiis_mi/img/forumlink.gif" alt="查看个人网站" /></a><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&amp;uid=2&amp;do=profile" target="_blank" title="查看详细资料"><img src="template/comiis_mi/img/userinfo.gif" alt="查看详细资料" /></a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar" onmouseover="showauthor(this, 'userinfo5153')"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" class="avtm" target="_blank"><img src="https://bbs.tampermonkey.net.cn/uc_server/avatar.php?uid=2&size=middle" /></a></div>
+<div class="pi">
+<div class="authi"><a href="https://bbs.tampermonkey.net.cn/space-uid-2.html" target="_blank" >李恒道</a> 
+</div>
+</div>
+</div>
+<div class="tns xg2"><table cellspacing="0" cellpadding="0"><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=thread&view=me&from=space" class="xi2">160</a></p>主题</th><th><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=thread&type=reply&view=me&from=space" class="xi2">1111</a></p>帖子</th><td><p><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" class="xi2">620</a></p>积分</td></table></div>
+
+<p><em><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p>
+
+
+<p><span><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level3.gif" alt="Rank: 9" /><img src="template/comiis_mi/img/star_level1.gif" alt="Rank: 9" /></span></p>
+
+
+
+<dl class="pil cl">
+	<dt>积分</dt><dd><a href="https://bbs.tampermonkey.net.cn/home.php?mod=space&uid=2&do=profile" target="_blank" class="xi2">620</a></dd>
+</dl>
+
+<ul class="comiis_o cl">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=follow&amp;op=add&amp;hash=52d17950&amp;fuid=2" id="followmod_2" title="收听TA" onclick="showWindow('followmod', this.href, 'get', 0);" class="kmstt">收听TA</a></li>
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=pm&amp;op=showmsg&amp;handlekey=showmsg_2&amp;touid=2&amp;pmid=0&amp;daterange=2&amp;pid=5153&amp;tid=878" onclick="showWindow('sendpm', this.href);" title="发消息" class="kmfxx">发消息</a></li>
+</ul>
+</div>
+</td>
+
+
+
+
+<td class="plc">
+<div class="pi">
+<strong>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&goto=findpost&ptid=878&pid=5153"   id="postnum5153" onclick="setCopy(this.href, '帖子地址复制成功');return false;" class="km4">
+地板</a>
+</strong>
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<em id="authorposton5153">
+发表于
+					
+2021-8-22 15:37:28</em>
+<span class="pipe">|</span>
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&amp;tid=878&amp;page=1&amp;authorid=2" rel="nofollow">只看该作者</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_5153">
+<div class="quote"><blockquote><font size="2"><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=redirect&amp;goto=findpost&amp;pid=5133&amp;ptid=878" target="_blank"><font color="#999999">Ne-21 发表于 2021-8-22 09:06</font></a></font><br />
+学会了，哥哥讲的太好了</blockquote></div><br />
+呜呜呜，谢谢哥哥</textarea></td></tr></table>
+		
+</div>
+<div id="comment_5153" class="cm">
+</div>
+<div id="post_rate_div_5153"></div>
+</div></div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="sign" style="max-height:100px;maxHeightIE:100px;">混的人。</div>
+</td>
+</tr>
+<tr id="_postposition5153"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;repquote=5153&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a href="javascript:;" id="mgc_post_5153" onmouseover="showMenu(this.id)" class="showmenu">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport5153', 'misc.php?mod=report&rtype=post&rid=5153&tid=878&fid=44', 'get', -1);return false;">举报</a>
+</p>
+<ul id="mgc_post_5153_menu" class="p_pop mgcmn" style="display: none;" disautofocus="disautofocus">
+<li><a href="https://bbs.tampermonkey.net.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=5153:878" id="a_namepost_5153" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />照妖镜</a></li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_5153')</script>
+</div>
+</div>
+</td>
+</tr>
+</table></div>
+
+
+<div id="postlistreply" class="pl comiis_postlistreply"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+
+
+</div>
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+
+<input type="hidden" name="formhash" value="52d17950" />
+
+<input type="hidden" name="optgroup" />
+
+<input type="hidden" name="operation" />
+
+<input type="hidden" name="listextra" value="page%3D2" />
+
+<input type="hidden" name="page" value="1" />
+
+</form>
+
+
+<div class="pgbtn"><a href="https://bbs.tampermonkey.net.cn/thread-878-2-1.html" hidefocus="true" class="bm_h">下一页 &raquo;</a></div>
+
+
+<div class="pgs mtm mbm cl">
+
+
+<span class="pgb y"><a href="https://bbs.tampermonkey.net.cn/forum-44-2.html">返回列表</a></span>
+
+
+<a id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=44')" href="javascript:;" title="发新帖"><img src="template/comiis_mi/img/pn_post.png" alt="发新帖" /></a>
+
+
+</div>
+
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+
+
+<div class="bm_h kmtx">
+
+<h2>发表回复</h2>
+
+</div>
+
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('5000000');
+var disablepostctrl = parseInt('0');
+</script>
+<div id="f_pst" class="pl bm bmw" style="margin-top:0;">
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;extra=page%3D2&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls">
+<div class="avatar avtm nologin"><img src="template/comiis_mi/img/comiis_nologin.jpg"></div>
+</td>
+<td class="plc">
+<span id="fastpostreturn"></span>
+<div class="cl">
+<div id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?wcn" type="text/javascript"></script>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<a id="fastpostimg" href="javascript:;" title="图片" class="fmg">Image</a>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=register" class="xi2">立即注册</a>
+
+
+<a href="https://bbs.tampermonkey.net.cn/connect.php?mod=login&op=init&referer=forum.php%3Fmod%3Dviewthread%26tid%3D878%26extra%3Dpage%253D2%26page%3D1&statfrom=login" target="_top" rel="nofollow"><img src="template/comiis_mi/img/qq_login.gif" class="vm" /></a>
+
+
+<div class="y" style="margin: 0 4px; padding-right: 10px">
+    <a style="background:#fff;height:20px;padding: 2px;border-radius:5px;line-height:20px;border:1px solid #9c9c9c;display: block;text-decoration: none;cursor: pointer;"
+       href="https://github.com/login/oauth/authorize?client_id=f81ae3bb2ed1322e822e&amp;redirect_uri=https://bbs.tampermonkey.net.cn/plugin.php?id=codfrm_oauth2:bind%26p=github%26op=redirect%26referer=%252Fthread-878-1-2.html&amp;response_type=code&amp;scope=read:user,user:email">
+        <img style="height: 100%;" src="https://bbs.tampermonkey.net.cn/source/plugin/codfrm_oauth2/image/github.png"/>
+        <span style="color:#000;float: right">使用 GitHub 登录</span>
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+<input type="hidden" name="formhash" value="52d17950" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<a href="https://bbs.tampermonkey.net.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=44" class="y" target="_blank">本版积分规则</a>
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5"><strong>发表回复</strong></button>
+<label class="lb"><input type="checkbox" name="adddynamic" class="pc" value="1" />回帖并转播</label>
+<label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc" />回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script src="source/plugin/zhanmishu_markdown/template/editor/method.min.js?20210702" type="text/javascript"></script>
+<script>
+function dgetByClass(name) {
+    if (document.getElementsByClassName) {
+        return document.getElementsByClassName(name);
+    }
+    var allItems = document.getElementsByTagName("#postlist textarea");
+    var newArr = [];
+    for (var i = 0; i < allItems.length; i++) {
+        var classNames = allItems[i].className;
+        var arrClass = classNames.split(" ");
+        for (var j = 0; j < arrClass.length; j++) {
+            if (arrClass[j] == name) {
+                newArr.push(allItems[i]);
+            }
+        }
+    }
+    return newArr;
+}
+
+var markdownContent = dgetByClass('markdownContent');
+var zmsTempDiv
+for (let i = 0; i < markdownContent.length; i++) {
+    console.log(markdownContent[i], markdownContent[i].textContent, 'arkdownContent[i]')
+
+    // markdownContent[i].style.display = 'block';
+    zmsTempDiv = document.createElement('div');
+    zmsTempDiv.id = 'vditor-id-' + i;
+    zmsTempDiv.className = 'vditor-reset';
+    markdownContent[i].parentNode.appendChild(zmsTempDiv);
+
+    Vditor.preview(document.getElementById(zmsTempDiv.id), markdownContent[i].textContent, {
+      speech: {
+        enable: true,
+      },
+      math: {
+        inlineDigit: true,
+        macros:{
+              actuarialangle: ['{\mkern1mu\overline\{#1\,\}\kern-3mu\lower-1mu\small|}',1],
+              angl: ['{\actuarialangle\{#1\mkern1mu\}}',1],
+              angln: '{\angl n}',
+              anglk: '{\angl k}',
+              anglr: '{\angl r}',
+              term: ['{\overset\{1\}\{#1\}:\angl\{#2\}}',2],
+              termxn: '{\term\{x\}\{n\}}',
+              pureendow: ['{#1:\overset\{1\}\{\angl\{#2\}\}}',2],
+              pureendowxn: '{\pureendow\{x\}\{n\}}',
+              endow: ['{#1:\angl\{#2\}}',2],
+              endowxn: '{\endow\{x\}\{n\}}',
+              joint: ['{\overline\{#1\}}',1],
+              actsymb: ['{\sideset\{_\{#1\mkern3mu\}^\{#2\mkern3mu\}\}\{^\{#4\}_\{#5\}}\{#3\}}',5],
+              Ax: ['{\actsymb\{#1\}\{#2\}\{A\}\{#3\}\{#4\}}',4],
+              Axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{A\}\}\{#3\}\{#4\}}',4],
+              Axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{A\}\}\{#3\}\{#4\}}',4],
+              ax: ['{\actsymb\{#1\}\{#2\}\{a\}\{#3\}\{#4\}}',4],
+              axz: ['{\actsymb\{#1\}\{#2\}\{\bar\{a\}\}\{#3\}\{#4\}}',4],
+              axzz: ['{\actsymb\{#1\}\{#2\}\{\ddot\{a\}\}\{#3\}\{#4\}}',4],
+              Ex: ['{\actsymb\{#1\}\{\}\{E\}\{\}\{#2\}}',2],
+              px: ['{\actsymb\{#1\}\{\}\{p\}\{\}\{#2\}}',2],
+              qx: ['{\actsymb\{#1\}\{\}\{q\}\{\}\{#2\}}',2],
+              sx: ['{\actsymb\{\}\{\}\{s\}\{\}\{#1\}}',1],
+              sxz: ['{\actsymb\{\}\{\}\{\bar\{s\}\}\{\}\{#1\}}',1],
+              sxzz: ['{\actsymb\{\}\{\}\{\ddot\{s\}\}\{\}\{#1\}}',1],
+              Vx: ['{\actsymb\{#1\}\{\}\{V\}\{\}\{#2\}}',2],
+            },
+          engine: 'MathJax'
+        },
+      anchor: 0,
+        show: true,
+        hljs:{
+          style:'rrt'
+        },
+    })
+
+    // document.getElementById(zmsTempDiv.id).innerHTML = markdownContent[i].value;
+}
+</script>
+
+<div id="md_12_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>猫咪币纪念章</h4>
+
+<p>纪念过去的猫咪币</p>
+
+</div>
+
+</div>
+
+<div id="md_7_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>突出贡献</h4>
+
+<p>长期对论坛的繁荣而不断努力，或多次提出建设性意见</p>
+
+</div>
+
+</div>
+
+<div id="md_3_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>热心会员</h4>
+
+<p>经常帮助其他会员答疑</p>
+
+</div>
+
+</div>
+
+<div id="md_2_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>活跃会员</h4>
+
+<p>经常参与各类话题的讨论，发帖内容较有主见</p>
+
+</div>
+
+</div>
+
+<div id="md_11_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>三好学生</h4>
+
+<p>在论坛经常提问题，或者经常通过教程学习完成相关作业</p>
+
+</div>
+
+</div>
+
+<div id="md_13_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>中秋纪念章</h4>
+
+<p>中秋佳节纪念勋章</p>
+
+</div>
+
+</div>
+
+<div id="md_14_menu" class="tip tip_4" style="display: none;">
+
+<div class="tip_horn"></div>
+
+<div class="tip_c">
+
+<h4>国庆纪念章</h4>
+
+<p>纪念勋章</p>
+
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+new lazyload();
+
+</script>
+
+
+<script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 0, 'forum.php?mod=viewthread&tid=878', 1);}</script>
+
+
+</div></div>
+
+
+<div class="wp mtn">
+
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+
+</div>
+
+
+<script type="text/javascript">
+
+
+function succeedhandle_followmod(url, msg, values) {
+
+var fObj = $('followmod_'+values['fuid']);
+
+if(values['type'] == 'add') {
+
+fObj.innerHTML = '不收听';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+
+} else if(values['type'] == 'del') {
+
+fObj.innerHTML = '收听TA';
+
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=52d17950&fuid='+values['fuid'];
+
+}
+
+}
+
+
+fixed_avatar([5113,5115,5133,5153], 1);
+
+
+</script>
+
+<script src="template/comiis_mi/img/jquery.min.js" type="text/javascript" type="text/javascript"></script>
+
+</div>
+<div class="wp a_f"><div style="width: 1200px;height:100px;max-height: 100px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009073269666226"
+     crossorigin="anonymous"></script>
+<!-- 普通广告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:100px"
+     data-ad-client="ca-pub-8009073269666226"
+     data-ad-slot="4897727327"></ins>
+
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+<div style="clear:both;"></div>
+
+<div class="comiis_footer cl">
+
+<div id="ft" class="wp comiis_bottom cl zwihnm">
+
+<div class="comiis_demail">
+
+<p><em>意见反馈</em></p><a href="mailto:root@tampermonkey.net.cn?subject=意见反馈" rel="nofollow">root@tampermonkey.net.cn</a>
+
+</div>
+
+<div id="frt">
+<p><a href="https://bbs.tampermonkey.net.cn/archiver/" >Archiver</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="plugin.php?id=dnr_sitemap" >网站地图</a><span class="pipe">|</span>			
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNEBZVVX8R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZNEBZVVX8R');
+</script>
+  
+</p>
+
+<p>Copyright &copy; 2008-2020 <a href="https://bbs.tampermonkey.net.cn/" rel="nofollow" target="_blank">油猴中文网</a>  版权所有 All Rights Reserved.</p>
+
+</div>
+
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
+
+<script src="home.php?mod=misc&ac=sendmail&rand=1634566864" type="text/javascript"></script>
+<div id="scrolltop">
+<span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=post&amp;action=reply&amp;fid=44&amp;tid=878&amp;extra=page%3D2&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" href="javascript:;"><b>返回顶部</b></a></span>
+<span>
+<a href="https://bbs.tampermonkey.net.cn/forum-44-1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { new_showTopLink(); });checkBlind();</script>
+<script type="text/javascript">
+_attachEvent(document,'click',function(){hidecomiismenu('comiis_sousuo_menu');});
+function hidecomiismenu(id) {
+var menuObj = $(id);
+var menu = $(menuObj.getAttribute('ctrlid'));
+if(ctrlclass = menuObj.getAttribute('ctrlclass')) {
+var reg = new RegExp(' ' + ctrlclass);
+menu.className = menu.className.replace(reg, '');
+}
+menuObj.style.display = 'none';
+}
+function new_showTopLink() {
+var ft = $('ft');
+if(ft){
+var scrolltop = $('scrolltop');
+var viewPortHeight = parseInt(document.documentElement.clientHeight);
+var scrollHeight = parseInt(document.body.getBoundingClientRect().top);
+var basew = parseInt(ft.clientWidth);
+var sw = scrolltop.clientWidth;
+if (basew < 1500) {
+var left = parseInt(fetchOffset(ft)['left']);
+left = left < sw ? left * 2 - sw : left;
+scrolltop.style.left = ( basew + left ) + 'px';
+} else {
+scrolltop.style.left = 'auto';
+scrolltop.style.right = 0;
+}
+if (BROWSER.ie && BROWSER.ie < 7) {
+scrolltop.style.top = viewPortHeight - scrollHeight - 150 + 'px';
+}
+if (scrollHeight < -100) {
+scrolltop.style.visibility = 'visible';
+} else {
+scrolltop.style.visibility = 'hidden';
+}
+}
+}
+if($("myrepeats")){
+$("comiis_key").appendChild($("myrepeats"));
+}
+if($("qmenu_loop")){
+var qmenu_timer, qmenu_scroll_l;
+var qmenu_in = 0;
+var qmenu_width = 246;
+var qmenu_loop = $('qmenu_loop');
+var qmenu_all_width = 41 * $('qmenu_loopul').getElementsByTagName("li").length - qmenu_width;
+if(qmenu_all_width < 20){
+$('qmenu_an').style.display = 'none';
+}
+}
+function qmenu_move(qmenu_lr){
+if(qmenu_in == 0 && ((qmenu_lr == 1 && qmenu_loop.scrollLeft < qmenu_all_width) || (qmenu_lr == 0 && qmenu_loop.scrollLeft > 0))){
+qmenu_in = 1;
+qmenu_scroll_l = qmenu_loop.scrollLeft;
+qmenu_timer = setInterval(function(){
+qmenu_scroll(qmenu_lr);
+}, 10);
+}
+}
+function qmenu_scroll(qmenu_lr){
+if((qmenu_lr == 1 && qmenu_loop.scrollLeft >= qmenu_width + qmenu_scroll_l) || (qmenu_lr == 0 && ((qmenu_loop.scrollLeft <= qmenu_scroll_l - qmenu_width) || qmenu_loop.scrollLeft == 0))){
+clearInterval(qmenu_timer);
+qmenu_in = 0;
+}else{
+if(qmenu_lr == 1){
+qmenu_loop.scrollLeft += Math.round((qmenu_width + qmenu_scroll_l - qmenu_loop.scrollLeft) / 15) + 1;
+}else{
+qmenu_loop.scrollLeft -= Math.round((qmenu_width - (qmenu_scroll_l - qmenu_loop.scrollLeft)) / 15) + 1;
+}
+}
+}
+</script></body>
+</html>

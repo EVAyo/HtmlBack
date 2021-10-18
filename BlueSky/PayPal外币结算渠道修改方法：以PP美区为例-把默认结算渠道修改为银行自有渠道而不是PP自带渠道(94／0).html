@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+<meta name="theme-color" content="#00cbff">
+<meta charset="UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title itemprop="name">PayPal 外币结算渠道 修改方法：以PP美区为例-把默认结算渠道修改为银行自有渠道而不是PP自带渠道 &#8211; 苍穹の下	</title>
+<meta name="description" content="前言目前，能修改的只有自动付款中的默认设置，常规付款需要每次调整为什么需要把结算渠道修改为银行自有渠道？因为PP的换汇汇率黑的无法形容，而且很多卡自带免换汇费【在广发银行中，叫做免除1.2%的外币交易服务费】正文在PP官网操作（APP也可）找到设置中…" />
+<meta name="keywords" content="日记," />
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/favicon.ico" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+<script src="//www.googletagmanager.com/gtag/js?id=UA-163447597-1" type="text/javascript" data-cfasync="false" async></script>
+<script type="text/javascript" data-cfasync="false">
+				var mi_version = '8.0.1';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+				
+								var disableStrs = [
+															'ga-disable-UA-163447597-1',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						if ( document.cookie.indexOf( disableStrs[ index ] + '=true' ) > -1 ) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if ( __gtagTrackerIsOptedOut() ) {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						window[ disableStrs[ index ] ] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						document.cookie = disableStrs[ index ] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[ disableStrs[ index ] ] = true;
+					}
+				}
+
+				if ( 'undefined' === typeof gaOptout ) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.MonsterInsightsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if ( mi_track_user ) {
+					function __gtagDataLayer() {
+						dataLayer.push( arguments );
+					}
+
+					function __gtagTracker( type, name, parameters ) {
+						if ( type === 'event' ) {
+							
+															parameters.send_to = monsterinsights_frontend.ua;
+								__gtagDataLayer.apply( null, arguments );
+													} else {
+							__gtagDataLayer.apply( null, arguments );
+						}
+					}
+					__gtagTracker( 'js', new Date() );
+					__gtagTracker( 'set', {
+						'developer_id.dZGIzZG' : true,
+											} );
+															__gtagTracker( 'config', 'UA-163447597-1', {"forceSSL":"true","link_attribution":"true"} );
+										window.gtag = __gtagTracker;										(
+						function () {
+							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+							/* ga and __gaTracker compatibility shim. */
+							var noopfn = function () {
+								return null;
+							};
+							var newtracker = function () {
+								return new Tracker();
+							};
+							var Tracker = function () {
+								return null;
+							};
+							var p = Tracker.prototype;
+							p.get = noopfn;
+							p.set = noopfn;
+							p.send = function (){
+								var args = Array.prototype.slice.call(arguments);
+								args.unshift( 'send' );
+								__gaTracker.apply(null, args);
+							};
+							var __gaTracker = function () {
+								var len = arguments.length;
+								if ( len === 0 ) {
+									return;
+								}
+								var f = arguments[len - 1];
+								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+									if ( 'send' === arguments[0] ) {
+										var hitConverted, hitObject = false, action;
+										if ( 'event' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[3] ) {
+												hitObject = {
+													'eventAction': arguments[3],
+													'eventCategory': arguments[2],
+													'eventLabel': arguments[4],
+													'value': arguments[5] ? arguments[5] : 1,
+												}
+											}
+										}
+										if ( 'pageview' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[2] ) {
+												hitObject = {
+													'eventAction': 'page_view',
+													'page_path' : arguments[2],
+												}
+											}
+										}
+										if ( typeof arguments[2] === 'object' ) {
+											hitObject = arguments[2];
+										}
+										if ( typeof arguments[5] === 'object' ) {
+											Object.assign( hitObject, arguments[5] );
+										}
+										if ( 'undefined' !== typeof arguments[1].hitType ) {
+											hitObject = arguments[1];
+											if ( 'pageview' === hitObject.hitType ) {
+												hitObject.eventAction = 'page_view';
+											}
+										}
+										if ( hitObject ) {
+											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+											hitConverted = mapArgs( hitObject );
+											__gtagTracker( 'event', action, hitConverted );
+										}
+									}
+									return;
+								}
+
+								function mapArgs( args ) {
+									var arg, hit = {};
+									var gaMap = {
+										'eventCategory': 'event_category',
+										'eventAction': 'event_action',
+										'eventLabel': 'event_label',
+										'eventValue': 'event_value',
+										'nonInteraction': 'non_interaction',
+										'timingCategory': 'event_category',
+										'timingVar': 'name',
+										'timingValue': 'value',
+										'timingLabel': 'event_label',
+										'page' : 'page_path',
+										'location' : 'page_location',
+										'title' : 'page_title',
+									};
+									for ( arg in args ) {
+																				if ( ! ( ! args.hasOwnProperty(arg) || ! gaMap.hasOwnProperty(arg) ) ) {
+											hit[gaMap[arg]] = args[arg];
+										} else {
+											hit[arg] = args[arg];
+										}
+									}
+									return hit;
+								}
+
+								try {
+									f.hitCallback();
+								} catch ( ex ) {
+								}
+							};
+							__gaTracker.create = newtracker;
+							__gaTracker.getByName = newtracker;
+							__gaTracker.getAll = function () {
+								return [];
+							};
+							__gaTracker.remove = noopfn;
+							__gaTracker.loaded = true;
+							window['__gaTracker'] = __gaTracker;
+						}
+					)();
+									} else {
+										console.log( "" );
+					( function () {
+							function __gtagTracker() {
+								return null;
+							}
+							window['__gtagTracker'] = __gtagTracker;
+							window['gtag'] = __gtagTracker;
+					} )();
+									}
+			</script>
+
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.blueskyxn.com/wp-includes/css/dist/block-library/style.min.css?ver=5.8' type='text/css' media='all' />
+<link rel='stylesheet' id='buy-me-a-coffee-css' href='https://www.blueskyxn.com/wp-content/plugins/buymeacoffee/public/css/buy-me-a-coffee-public.css?ver=2.7' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-frontend-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/css/frontend.min.css?ver=3.1.19' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-flatpickr-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.css?ver=3.1.19' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-select2-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.css?ver=5.8' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-icomoon-css' href='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.17' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css' href='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.17' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel='stylesheet' id='saukra_css-css' href='https://www.blueskyxn.com/wp-content/themes/Sakurairo/style.css?ver=2.2.6.1' type='text/css' media='all' />
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/www.blueskyxn.com","hash_tracking":"false","ua":"UA-163447597-1","v4_id":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js?ver=8.0.1' id='monsterinsights-frontend-script-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/buymeacoffee/public/js/buy-me-a-coffee-public.js?ver=2.7' id='buy-me-a-coffee-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.js?ver=5.8' id='ppress-flatpickr-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.js?ver=5.8' id='ppress-select2-js'></script>
+
+<script type='text/javascript' src='https://www.googletagmanager.com/gtag/js?id=UA-163447597-1' id='google_gtagjs-js' async></script>
+<script type='text/javascript' id='google_gtagjs-js-after'>
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["www.blueskyxn.com"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-163447597-1", {"anonymize_ip":true});
+</script>
+
+<link rel="https://api.w.org/" href="https://www.blueskyxn.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.blueskyxn.com/wp-json/wp/v2/posts/4433" /><link rel="canonical" href="https://www.blueskyxn.com/202103/4433.html" />
+<link rel='shortlink' href='https://www.blueskyxn.com/?p=4433' />
+<link rel="alternate" type="application/json+oembed" href="https://www.blueskyxn.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.blueskyxn.com%2F202103%2F4433.html" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.blueskyxn.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.blueskyxn.com%2F202103%2F4433.html&#038;format=xml" />
+<script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="blueskyxn" data-description=" " data-message=" " data-color="#FF813F" data-position=" " data-x_margin=" " data-y_margin=" ">
+        </script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"><meta property="og:image" content="https://imgapi.000714.xyz/skyimg.php?4433" /><meta property="og:title" content='PayPal 外币结算渠道 修改方法：以PP美区为例-把默认结算渠道修改为银行自有渠道而不是PP自带渠道' />
+<meta property="og:description" content='' />
+<meta name="twitter:card" content='summary_large_image' />
+<meta name="twitter:title" content='PayPal 外币结算渠道 修改方法：以PP美区为例-把默认结算渠道修改为银行自有渠道而不是PP自带渠道' />
+<meta name="twitter:description" content='' /><meta name="twitter:image" content="https://imgapi.000714.xyz/skyimg.php?4433" /><meta name="generator" content="Site Kit by Google 1.42.0" />
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', 'https://www.blueskyxn.com/wp-json/wp-statistics/v2/hit?_=1634374943&_wpnonce=ad7ee5971c&wp_statistics_hit_rest=yes&browser=Firefox&platform=Windows&version=10.0&referred=https://www.blueskyxn.com/{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}e6{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}97{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}b6{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}e5{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}85{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}89{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}e3{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}81{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}ae{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}e8{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}bd{7fdc52ecf7edb9c3ed7fc1c51a6fce56fd5c48a3b800b78994c922144b5605c1}b4/&ip=152.67.208.100&exclusion_match=no&exclusion_reason&ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0&track_all=1&timestamp=1634403743&current_page_type=post&current_page_id=4433&search_query&page_uri=/202103/4433.html&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<link rel="modulepreload" href="https://www.blueskyxn.com/wp-content/plugins/wp-cloudflare-page-cache/assets/js/instantpage.min.js"><style>
+.site-top .lower nav {display: block !important;}
+:root{
+    --theme-skin: #00cbff;
+}
+.author-profile i , .post-like a , .post-share .show-share , .sub-text , .we-info a , span.sitename { color: #00cbff }
+.feature i , /*.feature-title span ,*/ .download , .links ul li:before , .ar-time i , span.ar-circle , .object , .comment .comment-reply-link , .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #00cbff }
+.download ,  .link-title  { border-color: #00cbff }
+ .comment h4 a , #comments-navi a.prev , #comments-navi a.next , #archives-temp h3 , span.page-numbers.current , blockquote:before, blockquote:after { color: #00cbff }
+
+#aplayer-float .aplayer-lrc-current { color: #00cbff !important}
+
+.linkdes { border-top: 1px dotted #00cbff !important}
+
+.the-feature.from_left_and_right .info,.the-feature.from_left_and_right .info h3{background: rgba(255,255,255,0.4) ;}
+
+.is-active-link::before, .commentbody:not(:placeholder-shown)~.input-label, .commentbody:focus~.input-label {
+    background-color: #00cbff !important
+}
+.links ul li {
+    border: 1px solid #00cbff;
+}
+.links ul li img {
+    box-shadow: inset 0 0 10px #00cbff;
+}
+.commentbody:focus {
+    border-color: #00cbff !important
+}
+.post-list-thumb i ,
+.float-content i ,
+.post-more i { 
+    color: #00b5f2;
+}
+i.iconfont.js-toggle-search.iconsearch {
+    color: #00cbff;
+}
+.ins-section .fa {
+    color: #00cbff}
+.ins-section .ins-search-item.active .ins-slug,.ins-section .ins-search-item.active .ins-search-preview {
+	color: #00cbff}
+.ins-section .ins-section-header {
+    color: #00cbff;
+    border-bottom: 3px solid #00cbff;
+    border-color: #00cbff;
+}
+.the-feature.from_left_and_right .info h3{
+    color: #00cbff;
+}
+.the-feature.from_left_and_right .info p {
+    color: #00cbff;
+}
+.err-button.back a {
+    border: 1px solid #00cbff;
+    color: #00cbff;
+}
+
+.header-info {
+    color: #00cbff;
+    background: rgba(255,255,255,0.8);
+}
+.top-social img {
+    background: rgba(255,255,255,0.8);
+}
+.skin-menu{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+}
+
+.post-more i:hover , #pagination a:hover , .post-content a:hover , .float-content i:hover , .entry-content a:hover , .site-info a:hover , .comment h4 a:hover , .site-top ul li a:hover , .entry-title a:hover , .sorry li a:hover , .site-title a:hover , i.iconfont.js-toggle-search.iconsearch:hover , .comment-respond input[type='submit']:hover { color: #7a90ff }
+.navigator i:hover { background: #7a90ff }
+.navigator i:hover , .links ul li:hover , #pagination a:hover , .comment-respond input[type='submit']:hover { border-color: #7a90ff }
+.insert-image-tips:hover, .insert-image-tips-hover{ 
+    color: #7a90ff;
+    border: 1px solid #7a90ff}
+.ins-section .ins-search-item:hover .ins-slug,.ins-section .ins-search-item:hover .ins-search-preview,.ins-section .ins-search-item:hover header,.ins-section .ins-search-item:hover .iconfont {
+	color: #7a90ff}
+.sorry li a:hover {
+    color: #7a90ff;
+}
+.header-info p:hover {
+    color: #7a90ff;
+	transition: all .4s;
+}
+.post-tags a:hover {
+    color: #7a90ff}
+.post-share ul li a:hover {
+    color: #7a90ff}
+#pagination a:hover {
+    border: 1px solid #7a90ff;
+    color: #7a90ff}
+.ex-login input.login-button:hover,
+.ex-register input.register-button:hover {
+    background-color: #7a90ff;
+    border-color: #7a90ff;
+}
+.site-top ul li a:after {
+    background-color: #7a90ff}
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+textarea {
+    border: 1px solid #00cbff;
+}
+.post-date {
+    color: #00b5f2}
+.linkdes {
+    color: #00cbff}
+.link-title span.link-fix {
+    border-left:3px solid #00cbff;
+}
+.scrollbar,.butterBar-message {
+    background: #00cbff !important
+}
+h1.cat-title {
+    color: #00cbff}
+.comment .body .comment-at {
+    color: #00cbff}
+.focusinfo .header-tou img {
+    box-shadow: inset 0 0 10px #00cbff;
+}
+.double-bounce1, .double-bounce2 {
+    background-color: #00cbff;
+  }
+.herder-user-name no-logged{
+    color: #00cbff;
+}
+#pagination .loading {
+    background: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #555;
+    border: none;
+    background-size: auto 100%
+}
+#pagination .loading,#bangumi-pagination .loading {
+    background: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #555;
+    border: none;
+    background-size: auto 100%
+}
+#nprogress .spinner-icon {
+    border-top-color: #00cbff;
+    border-left-color: #00cbff;
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px #00cbff, 0 0 5px #00cbff;
+}
+#nprogress .bar {
+    background: #00cbff;
+}
+#gohome {
+    background: #00cbff;
+}
+#archives-temp h2 {
+    color: #00cbff}
+#archives-temp h3 {
+    color: #00cbff}
+#moblieGoTop {
+    color: #00cbff;
+    border-radius: 12px;
+}
+#changskin {
+    color: #00cbff;
+    border-radius: 12px;
+}
+#show-nav .line {
+    background: #00cbff}
+#nprogress .spinner-icon{ 
+    border-top-color: #00cbff; 
+    border-left-color: #00cbff}
+#nprogress .bar {
+    background: #00cbff}
+#aplayer-float .aplayer-lrc-current {
+    color: #00cbff;
+}
+@media (max-width:860px) {
+    .links ul li:hover .sitename {
+        color: #7a90ff    }
+    .openNav .icon {
+     background-color: #00cbff;
+    }
+    .openNav .icon:after,
+    .openNav .icon:before {
+     background-color: #00cbff;
+    }
+    #mo-nav ul li a {
+        color: #00cbff;
+    }
+    #mo-nav ul li a:hover {
+        color: #7a90ff;
+    }
+}
+.herder-user-name {
+	color: #00cbff;
+}
+.header-user-menu a {
+    color: #00cbff;
+}
+.no-logged a {
+    color: #00cbff;
+}
+.single-reward .reward-open {
+    background: #7a90ff;
+    color: #00cbff;
+}
+
+/*白猫样式Logo*/
+
+.logolink a {
+    color: #00cbff;
+}
+
+.art .art-content .al_mon_list .al_post_list>li:after {
+    background: #00cbff;
+}
+@media (min-width:861px) {
+    .hide-live2d {
+        background-color: #00cbff;
+    }
+}
+.art-content #archives .al_mon_list .al_mon:after {
+    background: #00cbff;
+}
+.art-content #archives .al_mon_list:before {
+    background: #00cbff;
+}
+.changeSkin-gear {
+    color: #00cbff;
+}
+.art .art-content .al_mon_list .al_post_list>li:after,
+.art-content #archives .al_mon_list .al_mon:after {
+    background: #00cbff;
+}
+.is-active-link::before {
+    background-color: #00cbff; /*!important*/ /*mark*/
+}
+.motion-switcher-table th:hover {
+    color: #7a90ff;
+}
+.motion-switcher-table .on-hover {
+    color: #7a90ff;
+}
+.menhera-container .emoji-item {
+    color: #00cbff;
+}
+.scrollbar {
+    background: #00cbff;
+}
+.insert-image-tips:hover {
+    color: #7a90ff;
+    border: 1px solid #7a90ff;
+}
+.insert-image-tips-hover {
+    color: #7a90ff;
+    border: 1px solid #7a90ff;
+}
+.the-feature a {
+    color: #00cbff;
+}
+#moblieGoTop:hover,
+#changskin:hover {
+    color: #7a90ff;
+    background-color: #fff;
+    opacity: .8;
+}
+.menu-list li:hover {
+    background-color: #7a90ff;
+}
+.art .art-content #archives a:hover {
+    color: #7a90ff;
+}
+.art .art-content .al_mon_list .al_post_list>li,
+.art-content #archives .al_mon_list .al_mon {
+	color: #00cbff;
+}
+.font-family-controls button.selected{
+    background-color: #00cbff;
+}
+.font-family-controls button:hover{
+    background-color: #7a90ff;
+}
+.art-content #archives .al_mon_list .al_mon,
+.art-content #archives .al_mon_list span {
+    color: #00cbff;
+}
+h1.fes-title,
+h1.main-title {
+    color: #00cbff;
+}
+.font-family-controls button {
+    color: #00cbff;
+    border-radius: 12px;
+}
+
+/*非全局色彩管理*/
+
+:root{
+    --post-list-thumb: #e8e8e8;
+}
+
+.menu-list li {
+    background-color: #e8e8e8;
+    border-radius: 12px;
+}
+.font-family-controls button {
+    background-color: #e8e8e8;
+}
+h1.fes-title,
+h1.main-title {
+    border-bottom: 6px dotted #e8e8e8;
+}
+.post-date {
+    background-color: #fff5e0;
+}
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
+    background: #ffe066;
+}
+.cbp_tmtimeline > li .cbp_tmlabel {
+    background: #ffcc00;
+}
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
+    border-right-color: #ffe066;
+}
+.cbp_tmtimeline > li .cbp_tmlabel:after {
+    border-right-color: #ffcc00;
+}
+
+.center-text{
+color: #9fd8f4 ;
+font-size: 70px;
+}
+.Ubuntu-font,.center-text{
+font-family:  ;
+}
+
+.notice i ,
+.notice {
+    color: #999;
+}
+
+.notice {
+    border: 1px solid #E6E6E6;
+}
+
+.entry-content th {
+    background-color: #00cbff}
+
+
+.post-list-thumb{opacity: 0}
+.post-list-show {opacity: 1}
+
+/*大于1024宽度才会生效*/
+@media (min-width: 1024px){
+    .post-date {
+        background-color: #ff8000 !important;
+        padding: 2px 7px;
+        border-radius: 10px;
+        color: #ffffff !important; 
+        width: max-content;
+        font-size: 10px !important;
+        margin-top: 5%;
+    }
+ 
+    .icon-time::before {
+        content: "e689";
+        color: #ffffff !important;
+        font-size: 10px;
+    }
+ 
+    .post-meta {
+        color: #ffffff !important;
+        font-size: 10px;
+        text-align: center;
+    }
+ 
+    .post-meta span {
+        padding: 3px 6px 3px 6px;
+        border-radius: 7px;
+    }
+ 
+    .post-meta span:nth-child(1) {
+        background-color: #3cdc82;
+    }
+ 
+    .post-meta span:nth-child(2) {
+        background-color: #fed466;
+    }
+ 
+    .post-meta span:nth-child(3) {
+        background-color: #ff4e6a;
+    }
+ 
+    .icon-attention::before {
+        content: "e693";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .icon-mark::before {
+        content: "e6ab";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .icon-file::before {
+        content: "e6ad";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .post-meta span a {
+        color: #ffffff !important;
+    }
+ 
+    .icon-caidan::before {
+        color: #FFC0CB !important;
+    }
+ 
+    .float-content {
+        font-size: 14px;
+        margin-top: 20px;
+        text-align: center;
+    }
+ 
+    .post-list-thumb .post-title h3 {
+        text-align: center;
+    }
+ 
+    .float-content p {
+        margin-top: 25px;
+    }
+ 
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+ 
+    .post-list-thumb::after {
+        content: " ";
+        width: 4px;
+        height: 0px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-color: #FFC0CB;
+        box-shadow: #FFC0CB 0px 0px 6px;
+        border-radius: 10px;
+        transition: all 0.8s ease 0s;
+    }
+ 
+    .post-list-thumb-left::after {
+        right: 0;
+        left: auto;
+    }
+ 
+    .post-list-thumb:hover:after {
+        height: 100%;
+    }
+ 
+    .post-thumb a img {
+        width: 400px !important;
+        height: 250px !important;
+        box-shadow: 1px 1px 30px 2px rgba(216,191,216,.3);
+        border-radius: 20px;
+        border: 1px solid #eee;
+        transition: all 1s !important;
+    }
+ 
+    .post-list-thumb:hover {
+        box-shadow: 0 1px 12px -6px rgba(0,0,0,.5);
+    }
+ 
+    .post-list-thumb:hover img {
+        transform: scale(1.05);
+    }
+ 
+    .post-thumb a {
+        overflow: inherit !important;
+        top: 25px;
+    }
+ 
+    .post-thumb {
+        width: 45%;
+        transform: translateX(70px);
+    }
+ 
+    .post-list-thumb-left .post-thumb {
+        float: left;
+        transform: translateX(-40px);
+    }
+ 
+    .post-content-wrap {
+        transform: translateX(-30px) translateY(16px);
+            padding-right: 0px !important;
+    }
+ 
+    .post-list-thumb-left .post-content-wrap {
+        transform: translateX(30px) translateY(16px);
+        padding-left: 0px !important;
+    }
+}.feature img{ border-radius: 0px; !important; }
+.feature i { border-radius: 0px; !important; }
+.centerbg{background-position: center center;background-attachment: inherit;background-position: center center;background-attachment: inherit;}
+.rotating {
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
+}
+
+/*预加载部分*/
+
+
+/*深色模式*/
+
+/*固定项目*/
+body.dark #main-container,
+body.dark .comments,
+body.dark .site-footer,
+body.dark .wrapper,
+body.dark .post-list-show,
+body.dark .post-list hr,
+body.dark .lower li ul,
+body.dark .header-user-menu,
+body.dark .headertop-bar::after 
+{background:rgba(51,51,51,1) !important;}
+
+body.dark .toc,
+body.dark .search-form input
+{background:rgba(51,51,51,0.8);}
+
+body.dark #mo-nav{
+    background:#333333;
+}
+
+body.dark .single-reward .reward-row,
+body.dark input.m-search-input
+{background:#999999;}
+
+body.dark .ins-section .ins-search-item.active,
+body.dark .ins-section .ins-search-item.active .ins-slug,
+body.dark .ins-section .ins-search-item.active .ins-search-preview,
+body.dark .herder-user-name-u,
+body.dark .herder-user-name,
+body.dark .herder-user-name no-logged,
+body.dark .header-user-menu .user-menu-option
+{color:#fff;background:#333333;}
+
+body.dark .single-reward .reward-row:before
+{border-bottom:13px solid #999999;}
+
+body.dark .search-form--modal,
+body.dark .ins-section .ins-section-header
+{border-bottom:none;background:rgba(51,51,51,0.9) !important;}
+
+body.dark .search_close:after,
+body.dark .search_close:before,
+body.dark .openNav .icon,
+body.dark .openNav .icon:before
+{background-color:#CCCCCC;}
+
+body.dark .centerbg
+{background-blend-mode:hard-light;background-color:#333333;}
+
+body.dark input[type=color]:focus,
+body.dark input[type=date]:focus,
+body.dark input[type=datetime-local]:focus,
+body.dark input[type=datetime]:focus,
+body.dark input[type=email]:focus,
+body.dark input[type=month]:focus,
+body.dark input[type=number]:focus,
+body.dark input[type=password]:focus,
+body.dark input[type=range]:focus,
+body.dark input[type=search]:focus,
+body.dark input[type=tel]:focus,
+body.dark input[type=text]:focus,
+body.dark input[type=time]:focus,
+body.dark input[type=url]:focus,
+body.dark input[type=week]:focus,
+body.dark textarea:focus,
+body.dark .post-date,
+body.dark #mo-nav .m-search form
+{color:#CCCCCC;background-color:#333333;}
+
+body.dark .header-user-menu::before,
+body.dark .lower li ul::before
+{border-color:transparent transparent #333333 transparent;}
+
+body.dark .header-user-menu .user-menu-option,
+body.dark .post-list-thumb a 
+{color:#333333;}
+
+body.dark .entry-content p,
+body.dark .entry-content ul,
+body.dark .entry-content ol,
+body.dark .comments .body p,
+body.dark .float-content,
+body.dark .post-list p,
+body.dark .link-title
+{color:#999999 !important;}
+
+body.dark .entry-title a,
+body.dark .post-list-thumb .post-title,
+body.dark .art-content #archives .al_mon_list .al_mon,
+body.dark .art-content #archives .al_mon_list span,
+body.dark .art .art-content #archives a,
+body.dark .menhera-container .emoji-item,
+body.dark .ex-login-username,
+body.dark .admin-login-check p,
+body.dark .user-login-check p,
+body.dark .ex-logout a,
+body.dark .ex-new-account a
+{color:#999999;}
+
+body.dark .site-top ul li a,
+body.dark .header-user-menu a,
+body.dark #mo-nav ul li a,
+body.dark .site-title a,
+body.dark header.page-header,
+body.dark h1.cat-title,
+body.dark .art .art-content #archives .al_year,
+body.dark .comment-respond input,
+body.dark .comment-respond textarea,
+body.dark .siren-checkbox-label,
+body.dark .aplayer .aplayer-list ol li .aplayer-list-author,
+body.dark,
+body.dark button,
+body.dark input,
+body.dark select,
+body.dark textarea,
+body.dark i.iconfont.js-toggle-search.iconsearch,
+body.dark .info-meta a,
+body.dark .info-meta span,
+body.dark .skin-menu
+{color:#CCCCCC;}
+
+body.dark .post-date,
+body.dark .post-list-thumb a,
+body.dark .post-list-thumb i,
+body.dark .post-meta
+{color:#666666;}
+
+body.dark .post-list-thumb
+{box-shadow:0 1px 35px -8px rgba(26,26,26,0.6);}
+
+body.dark .notice,
+body.dark .notification 
+{color:#CCCCCC;background:#666666;border:none;}
+
+body.dark .author-profile p
+{border-top: 1px solid #3B3B3B;border-bottom: 1px solid #3B3B3B;color: #CCCCCC;}
+
+body.dark .author-profile .meta h3 a,
+body.dark .author-profile i 
+{color: #CCCCCC;}
+
+body.dark h1.page-title
+{border: 1px dashed #3B3B3B;color: #CCCCCC;}
+
+body.dark .entry-header hr
+{background:#3B3B3B;}
+
+body.dark h1.fes-title,
+body.dark h1.main-title
+{border-bottom:6px dotted #666666;color:#CCCCCC;}
+
+body.dark .widget-area .heading,
+body.dark .widget-area .show-hide svg,
+body.dark #aplayer-float,
+body.dark .aplayer.aplayer-fixed .aplayer-body,
+body.dark .aplayer .aplayer-miniswitcher,
+body.dark .aplayer .aplayer-pic
+{color:#CCCCCC;background-color:#262626 !important;}
+
+body.dark #aplayer-float .aplayer-lrc-current
+{color:transparent !important;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-lrc
+{text-shadow:-1px -1px 0 #999999;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-list
+{border:none !important;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-info,
+body.dark .aplayer .aplayer-list ol li
+{border-top:none !important;}
+
+body.dark .yya
+{box-shadow: 0 1px 40px -8px #333333;}
+
+body.dark .font-family-controls button,
+body.dark .menu-list li
+{background-color:#666666;}
+
+body.dark .s-content,body.dark .font-family-controls button.selected
+{background-color:#808080;}
+
+body.dark #banner_wave_1,
+body.dark #banner_wave_2
+{display:none;}
+
+body.dark .widget-area .show-hide svg path
+{fill:#CCCCCC;}
+
+body.dark button,
+body.dark input[type=button],
+body.dark input[type=reset],
+body.dark input[type=submit]
+{box-shadow:none;}
+
+body.dark .comment .info,
+body.dark .comment-respond .logged-in-as,
+body.dark .comment-respond .logged-in-as a,
+body.dark span.sitename 
+{color:#CCCCCC;}
+
+body.dark .header-user-avatar:hover ,
+body.dark .aplayer .aplayer-list ol li.aplayer-list-light ,
+body.dark .site-header:hover 
+{background:#333333;}
+
+body.dark #preload
+{background: #333333;}
+
+body.dark #moblieGoTop,
+body.dark #changskin
+{background-color:#262626;}
+
+body.dark #show-nav .line 
+{background: #CCCCCC;}
+
+body.dark .linkdes
+{
+    border-top: 1px dotted #CCCCCC !important;
+    color:#CCCCCC;
+}
+
+body.dark .links ul li
+{
+    background-color: #666666;
+    border: none;
+    opacity:.8;
+}
+
+body.dark .post-footer 
+{background-image: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/creativecommons-dark.png);}
+
+/*可变项目*/
+
+/*深色模式控件透明度*/
+body.dark .header-info,
+body.dark .top-social img
+{color:#fff;background:rgba(51,51,51,0.8);}
+
+body.dark .the-feature.from_left_and_right .info
+{background-color: rgba(51,51,51,0.8);}
+
+body.dark .yya,
+body.dark .widget-area,
+body.dark .skin-menu,
+body.dark input[type=submit] 
+{background-color:rgba(38,38,38,0.8) !important;}
+
+/*深色模式自定义颜色*/
+body.dark .headertop-down i 
+{color: rgba(51,51,51,0.8) !important;}
+
+/*深色模式图像亮度*/
+body.dark img,
+body.dark .highlight-wrap,
+body.dark iframe,
+body.dark .entry-content .aplayer
+{filter:brightness(0.8);}
+
+/*深色模式主题色*/
+:root{
+    --theme-skin-dark: #4968ff;
+}
+body.dark .scrollbar,
+body.dark .butterBar-message,
+body.dark .aplayer .aplayer-list ol li:hover ,
+body.dark .pattern-center:after 
+{background: #4968ff !important;}
+
+body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur,
+body.dark .user-menu-option a:hover ,
+body.dark .menu-list li:hover ,
+body.dark .font-family-controls button:hover ,
+body.dark .openNav .icon, 
+body.dark .openNav .icon:before ,
+body.dark .openNav .icon:after ,
+body.dark .openNav .icon:after ,
+body.dark .site-top ul li a:after 
+{background-color: #4968ff;}
+
+body.dark #moblieGoTop,
+body.dark #changskin,
+body.dark .post-content a:hover ,
+body.dark .entry-title a:hover ,
+body.dark .art .art-content #archives a:hover ,
+body.dark .the-feature.from_left_and_right a:hover .info p,
+body.dark .the-feature.from_left_and_right .info,
+body.dark .ins-section .ins-search-item:hover,
+body.dark .ins-section .ins-search-item:hover .ins-slug,
+body.dark .ins-section .ins-search-item:hover .ins-search-preview,
+body.dark .ins-section .ins-search-item:hover .iconfont ,
+body.dark .float-content i:hover,
+body.dark .menhera-container .emoji-item:hover ,
+body.dark .comment-respond .logged-in-as a:hover ,
+body.dark .site-top ul li a:hover ,
+body.dark i.iconfont.js-toggle-search.iconsearch:hover
+{color:#4968ff;}
+
+body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path 
+{fill:#4968ff;}
+
+body.dark #moblieGoTop:hover , 
+body.dark #changskin:hover 
+{color:#4968ff;opacity:.8;}
+
+body.dark .focusinfo .header-tou img 
+{box-shadow: inset 0 0 10px #4968ff;}
+
+
+@media (max-width: 1200px){
+body.dark .site-top .lower nav.navbar ul 
+{background: rgba(255,255,255,0);}
+}
+
+/*切换动画*/
+html,
+#main-container,
+.pattern-center:after,
+#mo-nav,
+.headertop-bar::after,
+.comments,
+.site-footer,
+.pattern-center-blank,
+.yya,
+.blank,
+.toc
+{transition:background 0.8s;}
+
+.notice,
+.notification,
+.author-profile p,
+.author-profile .meta h3 a,
+.author-profile i,
+.entry-header hr,
+.header-info p,
+.header-info,
+.focusinfo .header-tou img,
+.top-social img, 
+.center-text,
+.entry-content p,
+.entry-content ul,
+.entry-content ol,
+.comments .body p,
+.float-content,
+.post-list p,
+.link-title,
+.search-form input,
+.wrapper,
+.site-footer,
+.site-wrapper,
+#moblieGoTop,
+#changskin,
+#moblieGoTop:hover,
+#changskin:hover,
+.post-list-show,
+.post-list hr,
+.post-date,
+.float-content i:hover,
+h1.fes-title,
+h1.main-title,
+h1.page-title
+{transition:all 0.8s ease !important;}
+
+/*字重*/
+
+h1,small,sub,sup,code,kbd,pre,samp,body,button,input,select,textarea,blockquote:before,blockquote:after,code,kbd,tt,var,big,button,input[type=button],input[type=reset],input[type=submit],.video-stu,.pattern-center h1.cat-title,.pattern-center h1.entry-title,.pattern-center .cat-des,.single-center .single-header h1.entry-title,.single-center .entry-census,.pattern-center-sakura h1.cat-title,.pattern-center-sakura h1.entry-title,.pattern-center-sakura .cat-des,.single-center .single-header h1.entry-title,.single-center .entry-census,.site-top .lower,.site-top .menu-item-has-children li a,.feature i,.p-time,.p-time i,i.iconfont.hotpost,.post-list p,.post-more i,.info-meta span,.post-list-thumb i,.post-date,.post-meta,.post-meta a,.float-content .post-text,.float-content i,.s-time,.s-time i,.navigator i,.site-info,.entry-census,h1.page-title,.post-tags,.post-like a,.post-like i,.post-share ul li i ,.post-squares .category,.post-squares h3,.post-squares .label,.author-profile .meta h3 a,.author-profile p,.author-profile i,.mashiro-profile .box a,#comments-list-title span,.butterBar-message ,h1.works-title,.works-p-time,.works-p-time i,.works-meta i,.works-meta span,#archives-temp h3,h1.cat-title,span.sitename,span.linkss-title,.comment .commeta,.comment .comment-reply-link,.comment .info,.comment .info .useragent-info-m,.comment h4,.comment h4 a,.comment-respond #cancel-comment-reply-link,.comment-respond input,.comment-respond textarea,.comment-respond .logged-in-as i,.notification i,.notification span,.siren-checkbox-label,h1.fes-title,h1.main-title,.foverlay-bg,.feature-title .foverlay,.notice i,.bio-text,.header-info,.site-header.iconsearch,i.iconfont.js-toggle-search.iconsearch,.search-form i ,.search-form input,.s-search input,.s-search i,.ins-section,.ins-section .iconfont.icon-mark,.ins-section .fa ,.ins-section.ins-search-item .search-keyword,.ins-section .ins-search-item .ins-search-preview,i.iconfont.down,#pagination span,#bangumi-pagination span,.ex-login-title ,.ex-register-title h3,.ex-login input,.ex-register input,.admin-login-check,.user-login-check,.ex-login-username,.ex-new-account a,.ex-register .user-error,.register-close,.herder-user-name,.header-user-menu a,.no-logged,.no-logged a,.single-reward .reward-open,.reward-row li::after ,.botui-container,button.botui-actions-buttons-button,input.botui-actions-text-input,.load-button span,.prpr,.mashiro-tips,.live2d-tool,.center-text,.bb-comment,.finish-icon-container,.skill div,#footer-sponsor,.comment-user-avatar .socila-check ,.insert-image-tips ,.the-feature.from_left_and_right .info h3,.the-feature.from_left_and_right .info p,.highlight-wrap .copy-code ,#bangumi-pagination {font-weight: 300 !important}
+
+/*字体*/
+
+
+.serif{
+font-family: !important ;
+font-size: 15px !important;
+}
+
+body{
+font-family: !important;
+font-size: 15px !important;
+}
+
+h1.main-title,h1.fes-title{
+font-family:Noto Serif SC !important;
+}
+
+.header-info p{
+font-family:Noto Serif SC !important;
+font-size: 16px !important;
+}
+
+.cbp_tmtimeline > li .cbp_tmlabel {
+font-family:Noto Serif SC !important;
+}
+
+.post-list-thumb .post-title h3{
+font-size: 16px !important;
+}
+
+.post-meta, .post-meta a{
+font-size: 10px !important;
+}
+
+.pattern-center h1.cat-title,
+.pattern-center h1.entry-title {
+font-size: 40px !important;
+}
+.pattern-center-sakura h1.cat-title,
+.pattern-center-sakura h1.entry-title {
+font-size: 40px !important;
+}
+
+.single-center .single-header h1.entry-title {
+font-size: 32px !important;
+}
+
+/*鼠标*/
+body{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/normal.cur), auto;
+}
+
+.botui-actions-buttons-button,
+.headertop-down i,
+.faa-parent.animated-hover:hover>.faa-spin,
+.faa-spin.animated,
+.faa-spin.animated-hover:hover,
+i.iconfont.js-toggle-search.iconsearch,
+#waifu #live2d,
+.aplayer svg,
+.aplayer.aplayer-narrow .aplayer-body,
+.aplayer.aplayer-narrow .aplayer-pic,
+button.botui-actions-buttons-button,
+#emotion-toggle,
+.emoji-item,
+.emotion-box,
+.emotion-item,
+.on-hover,
+.tieba-container span,
+#moblieGoTop,
+#changskin{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/No_Disponible.cur), auto;
+}
+
+a,
+.ins-section .ins-section-header,
+.font-family-controls button,
+.menu-list li,.ins-section .ins-search-item,
+.ins-section .ins-search-item .ins-search-preview{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/ayuda.cur), auto;
+}
+
+p,
+.highlight-wrap code,
+.highlight-wrap,
+.hljs-ln-code .hljs-ln-line{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/texto.cur), auto;
+}
+
+a:active{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/work.cur), alias;
+}
+
+/*背景类*/
+.comment-respond textarea {
+background-image: url(https://ae01.alicdn.com/kf/Haeaff84cd2d84c999ea70c83fed88d44W.jpg); 
+}
+
+.search-form.is-visible{
+background-image: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/iloli.gif);
+}
+
+.site-footer {
+background-color: rgba(255, 255, 255,0.8);
+}
+
+.wrapper {
+background-color: rgba(255, 255, 255,0.8);
+}
+
+/*首页圆角设置*/
+.header-info{
+border-radius: 15px;
+}
+
+.focusinfo img{
+border-radius: 15px;
+}
+
+.focusinfo .header-tou img{
+border-radius: 100px;
+}
+
+/*标题横线动画*/
+.single-center header.single-header .toppic-line{
+position:relative;bottom:0;left:0;display:block;width:100%;height:2px;background-color:#fff;animation:lineWidth 2.5s;animation-fill-mode:forwards;}
+@keyframes lineWidth{0%{width:0;}
+100%{width:100%;}
+}
+
+/*标题动画*/
+.entry-title,.single-center .entry-census a,.entry-census,.post-list p,.post-more i,.p-time,.feature{
+	-moz-animation: fadeInUp 2s;
+    -webkit-animation:fadeInUp 2s;
+	animation: fadeInUp 2s;
+}
+
+/*首页封面动画*/
+
+/*导航菜单动画*/
+.site-top ul {
+	-moz-animation: fadeInLeft  1s;
+    -webkit-animation:fadeInLeft  1s;
+	animation: fadeInLeft  1s;
+}
+
+/*浮起动画*/
+/*向上*/
+@-moz-keyframes fadeInUp {
+	0% {
+		-moz-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInUp {
+	0% {
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInUp {
+	0% {
+		-moz-transform: translateY(200%);
+		-ms-transform: translateY(200%);
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(200%);
+		-ms-transform: translateY(200%);
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+/*向下*/
+@-moz-keyframes fadeInDown {
+	0% {
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInDown {
+	0% {
+		-moz-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+/*向左*/
+@-moz-keyframes fadeInLeft {
+	0% {
+		-moz-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInLeft {
+	0% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInLeft {
+	0% {
+		-moz-transform: translateX(100%);
+		-ms-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateX(100%);
+		-ms-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateX(0%);
+		-ms-transform: translateX(0%);
+		-webkit-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+
+/*其他*/
+
+
+@media (max-width: 860px) {
+.headertop-down {
+        display: none
+    }
+}
+
+.widget-area .sakura_widget{
+    background-image: url(https://ae01.alicdn.com/kf/Ue7102eb66e9c4b6da97db9e1ffbaa710y.jpg);
+}
+
+.headertop{
+    border-radius: 0 0 15px 15px;
+}
+
+.float-content i {
+    display: none;
+}
+
+
+
+
+
+
+.pattern-center::after {
+    display:none;
+}
+.pattern-center-blank {
+    display:none;
+}
+
+
+.yya {
+    position: fixed;
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
+    width:95% ;
+	left:calc(97.5% - 95%);
+    background: rgba(255, 255, 255, .75);
+    box-shadow: 0 1px 40px -8px rgba(255, 255, 255, .4);
+    border-radius: 15px !important;
+}
+.site-title img {
+    margin-left: 10px;
+}
+.site-header {
+    border-radius: 15px !important;
+}
+.header-user-menu {
+    border-radius: 15px !important;
+}
+.lower li ul {
+    border-radius: 15px !important;
+}
+@media (max-width:860px) {
+.openNav .icon {
+        left: 5vw;
+    }
+.site-header {
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background: 0 0;
+    position: fixed;
+    border-radius: 0 !important;
+}
+.yya {
+    position: fixed;
+    background: rgba(255, 255, 255, .75);
+    border-radius: 0 !important;
+    box-shadow: 0 1px 40px -8px rgba(255, 255, 255, .4)
+}
+}
+
+
+.header-user-menu::before {
+    display: none;
+}
+.lower li ul::before {
+    display: none;
+}
+
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
+    display: none;
+}
+.cbp_tmtimeline > li .cbp_tmlabel:after {
+    display: none;
+}
+
+.the-feature.from_left_and_right {
+    position: relative;
+    border-radius: 15px;
+    height: 160px;
+    width: 258px;
+    margin: 6px 6px 0 6px;
+}
+
+.the-feature img {
+    height: 160px;
+    width: 258px;
+}
+
+
+
+.notice {
+    background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/hyouryu/announcement_bg.jpg);
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+body{
+    background-size:auto;
+}
+</style>
+<script id="_mashiro_">
+/*Initial Variables*/
+var mashiro_option = {
+    NProgressON:true,baguetteBoxON:true,    darkmode :true,
+    dm_strategy:"time",
+        email_domain:"000714.xyz",
+    email_name:"bluesky",
+    cookie_version_control:"",
+    qzone_autocomplete:false,
+    site_name:"苍穹の下",
+    author_name:"BlueSkyXN",
+    template_url:"https://www.blueskyxn.com/wp-content/themes/Sakurairo",
+    site_url:"https://www.blueskyxn.com",
+    qq_api_url:"https://www.blueskyxn.com/wp-json/sakura/v1/qqinfo/json",
+    // qq_avatar_api_url:"https://api.2heng.xin/qqinfo/",
+    live_search:false,
+            skin_bg0:"",
+    
+        skin_bg1:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg1.png",
+    
+        skin_bg2:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg2.png",
+    
+        skin_bg3:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg3.png",
+    
+        skin_bg4:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg4.png",
+        land_at_home:false,
+    clipboardCopyright:false,
+
+        entry_content_style_src:"https://www.blueskyxn.com/wp-content/themes/Sakurairo/css/theme/sakura.css?2.2.6.1",
+        entry_content_style:"sakurairo",
+
+        jsdelivr_css_src:"https://www.blueskyxn.com/wp-content/themes/Sakurairo/css/lib.css?2.2.6.1",
+        
+    cover_api:"https://www.blueskyxn.com/wp-json/sakura/v1/image/cover",
+    random_graphs_mts:true,
+    code_highlight:"hljs",    
+    comment_upload_img:false,
+    cache_cover:true,yiyan_api:["https://api.maho.cc/yiyan/", "https://v1.hitokoto.cn/"],};
+/*End of Initial Variables*/
+</script>
+<script>const mashiro_global = {};</script>
+<link rel="amphtml" href="https://www.blueskyxn.com/202103/4433.html/amp/"> <script type="text/javascript">
+		if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+			alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+		}
+	</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163447597-1"></script>
+<script>
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date());
+			gtag('config', 'UA-163447597-1');
+		</script>
+</head>
+<body class="post-template-default single single-post postid-4433 single-format-standard chinese-font  ">
+<div class="scrollbar" id="bar"></div>
+<header class="site-header no-select" role="banner">
+<div class="site-top">
+<div class="site-branding">
+<span class="site-title">
+<span class="logolink moe-mashiro">
+<a href="https://www.blueskyxn.com">
+<ruby>
+<span class="sakuraso" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;;"></span>
+<span class="no" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;"></span>
+<span class="shironeko" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;">苍穹の下</span>
+<rp></rp>
+<rt class="chinese-font"></rt>
+<rp></rp>
+</ruby>
+</a>
+</span>
+</span>
+
+</div>
+<div class="header-user-avatar">
+<a href="https://www.blueskyxn.com/wp-login.php">
+<img class="faa-shake animated-hover" src="https://p.pstatp.com/origin/pgc-image/d7ad7af4b953492aa13e2bad1664fd1f" width="30" height="30">
+</a>
+<div class="header-user-menu">
+<div class="herder-user-name no-logged"> <a href="https://www.blueskyxn.com/wp-login.php" target="_blank" style="font-weight:bold;text-decoration:none">登录</a>
+</div>
+</div>
+</div>
+<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+<div class="lower"> <nav><ul id="menu-%e5%af%bc%e8%88%aa2-0" class="menu"><li><a href="https://www.blueskyxn.com">首页</a></li>
+<li><a href="https://status.blueskyxn.com">探针</a></li>
+<li><a href="https://shop.blueskyxn.com">SHOP</a></li>
+<li><a href="https://cse.google.com/cse?cx=473490fcdaa0005d1">高级搜索</a></li>
+<li><a href="https://img.blueskyxn.com/tt.html">图床</a></li>
+<li><a href="https://www.blueskyxn.com/202102/4142.html">网盘资源</a></li>
+<li><a href="https://www.blueskyxn.com/%e6%97%b6%e5%85%89%e3%81%ae%e8%bd%b4/">时光の轴</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/%e8%af%b4%e8%af%b4/">说说</a></li>
+<li><a href="https://www.blueskyxn.com/day/announcement/">公告</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/financial/">金融</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/financial/pay/">支付与平台</a></li>
+<li><a href="https://www.blueskyxn.com/financial/card/">玩转卡片</a></li>
+<li><a href="https://www.blueskyxn.com/financial/shop/">购物与消费</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/technology/">科技</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/technology/vps/">VPS</a></li>
+<li><a href="https://www.blueskyxn.com/technology/vps/vpstest/">VPS评测</a></li>
+<li><a href="https://www.blueskyxn.com/technology/tips-gadgets/">小技巧&amp;小工具</a></li>
+<li><a href="https://www.blueskyxn.com/technology/knowledge/">小知识</a></li>
+<li><a href="https://www.blueskyxn.com/technology/build/">建站&amp;运维</a></li>
+<li><a href="https://www.blueskyxn.com/technology/network-technology/">网络技术</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/mix/">杂谈</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="https://www.blueskyxn.com/day/">日记</a></li>
+<li><a href="https://www.blueskyxn.com/welfare/">福利</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/acgn/">二次元</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/acgn/bilibili/">哔哩哔哩</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/bp/">美しい写真</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/sticker/">表情包</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/game/">游戏</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/game/r6/">彩虹六号</a></li>
+<li><a href="https://www.blueskyxn.com/game/genshin/">原神</a></li>
+<li><a href="https://www.blueskyxn.com/game/tof/">幻塔</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/%e5%8f%8b%e3%81%ae%e9%93%be/">友の链</a></li>
+<li><a href="https://000714.xyz/">About</a>
+<ul class="sub-menu">
+<li><a href="https://t.me/BlueSkyXN_PM_bot">PM·BOT</a></li>
+<li><a href="https://github.com/blueskyxn">Github</a></li>
+<li><a href="https://t.me/blueskyxnblog">Channel</a></li>
+</ul>
+</li>
+</ul></nav>
+</div>
+</div>
+</header>
+<div class="openNav no-select">
+<div class="iconflat no-select">
+<div class="icon"></div>
+</div>
+</div>
+<section id="main-container">
+<div class="headertop filter-undertint">
+<style>
+    .header-info::before {
+        display: none !important;
+        opacity: 0 !important;
+    }
+</style>
+<div id="banner_wave_1"></div>
+<div id="banner_wave_2"></div>
+<figure id="centerbg" class="centerbg">
+<div class="focusinfo">
+<h1 class="center-text glitch is-glitching Ubuntu-font" data-text="苍穹の下">苍穹の下</h1>
+<div class="header-info">
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+<span class="element">疯狂造句中......</span>
+<span class="element"></span>
+<script>
+                        var typed = new Typed('.element', {
+                            strings: ["给时光以生命，给岁月以文明", "(´,,•ω•,,‘)", ], //输入内容, 支持html标签
+                            typeSpeed: 140, //打字速度
+                            backSpeed: 50, //回退速度
+                            loop: false, //是否循环
+                            loopCount: Infinity,
+                            showCursor: true //是否开启光标
+                        });
+                    </script>
+<p>人生若只如初见 何事秋风悲画扇</p>
+</div>
+<div class="top-social">
+<li id="bg-pre"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/pre.png" /></li>
+<li class="qq"><a href=" https://p.pstatp.com/origin/pgc-image/92ebda73c16248c39a193022889e9dac" title="Initiate chat ?"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/qq.png" /></a></li>
+<li><a href="https://t.me/blueskyxnblog" target="_blank" class="social-sina" title="sina"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/weibo.png" /></a></li>
+<li><a href="https://github.com/BlueSkyXN" target="_blank" class="social-github" title="github"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/github.png" /></a></li>
+<li><a href="https://t.me/BlueSkyXN_PM_bot" target="_blank" class="social-lofter" title="telegram"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/tg.png" /></a></li>
+<li><a href="https://www.linkedin.com/in/BlueSkyXN/" target="_blank" class="social-wangyiyun" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/lk.png" /></a></li>
+<li><a onclick="mail_me()" class="social-wangyiyun" title="E-mail"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/mail.png" /></a></li>
+<li id="bg-next"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/next.png" /></li>
+</div>
+</div>
+</figure>
+<div id="video-container" style="display:none;"><video id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video><div id="video-btn" class="loadvideo videolive"></div><div id="video-add"></div><div class="video-stu"></div></div>
+<div class="headertop-down faa-float animated" onclick="headertop_down()"><span><i class="fa fa-chevron-down" aria-hidden="true" style="color:rgba(255,255,255,0.8)"></i></span></div>
+</div>
+<div id="page" class="site wrapper">
+<div class="pattern-center-blank"></div>
+<div class="pattern-center single-center">
+<div class="pattern-attachment-img lazyload" style="background-image: url(https://ae01.alicdn.com/kf/U1425eee9bdd3447a8faa1afd69006b0dn.jpg)" data-src="https://imgapi.000714.xyz/skyimg.php?4433"> </div>
+<header class="pattern-header single-header"><h1 class="entry-title">PayPal 外币结算渠道 修改方法：以PP美区为例-把默认结算渠道修改为银行自有渠道而不是PP自带渠道</h1><span class="toppic-line"></span><p class="entry-census"><span><a href="https://www.blueskyxn.com/author/sky/"><img data-del="avatar" src='https://p.pstatp.com/origin/pgc-image/95ede86d47174da1bbf576da8e47f431' class='avatar pp-user-avatar avatar-64 photo ' height='64' width='64' /></a></span><span><a href="https://www.blueskyxn.com/author/sky/">SKY</a></span><span class="bull">·</span>2021-03-30<span class="bull">·</span>94 次阅读</p></header>
+</div>
+<div id="content" class="site-content"> <div id="primary" class="content-area">
+<main id="main" class="site-main" role="main">
+<div class="has-toc have-toc"></div>
+<article id="post-4433" class="post-4433 post type-post status-publish format-standard has-post-thumbnail hentry category-day">
+
+<div class="entry-content">
+<div id="ez-toc-container" class="ez-toc-v2_0_17 counter-hierarchy counter-decimal ez-toc-light-blue">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">目录</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" style="display: none;"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-1" href="#%E5%89%8D%E8%A8%80" title="前言">前言</a><ul class="ez-toc-list-level-2"><li class="ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-2" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8A%8A%E7%BB%93%E7%AE%97%E6%B8%A0%E9%81%93%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%93%B6%E8%A1%8C%E8%87%AA%E6%9C%89%E6%B8%A0%E9%81%93%EF%BC%9F" title="为什么需要把结算渠道修改为银行自有渠道？">为什么需要把结算渠道修改为银行自有渠道？</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-3" href="#%E6%AD%A3%E6%96%87" title="正文">正文</a></li><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-4" href="#%E6%95%88%E6%9E%9C" title="效果">效果</a><ul class="ez-toc-list-level-2"><li class="ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-5" href="#%E4%BF%AE%E6%94%B9%E5%89%8D" title="修改前">修改前</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#%E4%BF%AE%E6%94%B9%E5%90%8E" title="修改后">修改后</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#Related_posts" title="Related posts:">Related posts:</a></li></ul></li></ul></li></ul></nav></div>
+<h1><span class="ez-toc-section" id="%E5%89%8D%E8%A8%80"></span>前言<span class="ez-toc-section-end"></span></h1>
+<p>目前，能修改的只有自动付款中的默认设置，常规付款需要每次调整</p>
+<h2><span class="ez-toc-section" id="%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8A%8A%E7%BB%93%E7%AE%97%E6%B8%A0%E9%81%93%E4%BF%AE%E6%94%B9%E4%B8%BA%E9%93%B6%E8%A1%8C%E8%87%AA%E6%9C%89%E6%B8%A0%E9%81%93%EF%BC%9F"></span>为什么需要把结算渠道修改为银行自有渠道？<span class="ez-toc-section-end"></span></h2>
+<p>因为PP的换汇汇率黑的无法形容，而且很多卡自带免换汇费【在广发银行中，叫做免除1.2%的外币交易服务费】</p>
+<h1><span class="ez-toc-section" id="%E6%AD%A3%E6%96%87"></span>正文<span class="ez-toc-section-end"></span></h1>
+<p>在PP官网操作（APP也可）</p>
+<p>找到设置中的自动付款</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200433.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200433.png" /></noscript></p>
+<p>可以看到绑定的签约商</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200501.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200501.png" /></noscript></p>
+<p>选择一个要修改的签约商</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200616.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200616.png" /></noscript></p>
+<p>修改付款方式</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200627.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200627.png" /></noscript></p>
+<p>查看兑换选项</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200636.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200636.png" /></noscript></p>
+<h1><span class="ez-toc-section" id="%E6%95%88%E6%9E%9C"></span>效果<span class="ez-toc-section-end"></span></h1>
+<h2><span class="ez-toc-section" id="%E4%BF%AE%E6%94%B9%E5%89%8D"></span>修改前<span class="ez-toc-section-end"></span></h2>
+<p>PP把美元消费，转换成人民币计费，然后从我的美元卡里面，扣了等值美元【可能银行把人民币再转换成美元计费了，如果你的卡没有免货币转换费，那么可能叠加扣费】，最后12.2人民币被转换成1.87美元，相当于我多花了4.5%左右</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200746.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200746.png" /></noscript></p>
+<p>&nbsp;</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200848.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200848.png" /></noscript></p>
+<h2><span class="ez-toc-section" id="%E4%BF%AE%E6%94%B9%E5%90%8E"></span>修改后<span class="ez-toc-section-end"></span></h2>
+<p>直接从银行卡计费了2.98美元</p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200909.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200909.png" /></noscript></p>
+<p><img class="lazyload" data-src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200928.png" src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/inload.svg" onerror="imgError(this)" /><noscript><img src="https://cdn.000714.xyz/Skyimg/blog2021/master/03/QQ%E5%9B%BE%E7%89%8720210330200928.png" /></noscript></p>
+<p>点击数：94</p><div class='yarpp yarpp-related yarpp-related-website yarpp-template-list'>
+
+<h3>Related posts:</h3><ol>
+<li><a href="https://www.blueskyxn.com/202004/260.html" rel="bookmark" title="网站维护日记20200411">网站维护日记20200411 </a></li>
+<li><a href="https://www.blueskyxn.com/202004/359.html" rel="bookmark" title="网站维护日记20200414&#038;WordPress伪静态设置（使用宝塔面板）">网站维护日记20200414&#038;WordPress伪静态设置（使用宝塔面板） </a></li>
+<li><a href="https://www.blueskyxn.com/202006/1181.html" rel="bookmark" title="服务器维护日记20200609">服务器维护日记20200609 </a></li>
+<li><a href="https://www.blueskyxn.com/202008/1773.html" rel="bookmark" title="无聊研究了下大陆和香港的国际带宽问题">无聊研究了下大陆和香港的国际带宽问题 </a></li>
+<li><a href="https://www.blueskyxn.com/202008/2413.html" rel="bookmark" title="服务器维护日记20200825">服务器维护日记20200825 </a></li>
+<li><a href="https://www.blueskyxn.com/202009/2547.html" rel="bookmark" title="闲来无事来看看SPACEX星链卫星发射">闲来无事来看看SPACEX星链卫星发射 </a></li>
+</ol>
+</div>
+<div class='code-block code-block-2' style='margin: 8px 0; clear: both;'>
+<div class="ads" align="center"><a href="https://www.hostmsu.ru/aff.php?aff=45"><img src="https://p.pstatp.com/origin/pgc-image/2281eec871a14b9aa593e6b4d3b15ee8" height="50%" /></a></div></div>
+
+
+
+</div>
+<footer class="post-footer">
+<div class="post-tags">
+</div>
+</footer>
+</article>
+<div class="toc-container"><div class="toc"></div></div>
+<section class="post-squares nextprev">
+<div class="post-nepre half previous">
+<a href="https://www.blueskyxn.com/202103/4430.html" rel="prev"><div class="background lazyload" style="background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/theme/colorful/load/outload.svg);" data-src="https://imgapi.000714.xyz/skyimg.php?4430"></div><span class="label">上一篇文章</span><div class="info"><h3>AWS Amazon Lightsail CentOS 7 手动启动IPV6的解决方法</h3><hr></div></a> </div>
+<div class="post-nepre half next">
+<a href="https://www.blueskyxn.com/202104/4436.html" rel="next"><div class="background lazyload" style="background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/theme/colorful/load/outload.svg);" data-src="https://imgapi.000714.xyz/skyimg.php?4436"></div><span class="label">下一篇文章</span><div class="info"><h3>宝塔NGINX防火墙IP识别实验一：CDN套反代再套CF</h3><hr></div></a> </div>
+</section>
+</main>
+</div>
+</div>
+<section id="comments" class="comments">
+<div class="commentwrap comments-hidden comments-fold">
+<div class="notification"><i class="iconfont icon-mark"></i>查看评论 -
+<span class="noticom">NOTHING </span>
+</div>
+</div>
+<div class="comments-main">
+<h3 id="comments-list-title">Comments | <span class="noticom">NOTHING </span></h3>
+<div id="loading-comments"><span></span></div>
+<div class="commentwrap">
+<div class="notification-hidden"><i class="iconfont icon-mark"></i> 暂无评论</div>
+</div>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/202103/4433.html#respond" style="display:none;">取消回复</a></small></h3><p class="must-log-in">要发表评论，您必须先<a href="https://www.blueskyxn.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.blueskyxn.com%2F202103%2F4433.html">登录</a>。</p> </div>
+</div>
+</section>
+</div>
+<footer id="colophon" class="site-footer" role="contentinfo">
+<div class="site-info" theme-info="Sakurairo v2.2.6.1">
+<div class="footertext">
+<div class="img-preload">
+<img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg">
+</div>
+<p style="color: #666666;"><a href="https://github.com/BlueSkyXN"><img src="https://github-readme-stats.vercel.app/api?username=BlueSkyXN&amp;show_icons=true&amp;count_private=true&amp;title_color=006400&amp;text_color=000080&amp;bg_color=30,00FFFF,40E0D0,00CED1" height="60" /></a><br>
+<a href="https://pay.000714.xyz" style="color: #40E0D0">Donate With Stripe/Card/PayPal/Alipay/WeChatPay/Crypto</a><br>
+<a href="https://www.patreon.com/bePatron?u=63198165" style="color: #40E0D0">Paid content subscription and VIP Services</a><br>
+~请遵循您当地的法律法规~若有疑问/侵权问题请发邮件等方式联系我~<br>
+<a href="https://beian.miit.gov.cn/" target="_blank">~闽ICP备20009316号~</a><br>
+Copyright © 2020-2021 BlueSkyXN. All Rights Reserved.<br></p>
+</div>
+<div class="footer-device">
+<p style="font-family: 'Ubuntu', sans-serif;">
+<p id="footer_yiyan"></p>
+<span style="color: #b9b9b9;">
+耗时 0.584 秒 | 查询 49 次 | 内存 19.96 MB Theme <a href="https://github.com/mirai-mamori/Sakurairo" target="_blank" id="site-info">Sakurairo</a> by <a href="https://iro.tw" target="_blank" id="site-info">Fuukei</a>
+</span>
+</div>
+</div>
+</footer>
+</section>
+
+<div id="mo-nav">
+<div class="m-avatar">
+<img src="https://p.pstatp.com/origin/pgc-image/95ede86d47174da1bbf576da8e47f431">
+</div>
+<div class="m-search">
+<form class="m-search-form" method="get" action="https://www.blueskyxn.com" role="search">
+<input class="m-search-input" type="search" name="s" placeholder="搜索..." required>
+</form>
+</div>
+<ul id="menu-%e5%af%bc%e8%88%aa2-1" class="menu"><li><a href="https://www.blueskyxn.com">首页</a></li>
+<li><a href="https://status.blueskyxn.com">探针</a></li>
+<li><a href="https://shop.blueskyxn.com">SHOP</a></li>
+<li><a href="https://cse.google.com/cse?cx=473490fcdaa0005d1">高级搜索</a></li>
+<li><a href="https://img.blueskyxn.com/tt.html">图床</a></li>
+<li><a href="https://www.blueskyxn.com/202102/4142.html">网盘资源</a></li>
+<li><a href="https://www.blueskyxn.com/%e6%97%b6%e5%85%89%e3%81%ae%e8%bd%b4/">时光の轴</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/%e8%af%b4%e8%af%b4/">说说</a></li>
+<li><a href="https://www.blueskyxn.com/day/announcement/">公告</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/financial/">金融</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/financial/pay/">支付与平台</a></li>
+<li><a href="https://www.blueskyxn.com/financial/card/">玩转卡片</a></li>
+<li><a href="https://www.blueskyxn.com/financial/shop/">购物与消费</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/technology/">科技</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/technology/vps/">VPS</a></li>
+<li><a href="https://www.blueskyxn.com/technology/vps/vpstest/">VPS评测</a></li>
+<li><a href="https://www.blueskyxn.com/technology/tips-gadgets/">小技巧&amp;小工具</a></li>
+<li><a href="https://www.blueskyxn.com/technology/knowledge/">小知识</a></li>
+<li><a href="https://www.blueskyxn.com/technology/build/">建站&amp;运维</a></li>
+<li><a href="https://www.blueskyxn.com/technology/network-technology/">网络技术</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/mix/">杂谈</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="https://www.blueskyxn.com/day/">日记</a></li>
+<li><a href="https://www.blueskyxn.com/welfare/">福利</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/acgn/">二次元</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/acgn/bilibili/">哔哩哔哩</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/bp/">美しい写真</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/sticker/">表情包</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/game/">游戏</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/game/r6/">彩虹六号</a></li>
+<li><a href="https://www.blueskyxn.com/game/genshin/">原神</a></li>
+<li><a href="https://www.blueskyxn.com/game/tof/">幻塔</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/%e5%8f%8b%e3%81%ae%e9%93%be/">友の链</a></li>
+<li><a href="https://000714.xyz/">About</a>
+<ul class="sub-menu">
+<li><a href="https://t.me/BlueSkyXN_PM_bot">PM·BOT</a></li>
+<li><a href="https://github.com/blueskyxn">Github</a></li>
+<li><a href="https://t.me/blueskyxnblog">Channel</a></li>
+</ul>
+</li>
+</ul> </div>
+<a class="cd-top faa-float animated "></a>
+<button id="moblieGoTop" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+<button id="changskin" style="bottom: 15px;"><i class="iconfont icon-gear inline-block rotating"></i></button>
+
+<form class="js-search search-form search-form--modal" method="get" action="https://www.blueskyxn.com" role="search">
+<div class="search-form__inner">
+<div class="micro">
+<p class="micro mb-">想要找点什么呢？</p>
+<i class="iconfont icon-search"></i>
+<input class="text-input" type="search" name="s" placeholder="搜索" required>
+</div>
+</div>
+<div class="search_close"></div>
+</form>
+
+<div class='code-block code-block-3' style='margin: 8px 0; clear: both;'>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5491457859629509" crossorigin="anonymous"></script></div>
+<script type="text/javascript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['enableJSErrorTracking']);
+_paq.push(['trackVisibleContentImpressions']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);_paq.push(['alwaysUseSendBeacon']);_paq.push(['setTrackerUrl', "\/\/www.blueskyxn.com\/wp-content\/plugins\/matomo\/app\/matomo.php"]);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.src="\/\/www.blueskyxn.com\/wp-content\/uploads\/matomo\/matomo.js"; s.parentNode.insertBefore(g,s);
+</script>
+<link rel='stylesheet' id='yarppRelatedCss-css' href='https://www.blueskyxn.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.27.5' type='text/css' media='all' />
+<script type='text/javascript' id='ppress-frontend-script-js-extra'>
+/* <![CDATA[ */
+var pp_ajax_form = {"ajaxurl":"https:\/\/www.blueskyxn.com\/wp-admin\/admin-ajax.php","confirm_delete":"Are you sure?","deleting_text":"Deleting...","deleting_error":"An error occurred. Please try again.","nonce":"9817454772","disable_ajax_form":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/js/frontend.min.js?ver=3.1.19' id='ppress-frontend-script-js'></script>
+<script type='text/javascript' id='swcfpc_auto_prefetch_url-js-before'>
+                function swcfpc_wildcard_check(str, rule) {
+                    let escapeRegex = (str) => str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+                    return new RegExp("^" + rule.split("*").map(escapeRegex).join(".*") + "$").test(str);
+                }
+
+                function swcfpc_can_url_be_prefetched(href) {
+
+                    if( href.length == 0 )
+                        return false;
+
+                    if( href.startsWith("mailto:") )
+                        return false;
+
+                    if( href.startsWith("https://") )
+                        href = href.split("https://"+location.host)[1];
+                    else if( href.startsWith("http://") )
+                        href = href.split("http://"+location.host)[1];
+
+                    for( let i=0; i < swcfpc_prefetch_urls_to_exclude.length; i++) {
+
+                        if( swcfpc_wildcard_check(href, swcfpc_prefetch_urls_to_exclude[i]) )
+                            return false;
+
+                    }
+
+                    return true;
+
+                }
+
+                let swcfpc_prefetch_urls_to_exclude = '["\/*ao_noptirocket*","\/*jetpack=comms*","\/*kinsta-monitor*","*ao_speedup_cachebuster*","\/*removed_item*","\/my-account*","\/wc-api\/*","\/edd-api\/*","\/wp-json*"]';
+                swcfpc_prefetch_urls_to_exclude = (swcfpc_prefetch_urls_to_exclude) ? JSON.parse(swcfpc_prefetch_urls_to_exclude) : [];
+
+            
+</script>
+<script type='module' src='https://www.blueskyxn.com/wp-content/plugins/wp-cloudflare-page-cache/assets/js/instantpage.min.js?ver=5.1.0.3' defer id='swcfpc_instantpage-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/smoothscroll.js?ver=2.2.6.1' id='SmoothScroll-js'></script>
+<script type='text/javascript' id='app-js-extra'>
+/* <![CDATA[ */
+var Poi = {"pjax":"","movies":"close","windowheight":"fixed","ajaxurl":"https:\/\/www.blueskyxn.com\/wp-admin\/admin-ajax.php","order":"desc","formpostion":"bottom","reply_link_version":"new","api":"https:\/\/www.blueskyxn.com\/wp-json\/","nonce":"ad7ee5971c","google_analytics_id":"UA-163447597-1","gravatar_url":"sdn.geekzu.org\/avatar"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/app.js?ver=2.2.6.1' id='app-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/page.js?ver=2.2.6.1' id='app-page-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/comment-reply.min.js?ver=5.8' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/wp-embed.min.js?ver=5.8' id='wp-embed-js'></script>
+<script type='text/javascript' id='fifu-image-js-js-extra'>
+/* <![CDATA[ */
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/www.blueskyxn.com\/wp-json\/","fifu_nonce":"ad7ee5971c"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/featured-image-from-url/includes/html/js/image.js?ver=3.7.4' id='fifu-image-js-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='js-cookie-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"1","width":"auto","scroll_offset":"30"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.17-1616794175' id='ez-toc-js-js'></script>
+<script id="swcfpc">
+
+                const swcfpc_prefetch_urls_timestamp_server = '1634357779';
+
+                let swcfpc_prefetched_urls = localStorage.getItem("swcfpc_prefetched_urls");
+                swcfpc_prefetched_urls = (swcfpc_prefetched_urls) ? JSON.parse(swcfpc_prefetched_urls) : [];
+
+                let swcfpc_prefetch_urls_timestamp_client = localStorage.getItem("swcfpc_prefetch_urls_timestamp_client");
+
+                if( swcfpc_prefetch_urls_timestamp_client == undefined || swcfpc_prefetch_urls_timestamp_client != swcfpc_prefetch_urls_timestamp_server ) {
+                    swcfpc_prefetch_urls_timestamp_client = swcfpc_prefetch_urls_timestamp_server;
+                    swcfpc_prefetched_urls = new Array();
+                    localStorage.setItem("swcfpc_prefetched_urls", JSON.stringify(swcfpc_prefetched_urls));
+                    localStorage.setItem("swcfpc_prefetch_urls_timestamp_client", swcfpc_prefetch_urls_timestamp_client);
+                }
+
+                function swcfpc_element_is_in_viewport( element ) {
+
+                    let bounding = element.getBoundingClientRect();
+
+                    if ( bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) )
+                        return true;
+
+                    return false;
+
+                }
+
+                function swcfpc_prefetch_urls() {
+
+                    let comp = new RegExp(location.host);
+
+                    document.querySelectorAll("a").forEach( (item) => {
+
+                        if( item.href ) {
+
+                            let href = item.href.split("#")[0];
+
+                            if( swcfpc_can_url_be_prefetched(href) && swcfpc_prefetched_urls.includes(href) == false && comp.test( item.href ) && swcfpc_element_is_in_viewport(item) ) {
+
+                                swcfpc_prefetched_urls.push( href );
+
+                                //console.log( href );
+
+                                let prefetch_element = document.createElement('link');
+                                prefetch_element.rel = "prefetch";
+                                prefetch_element.href = href;
+
+                                document.getElementsByTagName('body')[0].appendChild( prefetch_element );
+
+                            }
+
+                        }
+
+                    } )
+
+                    localStorage.setItem("swcfpc_prefetched_urls", JSON.stringify(swcfpc_prefetched_urls));
+
+                }
+
+                window.addEventListener("load", function(event) {
+                    swcfpc_prefetch_urls();
+                });
+
+                window.addEventListener("scroll", function(event) {
+                    swcfpc_prefetch_urls();
+                });
+
+            </script>
+<div class="skin-menu no-select">
+<p style="margin-bottom: 0.5em;">Style</p>
+<div class="theme-controls row-container">
+<ul class="menu-list">
+<li id="white-bg">
+<i class="fa fa-television faa-tada animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy1-bg">
+<i class="fa fa-heart-o faa-pulse animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy2-bg">
+<i class="fa fa-star-o faa-float animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy3-bg">
+<i class="fa fa-delicious faa-horizontal animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy4-bg">
+<i class="fa fa-lemon-o faa-wrench animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="dark-bg">
+<i class="fa fa-moon-o faa-passing animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+</ul>
+</div>
+<p style="margin-bottom: 0.1em;">Fonts</p>
+<div class="font-family-controls row-container">
+<button type="button" class="control-btn-serif selected" data-name="serif"><i class="fa fa-font faa-vertical animated-hover" aria-hidden="true"></i></button>
+<button type="button" class="control-btn-sans-serif" data-name="sans-serif"><i class="fa fa-bold faa-vertical animated-hover" aria-hidden="true"></i></button>
+</div>
+</div>
+<aside id="secondary" class="widget-area" role="complementary" style="left: -400px;">
+<div class="heading">小工具</div>
+<div class="sakura_widget">
+<div class="widget widget_tag_cloud"><div class="title"><h2>标签</h2></div><div class="tagcloud"><a href="https://www.blueskyxn.com/tag/adguard/" class="tag-cloud-link tag-link-73 tag-link-position-1" style="font-size: 11.962264150943pt;" aria-label="AdGuard (7个项目)">AdGuard<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/aws/" class="tag-cloud-link tag-link-88 tag-link-position-2" style="font-size: 13.283018867925pt;" aria-label="AWS (9个项目)">AWS<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/azure/" class="tag-cloud-link tag-link-86 tag-link-position-3" style="font-size: 11.301886792453pt;" aria-label="Azure (6个项目)">Azure<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/bandwagon/" class="tag-cloud-link tag-link-83 tag-link-position-4" style="font-size: 11.962264150943pt;" aria-label="Bandwagon (7个项目)">Bandwagon<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/bbr/" class="tag-cloud-link tag-link-47 tag-link-position-5" style="font-size: 11.301886792453pt;" aria-label="BBR (6个项目)">BBR<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/buyvm/" class="tag-cloud-link tag-link-80 tag-link-position-6" style="font-size: 9.3207547169811pt;" aria-label="Buyvm (4个项目)">Buyvm<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/cdn/" class="tag-cloud-link tag-link-68 tag-link-position-7" style="font-size: 18.037735849057pt;" aria-label="CDN (22个项目)">CDN<span class="tag-link-count"> (22)</span></a>
+<a href="https://www.blueskyxn.com/tag/clone/" class="tag-cloud-link tag-link-90 tag-link-position-8" style="font-size: 14.339622641509pt;" aria-label="clone (11个项目)">clone<span class="tag-link-count"> (11)</span></a>
+<a href="https://www.blueskyxn.com/tag/cloudflare/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 22pt;" aria-label="CloudFlare (45个项目)">CloudFlare<span class="tag-link-count"> (45)</span></a>
+<a href="https://www.blueskyxn.com/tag/digitalocean/" class="tag-cloud-link tag-link-82 tag-link-position-10" style="font-size: 9.3207547169811pt;" aria-label="DigitalOcean (4个项目)">DigitalOcean<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/dns/" class="tag-cloud-link tag-link-78 tag-link-position-11" style="font-size: 14.735849056604pt;" aria-label="DNS (12个项目)">DNS<span class="tag-link-count"> (12)</span></a>
+<a href="https://www.blueskyxn.com/tag/docker/" class="tag-cloud-link tag-link-128 tag-link-position-12" style="font-size: 10.377358490566pt;" aria-label="docker (5个项目)">docker<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/gcp/" class="tag-cloud-link tag-link-87 tag-link-position-13" style="font-size: 11.962264150943pt;" aria-label="GCP (7个项目)">GCP<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/gfw/" class="tag-cloud-link tag-link-95 tag-link-position-14" style="font-size: 9.3207547169811pt;" aria-label="GFW (4个项目)">GFW<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/git/" class="tag-cloud-link tag-link-98 tag-link-position-15" style="font-size: 10.377358490566pt;" aria-label="Git (5个项目)">Git<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/google/" class="tag-cloud-link tag-link-93 tag-link-position-16" style="font-size: 17.509433962264pt;" aria-label="Google (20个项目)">Google<span class="tag-link-count"> (20)</span></a>
+<a href="https://www.blueskyxn.com/tag/linux/" class="tag-cloud-link tag-link-104 tag-link-position-17" style="font-size: 13.811320754717pt;" aria-label="Linux (10个项目)">Linux<span class="tag-link-count"> (10)</span></a>
+<a href="https://www.blueskyxn.com/tag/microsoft/" class="tag-cloud-link tag-link-92 tag-link-position-18" style="font-size: 16.716981132075pt;" aria-label="Microsoft (17个项目)">Microsoft<span class="tag-link-count"> (17)</span></a>
+<a href="https://www.blueskyxn.com/tag/nginx/" class="tag-cloud-link tag-link-72 tag-link-position-19" style="font-size: 16.320754716981pt;" aria-label="NGINX (16个项目)">NGINX<span class="tag-link-count"> (16)</span></a>
+<a href="https://www.blueskyxn.com/tag/oracle/" class="tag-cloud-link tag-link-91 tag-link-position-20" style="font-size: 16.320754716981pt;" aria-label="Oracle (16个项目)">Oracle<span class="tag-link-count"> (16)</span></a>
+<a href="https://www.blueskyxn.com/tag/php/" class="tag-cloud-link tag-link-77 tag-link-position-21" style="font-size: 9.3207547169811pt;" aria-label="PHP (4个项目)">PHP<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/python/" class="tag-cloud-link tag-link-75 tag-link-position-22" style="font-size: 14.735849056604pt;" aria-label="Python (12个项目)">Python<span class="tag-link-count"> (12)</span></a>
+<a href="https://www.blueskyxn.com/tag/serverless/" class="tag-cloud-link tag-link-130 tag-link-position-23" style="font-size: 13.811320754717pt;" aria-label="ServerLess (10个项目)">ServerLess<span class="tag-link-count"> (10)</span></a>
+<a href="https://www.blueskyxn.com/tag/stripe/" class="tag-cloud-link tag-link-136 tag-link-position-24" style="font-size: 11.962264150943pt;" aria-label="Stripe (7个项目)">Stripe<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/telegram/" class="tag-cloud-link tag-link-52 tag-link-position-25" style="font-size: 13.283018867925pt;" aria-label="Telegram (9个项目)">Telegram<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/vultr/" class="tag-cloud-link tag-link-81 tag-link-position-26" style="font-size: 14.339622641509pt;" aria-label="Vultr (11个项目)">Vultr<span class="tag-link-count"> (11)</span></a>
+<a href="https://www.blueskyxn.com/tag/waf/" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 11.962264150943pt;" aria-label="WAF (7个项目)">WAF<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/wise/" class="tag-cloud-link tag-link-139 tag-link-position-28" style="font-size: 12.622641509434pt;" aria-label="WISE (8个项目)">WISE<span class="tag-link-count"> (8)</span></a>
+<a href="https://www.blueskyxn.com/tag/wordpress/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 16.981132075472pt;" aria-label="WordPress (18个项目)">WordPress<span class="tag-link-count"> (18)</span></a>
+<a href="https://www.blueskyxn.com/tag/workers/" class="tag-cloud-link tag-link-102 tag-link-position-30" style="font-size: 10.377358490566pt;" aria-label="Workers (5个项目)">Workers<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/download/" class="tag-cloud-link tag-link-105 tag-link-position-31" style="font-size: 11.962264150943pt;" aria-label="下载 (7个项目)">下载<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/21vianet/" class="tag-cloud-link tag-link-89 tag-link-position-32" style="font-size: 12.622641509434pt;" aria-label="世纪互联 (8个项目)">世纪互联<span class="tag-link-count"> (8)</span></a>
+<a href="https://www.blueskyxn.com/tag/jingdong/" class="tag-cloud-link tag-link-125 tag-link-position-33" style="font-size: 8pt;" aria-label="京东 (3个项目)">京东<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/picturebed/" class="tag-cloud-link tag-link-61 tag-link-position-34" style="font-size: 16.981132075472pt;" aria-label="图床 (18个项目)">图床<span class="tag-link-count"> (18)</span></a>
+<a href="https://www.blueskyxn.com/tag/bt/" class="tag-cloud-link tag-link-79 tag-link-position-35" style="font-size: 18.301886792453pt;" aria-label="宝塔 (23个项目)">宝塔<span class="tag-link-count"> (23)</span></a>
+<a href="https://www.blueskyxn.com/tag/capture/" class="tag-cloud-link tag-link-127 tag-link-position-36" style="font-size: 8pt;" aria-label="抓包 (3个项目)">抓包<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/currentevents/" class="tag-cloud-link tag-link-51 tag-link-position-37" style="font-size: 15.924528301887pt;" aria-label="时事 (15个项目)">时事<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/bank-of-eu/" class="tag-cloud-link tag-link-134 tag-link-position-38" style="font-size: 9.3207547169811pt;" aria-label="欧洲银行 (4个项目)">欧洲银行<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/law/" class="tag-cloud-link tag-link-48 tag-link-position-39" style="font-size: 8pt;" aria-label="法律 (3个项目)">法律<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/clouddrive/" class="tag-cloud-link tag-link-71 tag-link-position-40" style="font-size: 18.962264150943pt;" aria-label="网盘 (26个项目)">网盘<span class="tag-link-count"> (26)</span></a>
+<a href="https://www.blueskyxn.com/tag/bank-of-us/" class="tag-cloud-link tag-link-132 tag-link-position-41" style="font-size: 15.924528301887pt;" aria-label="美国银行 (15个项目)">美国银行<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/tencentcloud/" class="tag-cloud-link tag-link-84 tag-link-position-42" style="font-size: 15.924528301887pt;" aria-label="腾讯云 (15个项目)">腾讯云<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/virtualcard/" class="tag-cloud-link tag-link-138 tag-link-position-43" style="font-size: 13.283018867925pt;" aria-label="虚拟卡 (9个项目)">虚拟卡<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/video/" class="tag-cloud-link tag-link-101 tag-link-position-44" style="font-size: 11.301886792453pt;" aria-label="视频 (6个项目)">视频<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/alicloud/" class="tag-cloud-link tag-link-85 tag-link-position-45" style="font-size: 15.660377358491pt;" aria-label="阿里云 (14个项目)">阿里云<span class="tag-link-count"> (14)</span></a></div>
+</div><div class="widget widget_wp_statistics_widget"><div class="title"><h2></h2></div><ul><li><label>今日访客: </label>109</li><li><label>昨日访客: </label>73</li><li><label>过去7天的访问量: </label>3,127</li><li><label>累计访问: </label>99,229</li><li><label>累计访客: </label>40,096</li><li><label>总计文章: </label>523</li><li><label>最后发表日期: </label>2021年10月13日</li></ul></div> <style>
+            .bmc-btn {
+                min-width: 210px;
+                color: #FFFFFF !important;
+                background-color: #5F7FFF !important;
+                height: 60px;
+                border-radius: 12px;
+                font-size: 28px !important;
+                font-weight: Normal;
+                border: none;
+                padding: 0px 24px;
+                line-height: 27px;
+                text-decoration: none !important;
+                display: inline-flex !important;
+                align-items: center;
+                font-family: "Cookie" !important;
+                -webkit-box-sizing: border-box !important;
+                box-sizing: border-box !important;
+            }
+
+            .bmc-btn-text {
+                margin-left: 8px;
+                display: inline;
+                line-height: 0;
+            }
+
+            .bmc-btn svg {
+                height: 32px !important;
+                margin-bottom: 0px !important;
+                box-shadow: none !important;
+                border: none !important;
+                vertical-align: middle !important;
+                transform: scale(0.9);
+            }
+
+            .bmc-button img {
+                box-shadow: none !important;
+                vertical-align:
+                    middle !important;
+            }
+
+            .bmc-button {
+                display:
+                    inline-block !important;
+                padding:0px 10px  !important;
+                color:
+                    #FFFFFF !important;
+                background-color:
+                    #5F7FFF !important;
+                border-radius: 3px !important;
+                border: 1px solid transparent !important;
+                font-size: 28px !important;
+                box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                -webkit-transition: 0.3s all linear !important;
+                transition: 0.3s all linear !important;
+                margin: 0 auto !important;
+                font-family: "Cookie"
+                     !important;
+            }
+
+            .bmc-button: hover,
+            .bmc-button: active,
+            .bmc-button: focus {
+                -webkit-box-shadow: 0 4px 16px 0 rgba(190, 190, 190, .45) !important;
+                box-shadow: 0 4px 16px 0 rgba(190, 190, 190, .45) !important;
+                opacity: 0.85 !important;
+                color:
+                    #FFFFFF !important;
+            }
+        </style>
+<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+<p style="text-align:center !important; padding-bottom: 10px;">
+<a class="bmc-btn" target="_blank" href="https://www.buymeacoffee.com/blueskyxn"><svg viewBox="0 0 884 1279" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M791.109 297.518L790.231 297.002L788.201 296.383C789.018 297.072 790.04 297.472 791.109 297.518Z" fill="#0D0C22"></path>
+<path d="M803.896 388.891L802.916 389.166L803.896 388.891Z" fill="#0D0C22"></path>
+<path d="M791.484 297.377C791.359 297.361 791.237 297.332 791.118 297.29C791.111 297.371 791.111 297.453 791.118 297.534C791.252 297.516 791.379 297.462 791.484 297.377Z" fill="#0D0C22"></path>
+<path d="M791.113 297.529H791.244V297.447L791.113 297.529Z" fill="#0D0C22"></path>
+<path d="M803.111 388.726L804.591 387.883L805.142 387.573L805.641 387.04C804.702 387.444 803.846 388.016 803.111 388.726Z" fill="#0D0C22"></path>
+<path d="M793.669 299.515L792.223 298.138L791.243 297.605C791.77 298.535 792.641 299.221 793.669 299.515Z" fill="#0D0C22"></path>
+<path d="M430.019 1186.18C428.864 1186.68 427.852 1187.46 427.076 1188.45L427.988 1187.87C428.608 1187.3 429.485 1186.63 430.019 1186.18Z" fill="#0D0C22"></path>
+<path d="M641.187 1144.63C641.187 1143.33 640.551 1143.57 640.705 1148.21C640.705 1147.84 640.86 1147.46 640.929 1147.1C641.015 1146.27 641.084 1145.46 641.187 1144.63Z" fill="#0D0C22"></path>
+<path d="M619.284 1186.18C618.129 1186.68 617.118 1187.46 616.342 1188.45L617.254 1187.87C617.873 1187.3 618.751 1186.63 619.284 1186.18Z" fill="#0D0C22"></path>
+<path d="M281.304 1196.06C280.427 1195.3 279.354 1194.8 278.207 1194.61C279.136 1195.06 280.065 1195.51 280.684 1195.85L281.304 1196.06Z" fill="#0D0C22"></path>
+<path d="M247.841 1164.01C247.704 1162.66 247.288 1161.35 246.619 1160.16C247.093 1161.39 247.489 1162.66 247.806 1163.94L247.841 1164.01Z" fill="#0D0C22"></path>
+<path class="logo-coffee" d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L663.459 570.876C641.091 563.237 618.516 558.161 593.068 558.161C549.054 558.144 513.591 573.303 472.623 590.836Z" fill="#FFDD00"></path>
+<path d="M78.6885 386.132L79.4799 386.872L79.9962 387.182C79.5987 386.787 79.1603 386.435 78.6885 386.132Z" fill="#0D0C22"></path>
+<path class="logo-outline" d="M879.567 341.849L872.53 306.352C866.215 274.503 851.882 244.409 819.19 232.898C808.711 229.215 796.821 227.633 788.786 220.01C780.751 212.388 778.376 200.55 776.518 189.572C773.076 169.423 769.842 149.257 766.314 129.143C763.269 111.85 760.86 92.4243 752.928 76.56C742.604 55.2584 721.182 42.8009 699.88 34.559C688.965 30.4844 677.826 27.0375 666.517 24.2352C613.297 10.1947 557.342 5.03277 502.591 2.09047C436.875 -1.53577 370.983 -0.443234 305.422 5.35968C256.625 9.79894 205.229 15.1674 158.858 32.0469C141.91 38.224 124.445 45.6399 111.558 58.7341C95.7448 74.8221 90.5829 99.7026 102.128 119.765C110.336 134.012 124.239 144.078 138.985 150.737C158.192 159.317 178.251 165.846 198.829 170.215C256.126 182.879 315.471 187.851 374.007 189.968C438.887 192.586 503.87 190.464 568.44 183.618C584.408 181.863 600.347 179.758 616.257 177.304C634.995 174.43 647.022 149.928 641.499 132.859C634.891 112.453 617.134 104.538 597.055 107.618C594.095 108.082 591.153 108.512 588.193 108.942L586.06 109.252C579.257 110.113 572.455 110.915 565.653 111.661C551.601 113.175 537.515 114.414 523.394 115.378C491.768 117.58 460.057 118.595 428.363 118.647C397.219 118.647 366.058 117.769 334.983 115.722C320.805 114.793 306.661 113.611 292.552 112.177C286.134 111.506 279.733 110.801 273.333 110.009L267.241 109.235L265.917 109.046L259.602 108.134C246.697 106.189 233.792 103.953 221.025 101.251C219.737 100.965 218.584 100.249 217.758 99.2193C216.932 98.1901 216.482 96.9099 216.482 95.5903C216.482 94.2706 216.932 92.9904 217.758 91.9612C218.584 90.9319 219.737 90.2152 221.025 89.9293H221.266C232.33 87.5721 243.479 85.5589 254.663 83.8038C258.392 83.2188 262.131 82.6453 265.882 82.0832H265.985C272.988 81.6186 280.026 80.3625 286.994 79.5366C347.624 73.2301 408.614 71.0801 469.538 73.1014C499.115 73.9618 528.676 75.6996 558.116 78.6935C564.448 79.3474 570.746 80.0357 577.043 80.8099C579.452 81.1025 581.878 81.4465 584.305 81.7391L589.191 82.4445C603.438 84.5667 617.61 87.1419 631.708 90.1703C652.597 94.7128 679.422 96.1925 688.713 119.077C691.673 126.338 693.015 134.408 694.649 142.03L696.732 151.752C696.786 151.926 696.826 152.105 696.852 152.285C701.773 175.227 706.7 198.169 711.632 221.111C711.994 222.806 712.002 224.557 711.657 226.255C711.312 227.954 710.621 229.562 709.626 230.982C708.632 232.401 707.355 233.6 705.877 234.504C704.398 235.408 702.75 235.997 701.033 236.236H700.895L697.884 236.649L694.908 237.044C685.478 238.272 676.038 239.419 666.586 240.486C647.968 242.608 629.322 244.443 610.648 245.992C573.539 249.077 536.356 251.102 499.098 252.066C480.114 252.57 461.135 252.806 442.162 252.771C366.643 252.712 291.189 248.322 216.173 239.625C208.051 238.662 199.93 237.629 191.808 236.58C198.106 237.389 187.231 235.96 185.029 235.651C179.867 234.928 174.705 234.177 169.543 233.397C152.216 230.798 134.993 227.598 117.7 224.793C96.7944 221.352 76.8005 223.073 57.8906 233.397C42.3685 241.891 29.8055 254.916 21.8776 270.735C13.7217 287.597 11.2956 305.956 7.64786 324.075C4.00009 342.193 -1.67805 361.688 0.472751 380.288C5.10128 420.431 33.165 453.054 73.5313 460.35C111.506 467.232 149.687 472.807 187.971 477.556C338.361 495.975 490.294 498.178 641.155 484.129C653.44 482.982 665.708 481.732 677.959 480.378C681.786 479.958 685.658 480.398 689.292 481.668C692.926 482.938 696.23 485.005 698.962 487.717C701.694 490.429 703.784 493.718 705.08 497.342C706.377 500.967 706.846 504.836 706.453 508.665L702.633 545.797C694.936 620.828 687.239 695.854 679.542 770.874C671.513 849.657 663.431 928.434 655.298 1007.2C653.004 1029.39 650.71 1051.57 648.416 1073.74C646.213 1095.58 645.904 1118.1 641.757 1139.68C635.218 1173.61 612.248 1194.45 578.73 1202.07C548.022 1209.06 516.652 1212.73 485.161 1213.01C450.249 1213.2 415.355 1211.65 380.443 1211.84C343.173 1212.05 297.525 1208.61 268.756 1180.87C243.479 1156.51 239.986 1118.36 236.545 1085.37C231.957 1041.7 227.409 998.039 222.9 954.381L197.607 711.615L181.244 554.538C180.968 551.94 180.693 549.376 180.435 546.76C178.473 528.023 165.207 509.681 144.301 510.627C126.407 511.418 106.069 526.629 108.168 546.76L120.298 663.214L145.385 904.104C152.532 972.528 159.661 1040.96 166.773 1109.41C168.15 1122.52 169.44 1135.67 170.885 1148.78C178.749 1220.43 233.465 1259.04 301.224 1269.91C340.799 1276.28 381.337 1277.59 421.497 1278.24C472.979 1279.07 524.977 1281.05 575.615 1271.72C650.653 1257.95 706.952 1207.85 714.987 1130.13C717.282 1107.69 719.576 1085.25 721.87 1062.8C729.498 988.559 737.115 914.313 744.72 840.061L769.601 597.451L781.009 486.263C781.577 480.749 783.905 475.565 787.649 471.478C791.392 467.391 796.352 464.617 801.794 463.567C823.25 459.386 843.761 452.245 859.023 435.916C883.318 409.918 888.153 376.021 879.567 341.849ZM72.4301 365.835C72.757 365.68 72.1548 368.484 71.8967 369.792C71.8451 367.813 71.9483 366.058 72.4301 365.835ZM74.5121 381.94C74.6842 381.819 75.2003 382.508 75.7337 383.334C74.925 382.576 74.4089 382.009 74.4949 381.94H74.5121ZM76.5597 384.641C77.2996 385.897 77.6953 386.689 76.5597 384.641V384.641ZM80.672 387.979H80.7752C80.7752 388.1 80.9645 388.22 81.0333 388.341C80.9192 388.208 80.7925 388.087 80.6548 387.979H80.672ZM800.796 382.989C793.088 390.319 781.473 393.726 769.996 395.43C641.292 414.529 510.713 424.199 380.597 419.932C287.476 416.749 195.336 406.407 103.144 393.382C94.1102 392.109 84.3197 390.457 78.1082 383.798C66.4078 371.237 72.1548 345.944 75.2003 330.768C77.9878 316.865 83.3218 298.334 99.8572 296.355C125.667 293.327 155.64 304.218 181.175 308.09C211.917 312.781 242.774 316.538 273.745 319.36C405.925 331.405 540.325 329.529 671.92 311.91C695.906 308.686 719.805 304.941 743.619 300.674C764.835 296.871 788.356 289.731 801.175 311.703C809.967 326.673 811.137 346.701 809.778 363.615C809.359 370.984 806.139 377.915 800.779 382.989H800.796Z" fill="#0D0C22"></path>
+</svg><span class="bmc-btn-text">Support me</span></a>
+</p>
+</div> </div>
+<div class="show-hide-wrap"><button class="show-hide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M22 16l-10.105-10.6-1.895 1.987 8.211 8.613-8.211 8.612 1.895 1.988 8.211-8.613z"></path></svg></button></div>
+</aside>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/acai66/mydl/fonts/wenyihei/wenyihei-subfont.css" media="all">
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76b48ab88853417e9c6ee86221b4ef52"}'></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f048369a4a00269bacde3b5b90f410ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script type="text/javascript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['enableJSErrorTracking']);
+_paq.push(['trackVisibleContentImpressions']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);_paq.push(['alwaysUseSendBeacon']);_paq.push(['setTrackerUrl', "\/\/www.blueskyxn.com\/wp-content\/plugins\/matomo\/app\/matomo.php"]);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.src="\/\/www.blueskyxn.com\/wp-content\/uploads\/matomo\/matomo.js"; s.parentNode.insertBefore(g,s);
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"6a01e2636a340cdf","version":"2021.9.0","r":1,"token":"e34888365a1044f8bfce378c329461ec","si":100}'></script>
+</body>
+
+</html>
+

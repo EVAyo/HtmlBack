@@ -1,0 +1,3287 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+<meta name="theme-color" content="#00cbff">
+<meta charset="UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title itemprop="name">全球常用网络运营商与服务器线路指南 &#8211; 苍穹の下	</title>
+<meta name="description" content="前提概要本文根据某药博客相关文章进行二次加工，根据本人知识对其进行部分修改（标蓝）常见名词IPLC" International Private Leased Circuit"的缩写，即“国际专线”。不过大部分通常看到的iplc，都只是阿里的经典网络，跨数据中心内网互通，阿里内网，并不是…" />
+<meta name="keywords" content="AWS,Azure,Bandwagon,DigitalOcean,GCP,Google,Vultr,腾讯云,阿里云,网络技术," />
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/favicon.ico" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+
+<script src="//www.googletagmanager.com/gtag/js?id=UA-163447597-1" type="text/javascript" data-cfasync="false" async></script>
+<script type="text/javascript" data-cfasync="false">
+				var mi_version = '8.0.1';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+				
+								var disableStrs = [
+															'ga-disable-UA-163447597-1',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						if ( document.cookie.indexOf( disableStrs[ index ] + '=true' ) > -1 ) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if ( __gtagTrackerIsOptedOut() ) {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						window[ disableStrs[ index ] ] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for ( var index = 0; index < disableStrs.length; index++ ) {
+						document.cookie = disableStrs[ index ] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[ disableStrs[ index ] ] = true;
+					}
+				}
+
+				if ( 'undefined' === typeof gaOptout ) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.MonsterInsightsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if ( mi_track_user ) {
+					function __gtagDataLayer() {
+						dataLayer.push( arguments );
+					}
+
+					function __gtagTracker( type, name, parameters ) {
+						if ( type === 'event' ) {
+							
+															parameters.send_to = monsterinsights_frontend.ua;
+								__gtagDataLayer.apply( null, arguments );
+													} else {
+							__gtagDataLayer.apply( null, arguments );
+						}
+					}
+					__gtagTracker( 'js', new Date() );
+					__gtagTracker( 'set', {
+						'developer_id.dZGIzZG' : true,
+											} );
+															__gtagTracker( 'config', 'UA-163447597-1', {"forceSSL":"true","link_attribution":"true"} );
+										window.gtag = __gtagTracker;										(
+						function () {
+							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+							/* ga and __gaTracker compatibility shim. */
+							var noopfn = function () {
+								return null;
+							};
+							var newtracker = function () {
+								return new Tracker();
+							};
+							var Tracker = function () {
+								return null;
+							};
+							var p = Tracker.prototype;
+							p.get = noopfn;
+							p.set = noopfn;
+							p.send = function (){
+								var args = Array.prototype.slice.call(arguments);
+								args.unshift( 'send' );
+								__gaTracker.apply(null, args);
+							};
+							var __gaTracker = function () {
+								var len = arguments.length;
+								if ( len === 0 ) {
+									return;
+								}
+								var f = arguments[len - 1];
+								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+									if ( 'send' === arguments[0] ) {
+										var hitConverted, hitObject = false, action;
+										if ( 'event' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[3] ) {
+												hitObject = {
+													'eventAction': arguments[3],
+													'eventCategory': arguments[2],
+													'eventLabel': arguments[4],
+													'value': arguments[5] ? arguments[5] : 1,
+												}
+											}
+										}
+										if ( 'pageview' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[2] ) {
+												hitObject = {
+													'eventAction': 'page_view',
+													'page_path' : arguments[2],
+												}
+											}
+										}
+										if ( typeof arguments[2] === 'object' ) {
+											hitObject = arguments[2];
+										}
+										if ( typeof arguments[5] === 'object' ) {
+											Object.assign( hitObject, arguments[5] );
+										}
+										if ( 'undefined' !== typeof arguments[1].hitType ) {
+											hitObject = arguments[1];
+											if ( 'pageview' === hitObject.hitType ) {
+												hitObject.eventAction = 'page_view';
+											}
+										}
+										if ( hitObject ) {
+											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+											hitConverted = mapArgs( hitObject );
+											__gtagTracker( 'event', action, hitConverted );
+										}
+									}
+									return;
+								}
+
+								function mapArgs( args ) {
+									var arg, hit = {};
+									var gaMap = {
+										'eventCategory': 'event_category',
+										'eventAction': 'event_action',
+										'eventLabel': 'event_label',
+										'eventValue': 'event_value',
+										'nonInteraction': 'non_interaction',
+										'timingCategory': 'event_category',
+										'timingVar': 'name',
+										'timingValue': 'value',
+										'timingLabel': 'event_label',
+										'page' : 'page_path',
+										'location' : 'page_location',
+										'title' : 'page_title',
+									};
+									for ( arg in args ) {
+																				if ( ! ( ! args.hasOwnProperty(arg) || ! gaMap.hasOwnProperty(arg) ) ) {
+											hit[gaMap[arg]] = args[arg];
+										} else {
+											hit[arg] = args[arg];
+										}
+									}
+									return hit;
+								}
+
+								try {
+									f.hitCallback();
+								} catch ( ex ) {
+								}
+							};
+							__gaTracker.create = newtracker;
+							__gaTracker.getByName = newtracker;
+							__gaTracker.getAll = function () {
+								return [];
+							};
+							__gaTracker.remove = noopfn;
+							__gaTracker.loaded = true;
+							window['__gaTracker'] = __gaTracker;
+						}
+					)();
+									} else {
+										console.log( "" );
+					( function () {
+							function __gtagTracker() {
+								return null;
+							}
+							window['__gtagTracker'] = __gtagTracker;
+							window['gtag'] = __gtagTracker;
+					} )();
+									}
+			</script>
+
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.blueskyxn.com/wp-includes/css/dist/block-library/style.min.css?ver=5.8' type='text/css' media='all' />
+<link rel='stylesheet' id='buy-me-a-coffee-css' href='https://www.blueskyxn.com/wp-content/plugins/buymeacoffee/public/css/buy-me-a-coffee-public.css?ver=2.7' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-frontend-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/css/frontend.min.css?ver=3.1.19' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-flatpickr-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.css?ver=3.1.19' type='text/css' media='all' />
+<link rel='stylesheet' id='ppress-select2-css' href='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.css?ver=5.8' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-icomoon-css' href='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.17' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css' href='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.17' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel='stylesheet' id='saukra_css-css' href='https://www.blueskyxn.com/wp-content/themes/Sakurairo/style.css?ver=2.2.6.1' type='text/css' media='all' />
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/www.blueskyxn.com","hash_tracking":"false","ua":"UA-163447597-1","v4_id":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js?ver=8.0.1' id='monsterinsights-frontend-script-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/buymeacoffee/public/js/buy-me-a-coffee-public.js?ver=2.7' id='buy-me-a-coffee-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.js?ver=5.8' id='ppress-flatpickr-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.js?ver=5.8' id='ppress-select2-js'></script>
+
+<script type='text/javascript' src='https://www.googletagmanager.com/gtag/js?id=UA-163447597-1' id='google_gtagjs-js' async></script>
+<script type='text/javascript' id='google_gtagjs-js-after'>
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["www.blueskyxn.com"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-163447597-1", {"anonymize_ip":true});
+</script>
+
+<link rel="https://api.w.org/" href="https://www.blueskyxn.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.blueskyxn.com/wp-json/wp/v2/posts/3167" /><link rel="canonical" href="https://www.blueskyxn.com/202101/3167.html" />
+<link rel='shortlink' href='https://www.blueskyxn.com/?p=3167' />
+<link rel="alternate" type="application/json+oembed" href="https://www.blueskyxn.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.blueskyxn.com%2F202101%2F3167.html" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.blueskyxn.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.blueskyxn.com%2F202101%2F3167.html&#038;format=xml" />
+<script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="blueskyxn" data-description=" " data-message=" " data-color="#FF813F" data-position=" " data-x_margin=" " data-y_margin=" ">
+        </script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"><meta property="og:image" content="https://imgapi.000714.xyz/skyimg.php?3167" /><meta property="og:title" content='全球常用网络运营商与服务器线路指南' />
+<meta property="og:description" content='' />
+<meta name="twitter:card" content='summary_large_image' />
+<meta name="twitter:title" content='全球常用网络运营商与服务器线路指南' />
+<meta name="twitter:description" content='' /><meta name="twitter:image" content="https://imgapi.000714.xyz/skyimg.php?3167" /><meta name="generator" content="Site Kit by Google 1.42.0" />
+<script>var WP_Statistics_http = new XMLHttpRequest();WP_Statistics_http.open('GET', 'https://www.blueskyxn.com/wp-json/wp-statistics/v2/hit?_=1634360563&_wpnonce=ad7ee5971c&wp_statistics_hit_rest=yes&browser=Chrome&platform=Android&version=11&referred=https://www.blueskyxn.com/search/{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}E6{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}8D{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}9F{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}E5{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}A4{6c6eaf0e7b3293b008cb292ae6822495b8a533a48cb39f95c3640ca1cf483bdc}B1&ip=2403:18c0:3:368::&exclusion_match=no&exclusion_reason&ua=Mozilla/5.0 (Linux; Android 11; SM-G977N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36&track_all=1&timestamp=1634389363&current_page_type=post&current_page_id=3167&search_query&page_uri=/202101/3167.html&user_id=0', true);WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");WP_Statistics_http.send(null);</script>
+<link rel="modulepreload" href="https://www.blueskyxn.com/wp-content/plugins/wp-cloudflare-page-cache/assets/js/instantpage.min.js"><style>
+.site-top .lower nav {display: block !important;}
+:root{
+    --theme-skin: #00cbff;
+}
+.author-profile i , .post-like a , .post-share .show-share , .sub-text , .we-info a , span.sitename { color: #00cbff }
+.feature i , /*.feature-title span ,*/ .download , .links ul li:before , .ar-time i , span.ar-circle , .object , .comment .comment-reply-link , .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #00cbff }
+.download ,  .link-title  { border-color: #00cbff }
+ .comment h4 a , #comments-navi a.prev , #comments-navi a.next , #archives-temp h3 , span.page-numbers.current , blockquote:before, blockquote:after { color: #00cbff }
+
+#aplayer-float .aplayer-lrc-current { color: #00cbff !important}
+
+.linkdes { border-top: 1px dotted #00cbff !important}
+
+.the-feature.from_left_and_right .info,.the-feature.from_left_and_right .info h3{background: rgba(255,255,255,0.4) ;}
+
+.is-active-link::before, .commentbody:not(:placeholder-shown)~.input-label, .commentbody:focus~.input-label {
+    background-color: #00cbff !important
+}
+.links ul li {
+    border: 1px solid #00cbff;
+}
+.links ul li img {
+    box-shadow: inset 0 0 10px #00cbff;
+}
+.commentbody:focus {
+    border-color: #00cbff !important
+}
+.post-list-thumb i ,
+.float-content i ,
+.post-more i { 
+    color: #00b5f2;
+}
+i.iconfont.js-toggle-search.iconsearch {
+    color: #00cbff;
+}
+.ins-section .fa {
+    color: #00cbff}
+.ins-section .ins-search-item.active .ins-slug,.ins-section .ins-search-item.active .ins-search-preview {
+	color: #00cbff}
+.ins-section .ins-section-header {
+    color: #00cbff;
+    border-bottom: 3px solid #00cbff;
+    border-color: #00cbff;
+}
+.the-feature.from_left_and_right .info h3{
+    color: #00cbff;
+}
+.the-feature.from_left_and_right .info p {
+    color: #00cbff;
+}
+.err-button.back a {
+    border: 1px solid #00cbff;
+    color: #00cbff;
+}
+
+.header-info {
+    color: #00cbff;
+    background: rgba(255,255,255,0.8);
+}
+.top-social img {
+    background: rgba(255,255,255,0.8);
+}
+.skin-menu{
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+}
+
+.post-more i:hover , #pagination a:hover , .post-content a:hover , .float-content i:hover , .entry-content a:hover , .site-info a:hover , .comment h4 a:hover , .site-top ul li a:hover , .entry-title a:hover , .sorry li a:hover , .site-title a:hover , i.iconfont.js-toggle-search.iconsearch:hover , .comment-respond input[type='submit']:hover { color: #7a90ff }
+.navigator i:hover { background: #7a90ff }
+.navigator i:hover , .links ul li:hover , #pagination a:hover , .comment-respond input[type='submit']:hover { border-color: #7a90ff }
+.insert-image-tips:hover, .insert-image-tips-hover{ 
+    color: #7a90ff;
+    border: 1px solid #7a90ff}
+.ins-section .ins-search-item:hover .ins-slug,.ins-section .ins-search-item:hover .ins-search-preview,.ins-section .ins-search-item:hover header,.ins-section .ins-search-item:hover .iconfont {
+	color: #7a90ff}
+.sorry li a:hover {
+    color: #7a90ff;
+}
+.header-info p:hover {
+    color: #7a90ff;
+	transition: all .4s;
+}
+.post-tags a:hover {
+    color: #7a90ff}
+.post-share ul li a:hover {
+    color: #7a90ff}
+#pagination a:hover {
+    border: 1px solid #7a90ff;
+    color: #7a90ff}
+.ex-login input.login-button:hover,
+.ex-register input.register-button:hover {
+    background-color: #7a90ff;
+    border-color: #7a90ff;
+}
+.site-top ul li a:after {
+    background-color: #7a90ff}
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+textarea {
+    border: 1px solid #00cbff;
+}
+.post-date {
+    color: #00b5f2}
+.linkdes {
+    color: #00cbff}
+.link-title span.link-fix {
+    border-left:3px solid #00cbff;
+}
+.scrollbar,.butterBar-message {
+    background: #00cbff !important
+}
+h1.cat-title {
+    color: #00cbff}
+.comment .body .comment-at {
+    color: #00cbff}
+.focusinfo .header-tou img {
+    box-shadow: inset 0 0 10px #00cbff;
+}
+.double-bounce1, .double-bounce2 {
+    background-color: #00cbff;
+  }
+.herder-user-name no-logged{
+    color: #00cbff;
+}
+#pagination .loading {
+    background: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #555;
+    border: none;
+    background-size: auto 100%
+}
+#pagination .loading,#bangumi-pagination .loading {
+    background: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #555;
+    border: none;
+    background-size: auto 100%
+}
+#nprogress .spinner-icon {
+    border-top-color: #00cbff;
+    border-left-color: #00cbff;
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px #00cbff, 0 0 5px #00cbff;
+}
+#nprogress .bar {
+    background: #00cbff;
+}
+#gohome {
+    background: #00cbff;
+}
+#archives-temp h2 {
+    color: #00cbff}
+#archives-temp h3 {
+    color: #00cbff}
+#moblieGoTop {
+    color: #00cbff;
+    border-radius: 12px;
+}
+#changskin {
+    color: #00cbff;
+    border-radius: 12px;
+}
+#show-nav .line {
+    background: #00cbff}
+#nprogress .spinner-icon{ 
+    border-top-color: #00cbff; 
+    border-left-color: #00cbff}
+#nprogress .bar {
+    background: #00cbff}
+#aplayer-float .aplayer-lrc-current {
+    color: #00cbff;
+}
+@media (max-width:860px) {
+    .links ul li:hover .sitename {
+        color: #7a90ff    }
+    .openNav .icon {
+     background-color: #00cbff;
+    }
+    .openNav .icon:after,
+    .openNav .icon:before {
+     background-color: #00cbff;
+    }
+    #mo-nav ul li a {
+        color: #00cbff;
+    }
+    #mo-nav ul li a:hover {
+        color: #7a90ff;
+    }
+}
+.herder-user-name {
+	color: #00cbff;
+}
+.header-user-menu a {
+    color: #00cbff;
+}
+.no-logged a {
+    color: #00cbff;
+}
+.single-reward .reward-open {
+    background: #7a90ff;
+    color: #00cbff;
+}
+
+/*白猫样式Logo*/
+
+.logolink a {
+    color: #00cbff;
+}
+
+.art .art-content .al_mon_list .al_post_list>li:after {
+    background: #00cbff;
+}
+@media (min-width:861px) {
+    .hide-live2d {
+        background-color: #00cbff;
+    }
+}
+.art-content #archives .al_mon_list .al_mon:after {
+    background: #00cbff;
+}
+.art-content #archives .al_mon_list:before {
+    background: #00cbff;
+}
+.changeSkin-gear {
+    color: #00cbff;
+}
+.art .art-content .al_mon_list .al_post_list>li:after,
+.art-content #archives .al_mon_list .al_mon:after {
+    background: #00cbff;
+}
+.is-active-link::before {
+    background-color: #00cbff; /*!important*/ /*mark*/
+}
+.motion-switcher-table th:hover {
+    color: #7a90ff;
+}
+.motion-switcher-table .on-hover {
+    color: #7a90ff;
+}
+.menhera-container .emoji-item {
+    color: #00cbff;
+}
+.scrollbar {
+    background: #00cbff;
+}
+.insert-image-tips:hover {
+    color: #7a90ff;
+    border: 1px solid #7a90ff;
+}
+.insert-image-tips-hover {
+    color: #7a90ff;
+    border: 1px solid #7a90ff;
+}
+.the-feature a {
+    color: #00cbff;
+}
+#moblieGoTop:hover,
+#changskin:hover {
+    color: #7a90ff;
+    background-color: #fff;
+    opacity: .8;
+}
+.menu-list li:hover {
+    background-color: #7a90ff;
+}
+.art .art-content #archives a:hover {
+    color: #7a90ff;
+}
+.art .art-content .al_mon_list .al_post_list>li,
+.art-content #archives .al_mon_list .al_mon {
+	color: #00cbff;
+}
+.font-family-controls button.selected{
+    background-color: #00cbff;
+}
+.font-family-controls button:hover{
+    background-color: #7a90ff;
+}
+.art-content #archives .al_mon_list .al_mon,
+.art-content #archives .al_mon_list span {
+    color: #00cbff;
+}
+h1.fes-title,
+h1.main-title {
+    color: #00cbff;
+}
+.font-family-controls button {
+    color: #00cbff;
+    border-radius: 12px;
+}
+
+/*非全局色彩管理*/
+
+:root{
+    --post-list-thumb: #e8e8e8;
+}
+
+.menu-list li {
+    background-color: #e8e8e8;
+    border-radius: 12px;
+}
+.font-family-controls button {
+    background-color: #e8e8e8;
+}
+h1.fes-title,
+h1.main-title {
+    border-bottom: 6px dotted #e8e8e8;
+}
+.post-date {
+    background-color: #fff5e0;
+}
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
+    background: #ffe066;
+}
+.cbp_tmtimeline > li .cbp_tmlabel {
+    background: #ffcc00;
+}
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
+    border-right-color: #ffe066;
+}
+.cbp_tmtimeline > li .cbp_tmlabel:after {
+    border-right-color: #ffcc00;
+}
+
+.center-text{
+color: #9fd8f4 ;
+font-size: 70px;
+}
+.Ubuntu-font,.center-text{
+font-family:  ;
+}
+
+.notice i ,
+.notice {
+    color: #999;
+}
+
+.notice {
+    border: 1px solid #E6E6E6;
+}
+
+.entry-content th {
+    background-color: #00cbff}
+
+
+.post-list-thumb{opacity: 0}
+.post-list-show {opacity: 1}
+
+/*大于1024宽度才会生效*/
+@media (min-width: 1024px){
+    .post-date {
+        background-color: #ff8000 !important;
+        padding: 2px 7px;
+        border-radius: 10px;
+        color: #ffffff !important; 
+        width: max-content;
+        font-size: 10px !important;
+        margin-top: 5%;
+    }
+ 
+    .icon-time::before {
+        content: "e689";
+        color: #ffffff !important;
+        font-size: 10px;
+    }
+ 
+    .post-meta {
+        color: #ffffff !important;
+        font-size: 10px;
+        text-align: center;
+    }
+ 
+    .post-meta span {
+        padding: 3px 6px 3px 6px;
+        border-radius: 7px;
+    }
+ 
+    .post-meta span:nth-child(1) {
+        background-color: #3cdc82;
+    }
+ 
+    .post-meta span:nth-child(2) {
+        background-color: #fed466;
+    }
+ 
+    .post-meta span:nth-child(3) {
+        background-color: #ff4e6a;
+    }
+ 
+    .icon-attention::before {
+        content: "e693";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .icon-mark::before {
+        content: "e6ab";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .icon-file::before {
+        content: "e6ad";
+        font-size: 10px;
+        color: #ffffff !important;
+    }
+ 
+    .post-meta span a {
+        color: #ffffff !important;
+    }
+ 
+    .icon-caidan::before {
+        color: #FFC0CB !important;
+    }
+ 
+    .float-content {
+        font-size: 14px;
+        margin-top: 20px;
+        text-align: center;
+    }
+ 
+    .post-list-thumb .post-title h3 {
+        text-align: center;
+    }
+ 
+    .float-content p {
+        margin-top: 25px;
+    }
+ 
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+ 
+    .post-list-thumb::after {
+        content: " ";
+        width: 4px;
+        height: 0px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-color: #FFC0CB;
+        box-shadow: #FFC0CB 0px 0px 6px;
+        border-radius: 10px;
+        transition: all 0.8s ease 0s;
+    }
+ 
+    .post-list-thumb-left::after {
+        right: 0;
+        left: auto;
+    }
+ 
+    .post-list-thumb:hover:after {
+        height: 100%;
+    }
+ 
+    .post-thumb a img {
+        width: 400px !important;
+        height: 250px !important;
+        box-shadow: 1px 1px 30px 2px rgba(216,191,216,.3);
+        border-radius: 20px;
+        border: 1px solid #eee;
+        transition: all 1s !important;
+    }
+ 
+    .post-list-thumb:hover {
+        box-shadow: 0 1px 12px -6px rgba(0,0,0,.5);
+    }
+ 
+    .post-list-thumb:hover img {
+        transform: scale(1.05);
+    }
+ 
+    .post-thumb a {
+        overflow: inherit !important;
+        top: 25px;
+    }
+ 
+    .post-thumb {
+        width: 45%;
+        transform: translateX(70px);
+    }
+ 
+    .post-list-thumb-left .post-thumb {
+        float: left;
+        transform: translateX(-40px);
+    }
+ 
+    .post-content-wrap {
+        transform: translateX(-30px) translateY(16px);
+            padding-right: 0px !important;
+    }
+ 
+    .post-list-thumb-left .post-content-wrap {
+        transform: translateX(30px) translateY(16px);
+        padding-left: 0px !important;
+    }
+}.feature img{ border-radius: 0px; !important; }
+.feature i { border-radius: 0px; !important; }
+.centerbg{background-position: center center;background-attachment: inherit;background-position: center center;background-attachment: inherit;}
+.rotating {
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
+}
+
+/*预加载部分*/
+
+
+/*深色模式*/
+
+/*固定项目*/
+body.dark #main-container,
+body.dark .comments,
+body.dark .site-footer,
+body.dark .wrapper,
+body.dark .post-list-show,
+body.dark .post-list hr,
+body.dark .lower li ul,
+body.dark .header-user-menu,
+body.dark .headertop-bar::after 
+{background:rgba(51,51,51,1) !important;}
+
+body.dark .toc,
+body.dark .search-form input
+{background:rgba(51,51,51,0.8);}
+
+body.dark #mo-nav{
+    background:#333333;
+}
+
+body.dark .single-reward .reward-row,
+body.dark input.m-search-input
+{background:#999999;}
+
+body.dark .ins-section .ins-search-item.active,
+body.dark .ins-section .ins-search-item.active .ins-slug,
+body.dark .ins-section .ins-search-item.active .ins-search-preview,
+body.dark .herder-user-name-u,
+body.dark .herder-user-name,
+body.dark .herder-user-name no-logged,
+body.dark .header-user-menu .user-menu-option
+{color:#fff;background:#333333;}
+
+body.dark .single-reward .reward-row:before
+{border-bottom:13px solid #999999;}
+
+body.dark .search-form--modal,
+body.dark .ins-section .ins-section-header
+{border-bottom:none;background:rgba(51,51,51,0.9) !important;}
+
+body.dark .search_close:after,
+body.dark .search_close:before,
+body.dark .openNav .icon,
+body.dark .openNav .icon:before
+{background-color:#CCCCCC;}
+
+body.dark .centerbg
+{background-blend-mode:hard-light;background-color:#333333;}
+
+body.dark input[type=color]:focus,
+body.dark input[type=date]:focus,
+body.dark input[type=datetime-local]:focus,
+body.dark input[type=datetime]:focus,
+body.dark input[type=email]:focus,
+body.dark input[type=month]:focus,
+body.dark input[type=number]:focus,
+body.dark input[type=password]:focus,
+body.dark input[type=range]:focus,
+body.dark input[type=search]:focus,
+body.dark input[type=tel]:focus,
+body.dark input[type=text]:focus,
+body.dark input[type=time]:focus,
+body.dark input[type=url]:focus,
+body.dark input[type=week]:focus,
+body.dark textarea:focus,
+body.dark .post-date,
+body.dark #mo-nav .m-search form
+{color:#CCCCCC;background-color:#333333;}
+
+body.dark .header-user-menu::before,
+body.dark .lower li ul::before
+{border-color:transparent transparent #333333 transparent;}
+
+body.dark .header-user-menu .user-menu-option,
+body.dark .post-list-thumb a 
+{color:#333333;}
+
+body.dark .entry-content p,
+body.dark .entry-content ul,
+body.dark .entry-content ol,
+body.dark .comments .body p,
+body.dark .float-content,
+body.dark .post-list p,
+body.dark .link-title
+{color:#999999 !important;}
+
+body.dark .entry-title a,
+body.dark .post-list-thumb .post-title,
+body.dark .art-content #archives .al_mon_list .al_mon,
+body.dark .art-content #archives .al_mon_list span,
+body.dark .art .art-content #archives a,
+body.dark .menhera-container .emoji-item,
+body.dark .ex-login-username,
+body.dark .admin-login-check p,
+body.dark .user-login-check p,
+body.dark .ex-logout a,
+body.dark .ex-new-account a
+{color:#999999;}
+
+body.dark .site-top ul li a,
+body.dark .header-user-menu a,
+body.dark #mo-nav ul li a,
+body.dark .site-title a,
+body.dark header.page-header,
+body.dark h1.cat-title,
+body.dark .art .art-content #archives .al_year,
+body.dark .comment-respond input,
+body.dark .comment-respond textarea,
+body.dark .siren-checkbox-label,
+body.dark .aplayer .aplayer-list ol li .aplayer-list-author,
+body.dark,
+body.dark button,
+body.dark input,
+body.dark select,
+body.dark textarea,
+body.dark i.iconfont.js-toggle-search.iconsearch,
+body.dark .info-meta a,
+body.dark .info-meta span,
+body.dark .skin-menu
+{color:#CCCCCC;}
+
+body.dark .post-date,
+body.dark .post-list-thumb a,
+body.dark .post-list-thumb i,
+body.dark .post-meta
+{color:#666666;}
+
+body.dark .post-list-thumb
+{box-shadow:0 1px 35px -8px rgba(26,26,26,0.6);}
+
+body.dark .notice,
+body.dark .notification 
+{color:#CCCCCC;background:#666666;border:none;}
+
+body.dark .author-profile p
+{border-top: 1px solid #3B3B3B;border-bottom: 1px solid #3B3B3B;color: #CCCCCC;}
+
+body.dark .author-profile .meta h3 a,
+body.dark .author-profile i 
+{color: #CCCCCC;}
+
+body.dark h1.page-title
+{border: 1px dashed #3B3B3B;color: #CCCCCC;}
+
+body.dark .entry-header hr
+{background:#3B3B3B;}
+
+body.dark h1.fes-title,
+body.dark h1.main-title
+{border-bottom:6px dotted #666666;color:#CCCCCC;}
+
+body.dark .widget-area .heading,
+body.dark .widget-area .show-hide svg,
+body.dark #aplayer-float,
+body.dark .aplayer.aplayer-fixed .aplayer-body,
+body.dark .aplayer .aplayer-miniswitcher,
+body.dark .aplayer .aplayer-pic
+{color:#CCCCCC;background-color:#262626 !important;}
+
+body.dark #aplayer-float .aplayer-lrc-current
+{color:transparent !important;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-lrc
+{text-shadow:-1px -1px 0 #999999;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-list
+{border:none !important;}
+
+body.dark .aplayer.aplayer-fixed .aplayer-info,
+body.dark .aplayer .aplayer-list ol li
+{border-top:none !important;}
+
+body.dark .yya
+{box-shadow: 0 1px 40px -8px #333333;}
+
+body.dark .font-family-controls button,
+body.dark .menu-list li
+{background-color:#666666;}
+
+body.dark .s-content,body.dark .font-family-controls button.selected
+{background-color:#808080;}
+
+body.dark #banner_wave_1,
+body.dark #banner_wave_2
+{display:none;}
+
+body.dark .widget-area .show-hide svg path
+{fill:#CCCCCC;}
+
+body.dark button,
+body.dark input[type=button],
+body.dark input[type=reset],
+body.dark input[type=submit]
+{box-shadow:none;}
+
+body.dark .comment .info,
+body.dark .comment-respond .logged-in-as,
+body.dark .comment-respond .logged-in-as a,
+body.dark span.sitename 
+{color:#CCCCCC;}
+
+body.dark .header-user-avatar:hover ,
+body.dark .aplayer .aplayer-list ol li.aplayer-list-light ,
+body.dark .site-header:hover 
+{background:#333333;}
+
+body.dark #preload
+{background: #333333;}
+
+body.dark #moblieGoTop,
+body.dark #changskin
+{background-color:#262626;}
+
+body.dark #show-nav .line 
+{background: #CCCCCC;}
+
+body.dark .linkdes
+{
+    border-top: 1px dotted #CCCCCC !important;
+    color:#CCCCCC;
+}
+
+body.dark .links ul li
+{
+    background-color: #666666;
+    border: none;
+    opacity:.8;
+}
+
+body.dark .post-footer 
+{background-image: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/creativecommons-dark.png);}
+
+/*可变项目*/
+
+/*深色模式控件透明度*/
+body.dark .header-info,
+body.dark .top-social img
+{color:#fff;background:rgba(51,51,51,0.8);}
+
+body.dark .the-feature.from_left_and_right .info
+{background-color: rgba(51,51,51,0.8);}
+
+body.dark .yya,
+body.dark .widget-area,
+body.dark .skin-menu,
+body.dark input[type=submit] 
+{background-color:rgba(38,38,38,0.8) !important;}
+
+/*深色模式自定义颜色*/
+body.dark .headertop-down i 
+{color: rgba(51,51,51,0.8) !important;}
+
+/*深色模式图像亮度*/
+body.dark img,
+body.dark .highlight-wrap,
+body.dark iframe,
+body.dark .entry-content .aplayer
+{filter:brightness(0.8);}
+
+/*深色模式主题色*/
+:root{
+    --theme-skin-dark: #4968ff;
+}
+body.dark .scrollbar,
+body.dark .butterBar-message,
+body.dark .aplayer .aplayer-list ol li:hover ,
+body.dark .pattern-center:after 
+{background: #4968ff !important;}
+
+body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur,
+body.dark .user-menu-option a:hover ,
+body.dark .menu-list li:hover ,
+body.dark .font-family-controls button:hover ,
+body.dark .openNav .icon, 
+body.dark .openNav .icon:before ,
+body.dark .openNav .icon:after ,
+body.dark .openNav .icon:after ,
+body.dark .site-top ul li a:after 
+{background-color: #4968ff;}
+
+body.dark #moblieGoTop,
+body.dark #changskin,
+body.dark .post-content a:hover ,
+body.dark .entry-title a:hover ,
+body.dark .art .art-content #archives a:hover ,
+body.dark .the-feature.from_left_and_right a:hover .info p,
+body.dark .the-feature.from_left_and_right .info,
+body.dark .ins-section .ins-search-item:hover,
+body.dark .ins-section .ins-search-item:hover .ins-slug,
+body.dark .ins-section .ins-search-item:hover .ins-search-preview,
+body.dark .ins-section .ins-search-item:hover .iconfont ,
+body.dark .float-content i:hover,
+body.dark .menhera-container .emoji-item:hover ,
+body.dark .comment-respond .logged-in-as a:hover ,
+body.dark .site-top ul li a:hover ,
+body.dark i.iconfont.js-toggle-search.iconsearch:hover
+{color:#4968ff;}
+
+body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path 
+{fill:#4968ff;}
+
+body.dark #moblieGoTop:hover , 
+body.dark #changskin:hover 
+{color:#4968ff;opacity:.8;}
+
+body.dark .focusinfo .header-tou img 
+{box-shadow: inset 0 0 10px #4968ff;}
+
+
+@media (max-width: 1200px){
+body.dark .site-top .lower nav.navbar ul 
+{background: rgba(255,255,255,0);}
+}
+
+/*切换动画*/
+html,
+#main-container,
+.pattern-center:after,
+#mo-nav,
+.headertop-bar::after,
+.comments,
+.site-footer,
+.pattern-center-blank,
+.yya,
+.blank,
+.toc
+{transition:background 0.8s;}
+
+.notice,
+.notification,
+.author-profile p,
+.author-profile .meta h3 a,
+.author-profile i,
+.entry-header hr,
+.header-info p,
+.header-info,
+.focusinfo .header-tou img,
+.top-social img, 
+.center-text,
+.entry-content p,
+.entry-content ul,
+.entry-content ol,
+.comments .body p,
+.float-content,
+.post-list p,
+.link-title,
+.search-form input,
+.wrapper,
+.site-footer,
+.site-wrapper,
+#moblieGoTop,
+#changskin,
+#moblieGoTop:hover,
+#changskin:hover,
+.post-list-show,
+.post-list hr,
+.post-date,
+.float-content i:hover,
+h1.fes-title,
+h1.main-title,
+h1.page-title
+{transition:all 0.8s ease !important;}
+
+/*字重*/
+
+h1,small,sub,sup,code,kbd,pre,samp,body,button,input,select,textarea,blockquote:before,blockquote:after,code,kbd,tt,var,big,button,input[type=button],input[type=reset],input[type=submit],.video-stu,.pattern-center h1.cat-title,.pattern-center h1.entry-title,.pattern-center .cat-des,.single-center .single-header h1.entry-title,.single-center .entry-census,.pattern-center-sakura h1.cat-title,.pattern-center-sakura h1.entry-title,.pattern-center-sakura .cat-des,.single-center .single-header h1.entry-title,.single-center .entry-census,.site-top .lower,.site-top .menu-item-has-children li a,.feature i,.p-time,.p-time i,i.iconfont.hotpost,.post-list p,.post-more i,.info-meta span,.post-list-thumb i,.post-date,.post-meta,.post-meta a,.float-content .post-text,.float-content i,.s-time,.s-time i,.navigator i,.site-info,.entry-census,h1.page-title,.post-tags,.post-like a,.post-like i,.post-share ul li i ,.post-squares .category,.post-squares h3,.post-squares .label,.author-profile .meta h3 a,.author-profile p,.author-profile i,.mashiro-profile .box a,#comments-list-title span,.butterBar-message ,h1.works-title,.works-p-time,.works-p-time i,.works-meta i,.works-meta span,#archives-temp h3,h1.cat-title,span.sitename,span.linkss-title,.comment .commeta,.comment .comment-reply-link,.comment .info,.comment .info .useragent-info-m,.comment h4,.comment h4 a,.comment-respond #cancel-comment-reply-link,.comment-respond input,.comment-respond textarea,.comment-respond .logged-in-as i,.notification i,.notification span,.siren-checkbox-label,h1.fes-title,h1.main-title,.foverlay-bg,.feature-title .foverlay,.notice i,.bio-text,.header-info,.site-header.iconsearch,i.iconfont.js-toggle-search.iconsearch,.search-form i ,.search-form input,.s-search input,.s-search i,.ins-section,.ins-section .iconfont.icon-mark,.ins-section .fa ,.ins-section.ins-search-item .search-keyword,.ins-section .ins-search-item .ins-search-preview,i.iconfont.down,#pagination span,#bangumi-pagination span,.ex-login-title ,.ex-register-title h3,.ex-login input,.ex-register input,.admin-login-check,.user-login-check,.ex-login-username,.ex-new-account a,.ex-register .user-error,.register-close,.herder-user-name,.header-user-menu a,.no-logged,.no-logged a,.single-reward .reward-open,.reward-row li::after ,.botui-container,button.botui-actions-buttons-button,input.botui-actions-text-input,.load-button span,.prpr,.mashiro-tips,.live2d-tool,.center-text,.bb-comment,.finish-icon-container,.skill div,#footer-sponsor,.comment-user-avatar .socila-check ,.insert-image-tips ,.the-feature.from_left_and_right .info h3,.the-feature.from_left_and_right .info p,.highlight-wrap .copy-code ,#bangumi-pagination {font-weight: 300 !important}
+
+/*字体*/
+
+
+.serif{
+font-family: !important ;
+font-size: 15px !important;
+}
+
+body{
+font-family: !important;
+font-size: 15px !important;
+}
+
+h1.main-title,h1.fes-title{
+font-family:Noto Serif SC !important;
+}
+
+.header-info p{
+font-family:Noto Serif SC !important;
+font-size: 16px !important;
+}
+
+.cbp_tmtimeline > li .cbp_tmlabel {
+font-family:Noto Serif SC !important;
+}
+
+.post-list-thumb .post-title h3{
+font-size: 16px !important;
+}
+
+.post-meta, .post-meta a{
+font-size: 10px !important;
+}
+
+.pattern-center h1.cat-title,
+.pattern-center h1.entry-title {
+font-size: 40px !important;
+}
+.pattern-center-sakura h1.cat-title,
+.pattern-center-sakura h1.entry-title {
+font-size: 40px !important;
+}
+
+.single-center .single-header h1.entry-title {
+font-size: 32px !important;
+}
+
+/*鼠标*/
+body{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/normal.cur), auto;
+}
+
+.botui-actions-buttons-button,
+.headertop-down i,
+.faa-parent.animated-hover:hover>.faa-spin,
+.faa-spin.animated,
+.faa-spin.animated-hover:hover,
+i.iconfont.js-toggle-search.iconsearch,
+#waifu #live2d,
+.aplayer svg,
+.aplayer.aplayer-narrow .aplayer-body,
+.aplayer.aplayer-narrow .aplayer-pic,
+button.botui-actions-buttons-button,
+#emotion-toggle,
+.emoji-item,
+.emotion-box,
+.emotion-item,
+.on-hover,
+.tieba-container span,
+#moblieGoTop,
+#changskin{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/No_Disponible.cur), auto;
+}
+
+a,
+.ins-section .ins-section-header,
+.font-family-controls button,
+.menu-list li,.ins-section .ins-search-item,
+.ins-section .ins-search-item .ins-search-preview{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/ayuda.cur), auto;
+}
+
+p,
+.highlight-wrap code,
+.highlight-wrap,
+.hljs-ln-code .hljs-ln-line{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/texto.cur), auto;
+}
+
+a:active{
+cursor: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/cursor/work.cur), alias;
+}
+
+/*背景类*/
+.comment-respond textarea {
+background-image: url(https://ae01.alicdn.com/kf/Haeaff84cd2d84c999ea70c83fed88d44W.jpg); 
+}
+
+.search-form.is-visible{
+background-image: url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/basic/iloli.gif);
+}
+
+.site-footer {
+background-color: rgba(255, 255, 255,0.8);
+}
+
+.wrapper {
+background-color: rgba(255, 255, 255,0.8);
+}
+
+/*首页圆角设置*/
+.header-info{
+border-radius: 15px;
+}
+
+.focusinfo img{
+border-radius: 15px;
+}
+
+.focusinfo .header-tou img{
+border-radius: 100px;
+}
+
+/*标题横线动画*/
+.single-center header.single-header .toppic-line{
+position:relative;bottom:0;left:0;display:block;width:100%;height:2px;background-color:#fff;animation:lineWidth 2.5s;animation-fill-mode:forwards;}
+@keyframes lineWidth{0%{width:0;}
+100%{width:100%;}
+}
+
+/*标题动画*/
+.entry-title,.single-center .entry-census a,.entry-census,.post-list p,.post-more i,.p-time,.feature{
+	-moz-animation: fadeInUp 2s;
+    -webkit-animation:fadeInUp 2s;
+	animation: fadeInUp 2s;
+}
+
+/*首页封面动画*/
+
+/*导航菜单动画*/
+.site-top ul {
+	-moz-animation: fadeInLeft  1s;
+    -webkit-animation:fadeInLeft  1s;
+	animation: fadeInLeft  1s;
+}
+
+/*浮起动画*/
+/*向上*/
+@-moz-keyframes fadeInUp {
+	0% {
+		-moz-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInUp {
+	0% {
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInUp {
+	0% {
+		-moz-transform: translateY(200%);
+		-ms-transform: translateY(200%);
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(200%);
+		-ms-transform: translateY(200%);
+		-webkit-transform: translateY(200%);
+		transform: translateY(200%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+/*向下*/
+@-moz-keyframes fadeInDown {
+	0% {
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInDown {
+	0% {
+		-moz-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateY(-100%);
+		-ms-transform: translateY(-100%);
+		-webkit-transform: translateY(-100%);
+		transform: translateY(-100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateY(0%);
+		-ms-transform: translateY(0%);
+		-webkit-transform: translateY(0%);
+		transform: translateY(0%);
+		opacity: 1
+	}
+}
+/*向左*/
+@-moz-keyframes fadeInLeft {
+	0% {
+		-moz-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+ 
+@-webkit-keyframes fadeInLeft {
+	0% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-webkit-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+ 
+@keyframes fadeInLeft {
+	0% {
+		-moz-transform: translateX(100%);
+		-ms-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	50% {
+		-moz-transform: translateX(100%);
+		-ms-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		opacity: 0
+	}
+ 
+	100% {
+		-moz-transform: translateX(0%);
+		-ms-transform: translateX(0%);
+		-webkit-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1
+	}
+}
+
+/*其他*/
+
+
+@media (max-width: 860px) {
+.headertop-down {
+        display: none
+    }
+}
+
+.widget-area .sakura_widget{
+    background-image: url(https://ae01.alicdn.com/kf/Ue7102eb66e9c4b6da97db9e1ffbaa710y.jpg);
+}
+
+.headertop{
+    border-radius: 0 0 15px 15px;
+}
+
+.float-content i {
+    display: none;
+}
+
+
+
+
+
+
+.pattern-center::after {
+    display:none;
+}
+.pattern-center-blank {
+    display:none;
+}
+
+
+.yya {
+    position: fixed;
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
+    width:95% ;
+	left:calc(97.5% - 95%);
+    background: rgba(255, 255, 255, .75);
+    box-shadow: 0 1px 40px -8px rgba(255, 255, 255, .4);
+    border-radius: 15px !important;
+}
+.site-title img {
+    margin-left: 10px;
+}
+.site-header {
+    border-radius: 15px !important;
+}
+.header-user-menu {
+    border-radius: 15px !important;
+}
+.lower li ul {
+    border-radius: 15px !important;
+}
+@media (max-width:860px) {
+.openNav .icon {
+        left: 5vw;
+    }
+.site-header {
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background: 0 0;
+    position: fixed;
+    border-radius: 0 !important;
+}
+.yya {
+    position: fixed;
+    background: rgba(255, 255, 255, .75);
+    border-radius: 0 !important;
+    box-shadow: 0 1px 40px -8px rgba(255, 255, 255, .4)
+}
+}
+
+
+.header-user-menu::before {
+    display: none;
+}
+.lower li ul::before {
+    display: none;
+}
+
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
+    display: none;
+}
+.cbp_tmtimeline > li .cbp_tmlabel:after {
+    display: none;
+}
+
+.the-feature.from_left_and_right {
+    position: relative;
+    border-radius: 15px;
+    height: 160px;
+    width: 258px;
+    margin: 6px 6px 0 6px;
+}
+
+.the-feature img {
+    height: 160px;
+    width: 258px;
+}
+
+
+
+.notice {
+    background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/hyouryu/announcement_bg.jpg);
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+body{
+    background-size:auto;
+}
+</style>
+<script id="_mashiro_">
+/*Initial Variables*/
+var mashiro_option = {
+    NProgressON:true,baguetteBoxON:true,    darkmode :true,
+    dm_strategy:"time",
+        email_domain:"000714.xyz",
+    email_name:"bluesky",
+    cookie_version_control:"",
+    qzone_autocomplete:false,
+    site_name:"苍穹の下",
+    author_name:"BlueSkyXN",
+    template_url:"https://www.blueskyxn.com/wp-content/themes/Sakurairo",
+    site_url:"https://www.blueskyxn.com",
+    qq_api_url:"https://www.blueskyxn.com/wp-json/sakura/v1/qqinfo/json",
+    // qq_avatar_api_url:"https://api.2heng.xin/qqinfo/",
+    live_search:false,
+            skin_bg0:"",
+    
+        skin_bg1:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg1.png",
+    
+        skin_bg2:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg2.png",
+    
+        skin_bg3:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg3.png",
+    
+        skin_bg4:"https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/background/foreground/bg4.png",
+        land_at_home:false,
+    clipboardCopyright:false,
+
+        entry_content_style_src:"https://www.blueskyxn.com/wp-content/themes/Sakurairo/css/theme/sakura.css?2.2.6.1",
+        entry_content_style:"sakurairo",
+
+        jsdelivr_css_src:"https://www.blueskyxn.com/wp-content/themes/Sakurairo/css/lib.css?2.2.6.1",
+        
+    cover_api:"https://www.blueskyxn.com/wp-json/sakura/v1/image/cover",
+    random_graphs_mts:true,
+    code_highlight:"hljs",    
+    comment_upload_img:false,
+    cache_cover:true,yiyan_api:["https://api.maho.cc/yiyan/", "https://v1.hitokoto.cn/"],};
+/*End of Initial Variables*/
+</script>
+<script>const mashiro_global = {};</script>
+<link rel="amphtml" href="https://www.blueskyxn.com/202101/3167.html/amp/"> <script type="text/javascript">
+		if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+			alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+		}
+	</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163447597-1"></script>
+<script>
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date());
+			gtag('config', 'UA-163447597-1');
+		</script>
+</head>
+<body class="post-template-default single single-post postid-3167 single-format-standard chinese-font  ">
+<div class="scrollbar" id="bar"></div>
+<header class="site-header no-select" role="banner">
+<div class="site-top">
+<div class="site-branding">
+<span class="site-title">
+<span class="logolink moe-mashiro">
+<a href="https://www.blueskyxn.com">
+<ruby>
+<span class="sakuraso" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;;"></span>
+<span class="no" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;"></span>
+<span class="shironeko" style="font-family: 'wenyihei-subfont', 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;">苍穹の下</span>
+<rp></rp>
+<rt class="chinese-font"></rt>
+<rp></rp>
+</ruby>
+</a>
+</span>
+</span>
+
+</div>
+<div class="header-user-avatar">
+<a href="https://www.blueskyxn.com/wp-login.php">
+<img class="faa-shake animated-hover" src="https://p.pstatp.com/origin/pgc-image/d7ad7af4b953492aa13e2bad1664fd1f" width="30" height="30">
+</a>
+<div class="header-user-menu">
+<div class="herder-user-name no-logged"> <a href="https://www.blueskyxn.com/wp-login.php" target="_blank" style="font-weight:bold;text-decoration:none">登录</a>
+</div>
+</div>
+</div>
+<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+<div class="lower"> <nav><ul id="menu-%e5%af%bc%e8%88%aa2-0" class="menu"><li><a href="https://www.blueskyxn.com">首页</a></li>
+<li><a href="https://status.blueskyxn.com">探针</a></li>
+<li><a href="https://shop.blueskyxn.com">SHOP</a></li>
+<li><a href="https://cse.google.com/cse?cx=473490fcdaa0005d1">高级搜索</a></li>
+<li><a href="https://img.blueskyxn.com/tt.html">图床</a></li>
+<li><a href="https://www.blueskyxn.com/202102/4142.html">网盘资源</a></li>
+<li><a href="https://www.blueskyxn.com/%e6%97%b6%e5%85%89%e3%81%ae%e8%bd%b4/">时光の轴</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/%e8%af%b4%e8%af%b4/">说说</a></li>
+<li><a href="https://www.blueskyxn.com/day/announcement/">公告</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/financial/">金融</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/financial/pay/">支付与平台</a></li>
+<li><a href="https://www.blueskyxn.com/financial/card/">玩转卡片</a></li>
+<li><a href="https://www.blueskyxn.com/financial/shop/">购物与消费</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor"><a href="https://www.blueskyxn.com/technology/">科技</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/technology/vps/">VPS</a></li>
+<li><a href="https://www.blueskyxn.com/technology/vps/vpstest/">VPS评测</a></li>
+<li><a href="https://www.blueskyxn.com/technology/tips-gadgets/">小技巧&amp;小工具</a></li>
+<li><a href="https://www.blueskyxn.com/technology/knowledge/">小知识</a></li>
+<li><a href="https://www.blueskyxn.com/technology/build/">建站&amp;运维</a></li>
+<li class="current-post-ancestor current-menu-parent"><a href="https://www.blueskyxn.com/technology/network-technology/">网络技术</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/mix/">杂谈</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/day/">日记</a></li>
+<li><a href="https://www.blueskyxn.com/welfare/">福利</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/acgn/">二次元</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/acgn/bilibili/">哔哩哔哩</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/bp/">美しい写真</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/sticker/">表情包</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/game/">游戏</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/game/r6/">彩虹六号</a></li>
+<li><a href="https://www.blueskyxn.com/game/genshin/">原神</a></li>
+<li><a href="https://www.blueskyxn.com/game/tof/">幻塔</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/%e5%8f%8b%e3%81%ae%e9%93%be/">友の链</a></li>
+<li><a href="https://000714.xyz/">About</a>
+<ul class="sub-menu">
+<li><a href="https://t.me/BlueSkyXN_PM_bot">PM·BOT</a></li>
+<li><a href="https://github.com/blueskyxn">Github</a></li>
+<li><a href="https://t.me/blueskyxnblog">Channel</a></li>
+</ul>
+</li>
+</ul></nav>
+</div>
+</div>
+</header>
+<div class="openNav no-select">
+<div class="iconflat no-select">
+<div class="icon"></div>
+</div>
+</div>
+<section id="main-container">
+<div class="headertop filter-undertint">
+<style>
+    .header-info::before {
+        display: none !important;
+        opacity: 0 !important;
+    }
+</style>
+<div id="banner_wave_1"></div>
+<div id="banner_wave_2"></div>
+<figure id="centerbg" class="centerbg">
+<div class="focusinfo">
+<h1 class="center-text glitch is-glitching Ubuntu-font" data-text="苍穹の下">苍穹の下</h1>
+<div class="header-info">
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+<span class="element">疯狂造句中......</span>
+<span class="element"></span>
+<script>
+                        var typed = new Typed('.element', {
+                            strings: ["给时光以生命，给岁月以文明", "(´,,•ω•,,‘)", ], //输入内容, 支持html标签
+                            typeSpeed: 140, //打字速度
+                            backSpeed: 50, //回退速度
+                            loop: false, //是否循环
+                            loopCount: Infinity,
+                            showCursor: true //是否开启光标
+                        });
+                    </script>
+<p>人生若只如初见 何事秋风悲画扇</p>
+</div>
+<div class="top-social">
+<li id="bg-pre"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/pre.png" /></li>
+<li class="qq"><a href=" https://p.pstatp.com/origin/pgc-image/92ebda73c16248c39a193022889e9dac" title="Initiate chat ?"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/qq.png" /></a></li>
+<li><a href="https://t.me/blueskyxnblog" target="_blank" class="social-sina" title="sina"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/weibo.png" /></a></li>
+<li><a href="https://github.com/BlueSkyXN" target="_blank" class="social-github" title="github"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/github.png" /></a></li>
+<li><a href="https://t.me/BlueSkyXN_PM_bot" target="_blank" class="social-lofter" title="telegram"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/tg.png" /></a></li>
+<li><a href="https://www.linkedin.com/in/BlueSkyXN/" target="_blank" class="social-wangyiyun" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/lk.png" /></a></li>
+<li><a onclick="mail_me()" class="social-wangyiyun" title="E-mail"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/mail.png" /></a></li>
+<li id="bg-next"><img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/display_icon/macaronblue/next.png" /></li>
+</div>
+</div>
+</figure>
+<div id="video-container" style="display:none;"><video id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video><div id="video-btn" class="loadvideo videolive"></div><div id="video-add"></div><div class="video-stu"></div></div>
+<div class="headertop-down faa-float animated" onclick="headertop_down()"><span><i class="fa fa-chevron-down" aria-hidden="true" style="color:rgba(255,255,255,0.8)"></i></span></div>
+</div>
+<div id="page" class="site wrapper">
+<div class="pattern-center-blank"></div>
+<div class="pattern-center single-center">
+<div class="pattern-attachment-img lazyload" style="background-image: url(https://ae01.alicdn.com/kf/U1425eee9bdd3447a8faa1afd69006b0dn.jpg)" data-src="https://imgapi.000714.xyz/skyimg.php?3167"> </div>
+<header class="pattern-header single-header"><h1 class="entry-title">全球常用网络运营商与服务器线路指南</h1><span class="toppic-line"></span><p class="entry-census"><span><a href="https://www.blueskyxn.com/author/sky/"><img data-del="avatar" src='https://p.pstatp.com/origin/pgc-image/95ede86d47174da1bbf576da8e47f431' class='avatar pp-user-avatar avatar-64 photo ' height='64' width='64' /></a></span><span><a href="https://www.blueskyxn.com/author/sky/">SKY</a></span><span class="bull">·</span>2021-01-03<span class="bull">·</span>235 次阅读</p></header>
+</div>
+<div id="content" class="site-content"> <div id="primary" class="content-area">
+<main id="main" class="site-main" role="main">
+<div class="has-toc have-toc"></div>
+<article id="post-3167" class="post-3167 post type-post status-publish format-standard has-post-thumbnail hentry category-network-technology tag-aws tag-azure tag-bandwagon tag-digitalocean tag-gcp tag-google tag-vultr tag-tencentcloud tag-alicloud">
+
+<div class="entry-content">
+<div id="ez-toc-container" class="ez-toc-v2_0_17 counter-hierarchy counter-decimal ez-toc-light-blue">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">目录</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" style="display: none;"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-1" href="#%E5%89%8D%E6%8F%90%E6%A6%82%E8%A6%81" title="前提概要">前提概要</a></li><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-2" href="#%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D" title="常见名词">常见名词</a><ul class="ez-toc-list-level-2"><li class="ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#IPLC" title="IPLC">IPLC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-4" href="#IEPL" title="IEPL">IEPL</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-5" href="#Anycast" title="Anycast">Anycast</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#IPLCIPELAnycast%E6%80%BB%E7%BB%93" title="IPLC/IPEL/Anycast总结">IPLC/IPEL/Anycast总结</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-7" href="#%E5%85%B6%E4%BB%96" title="其他">其他</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-8" href="#%E5%9B%BD%E5%A4%96%E4%B8%89%E5%A4%A7%E5%85%AC%E6%9C%89%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%95%86" title="国外三大公有云服务商">国外三大公有云服务商</a></li><li class="ez-toc-page-1 ez-toc-heading-level-1"><a class="ez-toc-link ez-toc-heading-9" href="#%E5%9C%B0%E5%8C%BA%E5%B8%B8%E8%A7%81%E8%BF%90%E8%90%A5%E5%95%86" title="地区常见运营商">地区常见运营商</a><ul class="ez-toc-list-level-2"><li class="ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-10" href="#%E9%A6%99%E6%B8%AF" title="香港">香港</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-11" href="#HKT" title="HKT">HKT</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-12" href="#PCCW" title="PCCW">PCCW</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-13" href="#%E9%A6%99%E6%B8%AF%E9%98%BF%E9%87%8C%E4%BA%91" title="香港阿里云">香港阿里云</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-14" href="#HKBN" title="HKBN">HKBN</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-15" href="#Azure_%E9%A6%99%E6%B8%AF" title="Azure 香港">Azure 香港</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-16" href="#HGC" title="HGC">HGC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-17" href="#WTT" title="WTT">WTT</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-18" href="#LeaseWeb" title="LeaseWeb">LeaseWeb</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-19" href="#SunnyVision" title="SunnyVision">SunnyVision</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-20" href="#Softlayer" title="Softlayer">Softlayer</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-21" href="#DMIT" title="DMIT">DMIT</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-22" href="#Layerstack" title="Layerstack">Layerstack</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-23" href="#Rackspace" title="Rackspace">Rackspace</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-24" href="#%E9%A6%99%E6%B8%AF%E8%85%BE%E8%AE%AF%E4%BA%91" title="香港腾讯云">香港腾讯云</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-25" href="#%E5%B0%BE%E5%A3%B0" title="尾声">尾声</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-26" href="#%E6%97%A5%E6%9C%AC" title="日本">日本</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-27" href="#BBTEC" title="BBTEC">BBTEC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-28" href="#Azure_%E6%97%A5%E6%9C%AC" title="Azure 日本">Azure 日本</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-29" href="#Internap" title="Internap">Internap</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-30" href="#IIJ" title="IIJ">IIJ</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-31" href="#AWS_%E6%97%A5%E6%9C%AC" title="AWS 日本">AWS 日本</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-32" href="#KDDI" title="KDDI">KDDI</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-33" href="#NTTVultrLinode%E7%AD%89" title="NTT(Vultr/Linode等)">NTT(Vultr/Linode等)</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-34" href="#CN2" title="CN2">CN2</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-35" href="#%E5%B0%BE%E5%A3%B0-2" title="尾声">尾声</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-36" href="#%E7%BE%8E%E5%9B%BD" title="美国">美国</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-37" href="#%E6%90%AC%E7%93%A6%E5%B7%A5" title="搬瓦工">搬瓦工</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-38" href="#RFCHost" title="RFCHost">RFCHost</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-39" href="#%E5%BF%AB%E8%BD%A6%E9%81%93" title="快车道">快车道</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-40" href="#Vultr" title="Vultr">Vultr</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-41" href="#Linode" title="Linode">Linode</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-42" href="#DGCHost" title="DGCHost">DGCHost</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-43" href="#GGCGigsgigsCloud" title="GGC(GigsgigsCloud)">GGC(GigsgigsCloud)</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-44" href="#QNQuadranet" title="QN(Quadranet)">QN(Quadranet)</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-45" href="#NFOservers" title="NFOservers">NFOservers</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-46" href="#Kecloud" title="Kecloud">Kecloud</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-47" href="#%E5%B0%BE%E5%A3%B0-3" title="尾声">尾声</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-48" href="#%E5%8F%B0%E6%B9%BE" title="台湾">台湾</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-49" href="#HinetHicloud" title="Hinet/Hicloud">Hinet/Hicloud</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-50" href="#Kecloud-2" title="Kecloud">Kecloud</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-51" href="#SeednetKuaichedaoco" title="Seednet/Kuaichedao.co">Seednet/Kuaichedao.co</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-52" href="#%E6%BE%B3%E9%97%A8" title="澳门">澳门</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-53" href="#CTM" title="CTM">CTM</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-54" href="#MTel" title="MTel">MTel</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-55" href="#%E6%96%B0%E5%8A%A0%E5%9D%A1" title="新加坡">新加坡</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-56" href="#AWS" title="AWS">AWS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-57" href="#Onevps" title="Onevps">Onevps</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-58" href="#%E5%BE%A1%E4%B8%89%E5%AE%B6%EF%BC%9ALinodeVultrVUDigitaloceanDO" title="御三家：Linode/Vultr(VU)/Digitalocean(DO)">御三家：Linode/Vultr(VU)/Digitalocean(DO)</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-59" href="#Leaseweb" title="Leaseweb">Leaseweb</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-60" href="#%E6%96%B0%E5%8A%A0%E5%9D%A1%E9%98%BF%E9%87%8C%E4%BA%91" title="新加坡阿里云">新加坡阿里云</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-61" href="#%E6%96%B0%E5%8A%A0%E5%9D%A1%E8%85%BE%E8%AE%AF%E4%BA%91" title="新加坡腾讯云">新加坡腾讯云</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-62" href="#Softlayer-2" title="Softlayer">Softlayer</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-63" href="#%E9%9F%A9%E5%9B%BD" title="韩国">韩国</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-64" href="#KT" title="KT">KT</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-65" href="#SKT" title="SKT">SKT</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-66" href="#Azure_%E9%9F%A9%E5%9B%BD" title="Azure 韩国">Azure 韩国</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-67" href="#AWS_%E9%9F%A9%E5%9B%BD" title="AWS 韩国">AWS 韩国</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-68" href="#Moack" title="Moack">Moack</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-69" href="#%E6%AC%A7%E6%B4%B2" title="欧洲">欧洲</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-70" href="#ZeptoVM" title="ZeptoVM">ZeptoVM</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-71" href="#GbpsCloud" title="GbpsCloud">GbpsCloud</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-72" href="#Gcorelabs" title="Gcorelabs">Gcorelabs</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-73" href="#Onevps-2" title="Onevps">Onevps</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-74" href="#AWSAzureSoftlayerGCP" title="AWS/Azure/Softlayer/GCP">AWS/Azure/Softlayer/GCP</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-75" href="#Kecloud-3" title="Kecloud">Kecloud</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-76" href="#Related_posts" title="Related posts:">Related posts:</a></li></ul></li></ul></li></ul></nav></div>
+<h1><span class="ez-toc-section" id="%E5%89%8D%E6%8F%90%E6%A6%82%E8%A6%81"></span>前提概要<span class="ez-toc-section-end"></span></h1>
+<p>本文根据某药博客相关文章进行二次加工，根据本人知识对其进行部分修改（标蓝）</p>
+<h1 id="toc_1"><span class="ez-toc-section" id="%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D"></span>常见名词<span class="ez-toc-section-end"></span></h1>
+<h2><span class="ez-toc-section" id="IPLC"></span>IPLC<span class="ez-toc-section-end"></span></h2>
+<p>"International Private Leased Circuit"的缩写，即“国际专线”。不过大部分通常看到的iplc，都只是阿里的经典网络，跨数据中心内网互通，阿里内网，并不是严格意义的iplc专线；当然也有其他渠道的，或真iplc，不过比较少。阿里云的内网互通底层原理是通过采购多个点对点的iplc专线，来连接各个数据中心，从而把各个数据中心纳入到自己的一套内网里面来。这样做有两个好处，其一是iplc链路上的带宽独享，完全不受公网波动影响，其二是过境的时候不需要经过W，确保了数据安全且不受外界各种因素干扰。但是需要注意一下阿里云的iplc也是有带宽上限的，如果过多的人同时挤到同一条专线上，峰值带宽超过专线的上限的话也同样会造成网络不稳定。其他渠道购买到的iplc价格很高，阿里云内网这种性价比超高这种好东西且用且珍惜。</p>
+<p><span style="color: #00ccff;">【据说目前阿里内网已经全部挂了】</span></p>
+<h2><span class="ez-toc-section" id="IEPL"></span>IEPL<span class="ez-toc-section-end"></span></h2>
+<p>国际以太网专线（International Ethernet Private Line,简称IEPL)，构建于MSTP设备平台上，基于SDH传输技术，采用GFP封装，传输协议透明，物理层隔离，带宽保证，提供一层点对点数据专线服务。IEPL是以太网接口的增强型的IPLC产品，是一个端到端的专享管理频宽服务，拥有高度灵活性及最高物理层网络安全功能，让客户轻松管理广域网和高带宽需求的应用。通俗的总结一下，IEPL使用某种技术，实现了两点之间的高稳定性的数据传输。这与IPLC,MPLS是差不多的效果，只是实现的技术手段有区别而已。其实，是IPLC或者IEPL或是MPLS-VPN，都没有太大区别。认定是保障带宽的不过墙专线就行了，至于是用哪种技术方案实现的，根本不需要纠结。</p>
+<h2><span class="ez-toc-section" id="Anycast"></span>Anycast<span class="ez-toc-section-end"></span></h2>
+<p>最近出现了一些Anycast加速节点，这里主要从业务层面介绍一下，网络层面的东西可能对普通用户来说过于高深所以不多做介绍。一般来说对于传统中转线路，工作模式是国内A IP接入，然后通过转发链转发至国外B IP，A和B之间一般通过隧道或者专线来传输数据。</p>
+<p><span style="color: #00ccff;">【目前常见的Anycast有：腾讯AIA，亚马逊AGA，Vercel定制版AGA，CloudFlare等】</span></p>
+<p>这里拿腾讯云提供的 Anycast 加速服务作为典型例子分析，一般是把国内的 A IP 同时广播到国内一个一个特定地理位置，和国外的多个地理位置。简单来讲，同一个 IP 同时出现在一个国内特定地理位置与多个国外地理位置。这个 IP 在国内与国外这段物理链路上通过专线来传输数据。用户在访问 A IP 的时候，理论上会就近通往离自己地理位置比较近的一个地理位置。作为用户来讲可以不太严谨的理解为把国外的 IP 通过专线搬到了离自己最近的地方。<br />
+一般业务交付方式是把 Anycast 的 IP 直接端口转发到落地业务 IP，这样极大的便利了运维工作。同时由于国内外物理链路是跑在专线上的，所以稳定性高延迟地。</p>
+<h2><span class="ez-toc-section" id="IPLCIPELAnycast%E6%80%BB%E7%BB%93"></span>IPLC/IPEL/Anycast总结<span class="ez-toc-section-end"></span></h2>
+<p>一般部署的都是大陆 - 亚洲区域，亚洲区域包括日本韩国新加坡，这样可以认为是一份带宽共享给沪日、沪韩、沪新三条专线一起使用，极大的简化了网络架构，提升了带宽复用率。<br />
+专线过境，更稳定快速，基本上可以无视 W 的影响。<br />
+腾讯默认给的是国内 BGP 接入，对各种运营商的用户都有较好的支持。<br />
+带宽与单个 IP 绑定，被 DDOS 的话比较难处理。<br />
+成本比较难承担，个人一直粗陋的认为更适合游戏加速器和要求更高性能与稳定性的企业级用户或者土豪。</p>
+<h2><span class="ez-toc-section" id="%E5%85%B6%E4%BB%96"></span>其他<span class="ez-toc-section-end"></span></h2>
+<p>BGP（多线接入），中转，「原生IP」，流媒体解锁，CN2之类的懂得都懂，不提</p>
+<h1 id="toc_3"><span class="ez-toc-section" id="%E5%9B%BD%E5%A4%96%E4%B8%89%E5%A4%A7%E5%85%AC%E6%9C%89%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%95%86"></span>国外三大公有云服务商<span class="ez-toc-section-end"></span></h1>
+<p><strong>AWS</strong></p>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AWS</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>亚马逊云计算服务（Amazon Web Services，缩写为AWS），由亚马逊公司所创建的云计算平台，亚马逊AWS占全球云市场第一。</li>
+<li>AWS到联通和移动网速不佳。国际和本地带宽比较稳定。<span style="color: #00ccff;">【但是实战而言，对于联通和移动的商宽，表现一点也不差】</span></li>
+<li>新加坡和日本接了电信163，到电信延时有所改善。但是由于价格便宜，又很容易买到，所以到总体到国内质量还是比较差的。</li>
+<li>但是由于价格便宜，又很容易买到，所以到总体到国内质量还是比较差的。不过这个价格下能做成这样真的已经非常良心（亏本）了。</li>
+<li><span style="color: #00ccff;">【AGA加速的提供者】</span></li>
+</ul>
+<p></div>
+</div>
+<p><strong>Azure</strong></p>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Azure</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Microsoft Azure是微软的公用云服务 (Public Cloud Service) 平台，规模仅次于亚马逊AWS。</li>
+<li>Azure 的带宽一般较大，部分实例的带宽可以达到 2Gbps。</li>
+<li>本地和国际带宽很大很稳，去很多地方都会走自己的骨干网。</li>
+<li>羊毛目前还是比较多，价格便宜，到国内三大运营商基本上已经被玩坏。到某些地方，如上海阿里云，有奇效，可能走了自己那根沪港骨干。</li>
+<li>还有个小毛病是播放YouTube的时候会默认走欧洲的CDN，但是速度基本没有影响，azure是全球内网的自有骨干网的。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<p><strong>GCP</strong></p>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">GCP</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Google云端平台（Google Cloud Platform）是一项使用了Google核心基础架构、数据分析和机器学习技术的云计算服务。</li>
+<li>到大陆的互联带宽较小，防御做得也不理想（我觉得这主要是大陆运营商的锅），经常到大陆断网或绕路，稳定性是最大问题。</li>
+<li>国际带宽非常充裕，有自己的骨干网。</li>
+<li>可以解锁Netflix，Youtube Premium</li>
+</ul>
+<p></div>
+</div>
+<h1 id="toc_4"><span class="ez-toc-section" id="%E5%9C%B0%E5%8C%BA%E5%B8%B8%E8%A7%81%E8%BF%90%E8%90%A5%E5%95%86"></span>地区常见运营商<span class="ez-toc-section-end"></span></h1>
+<h2 id="toc_5"><span class="ez-toc-section" id="%E9%A6%99%E6%B8%AF"></span>香港<span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="HKT"></span><strong>HKT</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">HKT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>香港电讯有限公司，为电讯盈科（PCCW）旗下的一间子公司；</li>
+<li>HKT算是里最常见服务器了，一般都成为了流量担当；不过由于带宽价格相对低廉，已经被用于各种大流量业务，大陆方向已经被严重QoS，直连体验下滑。只有部分IP段完好。</li>
+<li>写了这么多缺点，并不是说它一无是处的意思。香港的带宽价格本身非常昂贵，花几百块钱能有目前这样的服务质量已经不亏了。</li>
+<li>近期网络质量比较差，特别是晚间速度很差，别说到大陆了，连港内都惨不忍睹。</li>
+<li>无论是HKT还是HKBN家宽/商宽，其实都是在薅这些宽带的共享国际出口带宽的羊毛。真要自己拉线买到带宽的价格差不多是1000左右1M</li>
+<li>可以解锁几乎所有支持香港地区的流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="PCCW"></span><strong>PCCW</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">PCCW</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>电讯盈科成立于2000年，为全港首屈一指的互连网服务供应商。</li>
+<li>香港有一堆接了PCCW的商家，带宽单价比较高，所以目前很少有大带宽的PCCW线路了，基本上能买到的都是金针菇。唯一的大带宽的到国内走PCCW线路的可能只剩HKT了，被QOS之后也没那么值得购买了。</li>
+<li>PCCW是带宽提供商，能否解锁流媒体完全取决于使用PCCW线路的IDC自身的IP。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E9%A6%99%E6%B8%AF%E9%98%BF%E9%87%8C%E4%BA%91"></span><strong>香港阿里云</strong><span class="ez-toc-section-end"></span></h3>
+<p>已经被撸死</p>
+<h3><span class="ez-toc-section" id="HKBN"></span><strong>HKBN</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">HKBN</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>香港宽频是按用户数计算香港最大的光纤高速宽频住宅服务供应商；</li>
+<li>家宽和商宽区别较大。常见的HKBN商宽有PumoCloud，BLHost。这两家商宽都有流量限制，BLHost不太稳定经常断电。</li>
+<li>HKBN家宽只适合做香港落地，到大陆的总体互联质量较差。有人跑太多被强制清退的。。。。</li>
+<li>HKBN大陆方向带宽总共只有5G。</li>
+<li>可以解锁几乎所有支持香港地区的流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Azure_%E9%A6%99%E6%B8%AF"></span><strong>Azure 香港</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AzureHK</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>AZ香港性价比之王，当然前提是黑卡不翻车的话。<span style="color: #00ccff;">【目前主力军】</span></li>
+<li>Azure的带宽一般较大，部分实例的带宽可以达到 2Gbps。</li>
+<li>抗攻击非常到位良心</li>
+<li>不能解锁流媒体。</li>
+<li>羊毛目前还是比较多，价格便宜，到国内三大运营商基本上已经被玩坏。到某些地方，如上海阿里云，有奇效，可能走了自己那根沪港骨干。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="HGC"></span><strong>HGC</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">HGC</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>环球全域电讯有限公司（HGC Global Communications Limited），前称和记环球电讯有限公司。</li>
+<li>QOS之王的美誉不是吹出来的。不光是到大陆QOS严重，国际方向也有QOS。到国内网络质量比较一般，港内不错。</li>
+<li>目前市面上卖的HGC小鸡价格都还可以（可能大家都不怎么喜欢用吧。。），可以考虑用来做落地。不过有人跑太多被强制清退的。。。。</li>
+<li>可以解锁几乎所有支持香港地区的流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="WTT"></span><strong>WTT</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">WTT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>汇港电讯（前称九仓电讯），本港第二大商业固网营运商。</li>
+<li>前两年刚有商家开始卖WTT商宽的时候到国内网络质量非常好，性价比无敌。</li>
+<li>后来人多了就被玩坏了。人家运营商卖1G带宽的商宽不代表允许天天跑满大陆方向1G，所以网络被玩坏也是情理之中的事情。</li>
+<li>最近大家都去撸HKT了，WTT这边估计人少的原因，到国内网络还不错。</li>
+<li>价格不便宜，建议购买之前询问商家不满意是否可以退款。</li>
+<li>可以解锁几乎所有支持香港地区的流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="LeaseWeb"></span><strong>LeaseWeb</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">LeaseWeb</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>老牌主机商，成立于1997年，提供独立服务器，vps等，拥有自有数据中心。</li>
+<li>国际和港内带宽大，稳定，到国内比较差劲，适合落地。</li>
+<li>作为落地鸡用的话成本比较高，常见的销售香港LeaseWeb的商家如OneProvider流量给得比较少。</li>
+<li>直接找官方购买独立服务器的话门槛较高，需要验证各种证件、地址证明，中国用户还会加收押金。</li>
+<li>很少部分IP段可以看Netflix，其他流媒体服务暂时没测试过。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="SunnyVision"></span><strong>SunnyVision</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">SunnyVision</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>香港老牌主机商，成立于1998年，有自建数据中心。</li>
+<li>回国走PCCW，此机房自己本身QOS严重，上联带宽不足，价格挺贵的。</li>
+<li>销售此机房VPS的商家不多，RFCHost，SV官方。总体上不太适合使用。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Softlayer"></span><strong>Softlayer</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Softlayer</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>美国Softlayer公司是目前全球最大的IDC公司之一。</li>
+<li>国际和本地带宽不错，有自己的的全球骨干网。到国内绕得比较厉害。</li>
+<li>官方售价高，二道贩子如HostUS（OpenVZ架构，不能bbr加速或锐速）价格虽然便宜，只是双向流量跟水一样不耐用，可以考虑用来落地。</li>
+<li>注：虽然Softlayer本身的VPS抗攻击性能非常好，但是二道贩子那边摸一下就进黑洞至少24小时。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p><span style="color: #00ccff;">【IBMYES的美国节点就是这家公司提供的网络】</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="DMIT"></span><strong>DMIT</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">DMIT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>DMIT是一家比较新的网络商，目前主要从事香港大带宽端口 VPS 产品销售，KVM 架构。</li>
+<li>在香港除阿里云之外为数不多的到大陆三网速度OK并相对稳定的IDC。</li>
+<li>自己拉的CN2和PCCW等transit，到大陆的互联质量是有一定保障的，不像HKT那样可能随时翻脸限速。</li>
+<li>可以解锁港区Neflix，但是看不了TVB。看Netflix会绕欧洲。</li>
+<li>超售比较凶。。。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Layerstack"></span><strong>Layerstack</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Layerstack</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>LayerStack看似是一家最近才冒出来的IDC，但其实是Pachosting刚刚推出的Openstack云。</li>
+<li>问题较多，开个机都费劲，会出现重装之后无法开机等非常蛋疼的问题。</li>
+<li>网络也比较迷，发起疯来连港内都可以限速的那种。</li>
+<li>地雷警告：他家不接受退款要求，就算机器有问题连续一星期都用不了，也不接受退款。不是老司机的话不建议购买。</li>
+<li>可以用来看Netflix，TVB（仅180段），此信息摘自Affyun.com。</li>
+<li>机器性能好。。带宽超售凶残。。各种莫名其妙的限速。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Rackspace"></span><strong>Rackspace</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Rackspace</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>高端货，价格高高在上。</li>
+<li>很多知名站点，如Github就有使用他家提供的基础设施。可见其高端程度。</li>
+<li>每个月除了机器的费用，流量费，还有50美元的管理费。</li>
+<li>电信走CN2，联通直连。移动有可能绕电信也有可能绕联通，但是绕过去比移动直连延迟更低更稳。</li>
+<li>超大带宽，高可用性，三网超低延迟晚高峰不跳ping，轻松跑满带宽。网络质量超乎你的想象。</li>
+<li>所有线路都抽风的时候，他还能满速运转。。。（摘自www.91yun.co）</li>
+<li>你所幻想的一切它都可以满足你，只要你的钱包吃得消。</li>
+<li>不考虑价格的话唯一的美中不足可能就是不能解锁流媒体了</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E9%A6%99%E6%B8%AF%E8%85%BE%E8%AE%AF%E4%BA%91"></span><span style="color: #00ccff;">香港腾讯云</span><span class="ez-toc-section-end"></span></h3>
+<p><span style="color: #00ccff;">2020年诞生的轻量应用服务器，对标老阿里,主打电信GIA,24R-30M-1T</span></p>
+<h3><span class="ez-toc-section" id="%E5%B0%BE%E5%A3%B0"></span>尾声<span class="ez-toc-section-end"></span></h3>
+<p>香港永远是个是非之地。撸本地运营商翻车是大概率事件（WTT、HKT 血的教训）。建议购买自己直接拉大陆运营商的 tran­sit 的商家。</p>
+<h2><span class="ez-toc-section" id="%E6%97%A5%E6%9C%AC"></span>日本<span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="BBTEC"></span><strong>BBTEC</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">BBTEC</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>此类典型的商家如阿里云日本，购买难度较高，价格较高。</li>
+<li>TPE断掉之后到大陆的质量就比较捉急了。</li>
+<li>阿里云无法解锁流媒体，其他bbtec的IP的一般都可以看。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Azure_%E6%97%A5%E6%9C%AC"></span><strong>Azure 日本</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AzureJP</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>主要走自己的骨干网到香港然后进入国内，网络质量可以参考Azure香港。</li>
+<li>羊毛目前还是比较多，价格便宜，到国内三大运营商基本上已经被玩坏。到某些地方，如上海阿里云，有奇效，可能走了自己那根沪港骨干。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Internap"></span><strong>Internap</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Internap</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>此类一般是指去程bbtec，回程bbtec、iij、kddi随机。这个一般都不是特别稳，速度也比较一般。</li>
+<li>此机房的IDC商家比较多，能否解锁流媒体主要还是看商家自己的IP有没有被拉黑。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="IIJ"></span><strong>IIJ</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">IIJ</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>到联通不错，移动一般，电信晚间延迟爆炸。不过价格便宜做个落地也不错。</li>
+<li>性价比很高的IDCF最近开始不再对个人用户服务了，伤心。剩下值得买的大概也就GmoCloud了。</li>
+<li>接IIJ线路的商家也比较多，比较有名的几家像IDCF、GMO部分IP被拉黑，樱花、Onevps、NHN、K-Opti大部分可解锁。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="AWS_%E6%97%A5%E6%9C%AC"></span><strong>AWS 日本</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AWSJP</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>AWS的日本区域拉了少量的163带宽，所以到电信还可以（带宽跑满照样会抽风）。不过这价格真的很良心了，不能再奢求更多了。</li>
+<li>少部分IP段可以看Netflix，其他流媒体服务暂时没测试过。</li>
+<li><span style="color: #00ccff;">【联通移动商宽直接起飞】</span></li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="KDDI"></span><strong>KDDI</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">KDDI</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>到大陆最近三网都飞快，因为基本上很少人能撸到。</li>
+<li>Linode东京1号机房的IP都被拉黑了，其他卖KDDI线路的商家基本上也没有了。</li>
+<li>KDDI提供的IP一般都是可以解锁日本的各种流媒体的，但是比如Linode Tokyo 1数据中心的那种IDC自带IP的话一般都不行</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="NTTVultrLinode%E7%AD%89"></span><strong>NTT(Vultr/Linode等)</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">NTT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>典型代表商家有Linode、Vultr这种大厂，也有官方云。总体国际互联很好，除了到大陆方向都很好。</li>
+<li>Linode、Vultr全线被拉黑，NTT官方云没测试过。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="CN2"></span><strong>CN2</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">CN2</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<p>有一些卖日本CN2的商家，<span style="color: #00ccff;">价格昂贵，带宽小，流量少，配置差</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E5%B0%BE%E5%A3%B0-2"></span>尾声<span class="ez-toc-section-end"></span></h3>
+<p>总体来说日本的本土商家比较排外。不要相信日本 VPS 所谓的 “无限流量”。比如 Data­Ho­tel 会在不做任何通知的情况下限速 100Kb/​s。具体因为什么限速（或删号）他们的解释一般也是含糊其辞。总之性价比看起来太高的建议谨慎购买，一些日本商家比较排斥中国人。国际大品牌在日本基本不存在这种问题，如 AWS、Lin­ode、Azure、Vultr、阿里云之类的。</p>
+<h2 id="toc_7"><span class="ez-toc-section" id="%E7%BE%8E%E5%9B%BD"></span>美国<span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="%E6%90%AC%E7%93%A6%E5%B7%A5"></span><strong>搬瓦工</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">搬瓦工</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>可能是目前美西能直接无障碍买到的最清真的GIA CN2线路了。</li>
+<li>价格不便宜</li>
+<li>胜在到国内总带宽较大，可以尽情的超售，比较稳定。</li>
+<li>每隔一段时间可以免费更换被墙IP，否则收费换IP。<span style="color: #00ccff;">【据说已修改】</span></li>
+<li>搬瓦工也算是W重点照顾单位，很容易被墙。建议充分考虑频繁被墙带来的额外成本与损失。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p><span style="color: #00ccff;">补充：</span></p>
+<p><span style="color: #00ccff;">1，找回工，不建议收二手</span></p>
+<p><span style="color: #00ccff;">2，被打空路由15分钟，不叠加，所以有人拿来抗攻击</span></p>
+<p><span style="color: #00ccff;">3，价格贵，一般玩家还真用不起</span></p>
+<p><span style="color: #00ccff;">4，CN2GT智商税，很多人被坑</span></p>
+<p><span style="color: #00ccff;">5，也有卖JMS分发，感觉一般，也贵</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="RFCHost"></span><strong>RFCHost</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">RFCHost</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>在美西有C3和安畅两个机房可选（堪萨斯那个没测试过）。</li>
+<li>C3到国内主要走GT CN2，安畅到国内走GIA CN2。走GIA CN2会更稳更快。</li>
+<li>老商家比较稳定，大部分时间处于缺货状态，佛系购买。</li>
+<li>几乎可解锁所有流媒体内容。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E5%BF%AB%E8%BD%A6%E9%81%93"></span><strong>快车道</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">快车道</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>快车道在美西主要销售Fremont的Hurricane Electrics机房的VDS。</li>
+<li>卖点是不限流量、G口大带宽、HE原生IP。</li>
+<li>到国内电信白天不错晚上会有一定的拥堵。到联通比到电信要好，到移动全天都非常一般。</li>
+<li>同时提供IPv6，V6到国内比V4效果好，估计用的人少。。</li>
+<li>由于IP直接来自HE，并且直接在HE的ASN下，所以不容易翻车。</li>
+<li>可解锁各种流媒体服务，离热门的两个美国西部CN2 POP洛杉矶、圣何塞距离都不远。真的非常非常适合用来做解锁机。</li>
+<li>TPE断了之后质量捉急。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Vultr"></span><strong>Vultr</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Vultr</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>本地和国际带宽还不错，价格便宜，稳定性也不差。适合落地。配合流媒体解锁服务的话还是比较推荐的。</li>
+<li>到国内互联质量比较差，IP也经常被W照顾，不建议直连。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Linode"></span><strong>Linode</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Linode</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Linode在美西只有Fremont机房，HE单线，国际和美国本土互联质量不如Vultr。</li>
+<li>到国内的速度白天还行，晚上肯定是要爆炸的。不建议购买。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="DGCHost"></span><strong>DGCHost</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">DGCHost</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>应该算是最早的几家做洛杉矶GIA CN2的商家，超售率较高。</li>
+<li>最大的问题可能是经常被攻击，稳定性不佳，不建议购买。</li>
+<li>不能解锁流媒体。</li>
+<li>已经被另一家马来西亚商家GigsgigsCloud收购并经营，具体目前效果如何还有待观察。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="GGCGigsgigsCloud"></span><strong>GGC(GigsgigsCloud)</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">GGC</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>到国内基本上是三网GIA CN2，超售厉害，碰到过多次小鸡宕机的情况，稳定性有待提高。</li>
+<li>不能解锁流媒体。</li>
+<li>TPE断了之后质量捉急。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="QNQuadranet"></span><strong>QN(Quadranet)</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">QN</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>至今不知道这货和Vultr这种相比有啥优势。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="NFOservers"></span><strong>NFOservers</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">NFOservers</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>到国内互联差，撸的中国人少，本地和国际带宽大，各种超大流量套餐其实性价比很不错。适合落地。</li>
+<li>不能解锁流媒体。</li>
+<li>这家超出套餐流量的部分是95计费的，注意好自己的账单。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Kecloud"></span><strong>Kecloud</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Kecloud</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>新上架圣何塞GIA CN2，总体美西CN2在TPE断掉之后都不好，不过圣何塞总体优于洛杉矶。</li>
+<li>G口大水管比较舒服，目前用的人比较少总体到国内效果不错。</li>
+<li>价格比搬瓦工便宜，和其他一些出售GIA CN2的国人商家差不多。</li>
+<li>原生IP可解锁各种流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E5%B0%BE%E5%A3%B0-3"></span>尾声<span class="ez-toc-section-end"></span></h3>
+<p>美国目前提供 GIA CN2 的商家其实有非常多，鱼龙混杂，小商家居多。<br />
+这些主要只能看上游了。大部分上游集中在 C3、安畅、Quad­ranet。<br />
+个人感觉安畅机房的会稳一点，可能是因为安畅机房的 CN2 资源是单独卖的。Quad­ranet 和 C3 的 GT CN2 好像都是大锅饭。</p>
+<p>流媒体解锁推荐快车道家的 Fre­mont HE 单线不限流量服务器。价格相对合理，主要是不限流量，不需要担心 net­flix 看多了会用完流量。其他一些商家如 RF­CHost 的美西小鸡也是可以解锁流媒体的，但是流量给得较少。</p>
+<h2 id="toc_8"><span class="ez-toc-section" id="%E5%8F%B0%E6%B9%BE"></span>台湾<span class="ez-toc-section-end"></span></h2>
+<p>台湾的情况和韩国有一些类似，IDC 少、贵、到大陆带宽小。</p>
+<h3><span class="ez-toc-section" id="HinetHicloud"></span><strong>Hinet/Hicloud</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Hinet/Hicloud</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Hinet是台湾第一大ISP</li>
+<li>Hinet的官方云，购买没有太多的限制，一般双币信用卡就可以，流量费用大约0.6元/G。到大陆不是很稳，去香港中转之后还不错。</li>
+<li>如果要用来跑大流量业务，Hinet家宽、商宽是个可以考虑的选择，很大一部分在售的都是600M的本地端口不限流量。</li>
+<li>到电信直连，最近还不错。到联通非常稳定快速。移动绕香港延迟飘得很厉害。</li>
+<li>家宽、商宽没有严格的岛外网络质量保障，不像BGP线路拉的大陆运营商transit基本上拉多少就可以随时跑满多少。</li>
+<li>Hinet的Qos比较厉害，大家做好心理准备。据说商宽的Qos级别要比家宽好。</li>
+<li>家宽是动态IP，商宽固定IP。动态IP每72小时会强制变更一次，自行研究一下DDNS。</li>
+<li>从国内中转过去的话需要考虑一下每72小时变更IP的影响，很多中转工具在对端IP变化之后都不会自动更新，导致每72小时掉线一次。</li>
+<li>我所知道的在售Hinet家宽的商家有Kuaichedao.co、www.pqs.pw、moonvm.com。个人所知有限，收录不全，这里没提到的老板不要喷我。。。</li>
+<li>由于此类商宽、家宽都属于运营商直接持有的IP，家宽还是动态IP，所以可长期稳定解锁流媒体服务，如Netflix、动画疯。</li>
+</ul>
+<p><span style="color: #00ccff;">【据说，动态速度差，静态速度好（IP），一般口大（5-600M），一般无限流量】</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Kecloud-2"></span><strong>Kecloud</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Keccloud</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>台湾1是TFN，台湾2是Twgate，海缆断掉之后都不怎么香。</li>
+<li>vps的硬件性能好。</li>
+<li>总体性价比较高。</li>
+<li>原生IP可解锁各种流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="SeednetKuaichedaoco"></span><strong>Seednet/Kuaichedao.co</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Seednet/Kuaichedao.co</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>做台湾比较久了，Hinet商宽家宽，TFN，Seednet，海缆断掉之后都不怎么香。</li>
+<li>落地没啥毛病，到国内就别想太多了</li>
+</ul>
+<p></div>
+</div>
+<h2 id="toc_9"><span class="ez-toc-section" id="%E6%BE%B3%E9%97%A8"></span>澳门<span class="ez-toc-section-end"></span></h2>
+<ul>
+<li>澳门除香港以外到中国大陆最近的地区了，更近的物理距离意味着更低的理论最低延迟，更好的上网体验，同时价格也会更贵。。</li>
+<li>澳门的IDC产业不像香港那么发达，服务器供应商较少，目前比较常见的澳门服务器都是一些商宽、家宽，很少（其实还是有的，比如Mokvm）有自己拉线做BGP的。</li>
+<li>物以稀为贵，总体上澳门能买到的服务器都非常非常昂贵，不管好使不好使，摆个两个澳门节点也算是一个机场实力的象征。</li>
+</ul>
+<h3><span class="ez-toc-section" id="CTM"></span><strong>CTM</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">CTM</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>澳门电讯（全称澳门电讯有限公司，Companhia de Telecomunicações de Macau,<br />
+S.A.R.L.，简称CTM)，是澳门第一间提供电话通讯服务的企业，于1981年10月成立。（此条引用维基百科）</li>
+<li>CTM的使用体验总体上和早期的HKT相近，目前的价格和获取难度远高于HKT，预计短时间内不会被玩坏。CTM商宽很垃圾,但CTM的家宽三网友好,带宽跑满</li>
+<li>商宽、家宽可长期稳定解锁流媒体服务，Mokvm自己的BGP线路没测试过，根据Affyun.com所提供的信息是可以解锁的。</li>
+<li>到大陆因为薅羊毛严重已被严重QOS</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="MTel"></span><strong>MTel</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">MTel</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>MTel电信有限公司（葡萄牙语：Companhia de Telecomunicações de MTEL,<br />
+Limitada，简称：MTel)，是澳门第二间提供固网通讯服务的企业[1]，于2011年10月10日成立。（此条引用维基百科）</li>
+<li>从目前的测试结果上来看MTel到大陆的网络质量明显不如CTM。</li>
+<li>与CTM相比价格相对低一些。如果主要用来直连大陆，还是推荐CTM。如果从香港中转过去，澳门仅仅用来做落地的话就无所谓直接选便宜的就行了。。</li>
+<li>可长期稳定解锁流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3 id="toc_10"><span class="ez-toc-section" id="%E6%96%B0%E5%8A%A0%E5%9D%A1"></span>新加坡<span class="ez-toc-section-end"></span></h3>
+<h3><span class="ez-toc-section" id="AWS"></span><strong>AWS</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AWSSG</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>拉了少量163带宽，虽然挤了点，但比什么都没有强多了。<span style="color: #00ccff;">【常用的大陆方向流量很多走新加坡AWS，比如Github直连】</span></li>
+<li>163带宽在亚洲范围内非常昂贵，质量上并没有比CN2差太多。</li>
+<li>依托亚马逊爸爸庞大的体量，AWS的本地、国际水管非常粗。乞丐版LightSail本地测速一般可以到500mbps。</li>
+<li>某些IP段可以看netflix。</li>
+<li>网络、硬件、软件、管理都非常成熟稳定。生产环境布好之后基本上就不需要再管它了，这货可以永久稳定运行下去。。。</li>
+<li>性价比高，可以按小时收费，还有黑卡、首月免费等花式玩法。</li>
+<li>少部分IP段可以看Netflix，其他流媒体服务暂未测试</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Onevps"></span><strong>Onevps</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">OneVPS</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>主打低价、大带宽、大流量、流媒体解锁。</li>
+<li>一般低价+大带宽+大流量的服务器都比较容易被玩坏。。离你越近的地方网络炸得越厉害。。国人战斗力你懂的。。</li>
+<li>价格亚洲区域8美元/月，其他区域4美元/月，这个价不管是做流媒体解锁还是直接做落地都不算亏。</li>
+<li>关于流媒体解锁，建议购买前问一下他们客服，可以直接问他们某区域的vps能否解锁Netflix，他们会直接告诉你的。</li>
+<li>这家的服务质量还是挺不错的，发了几次工单，客服在24小时内都积极的处理我的问题了。</li>
+</ul>
+<p><span style="color: #00ccff;">【曾经发生BUG事故，Chat99】</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E5%BE%A1%E4%B8%89%E5%AE%B6%EF%BC%9ALinodeVultrVUDigitaloceanDO"></span><strong>御三家：Linode/Vultr(VU)/Digitalocean(DO)</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">御三家</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>这三家外面的测评早就铺天盖地写烂掉了。在新加坡三家用下来感觉差得不多，我就放在一起写了。</li>
+<li>网络方面这三家目前到国内都比较差，拿来做直连代理的话客户估计都要跑光了。</li>
+<li>国际及本地带宽Linode、Vultr差不多，反正大口子大流量随便跑。Linode有个优势是一个账户下面所有VPS共享流量池，这可以很的程度上提高流量利用率降低成本。</li>
+<li>Digitalocean应该是超售最少的，因为aff无法提现，affman不喜欢推荐。</li>
+<li>三家价格都亲民，比较良心。</li>
+<li>这些都只适合拿来建站和中转了，便宜稳定不超售</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p><span style="color: #00ccff;">【DO唯一亮点就是移动商宽（比如广移）TO  DO-SG了】</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Leaseweb"></span><strong>Leaseweb</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Leaseweb</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>和上面三家比，价格贵，网络也没强太多，购买难度高。。。</li>
+<li>市面上比较容易买到的应该只有OneProvider了，他家是自己的IP，网络和硬件设施都是用的leaseweb的。</li>
+<li>对于飞机场来说除了落地基本上没其他用处。</li>
+<li>IP已经基本上被各种流媒体网站拉黑</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="%E6%96%B0%E5%8A%A0%E5%9D%A1%E9%98%BF%E9%87%8C%E4%BA%91"></span><strong>新加坡阿里云</strong><span class="ez-toc-section-end"></span></h3>
+<p>已经被撸死</p>
+<h3><span class="ez-toc-section" id="%E6%96%B0%E5%8A%A0%E5%9D%A1%E8%85%BE%E8%AE%AF%E4%BA%91"></span>新加坡腾讯云<span class="ez-toc-section-end"></span></h3>
+<p><span style="color: #00ccff;">2020年诞生的轻量应用服务器，对标老阿里,主打电信GIA,24R-30M-1T</span></p>
+<p><span style="color: #00ccff;">注意联通回程会绕路，NF也没了好像</span></p>
+<h3><span class="ez-toc-section" id="Softlayer-2"></span><strong>Softlayer</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Softlayer</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>美国Softlayer公司是目前全球最大的IDC公司之一。</li>
+<li>国际和本地带宽不错，有自己的的全球骨干网。到国内绕得比较厉害。</li>
+<li>官方售价高，二道贩子如HostUS（OpenVZ架构，不能bbr加速或锐速）价格虽然便宜，只是双向流量跟水一样不耐用，可以考虑用来落地。</li>
+<li>注：虽然Softlayer本身的VPS抗攻击性能非常好，但是二道贩子那边摸一下就进黑洞至少24小时。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p><span style="color: #00ccff;">【IBMYES的美国节点就是这家公司提供的网络】</span></p>
+<p></div>
+</div>
+<h2 id="toc_11"><span class="ez-toc-section" id="%E9%9F%A9%E5%9B%BD"></span>韩国<span class="ez-toc-section-end"></span></h2>
+<p>韩国虽然本地网络很发达，但是到大陆的带宽贵、小、且超售严重。就算是非大陆直连的带宽价格也高高在上。总体上可选择的 IDC 也比较少。</p>
+<p><span style="color: #00ccff;">注意中韩俄都是有墙地区</span></p>
+<h3><span class="ez-toc-section" id="KT"></span><strong>KT</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">KT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Korea Telecom是韩国最大的ISP。</li>
+<li>KT到联通直连还算可以，和联通在韩国本地有互联。到电信和移动目前都处于爆炸的状态。。</li>
+<li>原生IP可以看Netflix，其他流媒体没测试过。</li>
+<li>主要可以买到KT线路服务器的地方有UcloudBiz（购买难度上天），虎云（相对容易买到），Netdedi，应该还有一些我不知道的。</li>
+<li>不管从哪家买价格都挺贵的。</li>
+<li>可解锁流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="SKT"></span><strong>SKT</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">SKT</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>South Korea Telecom是韩国第二大ISP，根据我的不靠谱经验很多时候一个国家最大的运营商到大陆的互联质量都不如第二第三名。。</li>
+<li>电信联通都是直连。到电信的互联质量比现在的KT强太多了，到联通也是直连，稍稍的不如kt稳定。</li>
+<li>电信联通走上海出口到韩国，上海ping过去好的时候大概在20多ms，就是上蹿下跳得比较厉害。。估计带宽还是不太够。。</li>
+<li>移动绕香港也还算可以接受。</li>
+<li>原生IP可以看Netflix，其他流媒体没测试过。</li>
+<li>主要销售SKT线路服务器的商家有Kdatacenter、vpc.kr，这两家比较容易买到。</li>
+<li>可解锁流媒体服务。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Azure_%E9%9F%A9%E5%9B%BD"></span><strong>Azure 韩国</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AzureKR</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>走自己的骨干网到香港与国内互联，总体来说比较稳，电信晚上会慢一点。</li>
+<li>不能看一些流媒体节目，比如Netflix。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="AWS_%E9%9F%A9%E5%9B%BD"></span><strong>AWS 韩国</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AWSKR</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+ <div class="xContent" style="display: none;"></p>
+<ul>
+<li>到电信会走自己骨干网去日本然后与日本163互联。到电信的网络质量和AWS日本差不太多。</li>
+<li>到联通炸得比较厉害。。</li>
+<li>到移动走自己的骨干网去日本，然后在JPIX和东京移动互联。虽然不算很绕，但是延迟却很高，有可能移动自己到东京的骨干网炸了。。习惯就好。。</li>
+<li>不能看一些流媒体节目，比如Netflix。</li>
+<li>虽然算不上很好，但是带宽便宜口子够粗（本地500M），看看价格还是觉得性价比很高了。这应该是大家可以买到的最便宜也是最高性价比的韩国小鸡了。</li>
+<li>少部分IP段可以看Netflix，其他流媒体服务暂未测试。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Moack"></span><strong>Moack</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Moack</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>Moack是一家华人开的IDC，前身是Moguhost。</li>
+<li>这家主要销售独服，电信来回CN2，联通和移动去程直连回程CN2（移动去程绕香港，但是比AWS的走上海出口稳太多了）。</li>
+<li>原生IP可以看Netflix，其他流媒体没测试过。</li>
+<li>（以上信息大部分摘自Affyun.org）</li>
+<li>价格不便宜，官网提供了多种套餐，有不限流量的，有100M端口流量另外计费的，还有100M端口包含1TB双向流量的。</li>
+<li>五天无理由退款好评。</li>
+<li>相比上面几家，走CN2的感觉真的稳定太多了。。</li>
+<li>原生IP可以看Netflix，其他流媒体没测试过。</li>
+</ul>
+<p></div>
+</div>
+<h2 id="toc_12"><span class="ez-toc-section" id="%E6%AC%A7%E6%B4%B2"></span>欧洲<span class="ez-toc-section-end"></span></h2>
+<p>欧洲到大陆最好的当然是走欧亚大陆路缆到北京国际出口，这样应该可以做到比较低的延迟。也可以绕新加坡到香港然后再从广州出口进大陆，延迟会高几十毫秒。KHV 这种紧挨着中国大陆东北的其实算是亚洲地区，所以这里不讨论。<br />
+欧洲的 IDC 其实特别多，这里仅仅介绍部分可能有用的一些。<span style="color: #00ccff;">【其实大部分都没听说过，欧洲-中国网络一般都很烂】</span></p>
+<h3><span class="ez-toc-section" id="ZeptoVM"></span><strong>ZeptoVM</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">ZeptoVM</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>ZeptoVM的我就不多说了，老板在IDC圈子里的声誉非常好。</li>
+<li>这里仅介绍他家的圣彼得堡CN2 VPS。</li>
+<li>电信移动去程GIA CN2，联通去程ttk直连。</li>
+<li>流量给得不多，回程CN2拔掉了。。</li>
+<li>考虑到欧洲没有太多到大陆互联效果好的服务器，半程CN2还总比没有强。</li>
+<li>可以看Netflix，其他流媒体服务暂未测试。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="GbpsCloud"></span><strong>GbpsCloud</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">GbpsCloud</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>这家的德国CN2 VPS也非常不错，到北京140ms左右。</li>
+<li>给的cn2带宽比Zepto家的大一点，官网标注是300Mbps口子，回国口子多大没仔细测试，但晚高峰跑满200M还是没问题的。</li>
+<li>三网GIA CN2，安畅机房比较稳定。</li>
+<li>其他方面和Zepto家半斤八两吧，用途也差不多，可以弄一个中转到各种欧洲国家。</li>
+<li>大家其实没必要太在意欧洲VPS给的流量，大陆用户很少会用欧洲节点的。给太多了也跑不完。</li>
+<li>可以看Netflix，其他流媒体服务暂未测试。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Gcorelabs"></span><strong>Gcorelabs</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Gcorelabs</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>这家提供欧洲好几个机房，除了khv到大陆都比较差。很多IDC卖的KHV也都出自这家。</li>
+<li>KHV到大陆也不算很稳了现在。。。便宜好用又容易买到的东西最终大多都是这个结局。。</li>
+<li>不能解锁流媒体。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Onevps-2"></span><strong>Onevps</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">OneVPS</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>这家在欧洲地区瑞士英国荷兰瑞士德国都有卖。</li>
+<li>互联质量到国内肯定是很烂了。。用上面那两家中转过去就可以解决。。</li>
+<li>买之前记得问客服你要的机房能不能解锁，客服会明确告知你能或者不能。</li>
+</ul>
+<p><span style="color: #00ccff;">【曾经发生BUG事故，Chat99】</span></p>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="AWSAzureSoftlayerGCP"></span><strong>AWS/Azure/Softlayer/GCP</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">AWS/Azure/Softlayer/GCP</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>如果你还想找一条除上面两家GIA CN2之外的稍微靠谱点的去欧洲的中转线路，那么可以考虑从香港中转出去，然后走这几家大厂的自有骨干网到欧洲。</li>
+<li>AWS少量IP和GCP全部IP可解锁Netflix，其他家不支持。</li>
+</ul>
+<p></div>
+</div>
+<h3><span class="ez-toc-section" id="Kecloud-3"></span><strong>Kecloud</strong><span class="ez-toc-section-end"></span></h3>
+<div style="margin: 0.5em 0;">
+<div class="xControl">
+<i class="fa fa-arrow-down" style="color: #9F6F26;"></i> &nbsp;&nbsp;
+<span class="xTitle">Kecloud</span>&nbsp;&nbsp;==>&nbsp;&nbsp;<a href="javascript:void(0)" class="collapseButton xButton"><span class="xbtn02">展开 / 收缩</span></a>
+<div style="clear: both;"></div>
+</div>
+<div class="xContent" style="display: none;"></p>
+<ul>
+<li>网络是和Gbpscloud同款的德国安畅机房，三网GIA CN2。</li>
+<li>目前用的人比较少。</li>
+<li>价格比Gbpscloud稍微便宜一点。。总体没啥区别。。</li>
+<li>IP给的是香港的，老板说已经通知IP库改IP信息。</li>
+<li>可以看Netflix，其他流媒体服务暂未测试。</li>
+</ul>
+<p></div>
+</div>
+<p>点击数：235</p><div class='yarpp yarpp-related yarpp-related-website yarpp-template-list'>
+
+<h3>Related posts:</h3><ol>
+<li><a href="https://www.blueskyxn.com/202005/1089.html" rel="bookmark" title="（转）国内主流网络运营商国际连接线路简谈">（转）国内主流网络运营商国际连接线路简谈 </a></li>
+<li><a href="https://www.blueskyxn.com/202004/397.html" rel="bookmark" title="阿里云SG-轻量SAS评测">阿里云SG-轻量SAS评测 </a></li>
+<li><a href="https://www.blueskyxn.com/202101/3572.html" rel="bookmark" title="新手入门必看：谈谈我用过/云过的境外服务器">新手入门必看：谈谈我用过/云过的境外服务器 </a></li>
+<li><a href="https://www.blueskyxn.com/202005/852.html" rel="bookmark" title="本地Ping多目标测试工具：CloudPing.cloud翡翠云工具">本地Ping多目标测试工具：CloudPing.cloud翡翠云工具 </a></li>
+<li><a href="https://www.blueskyxn.com/202101/3871.html" rel="bookmark" title="SharePoint CDN供应商调整公告">SharePoint CDN供应商调整公告 </a></li>
+<li><a href="https://www.blueskyxn.com/202101/3644.html" rel="bookmark" title="想白嫖？免费VPS整合集合大全">想白嫖？免费VPS整合集合大全 </a></li>
+</ol>
+</div>
+<div class='code-block code-block-2' style='margin: 8px 0; clear: both;'>
+<div class="ads" align="center"><a href="https://www.hostmsu.ru/aff.php?aff=45"><img src="https://p.pstatp.com/origin/pgc-image/2281eec871a14b9aa593e6b4d3b15ee8" height="50%" /></a></div></div>
+
+
+
+</div>
+<footer class="post-footer">
+<div class="post-tags">
+<i class="iconfont icon-tags"></i> <a href="https://www.blueskyxn.com/tag/aws/" rel="tag">AWS</a> <a href="https://www.blueskyxn.com/tag/azure/" rel="tag">Azure</a> <a href="https://www.blueskyxn.com/tag/bandwagon/" rel="tag">Bandwagon</a> <a href="https://www.blueskyxn.com/tag/digitalocean/" rel="tag">DigitalOcean</a> <a href="https://www.blueskyxn.com/tag/gcp/" rel="tag">GCP</a> <a href="https://www.blueskyxn.com/tag/google/" rel="tag">Google</a> <a href="https://www.blueskyxn.com/tag/vultr/" rel="tag">Vultr</a> <a href="https://www.blueskyxn.com/tag/tencentcloud/" rel="tag">腾讯云</a> <a href="https://www.blueskyxn.com/tag/alicloud/" rel="tag">阿里云</a> </div>
+</footer>
+</article>
+<div class="toc-container"><div class="toc"></div></div>
+<section class="post-squares nextprev">
+<div class="post-nepre half previous">
+<a href="https://www.blueskyxn.com/202101/3161.html" rel="prev"><div class="background lazyload" style="background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/theme/colorful/load/outload.svg);" data-src="https://imgapi.000714.xyz/skyimg.php?3161"></div><span class="label">上一篇文章</span><div class="info"><h3>AutoApiSecret：PushChange故障解决方案【20210102】</h3><hr></div></a> </div>
+<div class="post-nepre half next">
+<a href="https://www.blueskyxn.com/202101/3178.html" rel="next"><div class="background lazyload" style="background-image:url(https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/theme/colorful/load/outload.svg);" data-src="https://imgapi.000714.xyz/skyimg.php?3178"></div><span class="label">下一篇文章</span><div class="info"><h3>小工具系列：Cloudflare IP 测速解决方案</h3><hr></div></a> </div>
+</section>
+</main>
+</div>
+</div>
+<section id="comments" class="comments">
+<div class="commentwrap comments-hidden comments-fold">
+<div class="notification"><i class="iconfont icon-mark"></i>查看评论 -
+<span class="noticom">NOTHING </span>
+</div>
+</div>
+<div class="comments-main">
+<h3 id="comments-list-title">Comments | <span class="noticom">NOTHING </span></h3>
+<div id="loading-comments"><span></span></div>
+<div class="commentwrap">
+<div class="notification-hidden"><i class="iconfont icon-mark"></i> 暂无评论</div>
+</div>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/202101/3167.html#respond" style="display:none;">取消回复</a></small></h3><p class="must-log-in">要发表评论，您必须先<a href="https://www.blueskyxn.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.blueskyxn.com%2F202101%2F3167.html">登录</a>。</p> </div>
+</div>
+</section>
+</div>
+<footer id="colophon" class="site-footer" role="contentinfo">
+<div class="site-info" theme-info="Sakurairo v2.2.6.1">
+<div class="footertext">
+<div class="img-preload">
+<img src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/vision/load_svg/ball.svg">
+</div>
+<p style="color: #666666;"><a href="https://github.com/BlueSkyXN"><img src="https://github-readme-stats.vercel.app/api?username=BlueSkyXN&amp;show_icons=true&amp;count_private=true&amp;title_color=006400&amp;text_color=000080&amp;bg_color=30,00FFFF,40E0D0,00CED1" height="60" /></a><br>
+<a href="https://pay.000714.xyz" style="color: #40E0D0">Donate With Stripe/Card/PayPal/Alipay/WeChatPay/Crypto</a><br>
+<a href="https://www.patreon.com/bePatron?u=63198165" style="color: #40E0D0">Paid content subscription and VIP Services</a><br>
+~请遵循您当地的法律法规~若有疑问/侵权问题请发邮件等方式联系我~<br>
+<a href="https://beian.miit.gov.cn/" target="_blank">~闽ICP备20009316号~</a><br>
+Copyright © 2020-2021 BlueSkyXN. All Rights Reserved.<br></p>
+</div>
+<div class="footer-device">
+<p style="font-family: 'Ubuntu', sans-serif;">
+<p id="footer_yiyan"></p>
+<span style="color: #b9b9b9;">
+耗时 18.219 秒 | 查询 57 次 | 内存 26.48 MB Theme <a href="https://github.com/mirai-mamori/Sakurairo" target="_blank" id="site-info">Sakurairo</a> by <a href="https://iro.tw" target="_blank" id="site-info">Fuukei</a>
+</span>
+</div>
+</div>
+</footer>
+</section>
+
+<div id="mo-nav">
+<div class="m-avatar">
+<img src="https://p.pstatp.com/origin/pgc-image/95ede86d47174da1bbf576da8e47f431">
+</div>
+<div class="m-search">
+<form class="m-search-form" method="get" action="https://www.blueskyxn.com" role="search">
+<input class="m-search-input" type="search" name="s" placeholder="搜索..." required>
+</form>
+</div>
+<ul id="menu-%e5%af%bc%e8%88%aa2-1" class="menu"><li><a href="https://www.blueskyxn.com">首页</a></li>
+<li><a href="https://status.blueskyxn.com">探针</a></li>
+<li><a href="https://shop.blueskyxn.com">SHOP</a></li>
+<li><a href="https://cse.google.com/cse?cx=473490fcdaa0005d1">高级搜索</a></li>
+<li><a href="https://img.blueskyxn.com/tt.html">图床</a></li>
+<li><a href="https://www.blueskyxn.com/202102/4142.html">网盘资源</a></li>
+<li><a href="https://www.blueskyxn.com/%e6%97%b6%e5%85%89%e3%81%ae%e8%bd%b4/">时光の轴</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/%e8%af%b4%e8%af%b4/">说说</a></li>
+<li><a href="https://www.blueskyxn.com/day/announcement/">公告</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/financial/">金融</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/financial/pay/">支付与平台</a></li>
+<li><a href="https://www.blueskyxn.com/financial/card/">玩转卡片</a></li>
+<li><a href="https://www.blueskyxn.com/financial/shop/">购物与消费</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor"><a href="https://www.blueskyxn.com/technology/">科技</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/technology/vps/">VPS</a></li>
+<li><a href="https://www.blueskyxn.com/technology/vps/vpstest/">VPS评测</a></li>
+<li><a href="https://www.blueskyxn.com/technology/tips-gadgets/">小技巧&amp;小工具</a></li>
+<li><a href="https://www.blueskyxn.com/technology/knowledge/">小知识</a></li>
+<li><a href="https://www.blueskyxn.com/technology/build/">建站&amp;运维</a></li>
+<li class="current-post-ancestor current-menu-parent"><a href="https://www.blueskyxn.com/technology/network-technology/">网络技术</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/mix/">杂谈</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/day/">日记</a></li>
+<li><a href="https://www.blueskyxn.com/welfare/">福利</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/acgn/">二次元</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/acgn/bilibili/">哔哩哔哩</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/bp/">美しい写真</a></li>
+<li><a href="https://www.blueskyxn.com/acgn/sticker/">表情包</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/game/">游戏</a>
+<ul class="sub-menu">
+<li><a href="https://www.blueskyxn.com/game/r6/">彩虹六号</a></li>
+<li><a href="https://www.blueskyxn.com/game/genshin/">原神</a></li>
+<li><a href="https://www.blueskyxn.com/game/tof/">幻塔</a></li>
+</ul>
+</li>
+<li><a href="https://www.blueskyxn.com/%e5%8f%8b%e3%81%ae%e9%93%be/">友の链</a></li>
+<li><a href="https://000714.xyz/">About</a>
+<ul class="sub-menu">
+<li><a href="https://t.me/BlueSkyXN_PM_bot">PM·BOT</a></li>
+<li><a href="https://github.com/blueskyxn">Github</a></li>
+<li><a href="https://t.me/blueskyxnblog">Channel</a></li>
+</ul>
+</li>
+</ul> </div>
+<a class="cd-top faa-float animated "></a>
+<button id="moblieGoTop" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+<button id="changskin" style="bottom: 15px;"><i class="iconfont icon-gear inline-block rotating"></i></button>
+
+<form class="js-search search-form search-form--modal" method="get" action="https://www.blueskyxn.com" role="search">
+<div class="search-form__inner">
+<div class="micro">
+<p class="micro mb-">想要找点什么呢？</p>
+<i class="iconfont icon-search"></i>
+<input class="text-input" type="search" name="s" placeholder="搜索" required>
+</div>
+</div>
+<div class="search_close"></div>
+</form>
+
+<div class='code-block code-block-3' style='margin: 8px 0; clear: both;'>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5491457859629509" crossorigin="anonymous"></script></div>
+<script type="text/javascript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['enableJSErrorTracking']);
+_paq.push(['trackVisibleContentImpressions']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);_paq.push(['alwaysUseSendBeacon']);_paq.push(['setTrackerUrl', "\/\/www.blueskyxn.com\/wp-content\/plugins\/matomo\/app\/matomo.php"]);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.src="\/\/www.blueskyxn.com\/wp-content\/uploads\/matomo\/matomo.js"; s.parentNode.insertBefore(g,s);
+</script>
+<link rel='stylesheet' id='yarppRelatedCss-css' href='https://www.blueskyxn.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.27.5' type='text/css' media='all' />
+<script type='text/javascript' id='ppress-frontend-script-js-extra'>
+/* <![CDATA[ */
+var pp_ajax_form = {"ajaxurl":"https:\/\/www.blueskyxn.com\/wp-admin\/admin-ajax.php","confirm_delete":"Are you sure?","deleting_text":"Deleting...","deleting_error":"An error occurred. Please try again.","nonce":"9817454772","disable_ajax_form":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/wp-user-avatar/assets/js/frontend.min.js?ver=3.1.19' id='ppress-frontend-script-js'></script>
+<script type='text/javascript' id='swcfpc_auto_prefetch_url-js-before'>
+                function swcfpc_wildcard_check(str, rule) {
+                    let escapeRegex = (str) => str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+                    return new RegExp("^" + rule.split("*").map(escapeRegex).join(".*") + "$").test(str);
+                }
+
+                function swcfpc_can_url_be_prefetched(href) {
+
+                    if( href.length == 0 )
+                        return false;
+
+                    if( href.startsWith("mailto:") )
+                        return false;
+
+                    if( href.startsWith("https://") )
+                        href = href.split("https://"+location.host)[1];
+                    else if( href.startsWith("http://") )
+                        href = href.split("http://"+location.host)[1];
+
+                    for( let i=0; i < swcfpc_prefetch_urls_to_exclude.length; i++) {
+
+                        if( swcfpc_wildcard_check(href, swcfpc_prefetch_urls_to_exclude[i]) )
+                            return false;
+
+                    }
+
+                    return true;
+
+                }
+
+                let swcfpc_prefetch_urls_to_exclude = '["\/*ao_noptirocket*","\/*jetpack=comms*","\/*kinsta-monitor*","*ao_speedup_cachebuster*","\/*removed_item*","\/my-account*","\/wc-api\/*","\/edd-api\/*","\/wp-json*"]';
+                swcfpc_prefetch_urls_to_exclude = (swcfpc_prefetch_urls_to_exclude) ? JSON.parse(swcfpc_prefetch_urls_to_exclude) : [];
+
+            
+</script>
+<script type='module' src='https://www.blueskyxn.com/wp-content/plugins/wp-cloudflare-page-cache/assets/js/instantpage.min.js?ver=5.1.0.3' defer id='swcfpc_instantpage-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/smoothscroll.js?ver=2.2.6.1' id='SmoothScroll-js'></script>
+<script type='text/javascript' id='app-js-extra'>
+/* <![CDATA[ */
+var Poi = {"pjax":"","movies":"close","windowheight":"fixed","ajaxurl":"https:\/\/www.blueskyxn.com\/wp-admin\/admin-ajax.php","order":"desc","formpostion":"bottom","reply_link_version":"new","api":"https:\/\/www.blueskyxn.com\/wp-json\/","nonce":"ad7ee5971c","google_analytics_id":"UA-163447597-1","gravatar_url":"sdn.geekzu.org\/avatar"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/app.js?ver=2.2.6.1' id='app-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/themes/Sakurairo/js/page.js?ver=2.2.6.1' id='app-page-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/comment-reply.min.js?ver=5.8' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-includes/js/wp-embed.min.js?ver=5.8' id='wp-embed-js'></script>
+<script type='text/javascript' id='fifu-image-js-js-extra'>
+/* <![CDATA[ */
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/www.blueskyxn.com\/wp-json\/","fifu_nonce":"ad7ee5971c"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/featured-image-from-url/includes/html/js/image.js?ver=3.7.4' id='fifu-image-js-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='js-cookie-js'></script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"1","width":"auto","scroll_offset":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.blueskyxn.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.17-1616794175' id='ez-toc-js-js'></script>
+<script id="swcfpc">
+
+                const swcfpc_prefetch_urls_timestamp_server = '1634357779';
+
+                let swcfpc_prefetched_urls = localStorage.getItem("swcfpc_prefetched_urls");
+                swcfpc_prefetched_urls = (swcfpc_prefetched_urls) ? JSON.parse(swcfpc_prefetched_urls) : [];
+
+                let swcfpc_prefetch_urls_timestamp_client = localStorage.getItem("swcfpc_prefetch_urls_timestamp_client");
+
+                if( swcfpc_prefetch_urls_timestamp_client == undefined || swcfpc_prefetch_urls_timestamp_client != swcfpc_prefetch_urls_timestamp_server ) {
+                    swcfpc_prefetch_urls_timestamp_client = swcfpc_prefetch_urls_timestamp_server;
+                    swcfpc_prefetched_urls = new Array();
+                    localStorage.setItem("swcfpc_prefetched_urls", JSON.stringify(swcfpc_prefetched_urls));
+                    localStorage.setItem("swcfpc_prefetch_urls_timestamp_client", swcfpc_prefetch_urls_timestamp_client);
+                }
+
+                function swcfpc_element_is_in_viewport( element ) {
+
+                    let bounding = element.getBoundingClientRect();
+
+                    if ( bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) )
+                        return true;
+
+                    return false;
+
+                }
+
+                function swcfpc_prefetch_urls() {
+
+                    let comp = new RegExp(location.host);
+
+                    document.querySelectorAll("a").forEach( (item) => {
+
+                        if( item.href ) {
+
+                            let href = item.href.split("#")[0];
+
+                            if( swcfpc_can_url_be_prefetched(href) && swcfpc_prefetched_urls.includes(href) == false && comp.test( item.href ) && swcfpc_element_is_in_viewport(item) ) {
+
+                                swcfpc_prefetched_urls.push( href );
+
+                                //console.log( href );
+
+                                let prefetch_element = document.createElement('link');
+                                prefetch_element.rel = "prefetch";
+                                prefetch_element.href = href;
+
+                                document.getElementsByTagName('body')[0].appendChild( prefetch_element );
+
+                            }
+
+                        }
+
+                    } )
+
+                    localStorage.setItem("swcfpc_prefetched_urls", JSON.stringify(swcfpc_prefetched_urls));
+
+                }
+
+                window.addEventListener("load", function(event) {
+                    swcfpc_prefetch_urls();
+                });
+
+                window.addEventListener("scroll", function(event) {
+                    swcfpc_prefetch_urls();
+                });
+
+            </script>
+<div class="skin-menu no-select">
+<p style="margin-bottom: 0.5em;">Style</p>
+<div class="theme-controls row-container">
+<ul class="menu-list">
+<li id="white-bg">
+<i class="fa fa-television faa-tada animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy1-bg">
+<i class="fa fa-heart-o faa-pulse animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy2-bg">
+<i class="fa fa-star-o faa-float animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy3-bg">
+<i class="fa fa-delicious faa-horizontal animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="diy4-bg">
+<i class="fa fa-lemon-o faa-wrench animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+<li id="dark-bg">
+<i class="fa fa-moon-o faa-passing animated-hover faa-fast" aria-hidden="true"></i>
+</li>
+</ul>
+</div>
+<p style="margin-bottom: 0.1em;">Fonts</p>
+<div class="font-family-controls row-container">
+<button type="button" class="control-btn-serif selected" data-name="serif"><i class="fa fa-font faa-vertical animated-hover" aria-hidden="true"></i></button>
+<button type="button" class="control-btn-sans-serif" data-name="sans-serif"><i class="fa fa-bold faa-vertical animated-hover" aria-hidden="true"></i></button>
+</div>
+</div>
+<aside id="secondary" class="widget-area" role="complementary" style="left: -400px;">
+<div class="heading">小工具</div>
+<div class="sakura_widget">
+<div class="widget widget_tag_cloud"><div class="title"><h2>标签</h2></div><div class="tagcloud"><a href="https://www.blueskyxn.com/tag/adguard/" class="tag-cloud-link tag-link-73 tag-link-position-1" style="font-size: 11.962264150943pt;" aria-label="AdGuard (7个项目)">AdGuard<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/aws/" class="tag-cloud-link tag-link-88 tag-link-position-2" style="font-size: 13.283018867925pt;" aria-label="AWS (9个项目)">AWS<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/azure/" class="tag-cloud-link tag-link-86 tag-link-position-3" style="font-size: 11.301886792453pt;" aria-label="Azure (6个项目)">Azure<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/bandwagon/" class="tag-cloud-link tag-link-83 tag-link-position-4" style="font-size: 11.962264150943pt;" aria-label="Bandwagon (7个项目)">Bandwagon<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/bbr/" class="tag-cloud-link tag-link-47 tag-link-position-5" style="font-size: 11.301886792453pt;" aria-label="BBR (6个项目)">BBR<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/buyvm/" class="tag-cloud-link tag-link-80 tag-link-position-6" style="font-size: 9.3207547169811pt;" aria-label="Buyvm (4个项目)">Buyvm<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/cdn/" class="tag-cloud-link tag-link-68 tag-link-position-7" style="font-size: 18.037735849057pt;" aria-label="CDN (22个项目)">CDN<span class="tag-link-count"> (22)</span></a>
+<a href="https://www.blueskyxn.com/tag/clone/" class="tag-cloud-link tag-link-90 tag-link-position-8" style="font-size: 14.339622641509pt;" aria-label="clone (11个项目)">clone<span class="tag-link-count"> (11)</span></a>
+<a href="https://www.blueskyxn.com/tag/cloudflare/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 22pt;" aria-label="CloudFlare (45个项目)">CloudFlare<span class="tag-link-count"> (45)</span></a>
+<a href="https://www.blueskyxn.com/tag/digitalocean/" class="tag-cloud-link tag-link-82 tag-link-position-10" style="font-size: 9.3207547169811pt;" aria-label="DigitalOcean (4个项目)">DigitalOcean<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/dns/" class="tag-cloud-link tag-link-78 tag-link-position-11" style="font-size: 14.735849056604pt;" aria-label="DNS (12个项目)">DNS<span class="tag-link-count"> (12)</span></a>
+<a href="https://www.blueskyxn.com/tag/docker/" class="tag-cloud-link tag-link-128 tag-link-position-12" style="font-size: 10.377358490566pt;" aria-label="docker (5个项目)">docker<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/gcp/" class="tag-cloud-link tag-link-87 tag-link-position-13" style="font-size: 11.962264150943pt;" aria-label="GCP (7个项目)">GCP<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/gfw/" class="tag-cloud-link tag-link-95 tag-link-position-14" style="font-size: 9.3207547169811pt;" aria-label="GFW (4个项目)">GFW<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/git/" class="tag-cloud-link tag-link-98 tag-link-position-15" style="font-size: 10.377358490566pt;" aria-label="Git (5个项目)">Git<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/google/" class="tag-cloud-link tag-link-93 tag-link-position-16" style="font-size: 17.509433962264pt;" aria-label="Google (20个项目)">Google<span class="tag-link-count"> (20)</span></a>
+<a href="https://www.blueskyxn.com/tag/linux/" class="tag-cloud-link tag-link-104 tag-link-position-17" style="font-size: 13.811320754717pt;" aria-label="Linux (10个项目)">Linux<span class="tag-link-count"> (10)</span></a>
+<a href="https://www.blueskyxn.com/tag/microsoft/" class="tag-cloud-link tag-link-92 tag-link-position-18" style="font-size: 16.716981132075pt;" aria-label="Microsoft (17个项目)">Microsoft<span class="tag-link-count"> (17)</span></a>
+<a href="https://www.blueskyxn.com/tag/nginx/" class="tag-cloud-link tag-link-72 tag-link-position-19" style="font-size: 16.320754716981pt;" aria-label="NGINX (16个项目)">NGINX<span class="tag-link-count"> (16)</span></a>
+<a href="https://www.blueskyxn.com/tag/oracle/" class="tag-cloud-link tag-link-91 tag-link-position-20" style="font-size: 16.320754716981pt;" aria-label="Oracle (16个项目)">Oracle<span class="tag-link-count"> (16)</span></a>
+<a href="https://www.blueskyxn.com/tag/php/" class="tag-cloud-link tag-link-77 tag-link-position-21" style="font-size: 9.3207547169811pt;" aria-label="PHP (4个项目)">PHP<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/python/" class="tag-cloud-link tag-link-75 tag-link-position-22" style="font-size: 14.735849056604pt;" aria-label="Python (12个项目)">Python<span class="tag-link-count"> (12)</span></a>
+<a href="https://www.blueskyxn.com/tag/serverless/" class="tag-cloud-link tag-link-130 tag-link-position-23" style="font-size: 13.811320754717pt;" aria-label="ServerLess (10个项目)">ServerLess<span class="tag-link-count"> (10)</span></a>
+<a href="https://www.blueskyxn.com/tag/stripe/" class="tag-cloud-link tag-link-136 tag-link-position-24" style="font-size: 11.962264150943pt;" aria-label="Stripe (7个项目)">Stripe<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/telegram/" class="tag-cloud-link tag-link-52 tag-link-position-25" style="font-size: 13.283018867925pt;" aria-label="Telegram (9个项目)">Telegram<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/vultr/" class="tag-cloud-link tag-link-81 tag-link-position-26" style="font-size: 14.339622641509pt;" aria-label="Vultr (11个项目)">Vultr<span class="tag-link-count"> (11)</span></a>
+<a href="https://www.blueskyxn.com/tag/waf/" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 11.962264150943pt;" aria-label="WAF (7个项目)">WAF<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/wise/" class="tag-cloud-link tag-link-139 tag-link-position-28" style="font-size: 12.622641509434pt;" aria-label="WISE (8个项目)">WISE<span class="tag-link-count"> (8)</span></a>
+<a href="https://www.blueskyxn.com/tag/wordpress/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 16.981132075472pt;" aria-label="WordPress (18个项目)">WordPress<span class="tag-link-count"> (18)</span></a>
+<a href="https://www.blueskyxn.com/tag/workers/" class="tag-cloud-link tag-link-102 tag-link-position-30" style="font-size: 10.377358490566pt;" aria-label="Workers (5个项目)">Workers<span class="tag-link-count"> (5)</span></a>
+<a href="https://www.blueskyxn.com/tag/download/" class="tag-cloud-link tag-link-105 tag-link-position-31" style="font-size: 11.962264150943pt;" aria-label="下载 (7个项目)">下载<span class="tag-link-count"> (7)</span></a>
+<a href="https://www.blueskyxn.com/tag/21vianet/" class="tag-cloud-link tag-link-89 tag-link-position-32" style="font-size: 12.622641509434pt;" aria-label="世纪互联 (8个项目)">世纪互联<span class="tag-link-count"> (8)</span></a>
+<a href="https://www.blueskyxn.com/tag/jingdong/" class="tag-cloud-link tag-link-125 tag-link-position-33" style="font-size: 8pt;" aria-label="京东 (3个项目)">京东<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/picturebed/" class="tag-cloud-link tag-link-61 tag-link-position-34" style="font-size: 16.981132075472pt;" aria-label="图床 (18个项目)">图床<span class="tag-link-count"> (18)</span></a>
+<a href="https://www.blueskyxn.com/tag/bt/" class="tag-cloud-link tag-link-79 tag-link-position-35" style="font-size: 18.301886792453pt;" aria-label="宝塔 (23个项目)">宝塔<span class="tag-link-count"> (23)</span></a>
+<a href="https://www.blueskyxn.com/tag/capture/" class="tag-cloud-link tag-link-127 tag-link-position-36" style="font-size: 8pt;" aria-label="抓包 (3个项目)">抓包<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/currentevents/" class="tag-cloud-link tag-link-51 tag-link-position-37" style="font-size: 15.924528301887pt;" aria-label="时事 (15个项目)">时事<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/bank-of-eu/" class="tag-cloud-link tag-link-134 tag-link-position-38" style="font-size: 9.3207547169811pt;" aria-label="欧洲银行 (4个项目)">欧洲银行<span class="tag-link-count"> (4)</span></a>
+<a href="https://www.blueskyxn.com/tag/law/" class="tag-cloud-link tag-link-48 tag-link-position-39" style="font-size: 8pt;" aria-label="法律 (3个项目)">法律<span class="tag-link-count"> (3)</span></a>
+<a href="https://www.blueskyxn.com/tag/clouddrive/" class="tag-cloud-link tag-link-71 tag-link-position-40" style="font-size: 18.962264150943pt;" aria-label="网盘 (26个项目)">网盘<span class="tag-link-count"> (26)</span></a>
+<a href="https://www.blueskyxn.com/tag/bank-of-us/" class="tag-cloud-link tag-link-132 tag-link-position-41" style="font-size: 15.924528301887pt;" aria-label="美国银行 (15个项目)">美国银行<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/tencentcloud/" class="tag-cloud-link tag-link-84 tag-link-position-42" style="font-size: 15.924528301887pt;" aria-label="腾讯云 (15个项目)">腾讯云<span class="tag-link-count"> (15)</span></a>
+<a href="https://www.blueskyxn.com/tag/virtualcard/" class="tag-cloud-link tag-link-138 tag-link-position-43" style="font-size: 13.283018867925pt;" aria-label="虚拟卡 (9个项目)">虚拟卡<span class="tag-link-count"> (9)</span></a>
+<a href="https://www.blueskyxn.com/tag/video/" class="tag-cloud-link tag-link-101 tag-link-position-44" style="font-size: 11.301886792453pt;" aria-label="视频 (6个项目)">视频<span class="tag-link-count"> (6)</span></a>
+<a href="https://www.blueskyxn.com/tag/alicloud/" class="tag-cloud-link tag-link-85 tag-link-position-45" style="font-size: 15.660377358491pt;" aria-label="阿里云 (14个项目)">阿里云<span class="tag-link-count"> (14)</span></a></div>
+</div><div class="widget widget_wp_statistics_widget"><div class="title"><h2></h2></div><ul><li><label>今日访客: </label>46</li><li><label>昨日访客: </label>73</li><li><label>过去7天的访问量: </label>2,979</li><li><label>累计访问: </label>99,081</li><li><label>累计访客: </label>40,033</li><li><label>总计文章: </label>523</li><li><label>最后发表日期: </label>2021年10月13日</li></ul></div> <style>
+            .bmc-btn {
+                min-width: 210px;
+                color: #FFFFFF !important;
+                background-color: #5F7FFF !important;
+                height: 60px;
+                border-radius: 12px;
+                font-size: 28px !important;
+                font-weight: Normal;
+                border: none;
+                padding: 0px 24px;
+                line-height: 27px;
+                text-decoration: none !important;
+                display: inline-flex !important;
+                align-items: center;
+                font-family: "Cookie" !important;
+                -webkit-box-sizing: border-box !important;
+                box-sizing: border-box !important;
+            }
+
+            .bmc-btn-text {
+                margin-left: 8px;
+                display: inline;
+                line-height: 0;
+            }
+
+            .bmc-btn svg {
+                height: 32px !important;
+                margin-bottom: 0px !important;
+                box-shadow: none !important;
+                border: none !important;
+                vertical-align: middle !important;
+                transform: scale(0.9);
+            }
+
+            .bmc-button img {
+                box-shadow: none !important;
+                vertical-align:
+                    middle !important;
+            }
+
+            .bmc-button {
+                display:
+                    inline-block !important;
+                padding:0px 10px  !important;
+                color:
+                    #FFFFFF !important;
+                background-color:
+                    #5F7FFF !important;
+                border-radius: 3px !important;
+                border: 1px solid transparent !important;
+                font-size: 28px !important;
+                box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                -webkit-transition: 0.3s all linear !important;
+                transition: 0.3s all linear !important;
+                margin: 0 auto !important;
+                font-family: "Cookie"
+                     !important;
+            }
+
+            .bmc-button: hover,
+            .bmc-button: active,
+            .bmc-button: focus {
+                -webkit-box-shadow: 0 4px 16px 0 rgba(190, 190, 190, .45) !important;
+                box-shadow: 0 4px 16px 0 rgba(190, 190, 190, .45) !important;
+                opacity: 0.85 !important;
+                color:
+                    #FFFFFF !important;
+            }
+        </style>
+<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+<p style="text-align:center !important; padding-bottom: 10px;">
+<a class="bmc-btn" target="_blank" href="https://www.buymeacoffee.com/blueskyxn"><svg viewBox="0 0 884 1279" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M791.109 297.518L790.231 297.002L788.201 296.383C789.018 297.072 790.04 297.472 791.109 297.518Z" fill="#0D0C22"></path>
+<path d="M803.896 388.891L802.916 389.166L803.896 388.891Z" fill="#0D0C22"></path>
+<path d="M791.484 297.377C791.359 297.361 791.237 297.332 791.118 297.29C791.111 297.371 791.111 297.453 791.118 297.534C791.252 297.516 791.379 297.462 791.484 297.377Z" fill="#0D0C22"></path>
+<path d="M791.113 297.529H791.244V297.447L791.113 297.529Z" fill="#0D0C22"></path>
+<path d="M803.111 388.726L804.591 387.883L805.142 387.573L805.641 387.04C804.702 387.444 803.846 388.016 803.111 388.726Z" fill="#0D0C22"></path>
+<path d="M793.669 299.515L792.223 298.138L791.243 297.605C791.77 298.535 792.641 299.221 793.669 299.515Z" fill="#0D0C22"></path>
+<path d="M430.019 1186.18C428.864 1186.68 427.852 1187.46 427.076 1188.45L427.988 1187.87C428.608 1187.3 429.485 1186.63 430.019 1186.18Z" fill="#0D0C22"></path>
+<path d="M641.187 1144.63C641.187 1143.33 640.551 1143.57 640.705 1148.21C640.705 1147.84 640.86 1147.46 640.929 1147.1C641.015 1146.27 641.084 1145.46 641.187 1144.63Z" fill="#0D0C22"></path>
+<path d="M619.284 1186.18C618.129 1186.68 617.118 1187.46 616.342 1188.45L617.254 1187.87C617.873 1187.3 618.751 1186.63 619.284 1186.18Z" fill="#0D0C22"></path>
+<path d="M281.304 1196.06C280.427 1195.3 279.354 1194.8 278.207 1194.61C279.136 1195.06 280.065 1195.51 280.684 1195.85L281.304 1196.06Z" fill="#0D0C22"></path>
+<path d="M247.841 1164.01C247.704 1162.66 247.288 1161.35 246.619 1160.16C247.093 1161.39 247.489 1162.66 247.806 1163.94L247.841 1164.01Z" fill="#0D0C22"></path>
+<path class="logo-coffee" d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L663.459 570.876C641.091 563.237 618.516 558.161 593.068 558.161C549.054 558.144 513.591 573.303 472.623 590.836Z" fill="#FFDD00"></path>
+<path d="M78.6885 386.132L79.4799 386.872L79.9962 387.182C79.5987 386.787 79.1603 386.435 78.6885 386.132Z" fill="#0D0C22"></path>
+<path class="logo-outline" d="M879.567 341.849L872.53 306.352C866.215 274.503 851.882 244.409 819.19 232.898C808.711 229.215 796.821 227.633 788.786 220.01C780.751 212.388 778.376 200.55 776.518 189.572C773.076 169.423 769.842 149.257 766.314 129.143C763.269 111.85 760.86 92.4243 752.928 76.56C742.604 55.2584 721.182 42.8009 699.88 34.559C688.965 30.4844 677.826 27.0375 666.517 24.2352C613.297 10.1947 557.342 5.03277 502.591 2.09047C436.875 -1.53577 370.983 -0.443234 305.422 5.35968C256.625 9.79894 205.229 15.1674 158.858 32.0469C141.91 38.224 124.445 45.6399 111.558 58.7341C95.7448 74.8221 90.5829 99.7026 102.128 119.765C110.336 134.012 124.239 144.078 138.985 150.737C158.192 159.317 178.251 165.846 198.829 170.215C256.126 182.879 315.471 187.851 374.007 189.968C438.887 192.586 503.87 190.464 568.44 183.618C584.408 181.863 600.347 179.758 616.257 177.304C634.995 174.43 647.022 149.928 641.499 132.859C634.891 112.453 617.134 104.538 597.055 107.618C594.095 108.082 591.153 108.512 588.193 108.942L586.06 109.252C579.257 110.113 572.455 110.915 565.653 111.661C551.601 113.175 537.515 114.414 523.394 115.378C491.768 117.58 460.057 118.595 428.363 118.647C397.219 118.647 366.058 117.769 334.983 115.722C320.805 114.793 306.661 113.611 292.552 112.177C286.134 111.506 279.733 110.801 273.333 110.009L267.241 109.235L265.917 109.046L259.602 108.134C246.697 106.189 233.792 103.953 221.025 101.251C219.737 100.965 218.584 100.249 217.758 99.2193C216.932 98.1901 216.482 96.9099 216.482 95.5903C216.482 94.2706 216.932 92.9904 217.758 91.9612C218.584 90.9319 219.737 90.2152 221.025 89.9293H221.266C232.33 87.5721 243.479 85.5589 254.663 83.8038C258.392 83.2188 262.131 82.6453 265.882 82.0832H265.985C272.988 81.6186 280.026 80.3625 286.994 79.5366C347.624 73.2301 408.614 71.0801 469.538 73.1014C499.115 73.9618 528.676 75.6996 558.116 78.6935C564.448 79.3474 570.746 80.0357 577.043 80.8099C579.452 81.1025 581.878 81.4465 584.305 81.7391L589.191 82.4445C603.438 84.5667 617.61 87.1419 631.708 90.1703C652.597 94.7128 679.422 96.1925 688.713 119.077C691.673 126.338 693.015 134.408 694.649 142.03L696.732 151.752C696.786 151.926 696.826 152.105 696.852 152.285C701.773 175.227 706.7 198.169 711.632 221.111C711.994 222.806 712.002 224.557 711.657 226.255C711.312 227.954 710.621 229.562 709.626 230.982C708.632 232.401 707.355 233.6 705.877 234.504C704.398 235.408 702.75 235.997 701.033 236.236H700.895L697.884 236.649L694.908 237.044C685.478 238.272 676.038 239.419 666.586 240.486C647.968 242.608 629.322 244.443 610.648 245.992C573.539 249.077 536.356 251.102 499.098 252.066C480.114 252.57 461.135 252.806 442.162 252.771C366.643 252.712 291.189 248.322 216.173 239.625C208.051 238.662 199.93 237.629 191.808 236.58C198.106 237.389 187.231 235.96 185.029 235.651C179.867 234.928 174.705 234.177 169.543 233.397C152.216 230.798 134.993 227.598 117.7 224.793C96.7944 221.352 76.8005 223.073 57.8906 233.397C42.3685 241.891 29.8055 254.916 21.8776 270.735C13.7217 287.597 11.2956 305.956 7.64786 324.075C4.00009 342.193 -1.67805 361.688 0.472751 380.288C5.10128 420.431 33.165 453.054 73.5313 460.35C111.506 467.232 149.687 472.807 187.971 477.556C338.361 495.975 490.294 498.178 641.155 484.129C653.44 482.982 665.708 481.732 677.959 480.378C681.786 479.958 685.658 480.398 689.292 481.668C692.926 482.938 696.23 485.005 698.962 487.717C701.694 490.429 703.784 493.718 705.08 497.342C706.377 500.967 706.846 504.836 706.453 508.665L702.633 545.797C694.936 620.828 687.239 695.854 679.542 770.874C671.513 849.657 663.431 928.434 655.298 1007.2C653.004 1029.39 650.71 1051.57 648.416 1073.74C646.213 1095.58 645.904 1118.1 641.757 1139.68C635.218 1173.61 612.248 1194.45 578.73 1202.07C548.022 1209.06 516.652 1212.73 485.161 1213.01C450.249 1213.2 415.355 1211.65 380.443 1211.84C343.173 1212.05 297.525 1208.61 268.756 1180.87C243.479 1156.51 239.986 1118.36 236.545 1085.37C231.957 1041.7 227.409 998.039 222.9 954.381L197.607 711.615L181.244 554.538C180.968 551.94 180.693 549.376 180.435 546.76C178.473 528.023 165.207 509.681 144.301 510.627C126.407 511.418 106.069 526.629 108.168 546.76L120.298 663.214L145.385 904.104C152.532 972.528 159.661 1040.96 166.773 1109.41C168.15 1122.52 169.44 1135.67 170.885 1148.78C178.749 1220.43 233.465 1259.04 301.224 1269.91C340.799 1276.28 381.337 1277.59 421.497 1278.24C472.979 1279.07 524.977 1281.05 575.615 1271.72C650.653 1257.95 706.952 1207.85 714.987 1130.13C717.282 1107.69 719.576 1085.25 721.87 1062.8C729.498 988.559 737.115 914.313 744.72 840.061L769.601 597.451L781.009 486.263C781.577 480.749 783.905 475.565 787.649 471.478C791.392 467.391 796.352 464.617 801.794 463.567C823.25 459.386 843.761 452.245 859.023 435.916C883.318 409.918 888.153 376.021 879.567 341.849ZM72.4301 365.835C72.757 365.68 72.1548 368.484 71.8967 369.792C71.8451 367.813 71.9483 366.058 72.4301 365.835ZM74.5121 381.94C74.6842 381.819 75.2003 382.508 75.7337 383.334C74.925 382.576 74.4089 382.009 74.4949 381.94H74.5121ZM76.5597 384.641C77.2996 385.897 77.6953 386.689 76.5597 384.641V384.641ZM80.672 387.979H80.7752C80.7752 388.1 80.9645 388.22 81.0333 388.341C80.9192 388.208 80.7925 388.087 80.6548 387.979H80.672ZM800.796 382.989C793.088 390.319 781.473 393.726 769.996 395.43C641.292 414.529 510.713 424.199 380.597 419.932C287.476 416.749 195.336 406.407 103.144 393.382C94.1102 392.109 84.3197 390.457 78.1082 383.798C66.4078 371.237 72.1548 345.944 75.2003 330.768C77.9878 316.865 83.3218 298.334 99.8572 296.355C125.667 293.327 155.64 304.218 181.175 308.09C211.917 312.781 242.774 316.538 273.745 319.36C405.925 331.405 540.325 329.529 671.92 311.91C695.906 308.686 719.805 304.941 743.619 300.674C764.835 296.871 788.356 289.731 801.175 311.703C809.967 326.673 811.137 346.701 809.778 363.615C809.359 370.984 806.139 377.915 800.779 382.989H800.796Z" fill="#0D0C22"></path>
+</svg><span class="bmc-btn-text">Support me</span></a>
+</p>
+</div> </div>
+<div class="show-hide-wrap"><button class="show-hide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M22 16l-10.105-10.6-1.895 1.987 8.211 8.613-8.211 8.612 1.895 1.988 8.211-8.613z"></path></svg></button></div>
+</aside>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/acai66/mydl/fonts/wenyihei/wenyihei-subfont.css" media="all">
+
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76b48ab88853417e9c6ee86221b4ef52"}'></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f048369a4a00269bacde3b5b90f410ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script type="text/javascript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['enableJSErrorTracking']);
+_paq.push(['trackVisibleContentImpressions']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);_paq.push(['alwaysUseSendBeacon']);_paq.push(['setTrackerUrl', "\/\/www.blueskyxn.com\/wp-content\/plugins\/matomo\/app\/matomo.php"]);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.src="\/\/www.blueskyxn.com\/wp-content\/uploads\/matomo\/matomo.js"; s.parentNode.insertBefore(g,s);
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"6a01d91de936eb85","version":"2021.9.0","r":1,"token":"e34888365a1044f8bfce378c329461ec","si":100}'></script>
+</body>
+
+</html>
+
